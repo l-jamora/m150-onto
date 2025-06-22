@@ -470,27 +470,27 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeManholeLength -->
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftLength -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeManholeLength">
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftLength">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeBasicData"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeManholeShape -->
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftShape -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeManholeShape">
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftShape">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeBasicData"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeManholeWidth -->
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftWidth -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeManholeWidth">
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftWidth">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeBasicData"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
@@ -1486,9 +1486,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionManholeArea -->
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionShaftArea -->
 
-    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionManholeArea">
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionShaftArea">
         <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionData"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
@@ -5063,7 +5063,7 @@ It is recommended to create individuals for geometric points with the template:
                         <owl:hasValue>Z</owl:hasValue>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeManholeShape"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftShape"/>
                         <owl:hasValue>Z</owl:hasValue>
                     </owl:Restriction>
                     <owl:Restriction>
@@ -5816,7 +5816,7 @@ It is recommended to create individuals for geometric points with the template:
                         <owl:hasValue>E</owl:hasValue>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeManholeShape"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftShape"/>
                         <owl:hasValue>E</owl:hasValue>
                     </owl:Restriction>
                     <owl:Restriction>
@@ -6015,7 +6015,7 @@ According to the DWA-M 150, the coding systems that can be applied here are:
                         <owl:hasValue>R</owl:hasValue>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeManholeShape"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftShape"/>
                         <owl:hasValue>R</owl:hasValue>
                     </owl:Restriction>
                     <owl:Restriction>
@@ -6410,7 +6410,7 @@ According to the DWA-M 150, the coding systems that can be applied here are:
                         <owl:hasValue>Q</owl:hasValue>
                     </owl:Restriction>
                     <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeManholeShape"/>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftShape"/>
                         <owl:hasValue>Q</owl:hasValue>
                     </owl:Restriction>
                     <owl:Restriction>
@@ -7724,4 +7724,3 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
 
 <!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
-
