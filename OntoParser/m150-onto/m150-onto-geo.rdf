@@ -1,0 +1,178 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#"
+     xml:base="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo">
+        <rdfs:comment xml:lang="en">Subontology for M150-Onto. This subontology covers the geometry point and geometry object data in accordance with DWA M-150.</rdfs:comment>
+        <rdfs:label xml:lang="en">M150-Onto-Geo</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasCoordinateSystem -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasCoordinateSystem">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasEastCoordinate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasEastCoordinate">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasEasting -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasEasting">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasElevationAccuracy -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasElevationAccuracy">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasElevationSystem -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasElevationSystem">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectData -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectData"/>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectDesignation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectDesignation">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectIdentifier -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectIdentifier">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectType">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryObjectData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointDesignation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointDesignation">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasHeight -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasHeight">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasNorthCoordinate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasNorthCoordinate">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasNorthing -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasNorthing">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasOrientation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasOrientation">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasPointType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasPointType">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasPositionalAccuracy -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasPositionalAccuracy">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo#hasGeometryPointData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+

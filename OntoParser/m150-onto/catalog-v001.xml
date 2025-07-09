@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <uri id="User Entered Import Resolution" name="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata" uri="file:/C:/Users/jluis/OntoParser/m150-onto/m150-onto-inspection_conditiondata.rdf"/>
+    <uri id="User Entered Import Resolution" name="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata" uri="file:/C:/Users/jluis/OntoParser/m150-onto/M150-Onto-BasicData.rdf"/>
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1749817249871" name="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto" uri="M150-Onto.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1749817249871" name="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-geo" uri="m150-onto-geo.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1749817249871" name="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-hg" uri="M150-Onto-BasicData.rdf"/>
+        <uri id="Automatically generated entry, Timestamp=1749817249871" name="http://www.semanticweb.org/jluis/ontologies/2025/2/untitled-ontology-31/" uri="m150-onto-inspection_conditiondata.rdf"/>
+    </group>
+</catalog>

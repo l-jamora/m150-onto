@@ -1,0 +1,780 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/jluis/ontologies/2025/2/untitled-ontology-31/"
+     xml:base="http://www.semanticweb.org/jluis/ontologies/2025/2/untitled-ontology-31/"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata">
+        <rdfs:comment xml:lang="en">Subontology for M150-Onto. HI is in regards to pipe section/node inspection, measurement and condition data. 
+
+(HI = Haltungsinspektionsdaten; HM = Haltungsmesswertdaten; HZ = Haltungszustandsdaten)
+
+(KI = Knoteninspektionsdaten; KZ = Knotenzustandsdaten)</rdfs:comment>
+        <rdfs:label xml:lang="en">M150-Onto-Inspection_MeasurementData</rdfs:label>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasAssessmentClass -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasAssessmentClass">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasAssessmentDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasAssessmentDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasAssessor -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasAssessor">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasBackflowPrevention -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasBackflowPrevention">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCameraSpecificDataPlaceholder -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCameraSpecificDataPlaceholder">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCameraSystemUsed -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCameraSystemUsed">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCharacterization1 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCharacterization1">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCharacterization2 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCharacterization2">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasClassificationDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasClassificationDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasClassifier -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasClassifier">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCleaning -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCleaning">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasClient -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasClient">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCodingSystem -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCodingSystem">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCompany -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasCompany">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionClassOperationalSafety -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionClassOperationalSafety">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionClassStructuralStability -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionClassStructuralStability">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionClassTightness -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionClassTightness">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionCode -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionCode">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionPointsOperationalSafety -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionPointsOperationalSafety">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionPointsStructuralStability -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionPointsStructuralStability">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionPointsTightness -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionPointsTightness">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConnection -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConnection">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasEvaluationPointsOperationalSafety -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasEvaluationPointsOperationalSafety">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasEvaluationPointsStructuralStability -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasEvaluationPointsStructuralStability">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasEvaluationPointsTightness -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasEvaluationPointsTightness">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasImageName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasImageName">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionDateTime -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionDateTime">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionNumber">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionReason -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionReason">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionType">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspector -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspector">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasLinearDamage -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasLinearDamage">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasLongText -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasLongText">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMaximumConditionClassOperationalSafety -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMaximumConditionClassOperationalSafety">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMaximumConditionClassStructuralStability -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMaximumConditionClassStructuralStability">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMaximumConditionClassTightness -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMaximumConditionClassTightness">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementData -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementData">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementStation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementStation">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementUnit -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementUnit">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementValue -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementValue">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementValueType -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementValueType">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasMeasurementData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionData -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionData">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionDepth -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionDepth">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionLocalizedRepair -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionLocalizedRepair">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionManholeArea -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionManholeArea">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionAmbientAir -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionAmbientAir">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionAmbientPhoto -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionAmbientPhoto">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionCircumferentialReferencePoint -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionCircumferentialReferencePoint">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionCorrectCone -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionCorrectCone">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionData -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionData">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionDigitalPhotoName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionDigitalPhotoName">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionOperationalSafety -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionOperationalSafety">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionVerticalReferencePoint -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionVerticalReferencePoint">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasNodeInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPhotoStorageMedium -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPhotoStorageMedium">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionData -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionData">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionLining -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionLining">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionLocalizedRepair -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionLocalizedRepair">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionStation -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionStation">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionInspectionData -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionInspectionData">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionInspectionDirection -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionInspectionDirection">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionInspectionReferencePointStart -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionInspectionReferencePointStart">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPipeSectionInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPositionFrom -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPositionFrom">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPositionTo -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPositionTo">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPriority -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasPriority">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasProcessingNote -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasProcessingNote">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasProcessingStatus -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasProcessingStatus">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasProjectNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasProjectNumber">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasQuantification1 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasQuantification1">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasQuantification2 -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasQuantification2">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasRehabilitationRequirementNumber -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasRehabilitationRequirementNumber">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasReport -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasReport">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasReportDate -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasReportDate">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasReporter -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasReporter">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasSiteManagement -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasSiteManagement">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasStandardizedComment -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasStandardizedComment">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasTemperature -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasTemperature">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasVideoCounterReading -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasVideoCounterReading">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasConditionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasVideoFilename -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasVideoFilename">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasVideoStorageMedium -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasVideoStorageMedium">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasVideoStorageMediumName -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasVideoStorageMediumName">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasWaterLevel -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasWaterLevel">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasWeather -->
+
+    <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasWeather">
+        <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#hasInspectionData"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+    </owl:DatatypeProperty>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
+
