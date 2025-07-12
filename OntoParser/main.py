@@ -1,10 +1,10 @@
 import owlready2 as owl
 from xml_parser_onto import parse_xml
 from pathlib import Path
-from config import BASIC_DATA_IRI, BASIC_OBJECT_IRI
+from config import BASIC_DATA_IRI, BASIC_OBJECT_IRI, INSPECTION_CONDITION_IRI
 from objectproperties import OBJECT_PROPERTY_MAPPINGS
 
-# Define paths relative to the repository root
+# Paths (unchanged)
 REPO_ROOT = Path(__file__).parent
 XML_DIR = REPO_ROOT / "XML"
 ONTOLOGY_DIR = REPO_ROOT / "m150-onto"
@@ -13,27 +13,25 @@ XML_PATH = XML_DIR / "DWA M 150 Beispiel 04_2010 Typ B .xml"
 MAIN_ONTOLOGY_PATH = ONTOLOGY_DIR / "merged_m150-onto.rdf"
 OUTPUT_ONTOLOGY_PATH = OUTPUT_DIR / "updated_M150-Onto.rdf"
 
-# Ensure output directory exists
 OUTPUT_DIR.mkdir(exist_ok=True)
-
-# Check if input files exist
 for path in [XML_PATH, MAIN_ONTOLOGY_PATH]:
     if not path.exists():
         raise FileNotFoundError(f"Input file not found: {path}")
 
-# Configure Owlready2 to use local files
 owl.onto_path.append(str(ONTOLOGY_DIR))
-
-# Load the main ontology
 print(f"Loading ontology from {MAIN_ONTOLOGY_PATH}")
 onto = owl.get_ontology(f"file://{MAIN_ONTOLOGY_PATH}").load()
 print("Ontology loaded successfully")
 
-# Find Node and PipeSection classes
+# Find existing classes
 node_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Node")
 pipe_section_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}PipeSection")
-if node_class is None or pipe_section_class is None:
-    raise ValueError("Node or PipeSection class not found in ontology")
+inspection_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Inspection")
+condition_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Condition")
+measurement_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Measurement")
+
+if not all([node_class, pipe_section_class, inspection_class, condition_class, measurement_class]):
+    raise ValueError("One or more ontology classes not found")
 
 # Load object properties
 object_properties = {}
@@ -46,11 +44,10 @@ for xml_key, prop_info in OBJECT_PROPERTY_MAPPINGS.items():
 
 def main():
     print("Reading XML and parsing HG and KG entries...")
-    hg_list, kg_list, gp_list = parse_xml(str(XML_PATH))
+    hg_list, kg_list = parse_xml(str(XML_PATH))
     print("HG List:", [hg.get("hasDesignation", "unknown") for hg in hg_list])
     print("KG List:", [kg.get("hasDesignation", "unknown") for kg in kg_list])
 
-    # Dictionaries to store individuals
     node_dict = {}
     pipe_section_dict = {}
 
@@ -63,14 +60,14 @@ def main():
                 continue
             pipe_section = pipe_section_class(individual_name)
             for prop_name, value in hg.items():
-                if value is not None and prop_name not in ["start_node_designation", "end_node_designation"]:
+                if value is not None and prop_name not in ["start_node_designation", "end_node_designation", "inspections", "measurements"]:
                     prop = onto.search_one(iri=f"{BASIC_DATA_IRI}{prop_name}")
-                    if prop is None:
-                        print(f"Warning: Property {prop_name} not found in ontology, skipping")
-                        continue
-                    setattr(pipe_section, prop_name, [value])
+                    if prop:
+                        setattr(pipe_section, prop_name, [value])
+                    else:
+                        print(f"Warning: Property {prop_name} not found, skipping")
             pipe_section_dict[hg.get("hasDesignation", "unknown")] = pipe_section
-            print(f"\nCreated PipeSection individual: {individual_name}")
+            print(f"Created PipeSection: {individual_name}")
 
         # Create Node individuals
         for kg in kg_list:
@@ -82,19 +79,64 @@ def main():
             for prop_name, value in kg.items():
                 if value is not None and prop_name != "geometry_points":
                     prop = onto.search_one(iri=f"{BASIC_DATA_IRI}{prop_name}")
-                    if prop is None:
-                        print(f"Warning: Property {prop_name} not found in ontology, skipping")
-                        continue
-                    setattr(node, prop_name, [value])
+                    if prop:
+                        setattr(node, prop_name, [value])
             node_dict[kg.get("hasDesignation", "unknown")] = node
-            print(f"\nCreated Node individual: {individual_name}")
+            print(f"Created Node: {individual_name}")
 
-        # Handle object properties
+        # Create HI and HZ individuals
+        for hg in hg_list:
+            pipe_section = pipe_section_dict.get(hg.get("hasDesignation", "unknown"))
+            if not pipe_section:
+                continue
+
+            for hi in hg.get('inspections', []):
+                inspection_name = f"Inspection{hg.get('hasDesignation', 'unknown')}_{hi.get('hasInspectionNumber', 'unknown')}"
+                inspection = inspection_class(inspection_name)
+                for prop_name, value in hi.items():
+                    if prop_name != 'conditions' and value is not None:
+                        prop = onto.search_one(iri=f"{INSPECTION_CONDITION_IRI}{prop_name}")
+                        if prop:
+                            setattr(inspection, prop_name, [value])
+                if "inspects" in object_properties:
+                    object_properties["inspects"][inspection].append(pipe_section)
+                print(f"Created Inspection: {inspection_name}")
+
+                for hz in hi.get('conditions', []):
+                    condition_name = f"Condition{hg.get('hasDesignation', 'unknown')}_{hz.get('hasPipeSectionConditionStation', 'unknown')}_{hz.get('hasConditionCode', 'unknown')}"
+                    condition = condition_class(condition_name)
+                    for prop_name, value in hz.items():
+                        if value is not None:
+                            prop = onto.search_one(iri=f"{INSPECTION_CONDITION_IRI}{prop_name}")
+                            if prop:
+                                setattr(condition, prop_name, [value])
+                            else:
+                                print(f"Warning: Property {prop_name} not found, skipping")
+                    if "is_child_of" in object_properties:
+                        object_properties["is_child_of"][condition].append(inspection)
+                        print(f"Set is_child_of: {condition_name} -> {inspection_name}")
+                    else:
+                        print(f"Error: is_child_of property not found in object_properties")
+                    print(f"Created Condition: {condition_name}")
+
+            # Create HM individuals (placeholder)
+            for hm in hg.get('measurements', []):
+                measurement_name = f"Measurement{hg.get('hasDesignation', 'unknown')}_{hm.get('hasMeasurementStation', 'unknown')}"
+                measurement = measurement_class(measurement_name)
+                for prop_name, value in hm.items():
+                    if value is not None:
+                        prop = onto.search_one(iri=f"{INSPECTION_CONDITION_IRI}{prop_name}")
+                        if prop:
+                            setattr(measurement, prop_name, [value])
+                if "inspects" in object_properties:  # Adjust relation as needed
+                    object_properties["inspects"][measurement].append(pipe_section)
+                print(f"Created Measurement: {measurement_name}")
+
+        # Handle object properties for HG and KG (unchanged)
         for hg in hg_list:
             pipe_section_name = hg.get("hasDesignation", "unknown")
             pipe_section = pipe_section_dict.get(pipe_section_name)
             if not pipe_section:
-                print(f"Error: PipeSection {pipe_section_name} not found")
                 continue
             start_node_designation = hg.get("start_node_designation")
             end_node_designation = hg.get("end_node_designation")
@@ -107,7 +149,6 @@ def main():
                 object_properties["flows_to"][pipe_section].append(end_node)
                 print(f"{pipe_section_name} flowsTo {end_node_designation}")
 
-    # Save the updated ontology
     onto.save(file=str(OUTPUT_ONTOLOGY_PATH), format="rdfxml")
     print(f"Ontology saved to {OUTPUT_ONTOLOGY_PATH}")
     print(f"Parsed {len(hg_list)} HG elements.")

@@ -6,7 +6,8 @@
          xml:base="http://www.semanticweb.org/jluis/ontologies/2025/5/merged_m150-onto"
          xmlns="http://www.semanticweb.org/jluis/ontologies/2025/5/merged_m150-onto#"
          xmlns:m150="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#"
-         xmlns:m1502="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#">
+         xmlns:m1502="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#"
+         xmlns:m1503="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-inspection_conditiondata#">
 
 <owl:Ontology rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/5/merged_m150-onto">
   <rdfs:comment xml:lang="en">Subontology for M150-Onto. HI is in regards to pipe section/node inspection, measurement and condition data. 
@@ -263,6 +264,16 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
 </owl:DatatypeProperty>
 
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeMeasurementTechnology">
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeBasicData"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeNumberOfClimbingIrons">
+  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeBasicData"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+</owl:DatatypeProperty>
+
 <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftLength">
   <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeBasicData"/>
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
@@ -274,16 +285,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 </owl:DatatypeProperty>
 
 <owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeShaftWidth">
-  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeBasicData"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-</owl:DatatypeProperty>
-
-<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeMeasurementTechnology">
-  <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeBasicData"/>
-  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-</owl:DatatypeProperty>
-
-<owl:DatatypeProperty rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeNumberOfClimbingIrons">
   <rdfs:subPropertyOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto-basicdata#hasNodeBasicData"/>
   <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
 </owl:DatatypeProperty>
@@ -2947,6 +2948,10 @@ The different types found within a reference table are then listed as subclasses
   <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#TrafficAreaLocation"/>
 </owl:Class>
 
+<owl:Class rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Measurement">
+  <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Report"/>
+</owl:Class>
+
 <owl:Class rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#MeasurementManhole">
   <owl:equivalentClass>
     <owl:Restriction>
@@ -5162,6 +5167,213 @@ The different types found within a reference table are then listed as subclasses
   <m1502:hasFunctionalStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">B</m1502:hasFunctionalStatus>
   <m1502:hasTrafficArea rdf:datatype="http://www.w3.org/2001/XMLSchema#string">F</m1502:hasTrafficArea>
   <m1502:hasDataStatus rdf:datatype="http://www.w3.org/2001/XMLSchema#string">K</m1502:hasDataStatus>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Inspection1204015_unknown">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Inspection"/>
+  <m150:inspects rdf:resource="#PipeSection_1204015"/>
+  <m1503:hasClient rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DWA</m1503:hasClient>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204015_0.0_BCD">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204015_unknown"/>
+  <m1503:hasPipeSectionConditionStation rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</m1503:hasPipeSectionConditionStation>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCD</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204015_unknown_BCA">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204015_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCA</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204015_unknown_BAG">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204015_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAG</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204015_unknown_BAH">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204015_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAH</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204015_unknown_BAB">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204015_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAB</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204015_unknown_BBA">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204015_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BBA</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204015_48.3_BCE">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204015_unknown"/>
+  <m1503:hasPipeSectionConditionStation rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">48.3</m1503:hasPipeSectionConditionStation>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCE</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Inspection1204014_unknown">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Inspection"/>
+  <m150:inspects rdf:resource="#PipeSection_1204014"/>
+  <m1503:hasClient rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DWA</m1503:hasClient>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204014_0.0_BCD">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204014_unknown"/>
+  <m1503:hasPipeSectionConditionStation rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</m1503:hasPipeSectionConditionStation>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCD</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204014_unknown_BAF">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204014_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAF</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204014_unknown_BAB">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204014_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAB</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204014_unknown_BCA">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204014_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCA</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204014_unknown_BAH">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204014_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAH</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204014_unknown_BBA">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204014_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BBA</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204014_42.2_BCE">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204014_unknown"/>
+  <m1503:hasPipeSectionConditionStation rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">42.2</m1503:hasPipeSectionConditionStation>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCE</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Inspection1204013_unknown">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Inspection"/>
+  <m150:inspects rdf:resource="#PipeSection_1204013"/>
+  <m1503:hasClient rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DWA</m1503:hasClient>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_0.0_BCD">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasPipeSectionConditionStation rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</m1503:hasPipeSectionConditionStation>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCD</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_unknown_BAF">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAF</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_unknown_BCA">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCA</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_unknown_BAB">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAB</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_unknown_BAH">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAH</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_unknown_BBA">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BBA</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_10.1_BDC">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasPipeSectionConditionStation rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">10.1</m1503:hasPipeSectionConditionStation>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BDC</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_unknown_BAI">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAI</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_unknown_BCB">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCB</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_unknown_BAL">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAL</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204013_7.9_BDC">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204013_unknown"/>
+  <m1503:hasPipeSectionConditionStation rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.9</m1503:hasPipeSectionConditionStation>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BDC</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Inspection1204012_unknown">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Inspection"/>
+  <m150:inspects rdf:resource="#PipeSection_1204012"/>
+  <m1503:hasClient rdf:datatype="http://www.w3.org/2001/XMLSchema#string">DWA</m1503:hasClient>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204012_0.0_BCD">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204012_unknown"/>
+  <m1503:hasPipeSectionConditionStation rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0</m1503:hasPipeSectionConditionStation>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCD</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204012_unknown_BCA">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204012_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCA</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204012_unknown_BAK">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204012_unknown"/>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BAK</m1503:hasConditionCode>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#Condition1204012_28.0_BCE">
+  <rdf:type rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Condition"/>
+  <m150:isChildOf rdf:resource="#Inspection1204012_unknown"/>
+  <m1503:hasPipeSectionConditionStation rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">28.0</m1503:hasPipeSectionConditionStation>
+  <m1503:hasConditionCode rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BCE</m1503:hasConditionCode>
 </owl:NamedIndividual>
 
 <rdfs:Datatype rdf:about="http://www.w3.org/2001/XMLSchema#date"/>

@@ -102,6 +102,24 @@ HG_FIELDS = [
     ("HG411", "hasPipeSectionBeddingType", "xsd:string"),
 ]
 
+# HI Haltungsinspektionsdaten (tag, dictionary_key, data_type)
+HI_FIELDS = [
+    ("HI001", "hasClient", "xsd:string"),
+    ("HI003", "hasInspectionNumber", "xsd:integer"),
+]
+
+# HZ Haltungszustandsdaten (tag, dictionary_key, data_type)
+HZ_FIELDS = [
+    ("HZ001", "hasPipeSectionConditionStation", "xsd:float"),
+    ("HZ002", "hasConditionCode", "xsd:string"),
+]
+
+# HM Haltungsmesswertdaten (tag, dictionary_key, data_type)
+HM_FIELDS = [
+    ("HM001", "hasMeasurementStation", "xsd:float"),
+]
+
+
 # GP fields configuration: (tag, dictionary_key, data_type)
 GP_FIELDS = [
     ("GP005", "east_coordinate", "xsd:string"),
@@ -117,4 +135,7 @@ FIELDS_CONFIG = {
     'KG': KG_FIELDS,
     'HG': HG_FIELDS,
     'GP': GP_FIELDS,
+    'HI': HI_FIELDS,
+    'HZ': HZ_FIELDS,
+    'HM': HM_FIELDS,
 }
