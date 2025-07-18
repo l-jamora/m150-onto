@@ -3,6 +3,7 @@ from xml_parser_onto import parse_xml
 from pathlib import Path
 from config import BASIC_DATA_IRI, BASIC_OBJECT_IRI, INSPECTION_CONDITION_IRI
 from objectproperties import OBJECT_PROPERTY_MAPPINGS
+import re
 
 # Paths (unchanged)
 REPO_ROOT = Path(__file__).parent
@@ -42,6 +43,48 @@ for xml_key, prop_info in OBJECT_PROPERTY_MAPPINGS.items():
     else:
         object_properties[xml_key] = oprop
 
+# This function replaces xsd:decimal with xsd:float in the RDF/XML file manually and InspectionDateTime. For some reason, owlready2 saves it as xsd:decimal, despite the datatype being float. Bandaid fixes pretty much.
+def fix_datatypes_in_rdf(file_path):
+    """
+    Post-processes the RDF/XML file to:
+    1. Replace 'rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"' with 'rdf:datatype="http://www.w3.org/2001/XMLSchema#float"'.
+    2. Ensure <m1503:hasInspectionDateTime> tags have 'rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime"',
+       replacing 'rdf:datatype="http://www.w3.org/2001/XMLSchema#string"' or adding it if missing.
+    
+    Args:
+        file_path (str): The path to the RDF/XML file to be modified.
+    """
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+        
+        # Replace xsd:decimal with xsd:float
+        updated_content = content.replace(
+            'rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"',
+            'rdf:datatype="http://www.w3.org/2001/XMLSchema#float"'
+        )
+        
+        # Fix hasInspectionDateTime: replace xsd:string with xsd:dateTime or add xsd:dateTime if missing
+        # Matches <m1503:hasInspectionDateTime>value</m1503:hasInspectionDateTime>
+        # or <m1503:hasInspectionDateTime rdf:datatype="...#string">value</m1503:hasInspectionDateTime>
+        pattern = r'(<m1503:hasInspectionDateTime(?:\s+rdf:datatype="http://www.w3.org/2001/XMLSchema#string")?>)([^<]+)(</m1503:hasInspectionDateTime>)'
+        replacement = r'<m1503:hasInspectionDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">\2\3'
+        updated_content = re.sub(pattern, replacement, updated_content)
+        
+        # Check if any replacements were made
+        if updated_content != content:
+            print(f"Updated datatypes in {file_path} (float and/or dateTime)")
+        else:
+            print(f"No datatype changes needed in {file_path}")
+        
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write(updated_content)
+    
+    except FileNotFoundError:
+        print(f"Error: File not found at {file_path}")
+    except Exception as e:
+        print(f"An error occurred while updating the RDF file: {e}")
+
 def main():
     print("Reading XML and parsing HG and KG entries...")
     hg_list, kg_list = parse_xml(str(XML_PATH))
@@ -63,7 +106,6 @@ def main():
                 if value is not None and prop_name not in ["start_node_designation", "end_node_designation", "inspections", "measurements"]:
                     prop = onto.search_one(iri=f"{BASIC_DATA_IRI}{prop_name}")
                     if prop:
-                        print(f"Setting {prop_name} to {value} (type: {type(value)})")
                         setattr(pipe_section, prop_name, [value])
                     else:
                         print(f"Warning: Property {prop_name} not found, skipping")
@@ -133,7 +175,7 @@ def main():
                     object_properties["inspects"][measurement].append(pipe_section)
                 print(f"Created Measurement: {measurement_name}")
 
-        # Handle object properties for HG and KG (unchanged)
+        # Handle object properties for HG and KG
         for hg in hg_list:
             pipe_section_name = hg.get("hasDesignation", "unknown")
             pipe_section = pipe_section_dict.get(pipe_section_name)
@@ -151,47 +193,10 @@ def main():
                 print(f"{pipe_section_name} flowsTo {end_node_designation}")
 
     onto.save(file=str(OUTPUT_ONTOLOGY_PATH), format="rdfxml")
+    fix_datatypes_in_rdf(str(OUTPUT_ONTOLOGY_PATH))
     print(f"Ontology saved to {OUTPUT_ONTOLOGY_PATH}")
     print(f"Parsed {len(hg_list)} HG elements.")
     print(f"Parsed {len(kg_list)} KG elements.")
 
 if __name__ == "__main__":
     main()
-
-
-# This function replaces xsd:decimal with xsd:float in the RDF/XML file manually. For some reason, owlready2 saves it as xsd:decimal, despite the datatype being float. Bandaid fix pretty much.
-def fix_datatypes_in_rdf(file_path):
-    """
-    Replaces all occurrences of 'rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"'
-    with 'rdf:datatype="http://www.w3.org/2001/XMLSchema#float"' in the specified RDF/XML file.
-    
-    Args:
-        file_path (str): The path to the RDF/XML file to be modified.
-    """
-    try:
-        with open(file_path, 'r', encoding='utf-8') as file:
-            content = file.read()
-        
-        # Replace xsd:decimal with xsd:float
-        updated_content = content.replace(
-            'rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"',
-            'rdf:datatype="http://www.w3.org/2001/XMLSchema#float"'
-        )
-        
-        # Check if any replacements were made
-        if updated_content != content:
-            print(f"Replaced decimal with float in {file_path}")
-        else:
-            print(f"No changes needed in {file_path}")
-        
-        with open(file_path, 'w', encoding='utf-8') as file:
-            file.write(updated_content)
-    
-    except FileNotFoundError:
-        print(f"Error: File not found at {file_path}")
-    except Exception as e:
-        print(f"An error occurred while updating the RDF file: {e}")
-
-# Assuming 'onto' is your ontology object and OUTPUT_ONTOLOGY_PATH is defined
-onto.save(file=str(OUTPUT_ONTOLOGY_PATH), format="rdfxml")
-fix_datatypes_in_rdf(str(OUTPUT_ONTOLOGY_PATH))

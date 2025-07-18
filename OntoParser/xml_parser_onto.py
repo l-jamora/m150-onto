@@ -1,4 +1,5 @@
 import xml.etree.ElementTree as ET
+import datetime
 from xml_element_fields import FIELDS_CONFIG
 
 def safe_convert(value, data_type):
@@ -18,6 +19,8 @@ def safe_convert(value, data_type):
             return value.lower() in ('true', '1', 't', 'y', 'yes')
         elif data_type == "xsd:date":
             return str(value)  # Adjust based on date format if needed
+        elif data_type == "xsd:dateTime":
+            return value
         else:  # xsd:string or other
             return str(value)
     except (ValueError, TypeError):
@@ -48,6 +51,29 @@ def parse_xml(file_path):
                 for tag, prop_name, data_type in FIELDS_CONFIG['HI']
             }
             hi_entry = {k: v for k, v in hi_entry.items() if v is not None}
+
+            # Combine HI104 and HI105 into hasInspectionDateTime
+            date_str = hi.findtext("HI104")  # e.g., "07.04.2006"
+            time_str = hi.findtext("HI105")  # e.g., "11:32:00"
+            if date_str and time_str:
+                try:
+                    # Parse date from DD.MM.YYYY
+                    date_obj = datetime.datetime.strptime(date_str, "%d.%m.%Y")
+                    # Parse time from HH:MM:SS
+                    time_obj = datetime.datetime.strptime(time_str, "%H:%M:%S")
+                    # Combine date and time
+                    datetime_obj = date_obj.replace(
+                        hour=time_obj.hour,
+                        minute=time_obj.minute,
+                        second=time_obj.second
+                    )
+                    # Format as xsd:dateTime (YYYY-MM-DDTHH:MM:SS)
+                    hi_entry['hasInspectionDateTime'] = datetime_obj.strftime("%Y-%m-%dT%H:%M:%S")
+                except ValueError:
+                    print(f"Warning: Invalid date/time format - HI104={date_str}, HI105={time_str}")
+                    hi_entry['hasInspectionDateTime'] = None
+            else:
+                hi_entry['hasInspectionDateTime'] = Non
 
             # Extract HZ elements within HI
             hz_list = []
