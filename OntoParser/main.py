@@ -63,6 +63,7 @@ def main():
                 if value is not None and prop_name not in ["start_node_designation", "end_node_designation", "inspections", "measurements"]:
                     prop = onto.search_one(iri=f"{BASIC_DATA_IRI}{prop_name}")
                     if prop:
+                        print(f"Setting {prop_name} to {value} (type: {type(value)})")
                         setattr(pipe_section, prop_name, [value])
                     else:
                         print(f"Warning: Property {prop_name} not found, skipping")
@@ -156,3 +157,41 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# This function replaces xsd:decimal with xsd:float in the RDF/XML file manually. For some reason, owlready2 saves it as xsd:decimal, despite the datatype being float. Bandaid fix pretty much.
+def fix_datatypes_in_rdf(file_path):
+    """
+    Replaces all occurrences of 'rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"'
+    with 'rdf:datatype="http://www.w3.org/2001/XMLSchema#float"' in the specified RDF/XML file.
+    
+    Args:
+        file_path (str): The path to the RDF/XML file to be modified.
+    """
+    try:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            content = file.read()
+        
+        # Replace xsd:decimal with xsd:float
+        updated_content = content.replace(
+            'rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal"',
+            'rdf:datatype="http://www.w3.org/2001/XMLSchema#float"'
+        )
+        
+        # Check if any replacements were made
+        if updated_content != content:
+            print(f"Replaced decimal with float in {file_path}")
+        else:
+            print(f"No changes needed in {file_path}")
+        
+        with open(file_path, 'w', encoding='utf-8') as file:
+            file.write(updated_content)
+    
+    except FileNotFoundError:
+        print(f"Error: File not found at {file_path}")
+    except Exception as e:
+        print(f"An error occurred while updating the RDF file: {e}")
+
+# Assuming 'onto' is your ontology object and OUTPUT_ONTOLOGY_PATH is defined
+onto.save(file=str(OUTPUT_ONTOLOGY_PATH), format="rdfxml")
+fix_datatypes_in_rdf(str(OUTPUT_ONTOLOGY_PATH))

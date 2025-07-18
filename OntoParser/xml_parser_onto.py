@@ -7,6 +7,8 @@ def safe_convert(value, data_type):
         return None
     try:
         if data_type == "xsd:float":
+            # Replace comma with dot for decimal values
+            value = value.replace(',', '.')
             result = float(value)
             print(f"Converting {value} to xsd:float, result: {result}, type: {type(result)}")
             return result
