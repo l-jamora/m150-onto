@@ -157,21 +157,35 @@ HM_FIELDS = [
     ("HM001", "hasMeasurementStation", "xsd:float"),
 ]
 
+# GO fields configuration: (tag, dictionary_key, data_type)
+GO_FIELDS = [
+    ("GO001", "hasGeometryObjectDesignation", "xsd:string"),
+    ("GO002", "hasGeometryObjectIdentifier", "xsd:string"),
+    ("GO003", "hasGeometryObjectType", "xsd:string"),
+]
+
 
 # GP fields configuration: (tag, dictionary_key, data_type)
 GP_FIELDS = [
-    ("GP005", "east_coordinate", "xsd:string"),
-    ("GP006", "north_coordinate", "xsd:string"),
-    ("GP007", "height", "xsd:float"),
-    ("GP008", "positional_accuracy", "xsd:string"),
-    ("GP009", "elevation_accuracy", "xsd:string"),
-    ("GP010", "elevation_system", "xsd:string"),
+    ("GP001", "hasGeometryPointDesignation", "xsd:string"),
+    ("GP002", "hasCoordinateSystem", "xsd:string"),
+    ("GP003", "hasEasting", "xsd:float"),
+    ("GP004", "hasNorthing", "xsd:float"),
+    ("GP005", "hasEastCoordinate", "xsd:string"),
+    ("GP006", "hasNorthCoordinate", "xsd:string"),
+    ("GP007", "hasHeight", "xsd:float"),
+    ("GP008", "hasPositionalAccuracy", "xsd:string"),
+    ("GP009", "hasElevationAccuracy", "xsd:string"),
+    ("GP010", "hasElevationSystem", "xsd:string"),
+    ("GP101", "hasPointType", "xsd:string"),
+    ("GP102", "hasOrientation", "xsd:string"),
 ]
 
 # Dictionary to organize all field configurations by element type
 FIELDS_CONFIG = {
     'KG': KG_FIELDS,
     'HG': HG_FIELDS,
+    'GO': GO_FIELDS,
     'GP': GP_FIELDS,
     'HI': HI_FIELDS,
     'HZ': HZ_FIELDS,
