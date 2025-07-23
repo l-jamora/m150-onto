@@ -1,7 +1,7 @@
 import owlready2 as owl
 from xml_parser_onto import parse_xml
 from pathlib import Path
-from config import BASIC_DATA_IRI, BASIC_OBJECT_IRI, INSPECTION_CONDITION_IRI
+from config import *
 from objectproperties import OBJECT_PROPERTY_MAPPINGS
 import re
 
@@ -30,6 +30,8 @@ pipe_section_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}PipeSection")
 inspection_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Inspection")
 condition_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Condition")
 measurement_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Measurement")
+geo_object_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Object")
+geo_point_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Point")
 
 if not all([node_class, pipe_section_class, inspection_class, condition_class, measurement_class]):
     raise ValueError("One or more ontology classes not found")
@@ -67,8 +69,8 @@ def fix_datatypes_in_rdf(file_path):
         # Fix hasInspectionDateTime: replace xsd:string with xsd:dateTime or add xsd:dateTime if missing
         # Matches <m1503:hasInspectionDateTime>value</m1503:hasInspectionDateTime>
         # or <m1503:hasInspectionDateTime rdf:datatype="...#string">value</m1503:hasInspectionDateTime>
-        pattern = r'(<m1503:hasInspectionDateTime(?:\s+rdf:datatype="http://www.w3.org/2001/XMLSchema#string")?>)([^<]+)(</m1503:hasInspectionDateTime>)'
-        replacement = r'<m1503:hasInspectionDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">\2\3'
+        pattern = r'(<m1504:hasInspectionDateTime(?:\s+rdf:datatype="http://www.w3.org/2001/XMLSchema#string")?>)([^<]+)(</m1504:hasInspectionDateTime>)'
+        replacement = r'<m1504:hasInspectionDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">\2\3'
         updated_content = re.sub(pattern, replacement, updated_content)
         
         # Check if any replacements were made
@@ -93,17 +95,19 @@ def main():
 
     node_dict = {}
     pipe_section_dict = {}
+    geo_object_dict = {}
 
     with onto:
         # Create PipeSection individuals
         for hg in hg_list:
+            hg_designation = hg.get('hasDesignation', 'unknown')
             individual_name = f"PipeSection_{hg.get('hasDesignation', 'unknown')}"
             if individual_name in pipe_section_dict:
                 print(f"Warning: Duplicate PipeSection {individual_name}, skipping")
                 continue
             pipe_section = pipe_section_class(individual_name)
             for prop_name, value in hg.items():
-                if value is not None and prop_name not in ["start_node_designation", "end_node_designation", "inspections", "measurements"]:
+                if value is not None and prop_name not in ["start_node_designation", "end_node_designation", "inspections", "measurements", "geometry_objects"]:
                     prop = onto.search_one(iri=f"{BASIC_DATA_IRI}{prop_name}")
                     if prop:
                         setattr(pipe_section, prop_name, [value])
@@ -112,20 +116,44 @@ def main():
             pipe_section_dict[hg.get("hasDesignation", "unknown")] = pipe_section
             print(f"Created PipeSection: {individual_name}")
 
-        # Create Node individuals
-        for kg in kg_list:
-            individual_name = f"Node_{kg.get('hasDesignation', 'unknown')}"
-            if individual_name in node_dict:
-                print(f"Warning: Duplicate Node {individual_name}, skipping")
-                continue
-            node = node_class(individual_name)
-            for prop_name, value in kg.items():
-                if value is not None and prop_name != "geometry_points":
-                    prop = onto.search_one(iri=f"{BASIC_DATA_IRI}{prop_name}")
-                    if prop:
-                        setattr(node, prop_name, [value])
-            node_dict[kg.get("hasDesignation", "unknown")] = node
-            print(f"Created Node: {individual_name}")
+
+        # Create GO individuals for HG
+            for go in hg.get('geometry_objects', []):
+                go_designation = go.get('hasGeometryObjectDesignation', hg_designation)
+                go_individual_name = f"GeoObject{go_designation}"
+                if go_individual_name in geo_object_dict:
+                    print(f"Warning: GeoObject {go_individual_name} already exists, skipping creation")
+                    continue
+                go_individual = geo_object_class(go_individual_name)
+                geo_object_dict[go_individual_name] = go_individual
+                for prop_name, value in go.items():
+                    if prop_name != 'geometry_points' and value is not None:
+                        prop = onto.search_one(iri=f"{GEOMETRY_IRI}{prop_name}")
+                        if prop:
+                            setattr(go_individual, prop_name, [value])
+                if "is_child_of" in object_properties:
+                    object_properties["is_child_of"][go_individual].append(pipe_section)
+                    print(f"Set is_child_of: {go_individual_name} -> {individual_name}")
+                print(f"Created GeoObject: {go_individual_name}")
+
+                # Create GP individuals for GO
+                gp_index = 0
+                for gp in go.get('geometry_points', []):
+                    gp_index += 1
+                    gp_individual_name = f"GeoPoint{go_designation}_{gp_index}"
+                    gp_individual = geo_point_class(gp_individual_name)
+                    for prop_name, value in gp.items():
+                        if value is not None:
+                            prop = onto.search_one(iri=f"{GEOMETRY_IRI}{prop_name}")
+                            if prop:
+                                setattr(gp_individual, prop_name, [value])
+                    if "is_child_of" in object_properties:
+                        object_properties["is_child_of"][gp_individual].append(go_individual)
+                        print(f"Set is_child_of: {gp_individual_name} -> {go_individual_name}")
+                    print(f"Created GeoPoint: {gp_individual_name}")
+
+
+
 
         # Create HI and HZ individuals
         for hg in hg_list:
@@ -174,6 +202,58 @@ def main():
                 if "inspects" in object_properties:  # Adjust relation as needed
                     object_properties["inspects"][measurement].append(pipe_section)
                 print(f"Created Measurement: {measurement_name}")
+
+        # Create Node individuals
+        for kg in kg_list:
+            kg_designation = kg.get('hasDesignation', 'unknown')
+            individual_name = f"Node_{kg.get('hasDesignation', 'unknown')}"
+            if individual_name in node_dict:
+                print(f"Warning: Duplicate Node {individual_name}, skipping")
+                continue
+            node = node_class(individual_name)
+            for prop_name, value in kg.items():
+                if value is not None and prop_name not in ["geometry_objects"]:
+                    prop = onto.search_one(iri=f"{BASIC_DATA_IRI}{prop_name}")
+                    if prop:
+                        setattr(node, prop_name, [value])
+            node_dict[kg.get("hasDesignation", "unknown")] = node
+            print(f"Created Node: {individual_name}")
+
+        # Create GO individuals for KG
+            for go in kg.get('geometry_objects', []):
+                go_designation = go.get('hasGeometryObjectDesignation', kg_designation)
+                go_individual_name = f"GeoObject{go_designation}"
+                if go_individual_name in geo_object_dict:
+                    print(f"Warning: GeoObject {go_individual_name} already exists, skipping creation")
+                    continue
+                go_individual = geo_object_class(go_individual_name)
+                geo_object_dict[go_individual_name] = go_individual
+                for prop_name, value in go.items():
+                    if prop_name != 'geometry_points' and value is not None:
+                        prop = onto.search_one(iri=f"{GEOMETRY_IRI}{prop_name}")
+                        if prop:
+                            setattr(go_individual, prop_name, [value])
+                if "is_child_of" in object_properties:
+                    object_properties["is_child_of"][go_individual].append(node)
+                    print(f"Set is_child_of: {go_individual_name} -> {individual_name}")
+                print(f"Created GeoObject: {go_individual_name}")
+
+                # Create GP individuals for GO
+                gp_index = 0
+                for gp in go.get('geometry_points', []):
+                    gp_index += 1
+                    gp_individual_name = f"GeoPoint{go_designation}_{gp_index}"
+                    gp_individual = geo_point_class(gp_individual_name)
+                    for prop_name, value in gp.items():
+                        if value is not None:
+                            prop = onto.search_one(iri=f"{GEOMETRY_IRI}{prop_name}")
+                            if prop:
+                                setattr(gp_individual, prop_name, [value])
+                    if "is_child_of" in object_properties:
+                        object_properties["is_child_of"][gp_individual].append(go_individual)
+                        print(f"Set is_child_of: {gp_individual_name} -> {go_individual_name}")
+                    print(f"Created GeoPoint: {gp_individual_name}")
+
 
         # Handle object properties for HG and KG
         for hg in hg_list:

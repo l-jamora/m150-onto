@@ -99,23 +99,59 @@ def parse_xml(file_path):
             hm_list.append(hm_entry)
         hg_entry['measurements'] = hm_list
 
+        # Parse GO within HG
+        go_list = []
+        for go in hg.findall(".//GO"):
+            go_entry = {
+                prop_name: safe_convert(go.findtext(tag), data_type)
+                for tag, prop_name, data_type in FIELDS_CONFIG['GO']
+            }
+            go_entry = {k: v for k, v in go_entry.items() if v is not None}
+            # Parse GP within GO
+            gp_list = []
+            for gp in go.findall(".//GP"):
+                gp_entry = {
+                    key: safe_convert(gp.findtext(tag), data_type)
+                    for tag, key, data_type in FIELDS_CONFIG['GP']
+                }
+                gp_entry = {k: v for k, v in gp_entry.items() if v is not None}
+                gp_list.append(gp_entry)
+            go_entry['geometry_points'] = gp_list
+            go_list.append(go_entry)
+        hg_entry['geometry_objects'] = go_list
+
         hg_list.append(hg_entry)
 
+
+
+    # Parse KG elements
     kg_list = []
     for kg in root.findall(".//KG"):
         kg_entry = {
             prop_name: safe_convert(kg.findtext(tag), data_type)
             for tag, prop_name, data_type in FIELDS_CONFIG['KG']
         }
-        gp_list = []
-        for gp in kg.findall(".//GP"):
-            gp_entry = {
-                key: safe_convert(gp.findtext(tag), data_type)
-                for tag, key, data_type in FIELDS_CONFIG['GP']
-            }
-            gp_list.append(gp_entry)
-        kg_entry["geometry_points"] = gp_list
         kg_entry = {k: v for k, v in kg_entry.items() if v is not None}
+        
+        # Parse GO within KG
+        go_list = []
+        for go in kg.findall(".//GO"):
+            go_entry = {
+                prop_name: safe_convert(go.findtext(tag), data_type)
+                for tag, prop_name, data_type in FIELDS_CONFIG['GO']
+            }
+            # Parse GP within GO
+            gp_list = []
+            for gp in go.findall(".//GP"):
+                gp_entry = {
+                    key: safe_convert(gp.findtext(tag), data_type)
+                    for tag, key, data_type in FIELDS_CONFIG['GP']
+                }
+                gp_list.append(gp_entry)
+            go_entry['geometry_points'] = gp_list
+            go_list.append(go_entry)
+        kg_entry['geometry_objects'] = go_list
+
         kg_list.append(kg_entry)
 
     return hg_list, kg_list
