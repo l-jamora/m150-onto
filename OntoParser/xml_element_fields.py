@@ -52,6 +52,99 @@ KG_FIELDS = [
     # ("KG999", "hasRemarks", "xsd:string"),
 ]
 
+
+# KA fields configuration: (tag, ontology_property_name, data_type)
+KA_FIELDS = [
+    ("KA001", "hasNodeStructureComponent", "xsd:string"),
+    ("KA002", "hasNodeStructureMaterial", "xsd:string"),
+    ("KA003", "hasNodeStructureQuantity", "xsd:integer"),
+    ("KA004", "hasNodeStructureHeight", "xsd:float"),
+    ("KA005", "hasNodeStructureWidth", "xsd:float"),
+    ("KA006", "hasNodeStructureLength", "xsd:float"),
+    ("KA007", "hasNodeStructureShape", "xsd:string"),
+]
+
+
+# KI fields configuration: (tag, ontology_property_name, data_type)
+KI_FIELDS = [
+    ("KI001", "hasClient", "xsd:string"),
+    ("KI002", "hasProjectNumber", "xsd:string"),
+    ("KI003", "hasInspectionNumber", "xsd:integer"),
+    ("KI004", "hasInspectionReason", "xsd:string"),
+    ("KI005", "hasCodingSystem", "xsd:string"),
+    ("KI006", "hasCameraSystemUsed", "xsd:string"),
+    ("KI007", "hasProcessingStatus", "xsd:string"),
+    ("KI008", "hasProcessingNote", "xsd:string"),
+    ("KI103", "hasInspectionType", "xsd:string"),
+    ("KI104", "hasInspectionDateTime", "xsd:string"), # !: Note this should be xsd:dateTime, however it has to be string first and is then converted to dateTime in xml_parerser_onto.py.
+    ("KI105", "hasInspectionDateTime", "xsd:string"),  # !: Note this should be xsd:dateTime, however it has to be string first and is then converted to dateTime in xml_parerser_onto.py.
+    ("KI106", "hasWeather", "xsd:string"),
+    ("KI107", "hasCleaning", "xsd:string"),
+    ("KI108", "hasTemperature", "xsd:integer"),
+    ("KI109", "hasBackflowPrevention", "xsd:string"),
+    ("KI110", "hasWaterLevel", "xsd:integer"),
+    ("KI111", "hasCompany", "xsd:string"),
+    ("KI112", "hasInspector", "xsd:string"),
+    ("KI113", "hasSiteManagement", "xsd:string"),
+    ("KI114", "hasVideoStorageMedium", "xsd:string"),
+    ("KI115", "hasVideoStorageMediumName", "xsd:string"),
+    ("KI116", "hasVideoFilename", "xsd:string"),
+    ("KI117", "hasPhotoStorageMedium", "xsd:string"),
+    ("KI201", "hasReport", "xsd:string"),
+    ("KI202", "hasReportDate", "xsd:dateTime"),
+    ("KI203", "hasReporter", "xsd:string"),
+    ("KI204", "hasAssessmentDate", "xsd:dateTime"),
+    ("KI205", "hasAssessor", "xsd:string"),
+    ("KI206", "hasMaximumConditionClassTightness", "xsd:integer"),
+    ("KI207", "hasMaximumConditionClassStructuralStability", "xsd:integer"),
+    ("KI208", "hasMaximumConditionClassOperationalSafety", "xsd:integer"),
+    ("KI209", "hasConditionPointsTightness", "xsd:integer"),
+    ("KI210", "hasConditionPointsStructuralStability", "xsd:integer"),
+    ("KI211", "hasConditionPointsOperationalSafety", "xsd:integer"),
+    ("KI212", "hasEvaluationPointsTightness", "xsd:integer"),
+    ("KI213", "hasEvaluationPointsStructuralStability", "xsd:integer"),
+    ("KI214", "hasEvaluationPointsOperationalSafety", "xsd:integer"),
+    ("KI215", "hasRehabilitationRequirementNumber", "xsd:integer"),
+    ("KI216", "hasAssessmentClass", "xsd:integer"),
+    ("KI217", "hasPriority", "xsd:integer"),
+    ("KI101", "hasNodeInspectionVerticalReferencePoint", "xsd:string"),
+    ("KI102", "hasNodeInspectionCircumferentialReferencePoint", "xsd:string"),
+    ("KI118", "hasNodeInspectionDigitalPhotoName", "xsd:string"),
+    ("KI119", "hasNodeInspectionOperationalSafety", "xsd:boolean"),
+    ("KI120", "hasNodeInspectionCorrectCone", "xsd:boolean"),
+    ("KI121", "hasNodeInspectionAmbientAir", "xsd:string"),
+    ("KI122", "hasNodeInspectionAmbientPhoto", "xsd:string"),
+]
+
+
+# KZ fields configuration: (tag, ontology_property_name, data_type)
+KZ_FIELDS = [
+    ("KZ001", "hasNodeConditionDepth", "xsd:float"),
+    ("KZ002", "hasConditionCode", "xsd:string"),
+    ("KZ014", "hasCharacterization1", "xsd:string"),
+    ("KZ015", "hasCharacterization2", "xsd:string"),
+    ("KZ003", "hasQuantification1", "xsd:float"),
+    ("KZ004", "hasQuantification2", "xsd:float"),
+    ("KZ005", "hasLinearDamage", "xsd:string"),
+    ("KZ006", "hasPositionFrom", "xsd:string"),
+    ("KZ007", "hasPositionTo", "xsd:string"),
+    ("KZ008", "hasVideoCounterReading", "xsd:string"),
+    ("KZ009", "hasImageName", "xsd:string"),
+    ("KZ010", "hasLongText", "xsd:string"),
+    ("KZ011", "hasConnection", "xsd:string"),
+    ("KZ017", "hasStandardizedComment", "xsd:string"),
+    ("KZ204", "hasClassificationDate", "xsd:dateTime"),
+    ("KZ205", "hasClassifier", "xsd:string"),
+    ("KZ206", "hasConditionClassTightness", "xsd:integer"),
+    ("KZ207", "hasConditionClassStructuralStability", "xsd:integer"),
+    ("KZ208", "hasConditionClassOperationalSafety", "xsd:integer"),
+    ("KZ997", "hasCameraSpecificDataPlaceholder", "xsd:string"),
+    ("KZ013", "hasNodeConditionShaftArea", "xsd:string"),
+    ("KZ016", "hasNodeConditionLocalizedRepair", "xsd:string"),
+]
+
+
+
 # HG fields configuration: (tag, ontology_property_name or special_key, data_type)
 HG_FIELDS = [
     ("HG001", "hasDesignation", "xsd:string"),
@@ -144,12 +237,34 @@ HI_FIELDS = [
     ("HI215", "hasRehabilitationRequirementNumber", "xsd:integer"),
     ("HI216", "hasAssessmentClass", "xsd:integer"),
     ("HI217", "hasPriority", "xsd:integer"),
+    ("HI101", "hasPipeSectionInspectionDirection", "xsd:string"),
+    ("HI102", "hasPipeSectionInspectionReferencePointStart", "xsd:string"),
 ]
 
 # HZ Haltungszustandsdaten (tag, dictionary_key, data_type)
 HZ_FIELDS = [
     ("HZ001", "hasPipeSectionConditionStation", "xsd:float"),
     ("HZ002", "hasConditionCode", "xsd:string"),
+    ("HZ014", "hasCharacterization1", "xsd:string"),
+    ("HZ015", "hasCharacterization2", "xsd:string"),
+    ("HZ003", "hasQuantification1", "xsd:float"),
+    ("HZ004", "hasQuantification2", "xsd:float"),
+    ("HZ005", "hasLinearDamage", "xsd:string"),
+    ("HZ006", "hasPositionFrom", "xsd:string"),
+    ("HZ007", "hasPositionTo", "xsd:string"),
+    ("HZ008", "hasVideoCounterReading", "xsd:string"),
+    ("HZ009", "hasImageName", "xsd:string"),
+    ("HZ010", "hasLongText", "xsd:string"),
+    ("HZ011", "hasConnection", "xsd:string"),
+    ("HZ017", "hasStandardizedComment", "xsd:string"),
+    ("HZ204", "hasClassificationDate", "xsd:dateTime"),
+    ("HZ205", "hasClassifier", "xsd:string"),
+    ("HZ206", "hasConditionClassTightness", "xsd:integer"),
+    ("HZ207", "hasConditionClassStructuralStability", "xsd:integer"),
+    ("HZ208", "hasConditionClassOperationalSafety", "xsd:integer"),
+    ("HZ997", "hasCameraSpecificDataPlaceholder", "xsd:string"),
+    ("HZ012", "hasPipeSectionConditionLining", "xsd:integer"),
+    ("HZ016", "hasPipeSectionConditionLocalizedRepair", "xsd:string"),
 ]
 
 # HM Haltungsmesswertdaten (tag, dictionary_key, data_type)
@@ -184,10 +299,13 @@ GP_FIELDS = [
 # Dictionary to organize all field configurations by element type
 FIELDS_CONFIG = {
     'KG': KG_FIELDS,
+    'KA': KA_FIELDS,
+    'KI': KI_FIELDS,
+    'KZ': KZ_FIELDS,
     'HG': HG_FIELDS,
-    'GO': GO_FIELDS,
-    'GP': GP_FIELDS,
     'HI': HI_FIELDS,
     'HZ': HZ_FIELDS,
     'HM': HM_FIELDS,
+    'GO': GO_FIELDS,
+    'GP': GP_FIELDS,
 }

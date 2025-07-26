@@ -8,7 +8,6 @@ def safe_convert(value, data_type):
         return None
     try:
         if data_type == "xsd:float":
-            # Replace comma with dot for decimal values
             value = value.replace(',', '.')
             result = float(value)
             print(f"Converting {value} to xsd:float, result: {result}, type: {type(result)}")
@@ -18,10 +17,10 @@ def safe_convert(value, data_type):
         elif data_type == "xsd:boolean":
             return value.lower() in ('true', '1', 't', 'y', 'yes')
         elif data_type == "xsd:date":
-            return str(value)  # Adjust based on date format if needed
+            return str(value)
         elif data_type == "xsd:dateTime":
             return value
-        else:  # xsd:string or other
+        else:
             return str(value)
     except (ValueError, TypeError):
         return None
@@ -36,6 +35,9 @@ def parse_xml(file_path):
         raise ValueError(f"XML file {file_path} has no root element")
 
     hg_list = []
+    kg_list = []
+
+    # Parse HG elements
     for hg in root.findall(".//HG"):
         hg_entry = {
             prop_name: safe_convert(hg.findtext(tag), data_type)
@@ -53,27 +55,23 @@ def parse_xml(file_path):
             hi_entry = {k: v for k, v in hi_entry.items() if v is not None}
 
             # Combine HI104 and HI105 into hasInspectionDateTime
-            date_str = hi.findtext("HI104")  # e.g., "07.04.2006"
-            time_str = hi.findtext("HI105")  # e.g., "11:32:00"
+            date_str = hi.findtext("HI104")
+            time_str = hi.findtext("HI105")
             if date_str and time_str:
                 try:
-                    # Parse date from DD.MM.YYYY
                     date_obj = datetime.datetime.strptime(date_str, "%d.%m.%Y")
-                    # Parse time from HH:MM:SS
                     time_obj = datetime.datetime.strptime(time_str, "%H:%M:%S")
-                    # Combine date and time
                     datetime_obj = date_obj.replace(
                         hour=time_obj.hour,
                         minute=time_obj.minute,
                         second=time_obj.second
                     )
-                    # Format as xsd:dateTime (YYYY-MM-DDTHH:MM:SS)
                     hi_entry['hasInspectionDateTime'] = datetime_obj.strftime("%Y-%m-%dT%H:%M:%S")
                 except ValueError:
                     print(f"Warning: Invalid date/time format - HI104={date_str}, HI105={time_str}")
                     hi_entry['hasInspectionDateTime'] = None
             else:
-                hi_entry['hasInspectionDateTime'] = Non
+                hi_entry['hasInspectionDateTime'] = None
 
             # Extract HZ elements within HI
             hz_list = []
@@ -88,7 +86,7 @@ def parse_xml(file_path):
             hi_list.append(hi_entry)
         hg_entry['inspections'] = hi_list
 
-        # Extract HM elements within HG (assumed nesting)
+        # Extract HM elements within HG
         hm_list = []
         for hm in hg.findall(".//HM"):
             hm_entry = {
@@ -107,7 +105,6 @@ def parse_xml(file_path):
                 for tag, prop_name, data_type in FIELDS_CONFIG['GO']
             }
             go_entry = {k: v for k, v in go_entry.items() if v is not None}
-            # Parse GP within GO
             gp_list = []
             for gp in go.findall(".//GP"):
                 gp_entry = {
@@ -122,17 +119,66 @@ def parse_xml(file_path):
 
         hg_list.append(hg_entry)
 
-
-
     # Parse KG elements
-    kg_list = []
     for kg in root.findall(".//KG"):
         kg_entry = {
             prop_name: safe_convert(kg.findtext(tag), data_type)
             for tag, prop_name, data_type in FIELDS_CONFIG['KG']
         }
         kg_entry = {k: v for k, v in kg_entry.items() if v is not None}
-        
+
+        # Parse KA within KG
+        ka_list = []
+        for ka in kg.findall(".//KA"):
+            ka_entry = {
+                prop_name: safe_convert(ka.findtext(tag), data_type)
+                for tag, prop_name, data_type in FIELDS_CONFIG['KA']
+            }
+            ka_entry = {k: v for k, v in ka_entry.items() if v is not None}
+            ka_list.append(ka_entry)
+        kg_entry['ka_list'] = ka_list
+
+        # Parse KI within KG
+        ki_list = []
+        for ki in kg.findall(".//KI"):
+            ki_entry = {
+                prop_name: safe_convert(ki.findtext(tag), data_type)
+                for tag, prop_name, data_type in FIELDS_CONFIG['KI']
+            }
+            ki_entry = {k: v for k, v in ki_entry.items() if v is not None}
+
+            # Combine KI104 and KI105 into hasInspectionDateTime
+            date_str = ki.findtext("KI104")
+            time_str = ki.findtext("KI105")
+            if date_str and time_str:
+                try:
+                    date_obj = datetime.datetime.strptime(date_str, "%d.%m.%Y")
+                    time_obj = datetime.datetime.strptime(time_str, "%H:%M:%S")
+                    datetime_obj = date_obj.replace(
+                        hour=time_obj.hour,
+                        minute=time_obj.minute,
+                        second=time_obj.second
+                    )
+                    ki_entry['hasInspectionDateTime'] = datetime_obj.strftime("%Y-%m-%dT%H:%M:%S")
+                except ValueError:
+                    print(f"Warning: Invalid date/time format - KI104={date_str}, KI105={time_str}")
+                    ki_entry['hasInspectionDateTime'] = None
+            else:
+                ki_entry['hasInspectionDateTime'] = None
+
+            # Parse KZ within KI
+            kz_list = []
+            for kz in ki.findall(".//KZ"):
+                kz_entry = {
+                    prop_name: safe_convert(kz.findtext(tag), data_type)
+                    for tag, prop_name, data_type in FIELDS_CONFIG['KZ']
+                }
+                kz_entry = {k: v for k, v in kz_entry.items() if v is not None}
+                kz_list.append(kz_entry)
+            ki_entry['conditions'] = kz_list
+            ki_list.append(ki_entry)
+        kg_entry['inspections'] = ki_list
+
         # Parse GO within KG
         go_list = []
         for go in kg.findall(".//GO"):
@@ -140,13 +186,14 @@ def parse_xml(file_path):
                 prop_name: safe_convert(go.findtext(tag), data_type)
                 for tag, prop_name, data_type in FIELDS_CONFIG['GO']
             }
-            # Parse GP within GO
+            go_entry = {k: v for k, v in go_entry.items() if v is not None}
             gp_list = []
             for gp in go.findall(".//GP"):
                 gp_entry = {
                     key: safe_convert(gp.findtext(tag), data_type)
                     for tag, key, data_type in FIELDS_CONFIG['GP']
                 }
+                gp_entry = {k: v for k, v in gp_entry.items() if v is not None}
                 gp_list.append(gp_entry)
             go_entry['geometry_points'] = gp_list
             go_list.append(go_entry)
@@ -155,5 +202,3 @@ def parse_xml(file_path):
         kg_list.append(kg_entry)
 
     return hg_list, kg_list
-
-# Note: gp_list is no longer returned separately as it’s nested in kg_list
