@@ -107,7 +107,8 @@ def main():
             # Create GO individuals for HG
             for go in hg.get('geometry_objects', []):
                 go_designation = go.get('hasGeometryObjectDesignation', hg_designation)
-                go_individual_name = f"GeoObject{go_designation}"
+                go_designation_clean = re.sub(r'\W+', '_', go_designation)
+                go_individual_name = f"GeoObject_{go_designation_clean}"
                 if go_individual_name in geo_object_dict:
                     print(f"Warning: GeoObject {go_individual_name} already exists, skipping creation")
                     continue
@@ -127,7 +128,7 @@ def main():
                 gp_index = 0
                 for gp in go.get('geometry_points', []):
                     gp_index += 1
-                    gp_individual_name = f"GeoPoint{go_designation}_{gp_index}"
+                    gp_individual_name = f"GeoPoint{go_designation_clean}_{gp_index}"
                     gp_individual = geo_point_class(gp_individual_name)
                     for prop_name, value in gp.items():
                         if value is not None:
@@ -252,7 +253,8 @@ def main():
             # Create GO individuals for KG
             for go in kg.get('geometry_objects', []):
                 go_designation = go.get('hasGeometryObjectDesignation', kg_designation)
-                go_individual_name = f"GeoObject{go_designation}"
+                go_designation_clean = re.sub(r'\W+', '_', go_designation)
+                go_individual_name = f"GeoObject_{go_designation_clean}"
                 if go_individual_name in geo_object_dict:
                     print(f"Warning: GeoObject {go_individual_name} already exists, skipping creation")
                     continue
@@ -272,7 +274,7 @@ def main():
                 gp_index = 0
                 for gp in go.get('geometry_points', []):
                     gp_index += 1
-                    gp_individual_name = f"GeoPoint{go_designation}_{gp_index}"
+                    gp_individual_name = f"GeoPoint{go_designation_clean}_{gp_index}"
                     gp_individual = geo_point_class(gp_individual_name)
                     for prop_name, value in gp.items():
                         if value is not None:

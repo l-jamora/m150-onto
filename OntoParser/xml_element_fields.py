@@ -156,7 +156,7 @@ HG_FIELDS = [
     ("HG105", "hasMunicipalityCode", "xsd:string"),
     ("HG106", "hasAreaCode", "xsd:string"),
     ("HG107", "hasCatchmentAreaCode", "xsd:string"),
-    ("HG108", "hasTreatmentPlantNumber", "xsd:integer"),
+    ("HG108", "hasTreatmentPlantNumber", "xsd:string"),
     ("HG301", "hasSewerType", "xsd:string"),
     ("HG302", "hasSewerUsage", "xsd:string"),
     ("HG303", "hasYearOfConstruction", "xsd:integer"),
