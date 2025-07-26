@@ -7203,6 +7203,14 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     
 
 
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/5/merged_m150-onto#NodeStructure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/5/merged_m150-onto#NodeStructure">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Node"/>
+    </owl:Class>
+    
+
+
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //

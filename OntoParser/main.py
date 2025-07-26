@@ -4,9 +4,8 @@ from pathlib import Path
 from config import *
 from objectproperties import OBJECT_PROPERTY_MAPPINGS
 import re
-from collections import defaultdict
 
-# Paths (unchanged)
+# Paths
 REPO_ROOT = Path(__file__).parent
 XML_DIR = REPO_ROOT / "XML"
 ONTOLOGY_DIR = REPO_ROOT / "m150-onto"
@@ -33,8 +32,9 @@ condition_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Condition")
 measurement_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Measurement")
 geo_object_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Object")
 geo_point_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}Point")
+node_structure_class = onto.search_one(iri=f"{BASIC_OBJECT_IRI}NodeStructure")
 
-if not all([node_class, pipe_section_class, inspection_class, condition_class, measurement_class]):
+if not all([node_class, pipe_section_class, inspection_class, condition_class, measurement_class, node_structure_class]):
     raise ValueError("One or more ontology classes not found")
 
 # Load object properties
@@ -46,10 +46,8 @@ for xml_key, prop_info in OBJECT_PROPERTY_MAPPINGS.items():
     else:
         object_properties[xml_key] = oprop
 
+# Fix datatypes in RDF/XML file
 def fix_datatypes_in_rdf(file_path):
-    """
-    Post-processes the RDF/XML file to replace xsd:decimal with xsd:float and ensure dateTime.
-    """
     try:
         with open(file_path, 'r', encoding='utf-8') as file:
             content = file.read()
@@ -59,8 +57,8 @@ def fix_datatypes_in_rdf(file_path):
             'rdf:datatype="http://www.w3.org/2001/XMLSchema#float"'
         )
         
-        pattern = r'(<m1504:hasInspectionDateTime(?:\s+rdf:datatype="http://www.w3.org/2001/XMLSchema#string")?>)([^<]+)(</m1504:hasInspectionDateTime>)'
-        replacement = r'<m1504:hasInspectionDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">\2\3'
+        pattern = r'(<m1503:hasInspectionDateTime(?:\s+rdf:datatype="http://www.w3.org/2001/XMLSchema#string")?>)([^<]+)(</m1503:hasInspectionDateTime>)'
+        replacement = r'<m1503:hasInspectionDateTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">\2\3'
         updated_content = re.sub(pattern, replacement, updated_content)
         
         if updated_content != content:
@@ -70,6 +68,7 @@ def fix_datatypes_in_rdf(file_path):
         
         with open(file_path, 'w', encoding='utf-8') as file:
             file.write(updated_content)
+    
     except FileNotFoundError:
         print(f"Error: File not found at {file_path}")
     except Exception as e:
@@ -84,6 +83,7 @@ def main():
     node_dict = {}
     pipe_section_dict = {}
     geo_object_dict = {}
+    node_structure_dict = {}
 
     with onto:
         # Create PipeSection individuals
@@ -176,7 +176,7 @@ def main():
             for hm in hg.get('measurements', []):
                 measurement_name = f"Measurement{hg.get('hasDesignation', 'unknown')}_{hm.get('hasMeasurementStation', 'unknown')}"
                 measurement = measurement_class(measurement_name)
-                for  prop_name, value in hm.items():
+                for prop_name, value in hm.items():
                     if value is not None:
                         prop = onto.search_one(iri=f"{INSPECTION_CONDITION_IRI}{prop_name}")
                         if prop:
@@ -188,7 +188,7 @@ def main():
         # Create Node individuals
         for kg in kg_list:
             kg_designation = kg.get('hasDesignation', 'unknown')
-            individual_name = f"Node_{kg_designation}"
+            individual_name = f"Node_{kg.get('hasDesignation', 'unknown')}"
             if individual_name in node_dict:
                 print(f"Warning: Duplicate Node {individual_name}, skipping")
                 continue
@@ -198,23 +198,29 @@ def main():
                     prop = onto.search_one(iri=f"{BASIC_DATA_IRI}{prop_name}")
                     if prop:
                         setattr(node, prop_name, [value])
-
-            # Add KA properties to Node
-            if 'ka_list' in kg:
-                ka_properties = defaultdict(list)
-                for ka in kg['ka_list']:
-                    for prop_name, value in ka.items():
-                        if value is not None:
-                            ka_properties[prop_name].append(value)
-                for prop_name, values in ka_properties.items():
-                    prop = onto.search_one(iri=f"{BASIC_DATA_IRI}{prop_name}")
-                    if prop:
-                        setattr(node, prop_name, values)
-
-            node_dict[kg_designation] = node
+            node_dict[kg.get("hasDesignation", "unknown")] = node
             print(f"Created Node: {individual_name}")
 
-            # Create KI individuals
+            # Create KA individuals
+            for ka in kg.get('ka_list', []):
+                ka_designation = ka.get('hasNodeStructureComponent', 'unknown')
+                node_structure_name = f"NodeStructure_{kg_designation}_{ka_designation}"
+                if node_structure_name in node_structure_dict:
+                    print(f"Warning: Duplicate NodeStructure {node_structure_name}, skipping")
+                    continue
+                node_structure = node_structure_class(node_structure_name)
+                for prop_name, value in ka.items():
+                    if value is not None:
+                        prop = onto.search_one(iri=f"{BASIC_DATA_IRI}{prop_name}")
+                        if prop:
+                            setattr(node_structure, prop_name, [value])
+                if "is_child_of" in object_properties:
+                    object_properties["is_child_of"][node_structure].append(node)
+                    print(f"Set is_child_of: {node_structure_name} -> {individual_name}")
+                node_structure_dict[node_structure_name] = node_structure
+                print(f"Created NodeStructure: {node_structure_name}")
+
+            # Create KI and KZ individuals
             for ki in kg.get('inspections', []):
                 inspection_number = ki.get('hasInspectionNumber', 'unknown')
                 inspection_name = f"Inspection{kg_designation}_{inspection_number}"
@@ -228,7 +234,6 @@ def main():
                     object_properties["inspects"][inspection].append(node)
                 print(f"Created Inspection: {inspection_name}")
 
-                # Create KZ individuals
                 for kz in ki.get('conditions', []):
                     kz_depth = kz.get('hasNodeConditionDepth', 'unknown')
                     kz_code = kz.get('hasConditionCode', 'unknown')

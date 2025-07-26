@@ -6,7 +6,7 @@
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
      xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
-    <owl:Ontology rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/5/merged_m150-onto">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto">
         <rdfs:comment xml:lang="en">Subontology for M150-Onto. HI is in regards to pipe section/node inspection, measurement and condition data. 
 
 (HI = Haltungsinspektionsdaten; HM = Haltungsmesswertdaten; HZ = Haltungszustandsdaten)
@@ -4469,6 +4469,14 @@ It is recommended to create individuals for geometric points with the template:
             </owl:Restriction>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#LocalizedRepairNode"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#NodeStructure -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#NodeStructure">
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/jluis/ontologies/2025/2/m150-onto#Node"/>
     </owl:Class>
     
 
