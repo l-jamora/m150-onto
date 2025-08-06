@@ -1,28 +1,42 @@
 <?xml version="1.0"?>
 <rdf:RDF xmlns="https://l-jamora.github.io/m150-onto/"
      xml:base="https://l-jamora.github.io/m150-onto/"
+     xmlns:cc="http://web.resource.org/cc/"
+     xmlns:dc="http://purl.org/dc/elements/1.1/"
+     xmlns:ns="http://www.w3.org/2003/06/sw-vocab-status/ns#"
      xmlns:owl="http://www.w3.org/2002/07/owl#"
      xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
      xmlns:xml="http://www.w3.org/XML/1998/namespace"
      xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
-     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+     xmlns:dcam="http://purl.org/dc/dcam/"
+     xmlns:foaf="http://xmlns.com/foaf/0.1/"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:skos="http://www.w3.org/2004/02/skos/core#"
+     xmlns:vann="http://purl.org/vocab/vann/"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:m150-onto="https://l-jamora.github.io/m150-onto/">
     <owl:Ontology rdf:about="https://l-jamora.github.io/m150-onto/">
-        <rdfs:comment xml:lang="en">Subontology for M150-Onto. HI is in regards to pipe section/node inspection, measurement and condition data. 
+        <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
+        <owl:imports rdf:resource="http://purl.org/ontology/bibo/"/>
+        <owl:imports rdf:resource="http://purl.org/vocab/vann/"/>
+        <terms:abstract>Underground sewage infrastructure maintenance faces challenges due to fragmented, analog as�set data, hindering effective real-time monitoring and predictive maintenance. While digital twins offer promising technological potential, their practical implementation is constrained by complexdata integration challenges. Ontologies emerge as a critical approach to establish data relation�ships, providing a structured framework for bridging these systemic information gaps.
 
-(HI = Haltungsinspektionsdaten; HM = Haltungsmesswertdaten; HZ = Haltungszustandsdaten)
-
-(KI = Knoteninspektionsdaten; KZ = Knotenzustandsdaten)</rdfs:comment>
-        <rdfs:comment xml:lang="en">Subontology for M150-Onto. This subontology covers the geometry point and geometry object data in accordance with DWA M-150.</rdfs:comment>
-        <rdfs:comment xml:lang="en">This subontology for M150-Onto covers the basic data involving Pipe Sections (=Haltungen) and Nodes (=Knoten)</rdfs:comment>
-        <rdfs:comment xml:lang="en">Top-Level Ontology for M150-Onto. This ontology covers the assets and condition assesment of a sewage system, mirroring the elements as defined per the national advisory leaflet DWA-M 150 of German sewage systems.
+To address these gaps, this thesis introduces M150-Onto, a novel ontology designed to enhance the data management of sewage infrastructure by aligning with German regulatory frameworks and supporting interoperability among diverse data sources. This work explores an ontological approach with a particular focus on enabling more efficient querying and reasoning capabilities, allowing for advanced data retrieval and automated inference to support sewer infrastructure data
+management. M150-Onto is developed and tested within Protégé, demonstrating its potential to improve data accessibility, integration, and predictive maintenance strategies. By identifying the strengths and limitations of current ontological frameworks and proposing M150- Onto as a targeted solution, this research contributes to the digital transformation of sewage in�frastructure management. The emphasis on efficient querying and reasoning enhances data�driven decision-making and sustainable maintenance strategies, addressing the critical need for improved infrastructure management amidst growing urbanization and environmental pressures.</terms:abstract>
+        <terms:contributor>https://orcid.org/0009-0009-1744-1658</terms:contributor>
+        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-08</terms:created>
+        <terms:creator>https://orcid.org/0009-0007-7722-7798</terms:creator>
+        <terms:description xml:lang="en">This ontology covers the assets and condition assesment of a sewage system, mirroring the elements as defined per the national advisory leaflet DWA-M 150 of German sewage systems.
 
 https://shop.dwa.de/DWA-M-150-Datenaustauschformat-fuer-die-Zustandserfassung-von-Entwaesserungssystemen-April-2010-Stand-korrigierte-Fassung-November-2018/M-150-10
 
-This ontology was created as part of a Bachelors Thesis into an investigation of existing ontologies for underground infrastructure.</rdfs:comment>
+This ontology was created as part of a Bachelors Thesis into an investigation of existing ontologies for underground infrastructure.</terms:description>
+        <terms:license>https://creativecommons.org/licenses/by/4.0/</terms:license>
+        <terms:title>M150-Onto</terms:title>
+        <vann:preferredNamespacePrefix>m150-onto</vann:preferredNamespacePrefix>
+        <vann:preferredNamespaceUri rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">https://l-jamora.github.io/m150-onto/</vann:preferredNamespaceUri>
         <rdfs:label xml:lang="en">M150-Onto</rdfs:label>
-        <rdfs:label xml:lang="en">M150-Onto-BasicData</rdfs:label>
-        <rdfs:label xml:lang="en">M150-Onto-Geo</rdfs:label>
-        <rdfs:label xml:lang="en">M150-Onto-Inspection_MeasurementData</rdfs:label>
+        <owl:versionInfo>0.0.1</owl:versionInfo>
     </owl:Ontology>
     
 
