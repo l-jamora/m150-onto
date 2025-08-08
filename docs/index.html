@@ -57,7 +57,8 @@ function loadTOC(){
         return this.clone().find(sel||">*").remove().end();
  };    $(function(){
       $("#abstract").load("sections/abstract-en.html"); 
-      $("#introduction").load("sections/introduction-en.html"); 
+      $("#introduction").load("sections/introduction-en.html");
+	  $("#development").load("sections/development-en.html"); 
       $("#nstable").load("sections/ns-en.html"); 
       $("#overview").load("sections/overview-en.html"); 
       $("#description").load("sections/description-en.html"); 
@@ -98,9 +99,11 @@ function loadTOC(){
 <span>Ontology Specification Draft</span>
 </div>
 </div>     <div id="abstract"></div>
-<div id="toc"></div>     <div id="introduction"></div>
-	  <div id="nstable"></div>
-     <div id="overview"></div>
+<div id="toc"></div>     
+	<div id="introduction"></div>
+	<div id="development"></div>
+    <div id="overview"></div>
+		<div id="nstable"></div>
      <div id="description"></div>
      <div id="crossref"></div>
      <div id="references"></div>
