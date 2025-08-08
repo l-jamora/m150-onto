@@ -16,15 +16,10 @@
      xmlns:terms="http://purl.org/dc/terms/"
      xmlns:m150-onto="https://l-jamora.github.io/m150-onto/">
     <owl:Ontology rdf:about="https://l-jamora.github.io/m150-onto/">
-        <owl:imports rdf:resource="http://purl.org/dc/terms/"/>
-        <owl:imports rdf:resource="http://purl.org/ontology/bibo/"/>
-        <owl:imports rdf:resource="http://purl.org/vocab/vann/"/>
-        <terms:abstract>Underground sewage infrastructure maintenance faces challenges due to fragmented, analog as�set data, hindering effective real-time monitoring and predictive maintenance. While digital twins offer promising technological potential, their practical implementation is constrained by complexdata integration challenges. Ontologies emerge as a critical approach to establish data relation�ships, providing a structured framework for bridging these systemic information gaps.
+        <terms:abstract>Underground sewage infrastructure maintenance faces challenges due to fragmented, analog asset data, hindering effective real-time monitoring and predictive maintenance. While digital twins offer promising technological potential, their practical implementation is constrained by complex data integration challenges. Ontologies emerge as a critical approach to establish data relationships, providing a structured framework for bridging these systemic information gaps.
 
-To address these gaps, this thesis introduces M150-Onto, a novel ontology designed to enhance the data management of sewage infrastructure by aligning with German regulatory frameworks and supporting interoperability among diverse data sources. This work explores an ontological approach with a particular focus on enabling more efficient querying and reasoning capabilities, allowing for advanced data retrieval and automated inference to support sewer infrastructure data
-management. M150-Onto is developed and tested within Protégé, demonstrating its potential to improve data accessibility, integration, and predictive maintenance strategies. By identifying the strengths and limitations of current ontological frameworks and proposing M150- Onto as a targeted solution, this research contributes to the digital transformation of sewage in�frastructure management. The emphasis on efficient querying and reasoning enhances data�driven decision-making and sustainable maintenance strategies, addressing the critical need for improved infrastructure management amidst growing urbanization and environmental pressures.</terms:abstract>
+To address these gaps, this thesis introduces M150-Onto, a novel ontology designed to enhance the data management of sewage infrastructure by aligning with German regulatory frameworks and supporting interoperability among diverse data sources. This work explores an ontological approach with a particular focus on enabling more efficient querying and reasoning capabilities, allowing for advanced data retrieval and automated inference to support sewer infrastructure data management. M150-Onto is developed and tested within Protégé, demonstrating its potential to improve data accessibility, integration, and predictive maintenance strategies. By identifying the strengths and limitations of current ontological frameworks and proposing M150-Onto as a targeted solution, this research contributes to the digital transformation of sewage infrastructure management. The emphasis on efficient querying and reasoning enhances data-driven decision-making and sustainable maintenance strategies, addressing the critical need for improved infrastructure management amidst growing urbanization and environmental pressures.</terms:abstract>
         <terms:contributor>https://orcid.org/0009-0009-1744-1658</terms:contributor>
-        <terms:created rdf:datatype="http://www.w3.org/2001/XMLSchema#date">2025-06-08</terms:created>
         <terms:creator>https://orcid.org/0009-0007-7722-7798</terms:creator>
         <terms:description xml:lang="en">This ontology covers the assets and condition assesment of a sewage system, mirroring the elements as defined per the national advisory leaflet DWA-M 150 of German sewage systems.
 
@@ -36,8 +31,553 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
         <vann:preferredNamespacePrefix>m150-onto</vann:preferredNamespacePrefix>
         <vann:preferredNamespaceUri rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">https://l-jamora.github.io/m150-onto/</vann:preferredNamespaceUri>
         <rdfs:label xml:lang="en">M150-Onto</rdfs:label>
-        <owl:versionInfo>0.0.1</owl:versionInfo>
+        <owl:versionInfo>0.0.2</owl:versionInfo>
     </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/contributor -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/contributor"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/coverage -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/coverage"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/creator"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/date"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/description"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/format -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/format"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/identifier -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/identifier"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/language -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/language"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/publisher -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/publisher"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/relation -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/relation"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/rights -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/rights"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/source"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/subject -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/subject"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/title"/>
+    
+
+
+    <!-- http://purl.org/dc/elements/1.1/type -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/elements/1.1/type"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/abstract -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/abstract">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/description"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/description"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/accessRights -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/accessRights">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/rights"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/rights"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/accrualMethod -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/accrualMethod">
+        <rdfs:domain rdf:resource="http://purl.org/dc/dcmitype/Collection"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/accrualPeriodicity -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/accrualPeriodicity">
+        <rdfs:domain rdf:resource="http://purl.org/dc/dcmitype/Collection"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/accrualPolicy -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/accrualPolicy">
+        <rdfs:domain rdf:resource="http://purl.org/dc/dcmitype/Collection"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/alternative -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/alternative">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/title"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/audience -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/audience"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/available -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/available">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/bibliographicCitation -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/bibliographicCitation">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/identifier"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/conformsTo -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/conformsTo">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/contributor -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/contributor">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/contributor"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/coverage -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/coverage">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/coverage"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/created -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/created">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/creator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/creator">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/creator"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/contributor"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/date -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/date">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/dateAccepted -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/dateAccepted">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/dateCopyrighted -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/dateCopyrighted">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/dateSubmitted -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/dateSubmitted">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/description -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/description">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/description"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/educationLevel -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/educationLevel">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/audience"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/extent -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/extent">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/format"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/format"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/format -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/format">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/format"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/hasFormat -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/hasFormat">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/hasPart -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/hasPart">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/hasVersion -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/hasVersion">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/identifier -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/identifier">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/identifier"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isFormatOf -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isFormatOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isPartOf -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isPartOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isReferencedBy -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isReferencedBy">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isReplacedBy -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isReplacedBy">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isRequiredBy -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isRequiredBy">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/isVersionOf -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/isVersionOf">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/issued -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/issued">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/language -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/language">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/language"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/license -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/license">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/rights"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/rights"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/mediator -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/mediator">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/audience"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/medium -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/medium">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/format"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/format"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/modified -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/modified">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/publisher -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/publisher">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/publisher"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/references -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/references">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/relation -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/relation">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/replaces -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/replaces">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/requires -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/requires">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/relation"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/rights -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/rights">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/rights"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/source -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/source">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/source"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/relation"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/spatial -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/spatial">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/coverage"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/coverage"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/subject -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/subject">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/subject"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/tableOfContents -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/tableOfContents">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/description"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/description"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/temporal -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/temporal">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/coverage"/>
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/terms/coverage"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/title -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/title">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/title"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/type -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/type">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/type"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/dc/terms/valid -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/dc/terms/valid">
+        <rdfs:subPropertyOf rdf:resource="http://purl.org/dc/elements/1.1/date"/>
+    </owl:AnnotationProperty>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespacePrefix -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespacePrefix"/>
+    
+
+
+    <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
     
 
 
@@ -49,6 +589,78 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- http://purl.org/dc/terms/Box -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/Box"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/ISO3166 -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/ISO3166"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/ISO639-2 -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/ISO639-2"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/ISO639-3 -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/ISO639-3"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/Period -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/Period"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/Point -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/Point"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/RFC1766 -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/RFC1766"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/RFC3066 -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/RFC3066"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/RFC4646 -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/RFC4646"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/RFC5646 -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/RFC5646"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/URI -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/URI"/>
+    
+
+
+    <!-- http://purl.org/dc/terms/W3CDTF -->
+
+    <rdfs:Datatype rdf:about="http://purl.org/dc/terms/W3CDTF"/>
     
 
 
@@ -129,6 +741,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
         <rdfs:domain rdf:resource="https://l-jamora.github.io/m150-onto#Report"/>
         <rdfs:range rdf:resource="https://l-jamora.github.io/m150-onto#Component"/>
+        <rdfs:comment xml:lang="en">Inverse of inspectedIn</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -164,6 +777,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
         <rdfs:domain rdf:resource="https://l-jamora.github.io/m150-onto#Component"/>
         <rdfs:range rdf:resource="https://l-jamora.github.io/m150-onto#Geometry"/>
+        <rdfs:comment xml:lang="en">A Component is renderedBy a Geometry</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -176,6 +790,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
         <rdfs:domain rdf:resource="https://l-jamora.github.io/m150-onto#Geometry"/>
         <rdfs:range rdf:resource="https://l-jamora.github.io/m150-onto#Component"/>
+        <rdfs:comment xml:lang="en">Inverse of renderedBy</rdfs:comment>
     </owl:ObjectProperty>
     
 
@@ -2498,6 +3113,23 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
                 <owl:hasValue>128</owl:hasValue>
             </owl:Restriction>
         </owl:equivalentClass>
+        <rdfs:comment xml:lang="de">Die Komponententaxonomie umfasst die Hauptkomponenten eines Kanalisationssystems gemäß dem Merkblatt DWA-M 150 und der Referenztabelle 128 &quot;Objekttypen&quot;.
+
+Es wird empfohlen, Individuen für Haltungsabschnitte mit der Vorlage zu erstellen:
+
+PipeSection[PipeSectionDesignation]
+PipeSection[HG001]
+
+Es wird empfohlen, Individuen für Knoten mit der Vorlage zu erstellen:
+
+Node[NodeDesignation]
+Node[KG001]
+
+Es wird ebenfalls empfohlen, zu deklarieren, dass Komponenten zu einer anderen Komponente mit der asymmetrischen/ irreflexiven Unterobjekteigenschaft flowsTo (Invers: flowsFrom) fließen.
+
+Die Ontologie sollte dann automatisch folgern, dass alle Komponenten, die zu/von einander fließen, verbunden sind — mit ihrer transitiven Überobjekteigenschaft &quot;connectedWith&quot;.
+
+Revision 1 Aug 2025: NodeStructure wurde als Unterklasse von Node hinzugefügt. Diese Strukturen reflektieren &lt;KA&gt; innerhalb einer M150-XML-Datei.</rdfs:comment>
         <rdfs:comment xml:lang="en">The taxonomy of components includes the main components of a sewage system according to the advisory leaflet DWA-M 150 and the reference table 128 &quot;Object Types&quot;.
 
 It is recommended to create individuals for Pipe Sections with the template:
@@ -2512,7 +3144,11 @@ It is recommended to create individuals for Nodes with the template:
 
 It is also recommended to declare that Components flows to another component with the asymmetric/irreflexive sub-object property `flowsTo` (Inverse: flowsFrom).
 
-The ontology should then automatically reason, that all components flowing to / from each other are connected -- with its transitive super-object property &quot;connectedWith&quot;.</rdfs:comment>
+The ontology should then automatically reason, that all components flowing to / from each other are connected -- with its transitive super-object property &quot;connectedWith&quot;.
+
+Revision 1 Aug 2025: NodeStructure added as a Subclass of Node. These structures reflect &lt;KA&gt; within an M150-XML.</rdfs:comment>
+        <rdfs:label xml:lang="en">Component</rdfs:label>
+        <rdfs:label xml:lang="de">Komponente</rdfs:label>
     </owl:Class>
     
 
@@ -4433,6 +5069,14 @@ It is recommended to create individuals for geometric points with the template:
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Component"/>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#ObjectType"/>
+        <rdfs:comment xml:lang="en">A node is a component in a sewage system that serves as a junction for pipes. It&apos;s often where manholes or access points are located.
+
+It is recommended to create individuals for Nodes with the template:
+
+` Node[NodeDesignation] `
+` Node[KG001] `</rdfs:comment>
+        <rdfs:label xml:lang="de">Knote</rdfs:label>
+        <rdfs:label xml:lang="en">Node</rdfs:label>
     </owl:Class>
     
 
@@ -4482,7 +5126,17 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto#NodeStructure -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#NodeStructure">
+        <owl:equivalentClass rdf:resource="https://l-jamora.github.io/m150-onto#NodeStructureComponent"/>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Node"/>
+        <rdfs:comment xml:lang="en">A NodeStructure refers to the &lt;KA&gt; element in DWA M150-XML.
+
+It is recommended to set a NodeStructure as isChildOf the Node it is nested in.
+
+Naming Convention:
+` NodeStructure_[KG001]_[KA001] `
+
+With KG001 being the Node it is nested in.</rdfs:comment>
+        <rdfs:label xml:lang="en">NodeStructure</rdfs:label>
     </owl:Class>
     
 
