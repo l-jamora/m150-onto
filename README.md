@@ -154,8 +154,6 @@ Report and
   hasConditionCode value "BCD"
 ```
 
-Add more examples in `examples/dl-queries.md`.
-
 ## Applications
 
 * **Inventory management** (materials, profiles, dimensions; network connectivity)
