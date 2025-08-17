@@ -162,12 +162,10 @@ Report and
 * **Regulatory compliance** (inspection frequencies, standardized reporting)
 * **Data integration** (combine GIS/BIM, link documents, unify coding systems)
 
-## Data & examples
+## Example Data
 
 * **Public sample data (DWA)** used to test M150-Onto:
   [http://www.dwa.de/rwzusatzfiles/M150.zip](http://www.dwa.de/rwzusatzfiles/M150.zip)
-
-* **Empirical snippet**: Würselen (Aachen region) M150-XML (IDs & geometry); synthetic inspection/condition additions for demos.
 
 Consider using OntoParser to convert M150-XML data to M150-Onto individuals.
 
