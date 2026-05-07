@@ -1,3 +1,5 @@
+An alternative approach to the illogical inferences issue. DWA M150 Reference Table information will be inputted as individuals instead of subclasses. Pilot testing will be done with Reference Table 105: Material.
+
 # M150-Onto
 
 **M150-Onto** is an OWL ontology for sewage infrastructure data based on the German advisory leaflet **DWA-M 150**. It provides a semantic framework for modeling sewer system assets (pipe sections, manholes, nodes), their geometric properties, inspection data, condition assessments, and standardized reference vocabularies. The ontology enables semantic data integration, automated reasoning over network topology and asset relationships, and expressive SPARQL queries for infrastructure analysis and management.
