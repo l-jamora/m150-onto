@@ -747,6 +747,12 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto/hasBasicData -->
+
+    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasBasicData"/>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/hasBeddingType -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasBeddingType">
@@ -983,6 +989,12 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFunctionalStatus">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasBasicData"/>
     </owl:ObjectProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasGeometryObjectData -->
+
+    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryObjectData"/>
     
 
 
@@ -1339,6 +1351,14 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeShaftWidth">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeBasicData"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasNodeStructureComponent -->
+
+    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureComponent">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeStructureData"/>
     </owl:ObjectProperty>
     
 
@@ -1752,6 +1772,14 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
         <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:range rdf:resource="https://l-jamora.github.io/m150-onto/ReferenceReport"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTable -->
+
+    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTable">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTableData"/>
     </owl:ObjectProperty>
     
 
@@ -2579,1516 +2607,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Data properties
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasAlternativeDesignation -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasAlternativeDesignation">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasAreaCode -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasAreaCode">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasAssessmentClass -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasAssessmentClass">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasAssessmentDate -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasAssessmentDate">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasAssessor -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasAssessor">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasBackflowPrevention -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasBackflowPrevention">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasBasicData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasBasicData"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasCameraSpecificDataPlaceholder -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasCameraSpecificDataPlaceholder">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasCameraSystemUsed -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasCameraSystemUsed">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasCatchmentAreaCode -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasCatchmentAreaCode">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasCharacterization1 -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasCharacterization1">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasCharacterization2 -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasCharacterization2">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasClassificationDate -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasClassificationDate">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasClassifier -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasClassifier">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasCleaning -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasCleaning">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasClient -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasClient">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasCodingSystem -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasCodingSystem">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasCompany -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasCompany">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasConditionClassOperationalSafety -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasConditionClassOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasConditionClassStructuralStability -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasConditionClassStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasConditionClassTightness -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasConditionClassTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasConditionCode -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasConditionCode">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasConditionData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasConditionData">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasConditionPointsOperationalSafety -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasConditionPointsOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasConditionPointsStructuralStability -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasConditionPointsStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasConditionPointsTightness -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasConditionPointsTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasConnection -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasConnection">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasCoordinateSystem -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasCoordinateSystem"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasDataStatus -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasDataStatus"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasDepth -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasDepth">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasDesignation -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasDesignation">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasDistrictCode -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasDistrictCode">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasDistrictName -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasDistrictName">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasEastCoordinate -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasEastCoordinate">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasEasting -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasEasting">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasElevationAccuracy -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasElevationAccuracy"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasElevationSystem -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasElevationSystem"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasEvaluationPointsOperationalSafety -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasEvaluationPointsOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasEvaluationPointsStructuralStability -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasEvaluationPointsStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasEvaluationPointsTightness -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasEvaluationPointsTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasFloodArea -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFloodArea"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasFloodingFrequency -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFloodingFrequency"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasFormatData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFormatData"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasFormatType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFormatType"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasFormatVersionNumber -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFormatVersionNumber"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasFunctionalStatus -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFunctionalStatus">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasGeometryObjectData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryObjectData"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasGeometryObjectDesignation -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryObjectDesignation">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasGeometryObjectIdentifier -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryObjectIdentifier">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasGeometryObjectType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryObjectType"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasGeometryPointData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryPointData"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasGeometryPointDesignation -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryPointDesignation">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasGroundwaterLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGroundwaterLevel">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasHeight -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasHeight">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasImageName -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasImageName">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasInspectionData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasInspectionDateTime -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasInspectionDateTime">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasInspectionNumber -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasInspectionNumber">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasInspectionReason -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasInspectionReason">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasInspectionType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasInspectionType">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasInspector -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasInspector">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasLinearDamage -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasLinearDamage">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasLongText -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasLongText">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasMaterial -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMaterial">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasMaximumConditionClassOperationalSafety -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMaximumConditionClassOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasMaximumConditionClassStructuralStability -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMaximumConditionClassStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasMaximumConditionClassTightness -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMaximumConditionClassTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasMeasurementData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMeasurementData">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasPipeSectionInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasMeasurementStation -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMeasurementStation">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasMeasurementData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasMeasurementUnit -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMeasurementUnit">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasMeasurementData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasMeasurementValue -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMeasurementValue">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasMeasurementData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasMeasurementValueType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMeasurementValueType">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasMeasurementData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasMunicipalityCode -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMunicipalityCode">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeBasicData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeBasicData"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeBenchMaterial -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeBenchMaterial">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeChannelLength -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeChannelLength">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeChannelMaterial -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeChannelMaterial">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeChannelShape -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeChannelShape">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeChannelWidth -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeChannelWidth">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeClimbingAid -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeClimbingAid">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeClimbingAidMaterial -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeClimbingAidMaterial">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeConditionData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeConditionData">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeConditionDepth -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeConditionDepth">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeConditionLocalizedRepair -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeConditionLocalizedRepair">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeConditionShaftArea -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeConditionShaftArea">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeCoverBolted -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeCoverBolted">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeCoverClass -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeCoverClass">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeCoverLength -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeCoverLength">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeCoverMaterial -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeCoverMaterial">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeCoverShape -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeCoverShape">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeCoverWidth -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeCoverWidth">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeInspectionAmbientAir -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeInspectionAmbientAir">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeInspectionAmbientPhoto -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeInspectionAmbientPhoto">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeInspectionCircumferentialReferencePoint -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeInspectionCircumferentialReferencePoint">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeInspectionCorrectCone -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeInspectionCorrectCone">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeInspectionData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeInspectionData">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeInspectionDigitalPhotoName -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeInspectionDigitalPhotoName">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeInspectionOperationalSafety -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeInspectionOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeInspectionVerticalReferencePoint -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeInspectionVerticalReferencePoint">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeInternalProtection -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeInternalProtection">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeInternalProtectionMaterial -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeInternalProtectionMaterial">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeMeasurementTechnology -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeMeasurementTechnology">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeNumberOfClimbingIrons -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeNumberOfClimbingIrons">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeShaftLength -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeShaftLength">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeShaftShape -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeShaftShape">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeShaftWidth -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeShaftWidth">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeStructureComponent -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureComponent">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeStructureData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeStructureData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureData"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeStructureHeight -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureHeight">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeStructureLength -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureLength">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeStructureMaterial -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureMaterial">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeStructureQuantity -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureQuantity">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeStructureShape -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureShape">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeStructureType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureType"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeStructureWidth -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureWidth">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNodeType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeType"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNorthCoordinate -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNorthCoordinate">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNorthing -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNorthing">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasOrientation -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasOrientation">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasOwner -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasOwner">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPhotoStorageMedium -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPhotoStorageMedium">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionBasicData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionBasicData"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionBeddingType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionBeddingType">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionConditionData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionConditionData">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionConditionLining -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionConditionLining">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasPipeSectionConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionConditionLocalizedRepair -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionConditionLocalizedRepair">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasPipeSectionConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionConditionStation -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionConditionStation">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasPipeSectionConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionConnectingPipePositioning -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionConnectingPipePositioning">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionConnectingPipeStationing -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionConnectingPipeStationing">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionConnectingPipeStationingDirection -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionConnectingPipeStationingDirection">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionEndPointType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionEndPointType">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionGradient -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionGradient">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionInspectionData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionInspectionData">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionInspectionDirection -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionInspectionDirection">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasPipeSectionInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionInspectionReferencePointStart -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionInspectionReferencePointStart">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasPipeSectionInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionLength -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionLength">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionObjectType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionObjectType">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionPipeLength -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionPipeLength">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionPipelineDesignation -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionPipelineDesignation">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionProfileHeight -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionProfileHeight">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionProfileLining -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionProfileLining">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionProfileLiningMaterial -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionProfileLiningMaterial">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionProfileType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionProfileType">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionProfileWidth -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionProfileWidth">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionSelfSupportingLining -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionSelfSupportingLining">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionStatusProfileDetail -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionStatusProfileDetail">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionType"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPipeSectionWallThickness -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionWallThickness">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPointType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPointType">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPositionFrom -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPositionFrom">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPositionTo -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPositionTo">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPositionalAccuracy -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPositionalAccuracy">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasPriority -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPriority">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasProcessingNote -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasProcessingNote">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasProcessingStatus -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasProcessingStatus">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasProjectNumber -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasProjectNumber">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasQuantification1 -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasQuantification1">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasQuantification2 -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasQuantification2">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTable -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTable">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTableData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTableCode -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTableCode">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTableData -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTableData"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTableLongText -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTableLongText">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTableShortText -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTableShortText">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasRehabilitationRequirementNumber -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasRehabilitationRequirementNumber">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReport -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReport">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReportDate -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReportDate">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReporter -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReporter">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasSewerType -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasSewerType"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasSewerUsage -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasSewerUsage"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasSiteManagement -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasSiteManagement">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasSoilGroup -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasSoilGroup"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasStandardizedComment -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasStandardizedComment">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasStreetCode -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasStreetCode">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasStreetName -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasStreetName">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasTemperature -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasTemperature">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasTrafficArea -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasTrafficArea">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasTreatmentPlantNumber -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasTreatmentPlantNumber">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasVideoCounterReading -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasVideoCounterReading">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasConditionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasVideoFilename -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasVideoFilename">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasVideoStorageMedium -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasVideoStorageMedium">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasVideoStorageMediumName -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasVideoStorageMediumName">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasWaterLevel -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasWaterLevel">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasWaterProtectionZone -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasWaterProtectionZone"/>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasWeather -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasWeather">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasInspectionData"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasYearOfConstruction -->
-
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasYearOfConstruction">
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
     // Classes
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -4100,12 +2618,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/AmbientAir -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/AmbientAir">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>212</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4114,12 +2626,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/BackflowPrevention -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/BackflowPrevention">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>206</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4128,12 +2634,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/BeddingType -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/BeddingType">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>127</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4142,12 +2642,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/CircumferentialReferencePoint -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/CircumferentialReferencePoint">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>211</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4156,12 +2650,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/Cleaning -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Cleaning">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>205</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4170,12 +2658,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/ClimbingAid -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/ClimbingAid">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>121</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4184,12 +2666,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/ClimbingAidMaterial -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/ClimbingAidMaterial">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>122</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4198,12 +2674,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/CodingSystem -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/CodingSystem">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>202</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4226,12 +2696,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/CoordinateSystem -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/CoordinateSystem">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>302</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4240,12 +2704,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/CoverClass -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/CoverClass">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>119</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4254,12 +2712,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/DataStatus -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/DataStatus">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>115</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4268,12 +2720,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/ElevationAccuracy -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/ElevationAccuracy">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>102</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4282,12 +2728,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/ElevationSystem -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/ElevationSystem">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>303</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4296,12 +2736,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/FloodArea -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/FloodArea">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>114</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4310,12 +2744,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto/FloodingFrequency -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/FloodingFrequency">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>125</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4347,12 +2775,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/GeometryObjectIdentification -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/GeometryObjectIdentification">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue> 300</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4361,12 +2783,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/GeometryObjectType -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/GeometryObjectType">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>301</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4375,12 +2791,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/Groundwater -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Groundwater">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>113</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4397,12 +2807,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/InspectionReason -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/InspectionReason">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>201</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4411,12 +2815,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/InspectionType -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/InspectionType">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>203</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4425,12 +2823,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/InternalProtection -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/InternalProtection">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>120</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4439,12 +2831,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/LocalizedRepairNode -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/LocalizedRepairNode">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>214</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4453,12 +2839,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/LocalizedRepairSewer -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/LocalizedRepairSewer">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>213</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4467,12 +2847,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/Material -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Material">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>105</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4481,12 +2855,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/MeasurementTechnology -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/MeasurementTechnology">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>123</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4495,12 +2863,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/MeasurementValueType -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/MeasurementValueType">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>401</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4518,12 +2880,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/NodeStructureType -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/NodeStructureType">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>117</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4532,12 +2888,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/NodeType -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/NodeType">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>116</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4554,12 +2904,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/ObjectType -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/ObjectType">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>128</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4568,12 +2912,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/OperationalStatus -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/OperationalStatus">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>109</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4582,12 +2920,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/Ownership -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Ownership">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>110</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4596,12 +2928,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/PhotoStorageMedium -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PhotoStorageMedium">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>208</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4618,12 +2944,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/PipeSectionType -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PipeSectionType">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>108</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4640,12 +2960,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/PointTypeInCircularArc -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PointTypeInCircularArc">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>304</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4654,12 +2968,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/PositionAccuracy -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PositionAccuracy">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>101</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4668,12 +2976,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/ProcessingStatus -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/ProcessingStatus">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>215</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4682,12 +2984,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/ProfileLining -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/ProfileLining">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>107</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4696,12 +2992,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/ProfileType -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/ProfileType">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>106</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4726,12 +3016,6 @@ The different types found within a reference table are then listed as subclasses
     <!-- https://l-jamora.github.io/m150-onto/ReferenceReport -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/ReferenceReport">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>209</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4767,12 +3051,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/SewerType -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/SewerType">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>103</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4781,12 +3059,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/SewerUsage -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/SewerUsage">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>104</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4795,12 +3067,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/Shape -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Shape">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>118</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4809,12 +3075,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/SoilGroup -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/SoilGroup">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>126</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4823,12 +3083,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/TrafficAreaLocation -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/TrafficAreaLocation">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>112</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4837,12 +3091,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/VerticalReferencePoint -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/VerticalReferencePoint">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>210</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4851,12 +3099,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/VideoStorageMedium -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/VideoStorageMedium">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>207</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4865,12 +3107,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/WaterProtectionZone -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/WaterProtectionZone">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>111</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -4879,12 +3115,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/Weather -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Weather">
-        <owl:equivalentClass>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTable"/>
-                <owl:hasValue>204</owl:hasValue>
-            </owl:Restriction>
-        </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
     
@@ -5856,14 +4086,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/DWA-M150_Material_CompositeConcreteStonewarePipe -->
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/DWA-M150_Material_CompositeConcreteStonewarePipe">
-        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Material"/>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/DWA-M150_Material_Concrete -->
-
-    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/DWA-M150_Material_Concrete">
         <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Material"/>
     </owl:NamedIndividual>
     
@@ -7614,6 +5836,18 @@ With KG001 being the Node it is nested in.</rdfs:comment>
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto/M150_RT105_B -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/M150_RT105_B">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Material"/>
+        <dc:identifier>HG304</dc:identifier>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 105</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Beton</rdfs:label>
+        <rdfs:label xml:lang="en">Concrete</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/Manhole001 -->
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Manhole001"/>
@@ -7636,7 +5870,7 @@ With KG001 being the Node it is nested in.</rdfs:comment>
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/PipeSection001">
         <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/PipeSection"/>
-        <hasMaterial rdf:resource="https://l-jamora.github.io/m150-onto/DWA-M150_Material_Concrete"/>
+        <hasMaterial rdf:resource="https://l-jamora.github.io/m150-onto/M150_RT105_B"/>
     </owl:NamedIndividual>
     
 
@@ -7644,35 +5878,6 @@ With KG001 being the Node it is nested in.</rdfs:comment>
     <!-- https://l-jamora.github.io/m150-onto/PipeSection002 -->
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/PipeSection002"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    <rdf:Description rdf:about="https://l-jamora.github.io/m150-onto/hasDistrictCode">
-        <rdfs:label xml:lang="de">hatOrtsteilschlüssel</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="https://l-jamora.github.io/m150-onto/hasDistrictName">
-        <rdfs:label xml:lang="de">hatOrtsteilname</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="https://l-jamora.github.io/m150-onto/hasMunicipalityCode">
-        <rdfs:label xml:lang="de">hatGemeindeschlüssel</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="https://l-jamora.github.io/m150-onto/hasStreetCode">
-        <rdfs:label xml:lang="de">hatStraßenschlüssel</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="https://l-jamora.github.io/m150-onto/hasStreetName">
-        <rdfs:label xml:lang="de">hatStraßenname</rdfs:label>
-    </rdf:Description>
-    <rdf:Description rdf:about="https://l-jamora.github.io/m150-onto/hasWaterProtectionZone">
-        <rdfs:label xml:lang="de">hatWasserschutzzone</rdfs:label>
-    </rdf:Description>
     
 
 
