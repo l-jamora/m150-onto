@@ -3139,99 +3139,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto/DWA-M150_NodeStructureComponent_NodeStructure -->
-
-    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/DWA-M150_NodeStructureComponent_NodeStructure">
-        <rdfs:comment xml:lang="en">A NodeStructure refers to the &lt;KA&gt; element in DWA M150-XML.
-
-It is recommended to set a NodeStructure as isChildOf the Node it is nested in.
-
-Naming Convention:
-` NodeStructure_[KG001]_[KA001] `
-
-With KG001 being the Node it is nested in.</rdfs:comment>
-        <rdfs:label xml:lang="en">NodeStructure</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/DWA-M150_ObjectType_Component -->
-
-    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/DWA-M150_ObjectType_Component">
-        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/ObjectType"/>
-        <rdfs:comment xml:lang="de">Die Komponententaxonomie umfasst die Hauptkomponenten eines Kanalisationssystems gemäß dem Merkblatt DWA-M 150 und der Referenztabelle 128 &quot;Objekttypen&quot;.
-
-Es wird empfohlen, Individuen für Haltungsabschnitte mit der Vorlage zu erstellen:
-
-PipeSection[PipeSectionDesignation]
-PipeSection[HG001]
-
-Es wird empfohlen, Individuen für Knoten mit der Vorlage zu erstellen:
-
-Node[NodeDesignation]
-Node[KG001]
-
-Es wird ebenfalls empfohlen, zu deklarieren, dass Komponenten zu einer anderen Komponente mit der asymmetrischen/ irreflexiven Unterobjekteigenschaft flowsTo (Invers: flowsFrom) fließen.
-
-Die Ontologie sollte dann automatisch folgern, dass alle Komponenten, die zu/von einander fließen, verbunden sind — mit ihrer transitiven Überobjekteigenschaft &quot;connectedWith&quot;.
-
-Revision 1 Aug 2025: NodeStructure wurde als Unterklasse von Node hinzugefügt. Diese Strukturen reflektieren &lt;KA&gt; innerhalb einer M150-XML-Datei.</rdfs:comment>
-        <rdfs:comment xml:lang="en">The taxonomy of components includes the main components of a sewage system according to the advisory leaflet DWA-M 150 and the reference table 128 &quot;Object Types&quot;.
-
-It is recommended to create individuals for Pipe Sections with the template:
-
-` PipeSection[PipeSectionDesignation] `
-` PipeSection[HG001] `
-
-It is recommended to create individuals for Nodes with the template:
-
-` Node[NodeDesignation] `
-` Node[KG001] `
-
-It is also recommended to declare that Components flows to another component with the asymmetric/irreflexive sub-object property `flowsTo` (Inverse: flowsFrom).
-
-The ontology should then automatically reason, that all components flowing to / from each other are connected -- with its transitive super-object property &quot;connectedWith&quot;.
-
-Revision 1 Aug 2025: NodeStructure added as a Subclass of Node. These structures reflect &lt;KA&gt; within an M150-XML.</rdfs:comment>
-        <rdfs:label xml:lang="en">Component</rdfs:label>
-        <rdfs:label xml:lang="de">Komponente</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/DWA-M150_ObjectType_Node -->
-
-    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/DWA-M150_ObjectType_Node">
-        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/ObjectType"/>
-        <rdfs:comment xml:lang="en">A node is a component in a sewage system that serves as a junction for pipes. It&apos;s often where manholes or access points are located.
-
-It is recommended to create individuals for Nodes with the template:
-
-` Node[NodeDesignation] `
-` Node[KG001] `</rdfs:comment>
-        <rdfs:label xml:lang="de">Knote</rdfs:label>
-        <rdfs:label xml:lang="en">Node</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/DWA-M150_ObjectType_NodeStructure -->
-
-    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/DWA-M150_ObjectType_NodeStructure">
-        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/ObjectType"/>
-        <rdfs:comment xml:lang="en">A NodeStructure refers to the &lt;KA&gt; element in DWA M150-XML.
-
-It is recommended to set a NodeStructure as isChildOf the Node it is nested in.
-
-Naming Convention:
-` NodeStructure_[KG001]_[KA001] `
-
-With KG001 being the Node it is nested in.</rdfs:comment>
-        <rdfs:label xml:lang="en">NodeStructure</rdfs:label>
-    </owl:NamedIndividual>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto/M150_RT101_D -->
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/M150_RT101_D">
@@ -5638,6 +5545,44 @@ With KG001 being the Node it is nested in.</rdfs:comment>
         <rdfs:isDefinedBy>DWA-M 150 Reference Table 127</rdfs:isDefinedBy>
         <rdfs:label xml:lang="de">Keine Angabe zur Lagerungsart</rdfs:label>
         <rdfs:label xml:lang="en">No Bedding Type Information</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/M150_RT128_H -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/M150_RT128_H">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/ObjectType"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 128</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Abwasserkanal</rdfs:label>
+        <rdfs:label xml:lang="en">Sewer Channel</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/M150_RT128_K -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/M150_RT128_K">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/ObjectType"/>
+        <rdfs:comment xml:lang="en">A node is a component in a sewage system that serves as a junction for pipes. It&apos;s often where manholes or access points are located.
+
+It is recommended to create individuals for Nodes with the template:
+
+` Node[NodeDesignation] `
+` Node[KG001] `</rdfs:comment>
+        <rdfs:label xml:lang="de">Knote</rdfs:label>
+        <rdfs:label xml:lang="en">Node</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/M150_RT128_L -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/M150_RT128_L">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/ObjectType"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 128</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Abwasserleitung</rdfs:label>
+        <rdfs:label xml:lang="en">Sewer Pipe</rdfs:label>
     </owl:NamedIndividual>
     
 
