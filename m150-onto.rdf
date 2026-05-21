@@ -675,6 +675,40 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto#hasPipeSectionBottomNodeDesignation -->
+
+    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPipeSectionBottomNodeDesignation">
+        <owl:equivalentProperty rdf:resource="https://l-jamora.github.io/m150-onto/flowsTo"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasPipeSectionBasicData"/>
+        <owl:inverseOf rdf:resource="https://l-jamora.github.io/m150-onto#hasPipeSectionTopNodeDesignation"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasPipeSectionEndPointDesignation -->
+
+    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPipeSectionEndPointDesignation">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasPipeSectionBasicData"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasPipeSectionTopNodeDesignation -->
+
+    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPipeSectionTopNodeDesignation">
+        <owl:equivalentProperty rdf:resource="https://l-jamora.github.io/m150-onto/flowsFrom"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasPipeSectionBasicData"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/connectedWith -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/connectedWith">
@@ -1526,6 +1560,8 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionBasicData">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasBasicData"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
     </owl:ObjectProperty>
     
 
@@ -2615,6 +2651,22 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto#Street -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Street">
+        <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
+    </owl:Class>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#StreetCode -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#StreetCode">
+        <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
+    </owl:Class>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/AmbientAir -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/AmbientAir">
@@ -3136,6 +3188,45 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#Parkstrasse -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto#Parkstrasse">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto#Street"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#Street_Code_1 -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto#Street_Code_1">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto#StreetCode"/>
+        <rdfs:isDefinedBy>DWA M 150 Beispiel 04_2010 Typ B.xml</rdfs:isDefinedBy>
+        <rdfs:label>Street Code 1</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#Condition[PipeSection001]_[8,7]_[BAB] -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto#Condition[PipeSection001]_[8,7]_[BAB]">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Condition"/>
+        <hasLocalizedRepairSewer rdf:resource="https://l-jamora.github.io/m150-onto/M150_RT213_D"/>
+        <isChildOf rdf:resource="https://l-jamora.github.io/m150-onto#Inspection[PipeSection001]_[13.04.2006]_[08:49:00]"/>
+        <rdfs:label>Condition[PipeSection001]_[8,7]_[BAB]</rdfs:label>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#Inspection[PipeSection001]_[13.04.2006]_[08:49:00] -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto#Inspection[PipeSection001]_[13.04.2006]_[08:49:00]">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Inspection"/>
+        <inspects rdf:resource="https://l-jamora.github.io/m150-onto/PipeSection001"/>
+        <rdfs:label>Inspection[PipeSection001]_[13.04.2006]_[08:49:00]</rdfs:label>
+    </owl:NamedIndividual>
     
 
 
@@ -6656,19 +6747,27 @@ It is recommended to create individuals for Nodes with the template:
 
     <!-- https://l-jamora.github.io/m150-onto/Manhole001 -->
 
-    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Manhole001"/>
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Manhole001">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Node"/>
+        <flowsTo rdf:resource="https://l-jamora.github.io/m150-onto/PipeSection001"/>
+    </owl:NamedIndividual>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto/Manhole002 -->
 
-    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Manhole002"/>
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Manhole002">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Node"/>
+        <flowsTo rdf:resource="https://l-jamora.github.io/m150-onto/PipeSection002"/>
+    </owl:NamedIndividual>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto/Manhole003 -->
 
-    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Manhole003"/>
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Manhole003">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Node"/>
+    </owl:NamedIndividual>
     
 
 
@@ -6676,7 +6775,11 @@ It is recommended to create individuals for Nodes with the template:
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/PipeSection001">
         <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/PipeSection"/>
+        <flowsTo rdf:resource="https://l-jamora.github.io/m150-onto/Manhole002"/>
         <hasMaterial rdf:resource="https://l-jamora.github.io/m150-onto/M150_RT105_B"/>
+        <hasSewerType rdf:resource="https://l-jamora.github.io/m150-onto/M150_RT103_K"/>
+        <hasStreetCode rdf:resource="https://l-jamora.github.io/m150-onto#Street_Code_1"/>
+        <hasStreetName rdf:resource="https://l-jamora.github.io/m150-onto#Parkstrasse"/>
         <hasWaterProtectionZone rdf:resource="https://l-jamora.github.io/m150-onto/M150_RT111_III"/>
     </owl:NamedIndividual>
     
@@ -6684,7 +6787,10 @@ It is recommended to create individuals for Nodes with the template:
 
     <!-- https://l-jamora.github.io/m150-onto/PipeSection002 -->
 
-    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/PipeSection002"/>
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/PipeSection002">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/PipeSection"/>
+        <flowsTo rdf:resource="https://l-jamora.github.io/m150-onto/Manhole003"/>
+    </owl:NamedIndividual>
     
 
 
