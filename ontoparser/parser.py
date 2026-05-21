@@ -15,12 +15,14 @@ DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "m150-onto-parsed.rdf"
 
 
 def normalize_text(element: Optional[ET.Element]) -> str:
+    """Extracts and strips text from an XML element, returning an empty string if None."""
     if element is None or element.text is None:
         return ""
     return element.text.strip()
 
 
 def safe_entity_name(*parts: str) -> str:
+    """Combines string parts into a valid, URI-friendly entity name by removing non-alphanumeric characters."""
     combined = "_".join(str(part).strip() for part in parts if part is not None)
     combined = re.sub(r"[^A-Za-z0-9_]+", "_", combined)
     combined = re.sub(r"_+", "_", combined)
@@ -28,6 +30,7 @@ def safe_entity_name(*parts: str) -> str:
 
 
 def parse_datetime(date_text: str, time_text: str) -> Optional[datetime]:
+    """Attempts to parse date and optional time strings into a datetime object using various formats."""
     if not date_text:
         return None
 
@@ -57,12 +60,14 @@ def parse_datetime(date_text: str, time_text: str) -> Optional[datetime]:
 
 class M150XmlParser:
     def __init__(self, xml_path: Path, ontology_path: Path, output_path: Path):
+        """Initializes the parser with paths for input XML, base ontology, and output file."""
         self.xml_path = xml_path
         self.ontology_path = ontology_path
         self.output_path = output_path
         self.onto = None
 
     def load_ontology(self) -> None:
+        """Configures ontology search paths and loads the base ontology and its imports."""
         owl.onto_path.append(str(self.ontology_path.parent.resolve()))
         owl.onto_path.append(str(self.ontology_path.parent.resolve() / "Individual Ontologies"))
 
@@ -74,6 +79,7 @@ class M150XmlParser:
             owl.get_ontology(str(imported_path.resolve())).load()
 
     def _get_class(self, class_name: str):
+        """Retrieves a class from the loaded ontology by name, raising an error if not found."""
         cls = self.onto.search_one(iri=f"{self.onto.base_iri}{class_name}")
         if cls is None:
             cls = getattr(self.onto, class_name, None)
@@ -82,6 +88,7 @@ class M150XmlParser:
         return cls
 
     def _get_property(self, prop_name: str):
+        """Retrieves a property by name or dynamically creates it as an Object or Datatype property."""
         prop = self.onto.search_one(iri=f"{self.onto.base_iri}{prop_name}")
         if prop is None:
             prop = getattr(self.onto, prop_name, None)
@@ -94,6 +101,7 @@ class M150XmlParser:
         return prop
 
     def _create_individual(self, cls, entity_name: str, label: Optional[str] = None):
+        """Returns an existing individual or creates a new one for the given class and name."""
         existing = self.onto.search_one(iri=f"{self.onto.base_iri}{entity_name}")
         if existing is not None:
             return existing
@@ -104,6 +112,7 @@ class M150XmlParser:
         return individual
 
     def parse(self) -> None:
+        """Parses the M150 XML file to populate the ontology with assets, inspections, and conditions."""
         tree = ET.parse(str(self.xml_path))
         root = tree.getroot()
 
@@ -189,6 +198,7 @@ class M150XmlParser:
                         is_child_of_prop[condition_individual].append(inspection_individual)
 
     def _inspection_name(self, component_code: str, inspection_elem: ET.Element) -> str:
+        """Generates a unique IRI-safe name for an inspection individual based on component ID and date."""
         date_text = normalize_text(inspection_elem.find("HI104") or inspection_elem.find("KI104"))
         time_text = normalize_text(inspection_elem.find("HI105") or inspection_elem.find("KI105"))
         if date_text:
@@ -197,6 +207,7 @@ class M150XmlParser:
         return INDIVIDUAL_PREFIX + safe_entity_name("Inspection", component_code)
 
     def _inspection_label(self, component_code: str, inspection_elem: ET.Element) -> str:
+        """Generates a human-readable label for an inspection individual."""
         date_text = normalize_text(inspection_elem.find("HI104") or inspection_elem.find("KI104"))
         time_text = normalize_text(inspection_elem.find("HI105") or inspection_elem.find("KI105"))
         label = f"Inspection[{component_code}]"
@@ -207,11 +218,13 @@ class M150XmlParser:
         return label
 
     def save(self) -> None:
+        """Saves the current state of the loaded ontology to the specified output path."""
         print(f"Saving parsed ontology to {self.output_path}")
         self.onto.save(file=str(self.output_path), format="rdfxml")
 
 
 def main() -> None:
+    """CLI entry point for parsing M150 XML data into the ontology."""
     parser = argparse.ArgumentParser(description="Parse M150 Type B XML into the M150-Onto ontology.")
     parser.add_argument("--input", "-i", type=Path, required=True, help="Path to the M150 Type B XML file")
     parser.add_argument(
