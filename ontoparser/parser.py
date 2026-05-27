@@ -1,6 +1,7 @@
 import argparse
+import csv
 import re
-from datetime import datetime
+from datetime import date, datetime
 from pathlib import Path
 from typing import Optional
 from xml.etree import ElementTree as ET
@@ -12,6 +13,16 @@ INDIVIDUAL_PREFIX = "Beispiel_"
 
 DEFAULT_ONTOLOGY = Path(__file__).resolve().parents[1] / "m150-onto.rdf"
 DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "m150-onto-parsed.rdf"
+CSV_MAPPING_PATH = Path(__file__).resolve().parent / "mapping_DWA-to-m150onto.csv"
+
+# HI104/HI105/KI104/KI105 are combined into one hasInspectionDateTime assignment; exclude from generic mapping
+_DATETIME_CODES = frozenset({"HI104", "HI105", "KI104", "KI105"})
+
+# All declared DatatypeProperty names — used to choose the right fallback class when dynamically creating properties
+_DATATYPE_PROPERTIES = frozenset({"hasInspectionDateTime", "hasReportDate", "hasAssessmentDate", "hasClassificationDate"})
+
+# Object properties whose XML values are Node codes (looked up / eagerly created as Node individuals)
+_NODE_REFERENCE_PROPERTIES = frozenset({"hasPipeSectionTopNodeDesignation", "hasPipeSectionBottomNodeDesignation"})
 
 
 def normalize_text(element: Optional[ET.Element]) -> str:
@@ -58,6 +69,47 @@ def parse_datetime(date_text: str, time_text: str) -> Optional[datetime]:
     return None
 
 
+def parse_date(date_text: str) -> Optional[date]:
+    """Attempts to parse a date-only string into a date object. Returns None on failure."""
+    if not date_text:
+        return None
+    raw = date_text.strip().replace(".", "-").replace("/", "-")
+    for fmt in ["%d-%m-%Y", "%Y-%m-%d"]:
+        try:
+            return datetime.strptime(raw, fmt).date()
+        except ValueError:
+            continue
+    return None
+
+
+def load_mapping(csv_path: Path) -> dict:
+    """Loads the DWA-to-ontology CSV into a lookup dict keyed by DWA element code.
+
+    Each entry is a dict with keys: type ('object'|'data'|'annotation'), property (str|None),
+    rt_table (RT table number string, or '' if not a reference lookup).
+    Combined datetime codes (HI104, HI105, KI104, KI105) are excluded — handled separately.
+    """
+    mapping: dict = {}
+    with open(csv_path, encoding="utf-8", newline="") as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            code = row.get("DWA Element Code", "").strip()
+            if not code or code in _DATETIME_CODES:
+                continue
+            obj_prop = row.get("Corresponding Ontology Object Property", "").strip()
+            data_prop = row.get("Corresponding Ontology Data Property", "").strip()
+            annotation = row.get("Annotation", "").strip()
+            rt_table = row.get("Corresponding Reference Table RT", "").strip()
+
+            if obj_prop:
+                mapping[code] = {"type": "object", "property": obj_prop, "rt_table": rt_table}
+            elif data_prop:
+                mapping[code] = {"type": "data", "property": data_prop, "rt_table": ""}
+            elif "rdfs:comment" in annotation:
+                mapping[code] = {"type": "annotation", "property": None, "rt_table": ""}
+    return mapping
+
+
 class M150XmlParser:
     def __init__(self, xml_path: Path, ontology_path: Path, output_path: Path):
         """Initializes the parser with paths for input XML, base ontology, and output file."""
@@ -65,6 +117,8 @@ class M150XmlParser:
         self.ontology_path = ontology_path
         self.output_path = output_path
         self.onto = None
+        self.mapping: dict = {}
+        self._node_cls = None  # set during parse() for use in _resolve_object_individual
 
     def load_ontology(self) -> None:
         """Configures ontology search paths and loads the base ontology and its imports."""
@@ -78,9 +132,18 @@ class M150XmlParser:
         if imported_path.exists():
             owl.get_ontology(str(imported_path.resolve())).load()
 
+        # Pre-existing classes, properties, and reference individuals use the slash-based
+        # IRI namespace (xml:base), while onto.base_iri uses '#'. Compute the correct
+        # entity IRI base once so all lookups are consistent.
+        self._entity_base = self.onto.base_iri.rstrip("#/") + "/"
+
+    def _slash_iri(self, name: str) -> str:
+        """Returns the slash-based IRI for a named entity (used for pre-existing ontology content)."""
+        return self._entity_base + name
+
     def _get_class(self, class_name: str):
         """Retrieves a class from the loaded ontology by name, raising an error if not found."""
-        cls = self.onto.search_one(iri=f"{self.onto.base_iri}{class_name}")
+        cls = self.onto.search_one(iri=self._slash_iri(class_name))
         if cls is None:
             cls = getattr(self.onto, class_name, None)
         if cls is None:
@@ -89,54 +152,161 @@ class M150XmlParser:
 
     def _get_property(self, prop_name: str):
         """Retrieves a property by name or dynamically creates it as an Object or Datatype property."""
-        prop = self.onto.search_one(iri=f"{self.onto.base_iri}{prop_name}")
+        prop = self.onto.search_one(iri=self._slash_iri(prop_name))
         if prop is None:
             prop = getattr(self.onto, prop_name, None)
         if prop is None:
             with self.onto:
-                if prop_name == "hasInspectionDateTime":
+                if prop_name in _DATATYPE_PROPERTIES:
                     prop = types.new_class(prop_name, (owl.DatatypeProperty,))
                 else:
                     prop = types.new_class(prop_name, (owl.ObjectProperty,))
         return prop
 
     def _create_individual(self, cls, entity_name: str, label: Optional[str] = None):
-        """Returns an existing individual or creates a new one for the given class and name."""
-        existing = self.onto.search_one(iri=f"{self.onto.base_iri}{entity_name}")
+        """Returns an existing individual or creates a new one for the given class and name.
+
+        Searches both the slash-based IRI (pre-existing ontology content) and the hash-based
+        IRI (newly created individuals via onto.base_iri) to avoid duplicates across parse runs.
+        """
+        existing = self.onto.search_one(iri=self._slash_iri(entity_name))
+        if existing is None:
+            existing = self.onto.search_one(iri=f"{self.onto.base_iri}{entity_name}")
         if existing is not None:
             return existing
 
-        individual = cls(entity_name)
+        with self.onto:
+            individual = cls(entity_name)
         if label:
             individual.label = [label]
         return individual
+
+    def _resolve_object_individual(self, prop_name: str, value: str, rt_table: str):
+        """Resolves an object property value string to an OWL individual.
+
+        Strategy (in order):
+        1. Node cross-reference: if prop_name is a node-reference property, look up / eagerly
+           create a Node individual so HG003/HG004 links are resolved even before KG is parsed.
+        2. Reference lookup: if rt_table is provided, search for M150_RT{rt_table}_{value} by IRI.
+           If missing (should already exist from migration scripts), a placeholder is created.
+        3. Free-text fallback: create a generic owl:Thing individual named after the property
+           and value, with the raw value as rdfs:label.
+        """
+        if prop_name in _NODE_REFERENCE_PROPERTIES:
+            node_name = INDIVIDUAL_PREFIX + safe_entity_name("Node", value)
+            return self._create_individual(self._node_cls, node_name)
+
+        if rt_table:
+            # Normalize the code: uppercase and strip hyphens to match ontology naming convention
+            norm_value = value.upper().replace("-", "")
+            ref_name = f"M150_RT{rt_table}_{norm_value}"
+            existing = self.onto.search_one(iri=self._slash_iri(ref_name))
+            if existing is not None:
+                return existing
+            print(f"  Warning: Reference {ref_name} not found; creating placeholder")
+            ref_cls = self._get_class("Reference")
+            return self._create_individual(ref_cls, ref_name, label=value)
+
+        ind_name = safe_entity_name(prop_name.replace("has", "", 1), value)
+        return self._create_individual(owl.Thing, ind_name, label=value)
+
+    def _apply_mapping(self, individual, entry: dict, value: str) -> None:
+        """Applies one CSV mapping entry to an individual for the given element value."""
+        entry_type = entry["type"]
+        prop_name = entry.get("property")
+        rt_table = entry.get("rt_table", "")
+
+        if entry_type == "annotation":
+            individual.comment.append(value)
+            return
+
+        prop = self._get_property(prop_name)
+
+        if entry_type == "data":
+            typed_value = parse_date(value)
+            if typed_value is not None:
+                setattr(individual, prop.name, [typed_value])
+            return
+
+        ref_ind = self._resolve_object_individual(prop_name, value, rt_table)
+        if ref_ind is not None and ref_ind not in prop[individual]:
+            prop[individual].append(ref_ind)
+
+    def _assign_properties(self, individual, xml_element: ET.Element, skip_codes: frozenset = frozenset()) -> None:
+        """Iterates direct children of xml_element and assigns all mapped properties to individual.
+
+        Child tags absent from self.mapping (e.g. nested element groups like HI, GO) are silently
+        skipped, so this method is safe to call on any XML element regardless of nesting.
+        """
+        for child in xml_element:
+            code = child.tag
+            if code in skip_codes:
+                continue
+            value = normalize_text(child)
+            if not value:
+                continue
+            entry = self.mapping.get(code)
+            if entry is None:
+                continue
+            self._apply_mapping(individual, entry, value)
 
     def parse(self) -> None:
         """Parses the M150 XML file to populate the ontology with assets, inspections, and conditions."""
         tree = ET.parse(str(self.xml_path))
         root = tree.getroot()
 
+        self.mapping = load_mapping(CSV_MAPPING_PATH)
+
         pipe_cls = self._get_class("PipeSection")
         node_cls = self._get_class("Node")
         inspection_cls = self._get_class("Inspection")
         condition_cls = self._get_class("Condition")
+        object_cls = self._get_class("Object")
+        point_cls = self._get_class("Point")
+        reference_cls = self._get_class("Reference")
+        self._node_cls = node_cls
 
         inspects_prop = self._get_property("inspects")
         is_child_of_prop = self._get_property("isChildOf")
+        has_geom_obj_data_prop = self._get_property("hasGeometryObjectData")
+        has_geom_pt_data_prop = self._get_property("hasGeometryPointData")
+        has_node_struct_data_prop = self._get_property("hasNodeStructureData")
+        has_measurement_data_prop = self._get_property("hasMeasurementData")
 
-        pipe_sections = {}
-        nodes = {}
-
+        # ── HG: Pipe Sections ────────────────────────────────────────────────
         for hg in root.findall("HG"):
             hg_code = normalize_text(hg.find("HG001"))
             if not hg_code:
                 continue
 
             pipe_name = INDIVIDUAL_PREFIX + safe_entity_name("PipeSection", hg_code)
-            pipe_label = f"PipeSection[{hg_code}]"
-            pipe_individual = self._create_individual(pipe_cls, pipe_name, label=pipe_label)
-            pipe_sections[hg_code] = pipe_individual
+            pipe_individual = self._create_individual(pipe_cls, pipe_name, label=f"PipeSection[{hg_code}]")
 
+            self._assign_properties(pipe_individual, hg)
+
+            # GO: Geometry Objects
+            for go in hg.findall("GO"):
+                go_designation = normalize_text(go.find("GO001")) or hg_code
+                go_name = INDIVIDUAL_PREFIX + safe_entity_name("GeometryObject", hg_code, go_designation)
+                go_individual = self._create_individual(
+                    object_cls, go_name, label=f"GeometryObject[{go_designation}]"
+                )
+                if go_individual not in has_geom_obj_data_prop[pipe_individual]:
+                    has_geom_obj_data_prop[pipe_individual].append(go_individual)
+                self._assign_properties(go_individual, go)
+
+                # GP: Geometry Points
+                for gp in go.findall("GP"):
+                    gp_designation = normalize_text(gp.find("GP001")) or f"GP_{go_designation}"
+                    gp_name = INDIVIDUAL_PREFIX + safe_entity_name("GeometryPoint", hg_code, gp_designation)
+                    gp_individual = self._create_individual(
+                        point_cls, gp_name, label=f"GeometryPoint[{gp_designation}]"
+                    )
+                    if gp_individual not in has_geom_pt_data_prop[go_individual]:
+                        has_geom_pt_data_prop[go_individual].append(gp_individual)
+                    self._assign_properties(gp_individual, gp)
+
+            # HI: Pipe Inspections
             for hi in hg.findall("HI"):
                 inspection_name = self._inspection_name(hg_code, hi)
                 inspection_label = self._inspection_label(hg_code, hi)
@@ -150,6 +320,18 @@ class M150XmlParser:
                     has_datetime = self._get_property("hasInspectionDateTime")
                     setattr(inspection_individual, has_datetime.name, [datetime_value])
 
+                # HI104/HI105 are excluded from self.mapping; no explicit skip needed
+                self._assign_properties(inspection_individual, hi)
+
+                # HM: Measurement Data
+                for hm_idx, hm in enumerate(hi.findall("HM")):
+                    hm_name = INDIVIDUAL_PREFIX + safe_entity_name("MeasurementData", inspection_name, str(hm_idx))
+                    hm_individual = self._create_individual(owl.Thing, hm_name)
+                    if hm_individual not in has_measurement_data_prop[inspection_individual]:
+                        has_measurement_data_prop[inspection_individual].append(hm_individual)
+                    self._assign_properties(hm_individual, hm)
+
+                # HZ: Pipe Condition Findings
                 for hz in hi.findall("HZ"):
                     hz_station = normalize_text(hz.find("HZ001"))
                     hz_code = normalize_text(hz.find("HZ002"))
@@ -157,21 +339,35 @@ class M150XmlParser:
                         continue
 
                     condition_name = INDIVIDUAL_PREFIX + safe_entity_name("Condition", hg_code, hz_station, hz_code)
-                    condition_label = f"Condition[{hg_code}]_[{hz_station}]_[{hz_code}]"
-                    condition_individual = self._create_individual(condition_cls, condition_name, label=condition_label)
+                    condition_individual = self._create_individual(
+                        condition_cls, condition_name,
+                        label=f"Condition[{hg_code}]_[{hz_station}]_[{hz_code}]"
+                    )
                     if inspection_individual not in is_child_of_prop[condition_individual]:
                         is_child_of_prop[condition_individual].append(inspection_individual)
 
+                    self._assign_properties(condition_individual, hz)
+
+        # ── KG: Nodes ────────────────────────────────────────────────────────
         for kg in root.findall("KG"):
             kg_code = normalize_text(kg.find("KG001"))
             if not kg_code:
                 continue
 
             node_name = INDIVIDUAL_PREFIX + safe_entity_name("Node", kg_code)
-            node_label = f"Node[{kg_code}]"
-            node_individual = self._create_individual(node_cls, node_name, label=node_label)
-            nodes[kg_code] = node_individual
+            node_individual = self._create_individual(node_cls, node_name, label=f"Node[{kg_code}]")
 
+            self._assign_properties(node_individual, kg)
+
+            # KA: Node Structure Component Records
+            for ka_idx, ka in enumerate(kg.findall("KA")):
+                ka_name = INDIVIDUAL_PREFIX + safe_entity_name("NodeStructureData", kg_code, str(ka_idx))
+                ka_individual = self._create_individual(owl.Thing, ka_name)
+                if ka_individual not in has_node_struct_data_prop[node_individual]:
+                    has_node_struct_data_prop[node_individual].append(ka_individual)
+                self._assign_properties(ka_individual, ka)
+
+            # KI: Node Inspections
             for ki in kg.findall("KI"):
                 inspection_name = self._inspection_name(kg_code, ki)
                 inspection_label = self._inspection_label(kg_code, ki)
@@ -185,6 +381,10 @@ class M150XmlParser:
                     has_datetime = self._get_property("hasInspectionDateTime")
                     setattr(inspection_individual, has_datetime.name, [datetime_value])
 
+                # KI104/KI105 are excluded from self.mapping; no explicit skip needed
+                self._assign_properties(inspection_individual, ki)
+
+                # KZ: Node Condition Findings
                 for kz in ki.findall("KZ"):
                     kz_station = normalize_text(kz.find("KZ001"))
                     kz_code = normalize_text(kz.find("KZ002"))
@@ -192,10 +392,43 @@ class M150XmlParser:
                         continue
 
                     condition_name = INDIVIDUAL_PREFIX + safe_entity_name("Condition", kg_code, kz_station, kz_code)
-                    condition_label = f"Condition[{kg_code}]_[{kz_station}]_[{kz_code}]"
-                    condition_individual = self._create_individual(condition_cls, condition_name, label=condition_label)
+                    condition_individual = self._create_individual(
+                        condition_cls, condition_name,
+                        label=f"Condition[{kg_code}]_[{kz_station}]_[{kz_code}]"
+                    )
                     if inspection_individual not in is_child_of_prop[condition_individual]:
                         is_child_of_prop[condition_individual].append(inspection_individual)
+
+                    self._assign_properties(condition_individual, kz)
+
+        # ── FD: Format Metadata ──────────────────────────────────────────────
+        fd_elem = root.find("FD")
+        if fd_elem is not None:
+            fd001 = normalize_text(fd_elem.find("FD001"))
+            fd002 = normalize_text(fd_elem.find("FD002"))
+            fd_name = INDIVIDUAL_PREFIX + safe_entity_name("FormatData", fd001, fd002)
+            fd_individual = self._create_individual(owl.Thing, fd_name)
+            self._assign_properties(fd_individual, fd_elem)
+
+        # ── RT: Reference Table Rows ─────────────────────────────────────────
+        # RT003 (short text) and RT004 (long text) are assigned directly as rdfs:label /
+        # rdfs:comment rather than via the object-property resolution path, since their
+        # values are free-form German strings (not reference codes).
+        for rt in root.findall("RT"):
+            rt001 = normalize_text(rt.find("RT001"))
+            rt002 = normalize_text(rt.find("RT002"))
+            if not rt001 or not rt002:
+                continue
+
+            rt_name = safe_entity_name("M150_RT" + rt001, rt002)
+            rt_individual = self._create_individual(reference_cls, rt_name)
+
+            rt003 = normalize_text(rt.find("RT003"))
+            rt004 = normalize_text(rt.find("RT004"))
+            if rt003:
+                rt_individual.label.append(rt003)
+            if rt004:
+                rt_individual.comment.append(rt004)
 
     def _inspection_name(self, component_code: str, inspection_elem: ET.Element) -> str:
         """Generates a unique IRI-safe name for an inspection individual based on component ID and date."""

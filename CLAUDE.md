@@ -113,11 +113,11 @@ condition_individual.isChildOf.append(inspection_individual)
 
 `_get_property(name)` looks up the property in the ontology by IRI; if not found it creates a new `ObjectProperty` (or `DatatypeProperty` for `hasInspectionDateTime`).
 
-### Planned future work
+### Known limitations and future work
 
-- Assign object properties for all HG/KG basic data fields (e.g. `hasPipeSectionType`, `hasMaterial` → Material individual lookup via RT reference table rows).
-- Geometry points and objects (GP/GO elements) as individuals.
-- RT (reference table) rows should resolve to existing Reference individuals rather than creating new ones.
+- `hasInspectionDateTime` is a placeholder datatype property (`xsd:dateTime`). A future revision should replace it with a structured temporal individual using the OWL Time Ontology for richer temporal modelling.
+- Properties `hasPipeSectionTopNodeDesignation`, `hasPipeSectionBottomNodeDesignation`, `hasPipeSectionEndPointDesignation`, and `hasMeasurementData` exist in the ontology under the hash-based IRI namespace (`#`) rather than the slash-based namespace (`/`). This causes them to serialize without the `m150:` prefix in output RDF. Fix by moving their declarations to use the slash namespace in `m150-onto.rdf`.
+- Some DWA M 150 Reference Table codes are not yet present as individuals (e.g. RT300_L for line geometry, RT303_MNN for elevation datum, certain RT124 node structure component codes). The parser creates placeholder Reference individuals for these.
 
 ---
 
