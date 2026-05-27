@@ -16,22 +16,28 @@ From the repository root:
 
 ```bash
 python -m ontoparser.parser \
-  --input xml/DWA\ M\ 150\ Beispiel\ 04_2010\ Typ\ B\ .xml \
-  --ontology m150-onto.rdf \
-  --output m150-onto-parsed.rdf
+  --input "xml/DWA M 150 Beispiel 04_2010 Typ B .xml" \
+  [--ontology m150-onto.rdf] \
+  [--output m150-onto-parsed.rdf] \
+  [--dry-run]
 ```
 
-### Output
-
-The parser writes a new RDF/XML ontology file containing the newly created individuals and relationships.
+| Flag | Default | Description |
+|------|---------|-------------|
+| `--input` | *(required)* | Path to the DWA M 150 Type B XML file |
+| `--ontology` | `m150-onto.rdf` | Base ontology to load individuals into |
+| `--output` | `m150-onto-parsed.rdf` | Output RDF/XML file path |
+| `--dry-run` | off | Parse and report without writing any output |
 
 ## Naming conventions
 
-Internally, generated individuals use safe entity names, while the visible label is built using expected DWA-M 150 templates such as:
+All generated individuals are prefixed with `Beispiel_`. Labels (human-readable, no prefix) follow DWA-M 150 field templates:
 
-- `PipeSection[HG001]`
-- `Node[KG001]`
-- `Inspection[HG001]_[HI104]_[HI105]`
-- `Condition[HG001]_[HZ001]_[HZ002]`
+| Individual | Label pattern |
+|-----------|---------------|
+| `PipeSection` | `PipeSection[HG001]` |
+| `Node` | `Node[KG001]` |
+| `Inspection` | `Inspection[HG001]_[HI104]_[HI105]` |
+| `Condition` | `Condition[HG001]_[HZ001]_[HZ002]` |
 
-If the example XML does not include `HI003` or `KI003`, the parser falls back to the inspection date/time values.
+If `HI003` / `KI003` is absent from the XML, the parser falls back to the inspection date and time fields.

@@ -1,34 +1,38 @@
-An alternative approach to the illogical inferences issue. DWA M150 Reference Table information will be inputted as individuals instead of subclasses. Pilot testing will be done with Reference Table 105: Material.
+# M150-Onto
 
-# M150-Onto Structure Changes
+An OWL ontology modelling the DWA M 150 standard for sewer infrastructure. It represents sewer network assets (pipe sections, nodes), their inspection reports, and condition findings as OWL individuals, enabling structured querying and OWL reasoning over sewer data.
 
-## Context
-The ontology update is focused on correcting the structure of `M150-Onto` so that `Reference` subclasses are treated as individuals rather than as direct class memberships for `PipeSection` and similar asset instances.
+## Repository layout
 
-## Why this change was needed
-The reasoner was misclassifying `PipeSection` individuals when the data property `hasMaterial` had values like `"Concrete"`.
+```
+m150-onto.rdf          # Root ontology — all class and property definitions
+ontoparser/            # XML → OWL parser (owlready2)
+Scripts/               # One-time migration and maintenance scripts
+xml/                   # Example DWA M 150 Type B XML input files
+xsd/                   # XML schema definitions
+dwa/                   # DWA M 150 standard PDF documentation
+docs/                  # Additional documentation
+```
 
-### What was happening
-- A `PipeSection` instance with `hasMaterial = "Concrete"` was being inferred as an instance of the class `Concrete`.
-- This caused the pipeline asset to be treated as if it were the material itself.
+## Ontology design
 
-### Why this is illogical
-- **Category Error:** A `PipeSection` is a physical infrastructure asset. `Concrete` is a construction material.
-- **Correct relationship:** A pipe section may be made of or composed of concrete, but it is not an instance of the `Concrete` class.
-- **Reasoning Distortion:** The incorrect inference mixes infrastructure components with material concepts, which breaks the taxonomy and makes spatial analysis and asset management queries incorrect or unreliable.
+Key design decisions are documented in [docs/ontology-structure-changes.md](docs/ontology-structure-changes.md). In brief:
 
-## What was changed
-- Created Python scripts to automate the ontology restructuring.
-- Converted `Reference` subclasses into individuals where appropriate.
-- Added object properties to represent material and other reference relationships explicitly.
-- Ensured new properties follow the naming convention `hasX` / `isXOf` and are set up as inverses.
-- Updated `M150-Onto.rdf` to reflect the major ontology rehaul.
+- `Reference` subclasses (Material, SewerType, etc.) are **individuals**, not classes, to prevent reasoners from inferring that a pipe section *is* a material.
+- All `hasX` object properties are declared `owl:FunctionalProperty`, `owl:AsymmetricProperty`, and `owl:IrreflexiveProperty`, reflecting their one-to-one, directed, non-self-referential nature.
+- Network topology properties (`flowsTo`, `flowsFrom`, `connectedWith`) and inspection linkage properties (`inspects`, `inspectedIn`, `isChildOf`, `isParentOf`, `renders`, `renderedBy`) are intentionally exempt from the functional constraint.
 
-## Outcome
-- `PipeSection` now relates to material individuals through object properties instead of using `hasMaterial` as a datatype value that triggers class membership inference.
-- The ontology now better preserves the distinction between physical assets and reference/material concepts.
-- Future reasoning and querying will be more semantically stable and aligned with the intended domain model.
+## Parsing XML data
 
-## Notes
-- This file documents the structural ontology changes only.
-- It does not describe any `OntoParser` parsing or data-mapping changes.
+The `ontoparser` package reads a DWA M 150 Type B XML file and populates the ontology with individuals. See [ontoparser/README.md](ontoparser/README.md) for usage.
+
+## Scripts
+
+| Script | Purpose |
+|--------|---------|
+| `Scripts/1_reference_subclasses_to_individuals.py` | Converted Reference subclasses to individuals |
+| `Scripts/2_create_reference_object_properties.py` | Created `hasX` / `isXOf` object property pairs |
+| `Scripts/3_update_reference_table_individuals.py` | Populated Reference individuals from RT naming conventions |
+| `Scripts/4_add_property_characteristics.py` | Adds Functional/Asymmetric/Irreflexive to all applicable object properties |
+
+Scripts 1–3 are one-time migrations already applied to `m150-onto.rdf`. Script 4 is idempotent and can be re-run after adding new object properties.
