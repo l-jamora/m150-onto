@@ -4,20 +4,14 @@
 
 This is a semantic web / ontology project that models the DWA M 150 standard for sewer infrastructure in OWL. The goal is to represent sewer network assets (pipe sections, nodes), their inspection reports, and condition findings as OWL individuals, then reason over them.
 
-The main ontology file is **`m150-onto.rdf`** at the repo root.
+The main ontology file is **`m150-onto.rdf`** at the repo root. All class/property definitions are consolidated into this single file; the `Individual Ontologies/` sub-ontology folder has been removed.
 
 ---
 
 ## Repository Layout
 
 ```
-m150-onto.rdf                        # Root ontology (imports sub-ontologies)
-Individual Ontologies/
-  M150-Onto.rdf                      # Core class/property definitions
-  M150-Onto-BasicData.rdf            # Basic data properties
-  m150-onto-geo.rdf                  # Geometry classes/properties
-  m150-onto-inspection_conditiondata.rdf  # Inspection & condition schema
-  EN13508-2.rdf                      # EN 13508-2 condition code reference
+m150-onto.rdf                        # Root ontology (all class/property definitions)
 ontoparser/
   parser.py                          # Main XML → OWL parser (owlready2)
   __init__.py
