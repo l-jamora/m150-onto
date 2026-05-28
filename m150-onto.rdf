@@ -3199,6 +3199,7 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/Node -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Node">
+        <owl:equivalentClass rdf:resource="https://l-jamora.github.io/m150-onto/NodeStructureComponent"/>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Component"/>
         <owl:disjointWith rdf:resource="https://l-jamora.github.io/m150-onto/PipeSection"/>
     </owl:Class>
@@ -3272,6 +3273,7 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/PipeSection -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PipeSection">
+        <owl:equivalentClass rdf:resource="https://l-jamora.github.io/m150-onto/PipeSectionType"/>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Component"/>
     </owl:Class>
     
@@ -5676,6 +5678,7 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/M150_RT124_A -->
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/M150_RT124_A">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Node"/>
         <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/NodeStructureComponent"/>
         <rdfs:isDefinedBy>DWA-M 150 Reference Table 124</rdfs:isDefinedBy>
         <rdfs:label xml:lang="de">Abdeckung und Rahmen</rdfs:label>
@@ -7093,7 +7096,6 @@ It is recommended to create individuals for Nodes with the template:
         <owl:members rdf:parseType="Collection">
             <rdf:Description rdf:about="https://l-jamora.github.io/m150-onto/Component"/>
             <rdf:Description rdf:about="https://l-jamora.github.io/m150-onto/Geometry"/>
-            <rdf:Description rdf:about="https://l-jamora.github.io/m150-onto/Reference"/>
             <rdf:Description rdf:about="https://l-jamora.github.io/m150-onto/Report"/>
         </owl:members>
     </rdf:Description>

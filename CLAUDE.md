@@ -126,14 +126,18 @@ condition_individual.isChildOf.append(inspection_individual)
 ```
 DATA
 ├── FD  (format metadata — FD001 format code, FD002 type)
-├── HG  (pipe section)  ← HG001 = pipe ID
-│   ├── GO  (geometry object) → GP (geometry points)
-│   └── HI  (pipe inspection) ← HI104 date, HI105 time
-│       └── HZ  (condition row) ← HZ001 station, HZ002 code
-├── KG  (node)  ← KG001 = node ID
-│   ├── GO / KA (geometry / additional data)
-│   └── KI  (node inspection) ← KI104 date, KI105 time
-│       └── KZ  (condition row) ← KZ001 station, KZ002 code
+├── HG  (Haltungsgrunddaten)  ← HG001 = pipe ID
+│   ├── GO  (Geometrieobjektdaten)
+│   │   └── GP  (Geometriepunktdaten)
+│   └── HI  (Haltungsinspektionsdaten) ← HI104 date, HI105 time
+│       ├── HZ  (Haltungszustandsdaten) ← HZ001 station, HZ002 code
+│       └── HM  (Messwertdaten)
+├── KG  (Knotengrunddaten)  ← KG001 = node ID
+│   ├── GO  (Geometrieobjektdaten)
+│   │   └── GP  (Geometriepunktdaten)
+│   ├── KI  (Knoteninspektionsdaten) ← KI104 date, KI105 time
+│   │   └── KZ  (Knotenzustandsdaten) ← KZ001 station, KZ002 code
+│   └── KA  (Knotenaufbaudaten)
 └── RT  (reference table rows) ← RT001 table ID, RT002 code, RT004 value
 ```
 
