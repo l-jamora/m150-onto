@@ -1845,38 +1845,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto/hasFormatData -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFormatData">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasFormatType -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFormatType">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasFormatData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasFormatVersionNumber -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFormatVersionNumber">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasFormatData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto/hasFunctionalStatus -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFunctionalStatus">
