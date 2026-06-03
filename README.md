@@ -19,7 +19,7 @@ docs/                  # Additional documentation
 Key design decisions are documented in [docs/ontology-structure-changes.md](docs/ontology-structure-changes.md). In brief:
 
 - `Reference` subclasses (Material, SewerType, etc.) are **individuals**, not classes, to prevent reasoners from inferring that a pipe section *is* a material.
-- All `hasX` object properties are declared `owl:FunctionalProperty`, `owl:AsymmetricProperty`, and `owl:IrreflexiveProperty`, reflecting their one-to-one, directed, non-self-referential nature.
+- Most `hasX` object properties are declared `owl:FunctionalProperty`, `owl:AsymmetricProperty`, and `owl:IrreflexiveProperty`, reflecting their one-to-one, directed, non-self-referential nature. Some exceptions are made for object properties such as super-object properties `hasBasicData`.
 - Network topology properties (`flowsTo`, `flowsFrom`, `connectedWith`) and inspection linkage properties (`inspects`, `inspectedIn`, `isChildOf`, `isParentOf`, `renders`, `renderedBy`) are intentionally exempt from the functional constraint.
 
 ## Parsing XML data
