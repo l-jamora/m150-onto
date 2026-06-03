@@ -2629,60 +2629,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTable -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTable">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTableData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTableCode -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTableCode">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTableData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTableData -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTableData">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTableLongText -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTableLongText">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTableData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasReferenceTableShortText -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasReferenceTableShortText">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasReferenceTableData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto/hasSewerType -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasSewerType">
