@@ -675,17 +675,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasAssessmentClass -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasAssessmentClass">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto#hasAssessor -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasAssessor">
@@ -861,76 +850,10 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasConditionPointsOperationalSafety -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionPointsOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasConditionPointsStructuralStability -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionPointsStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasConditionPointsTightness -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionPointsTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto#hasConnection -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConnection">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasEvaluationPointsOperationalSafety -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasEvaluationPointsOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasEvaluationPointsStructuralStability -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasEvaluationPointsStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasEvaluationPointsTightness -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasEvaluationPointsTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
@@ -953,17 +876,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasInspectionData">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasInspectionNumber -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasInspectionNumber">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
     </owl:ObjectProperty>
@@ -1018,39 +930,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasLongText">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasMaximumConditionClassOperationalSafety -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMaximumConditionClassOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasMaximumConditionClassStructuralStability -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMaximumConditionClassStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasMaximumConditionClassTightness -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMaximumConditionClassTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
@@ -1188,17 +1067,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionCorrectCone -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionCorrectCone">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionData -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionData">
@@ -1212,17 +1080,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionDigitalPhotoName -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionDigitalPhotoName">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionOperationalSafety -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionOperationalSafety">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeInspectionData"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
@@ -1417,42 +1274,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasPriority -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPriority">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasProcessingNote -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasProcessingNote">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto#hasProcessingStatus -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasProcessingStatus">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasProjectNumber -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasProjectNumber">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
@@ -1476,17 +1300,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasQuantification2">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasRehabilitationRequirementNumber -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasRehabilitationRequirementNumber">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
@@ -1549,17 +1362,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasTemperature -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasTemperature">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto#hasVideoCounterReading -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasVideoCounterReading">
@@ -1596,17 +1398,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasVideoStorageMediumName -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasVideoStorageMediumName">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasWaterLevel -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasWaterLevel">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
@@ -2794,10 +2585,18 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto#hasAssessmentClass -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasAssessmentClass">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto#hasAssessmentDate -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasAssessmentDate">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     </owl:DatatypeProperty>
     
@@ -2806,8 +2605,72 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasClassificationDate -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasClassificationDate">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasConditionData -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionData">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasConditionPointsOperationalSafety -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionPointsOperationalSafety">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasConditionPointsStructuralStability -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionPointsStructuralStability">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasConditionPointsTightness -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionPointsTightness">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasEvaluationPointsOperationalSafety -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasEvaluationPointsOperationalSafety">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasEvaluationPointsStructuralStability -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasEvaluationPointsStructuralStability">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasEvaluationPointsTightness -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasEvaluationPointsTightness">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasInspectionData -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasInspectionData">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2815,8 +2678,96 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasInspectionDateTime -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasInspectionDateTime">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasInspectionNumber -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasInspectionNumber">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasMaximumConditionClassOperationalSafety -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMaximumConditionClassOperationalSafety">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasMaximumConditionClassStructuralStability -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMaximumConditionClassStructuralStability">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasMaximumConditionClassTightness -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMaximumConditionClassTightness">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionCorrectCone -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionCorrectCone">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionData -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionData">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionOperationalSafety -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionOperationalSafety">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasPriority -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPriority">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasProcessingNote -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasProcessingNote">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasProjectNumber -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasProjectNumber">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasRehabilitationRequirementNumber -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasRehabilitationRequirementNumber">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
     </owl:DatatypeProperty>
     
 
@@ -2824,8 +2775,24 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasReportDate -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasReportDate">
-        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasTemperature -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasTemperature">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto#hasWaterLevel -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasWaterLevel">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
     </owl:DatatypeProperty>
     
 
