@@ -2368,7 +2368,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasAssessmentClass -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasAssessmentClass">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2376,7 +2376,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasAssessmentDate -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasAssessmentDate">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     </owl:DatatypeProperty>
     
@@ -2385,7 +2385,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasCameraSpecificDataPlaceholder -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasCameraSpecificDataPlaceholder">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2393,7 +2393,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasCharacterization1 -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasCharacterization1">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2401,7 +2401,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasCharacterization2 -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasCharacterization2">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2409,7 +2409,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasClassificationDate -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasClassificationDate">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     </owl:DatatypeProperty>
     
@@ -2418,7 +2418,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasConditionClassOperationalSafety -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionClassOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2426,7 +2426,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasConditionClassStructuralStability -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionClassStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2434,7 +2434,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasConditionClassTightness -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionClassTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2442,15 +2442,15 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasConditionCode -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionCode">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasConditionData -->
+    <!-- https://l-jamora.github.io/m150-onto#hasConditionDataProperty -->
 
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionData">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionDataProperty">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2458,7 +2458,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasConditionPointsOperationalSafety -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionPointsOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2466,7 +2466,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasConditionPointsStructuralStability -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionPointsStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2474,7 +2474,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasConditionPointsTightness -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConditionPointsTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2482,7 +2482,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasConnection -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasConnection">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
         <rdfs:comment>Issue: for some reason, DWA-M 150 classifies this as an alphanumerical string instead of a boolean. A boolean would be the better choice: Yes: an einer Verbindung aufgetreten; No: nicht an einer Verbindung aufgetreten. Instead: M150 says if empty then no, if A then yes.This will have to be reflected in the OntoParser somehow.</rdfs:comment>
     </owl:DatatypeProperty>
@@ -2492,7 +2492,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasEvaluationPointsOperationalSafety -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasEvaluationPointsOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2500,7 +2500,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasEvaluationPointsStructuralStability -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasEvaluationPointsStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2508,14 +2508,14 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasEvaluationPointsTightness -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasEvaluationPointsTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasInspectionData -->
+    <!-- https://l-jamora.github.io/m150-onto#hasInspectionDataProperty -->
 
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasInspectionData">
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty">
         <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
     </owl:DatatypeProperty>
     
@@ -2524,7 +2524,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasInspectionDateTime -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasInspectionDateTime">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
     </owl:DatatypeProperty>
     
@@ -2533,7 +2533,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasInspectionNumber -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasInspectionNumber">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
@@ -2542,7 +2542,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasLinearDamage -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasLinearDamage">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2550,7 +2550,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasLongText -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasLongText">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2558,7 +2558,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasMaximumConditionClassOperationalSafety -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMaximumConditionClassOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2566,7 +2566,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasMaximumConditionClassStructuralStability -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMaximumConditionClassStructuralStability">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2574,15 +2574,15 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasMaximumConditionClassTightness -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMaximumConditionClassTightness">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasNodeConditionData -->
+    <!-- https://l-jamora.github.io/m150-onto#hasNodeConditionDataProperty -->
 
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeConditionData">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeConditionDataProperty">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2590,7 +2590,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasNodeConditionDepth -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeConditionDepth">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeConditionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
     </owl:DatatypeProperty>
     
@@ -2599,7 +2599,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasNodeConditionManholeArea -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeConditionManholeArea">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeConditionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -2608,16 +2608,16 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionCorrectCone -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionCorrectCone">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeInspectionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionData -->
+    <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionDataProperty -->
 
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionData">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionDataProperty">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2625,16 +2625,16 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasNodeInspectionOperationalSafety -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasNodeInspectionOperationalSafety">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasNodeInspectionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     </owl:DatatypeProperty>
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasPipeSectionConditionData -->
+    <!-- https://l-jamora.github.io/m150-onto#hasPipeSectionConditionDataProperty -->
 
-    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPipeSectionConditionData">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPipeSectionConditionDataProperty">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2642,7 +2642,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasPipeSectionConditionLining -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPipeSectionConditionLining">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasPipeSectionConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasPipeSectionConditionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
     </owl:DatatypeProperty>
     
@@ -2651,7 +2651,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasPipeSectionConditionStation -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPipeSectionConditionStation">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasPipeSectionConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasPipeSectionConditionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
     </owl:DatatypeProperty>
     
@@ -2660,7 +2660,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasPositionFrom -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPositionFrom">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2668,7 +2668,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasPositionTo -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPositionTo">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2676,7 +2676,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasPriority -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPriority">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2684,7 +2684,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasProcessingNote -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasProcessingNote">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -2693,7 +2693,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasProjectNumber -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasProjectNumber">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
     </owl:DatatypeProperty>
     
@@ -2702,7 +2702,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasQuantification1 -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasQuantification1">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2710,7 +2710,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasQuantification2 -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasQuantification2">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2718,7 +2718,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasRehabilitationRequirementNumber -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasRehabilitationRequirementNumber">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2726,7 +2726,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasReportDate -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasReportDate">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#date"/>
     </owl:DatatypeProperty>
     
@@ -2735,7 +2735,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasStandardizedComment -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasStandardizedComment">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2743,7 +2743,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasTemperature -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasTemperature">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
@@ -2752,7 +2752,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasVideoCounterReading -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasVideoCounterReading">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasConditionDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -2760,7 +2760,7 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#hasWaterLevel -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto#hasWaterLevel">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionData"/>
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
     </owl:DatatypeProperty>
     
@@ -6954,4 +6954,3 @@ It is recommended to create individuals for Nodes with the template:
 
 
 <!-- Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi -->
-
