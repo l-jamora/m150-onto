@@ -111,7 +111,13 @@ inspection_individual.inspects.append(pipe_individual)
 condition_individual.isChildOf.append(inspection_individual)
 ```
 
-`_get_property(name)` looks up the property in the ontology by IRI; if not found it creates a new `ObjectProperty` (or `DatatypeProperty` for `hasInspectionDateTime`).
+`_get_property(name)` looks up the property in the ontology by IRI; if not found it creates a new `ObjectProperty` (or `DatatypeProperty` when the name is in `_DATATYPE_PROPERTIES`).
+
+### Property-type resilience
+
+`_apply_mapping()` uses `isinstance(prop, owl.DatatypeProperty)` as the authority on whether to assign a literal value or resolve an OWL individual — the CSV type column is only a fallback for properties that don't exist in the ontology yet. This means the parser survives future `owl:ObjectProperty` → `owl:DatatypeProperty` refactors without crashing.
+
+**Maintenance rule:** whenever a property is converted between types in the ontology, also move its name between the "Corresponding Ontology Object Property" and "Corresponding Ontology Data Property" columns in `ontoparser/mapping_DWA-to-m150onto.csv`. The test `tests/test_object_properties.py` enforces this: it checks both columns against the live RDF declarations.
 
 ### Known limitations and future work
 
