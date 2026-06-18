@@ -42,12 +42,28 @@ owl:Thing
 ├── Reference         (all material/type code individuals are instances of subclasses)
 │   ├── Material      (e.g. Beispiel_M150_RT105_B = Beton/Concrete)
 │   ├── SewerType, NodeType, Shape, …
+├── SpatialEntity     (physical/geographic locations; individuals created per XML value)
+│   ├── Street
+│   ├── District
+│   └── TreatmentPlant
+├── InformationEntity (administrative identifiers; individuals created per XML value)
+│   ├── StreetCode
+│   ├── DistrictCode
+│   ├── MunicipalityCode
+│   ├── AreaCode
+│   └── CatchmentAreaCode
+├── Directionality
+│   └── FlowingDirection
+│       ├── InFlowingDirection    (named individual)
+│       └── AgainstFlowingDirection (named individual)
 └── Geometry
     └── Object
         └── Point
 ```
 
 **Key design decision:** `Reference` subclasses (Material, SewerType, etc.) are **individuals**, not classes. A `PipeSection` relates to material via object property `hasMaterial`, not via datatype or class membership. This prevents the reasoner from inferring that a pipe section *is* a material.
+
+`SpatialEntity` and `InformationEntity` individuals are created dynamically by the OntoParser when the XML contains location/code data (HG101–HG108 / KG101–KG108). They are deduped — multiple assets sharing the same street get the same `Street` individual.
 
 ---
 
@@ -77,6 +93,16 @@ Reads a **DWA M 150 Type B XML** file and creates OWL individuals in the ontolog
 | `KI` (nested in KG) | `Inspection` | same pattern |
 | `HZ` (nested in HI) | `Condition` | `Beispiel_Condition_1204015_0_0_BCD` |
 | `KZ` (nested in KI) | `Condition` | same pattern |
+| `HG102/KG102` value | `Street` | `Beispiel_Street_Hauptstrasse` |
+| `HG104/KG104` value | `District` | `Beispiel_District_Mitte` |
+| `HG108/KG108` value | `TreatmentPlant` | `Beispiel_TreatmentPlant_KA1` |
+| `HG101/KG101` value | `StreetCode` | `Beispiel_StreetCode_001` |
+| `HG103/KG103` value | `DistrictCode` | `Beispiel_DistrictCode_05` |
+| `HG105/KG105` value | `MunicipalityCode` | `Beispiel_MunicipalityCode_05334` |
+| `HG106/KG106` value | `AreaCode` | `Beispiel_AreaCode_A` |
+| `HG107/KG107` value | `CatchmentAreaCode` | `Beispiel_CatchmentAreaCode_EG1` |
+
+SpatialEntity/InformationEntity individuals are deduplicated: if two pipe sections share the same street name, they reference the same `Street` individual.
 
 ### Naming conventions
 
@@ -113,11 +139,23 @@ condition_individual.isChildOf.append(inspection_individual)
 
 `_get_property(name)` looks up the property in the ontology by IRI; if not found it creates a new `ObjectProperty` (or `DatatypeProperty` when the name is in `_DATATYPE_PROPERTIES`).
 
+### Typed individual resolution
+
+`_resolve_object_individual()` follows a four-tier strategy (in order):
+
+1. **Node cross-reference** (`_NODE_REFERENCE_PROPERTIES`): `hasPipeSectionTopNodeDesignation` / `hasPipeSectionBottomNodeDesignation` — creates/looks up a `Node` individual eagerly.
+2. **Named entity** (`_NAMED_ENTITY_PROPERTIES`): maps property names to target classes (e.g. `hasStreetName` → `Street`). Creates a `Beispiel_<ClassName>_<value>` individual of the correct type. Multiple assets with the same value share one individual.
+3. **Coded value** (`_CODED_VALUE_INDIVIDUALS`): maps specific coded XML values to pre-existing named individuals (e.g. HG008 `I` → `InFlowingDirection`). Looks up the individual by slash IRI; prints a warning if not found.
+4. **Reference table lookup**: if the CSV provides an RT table number, searches for `M150_RT{table}_{code}`; creates a placeholder if missing.
+5. **Free-text fallback**: creates a generic `owl:Thing` individual named after the property and value.
+
+**Maintenance rule:** when adding a new object property whose values map to a specific class, add an entry to `_NAMED_ENTITY_PROPERTIES`. When adding a property with a fixed set of coded values that correspond to named individuals, add an entry to `_CODED_VALUE_INDIVIDUALS`.
+
 ### Property-type resilience
 
 `_apply_mapping()` uses `isinstance(prop, owl.DatatypeProperty)` as the authority on whether to assign a literal value or resolve an OWL individual — the CSV type column is only a fallback for properties that don't exist in the ontology yet. This means the parser survives future `owl:ObjectProperty` → `owl:DatatypeProperty` refactors without crashing.
 
-**Maintenance rule:** whenever a property is converted between types in the ontology, also move its name between the "Corresponding Ontology Object Property" and "Corresponding Ontology Data Property" columns in `ontoparser/mapping_DWA-to-m150onto.csv`. The test `tests/test_object_properties.py` enforces this: it checks both columns against the live RDF declarations.
+**Maintenance rule:** whenever a property is converted between types in the ontology, also move its name between the "Corresponding Ontology Object Property" and "Corresponding Ontology Data Property" columns in `ontoparser/mapping_DWA-to-m150onto.csv`, and add/remove it from `_DATATYPE_PROPERTIES` in `parser.py`. The test `tests/test_object_data_properties.py` enforces this: it checks both columns against the live RDF declarations.
 
 ### Known limitations and future work
 

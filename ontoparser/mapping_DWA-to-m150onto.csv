@@ -53,7 +53,7 @@ HG005,hasPipeSectionEndPointDesignation,,,
 HG006,hasPipeSectionObjectType,,,128
 HG007,,hasPipeSectionConnectingPipeStationing,,
 HG008,hasPipeSectionConnectingPipeStationingDirection,,,
-HG009,hasPipeSectionConnectingPipePositioning,,,
+HG009,,hasPipeSectionConnectingPipePositioning,,
 HG010,hasPipeSectionEndPointType,,,116
 HG011,,hasPipeSectionPipelineDesignation,,
 HG012,isChildOf,,,

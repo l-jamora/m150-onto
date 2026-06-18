@@ -19,10 +19,64 @@ CSV_MAPPING_PATH = Path(__file__).resolve().parent / "mapping_DWA-to-m150onto.cs
 _DATETIME_CODES = frozenset({"HI104", "HI105", "KI104", "KI105"})
 
 # All declared DatatypeProperty names — used to choose the right fallback class when dynamically creating properties
-_DATATYPE_PROPERTIES = frozenset({"hasInspectionDateTime", "hasReportDate", "hasAssessmentDate", "hasClassificationDate"})
+# that are not yet defined in the ontology. Keep this in sync with owl:DatatypeProperty declarations in m150-onto.rdf.
+_DATATYPE_PROPERTIES = frozenset({
+    "hasInspectionDateTime", "hasReportDate", "hasAssessmentDate", "hasClassificationDate",
+    # Basic component data (HG/KG) — converted from ObjectProperty in metamodel rework
+    "hasDesignation", "hasAlternativeDesignation",
+    "hasYearOfConstruction", "hasDepth",
+    "hasPipeSectionConnectingPipeStationing", "hasPipeSectionConnectingPipePositioning",
+    "hasPipeSectionPipelineDesignation",
+    "hasPipeSectionProfileWidth", "hasPipeSectionProfileHeight",
+    "hasPipeSectionLength", "hasPipeSectionGradient",
+    "hasPipeSectionPipeLength", "hasPipeSectionSelfSupportingLining", "hasPipeSectionWallThickness",
+    "hasNodeManholeLength", "hasNodeManholeWidth",
+    "hasNodeCoverWidth", "hasNodeCoverLength", "isNodeCoverBolted",
+    "hasNodeChannelWidth", "hasNodeChannelLength",
+    "hasNodeNumberOfClimbingIrons",
+    # Inspection data (HI/KI) — converted from ObjectProperty in refactoring
+    "hasProjectNumber", "hasInspectionNumber", "hasProcessingNote",
+    "hasTemperature", "hasWaterLevel",
+    "hasMaximumConditionClassTightness", "hasMaximumConditionClassStructuralStability", "hasMaximumConditionClassOperationalSafety",
+    "hasConditionPointsTightness", "hasConditionPointsStructuralStability", "hasConditionPointsOperationalSafety",
+    "hasEvaluationPointsTightness", "hasEvaluationPointsStructuralStability", "hasEvaluationPointsOperationalSafety",
+    "hasRehabilitationRequirementNumber", "hasAssessmentClass", "hasPriority",
+    "hasNodeInspectionOperationalSafety", "hasNodeInspectionCorrectCone",
+    # Condition data (HZ/KZ) — converted from ObjectProperty in refactoring
+    "hasConditionCode", "hasCharacterization1", "hasCharacterization2",
+    "hasQuantification1", "hasQuantification2", "hasLinearDamage",
+    "hasPositionFrom", "hasPositionTo", "hasVideoCounterReading",
+    "hasLongText", "hasConnection", "hasStandardizedComment", "hasCameraSpecificDataPlaceholder",
+    "hasConditionClassTightness", "hasConditionClassStructuralStability", "hasConditionClassOperationalSafety",
+    "hasPipeSectionConditionStation", "hasPipeSectionConditionLining",
+    "hasNodeConditionDepth", "hasNodeConditionManholeArea",
+    # Format and reference table metadata (FD/RT elements)
+    "hasFormatVersionNumber", "hasFormatType",
+    "hasReferenceTable", "hasReferenceTableCode", "hasReferenceTableShortText", "hasReferenceTableLongText",
+})
 
 # Object properties whose XML values are Node codes (looked up / eagerly created as Node individuals)
 _NODE_REFERENCE_PROPERTIES = frozenset({"hasPipeSectionTopNodeDesignation", "hasPipeSectionBottomNodeDesignation"})
+
+# Object properties whose XML values become typed individuals of a specific ontology class
+_NAMED_ENTITY_PROPERTIES: dict = {
+    "hasStreetName":           "Street",
+    "hasDistrictName":         "District",
+    "hasTreatmentPlantNumber": "TreatmentPlant",
+    "hasStreetCode":           "StreetCode",
+    "hasDistrictCode":         "DistrictCode",
+    "hasMunicipalityCode":     "MunicipalityCode",
+    "hasAreaCode":             "AreaCode",
+    "hasCatchmentAreaCode":    "CatchmentAreaCode",
+}
+
+# Object properties whose coded XML values map to specific pre-existing named individuals
+_CODED_VALUE_INDIVIDUALS: dict = {
+    "hasPipeSectionConnectingPipeStationingDirection": {
+        "I": "InFlowingDirection",
+        "G": "AgainstFlowingDirection",
+    },
+}
 
 
 def normalize_text(element: Optional[ET.Element]) -> str:
@@ -108,6 +162,48 @@ def load_mapping(csv_path: Path) -> dict:
             elif "rdfs:comment" in annotation:
                 mapping[code] = {"type": "annotation", "property": None, "rt_table": ""}
     return mapping
+
+
+def _coerce_data_value(value: str, prop) -> object:
+    """Coerces a raw XML string to the Python type that matches the property's declared rdfs:range.
+
+    Order of attempts: date → range-guided type → raw string fallback.
+    """
+    date_val = parse_date(value)
+    if date_val is not None:
+        return date_val
+
+    ranges = list(prop.range) if hasattr(prop, "range") else []
+    if ranges:
+        r = ranges[0]
+        # owlready2 maps XSD types to Python natives (bool, int, float); check those first
+        if r is bool:
+            return value.strip().lower() in ("true", "yes", "j", "ja", "1", "a")
+        if r is int:
+            try:
+                return int(value)
+            except ValueError:
+                pass
+        if r is float:
+            try:
+                return float(value.replace(",", "."))
+            except ValueError:
+                pass
+        iri = getattr(r, "iri", str(r))
+        if "boolean" in iri:
+            return value.strip().lower() in ("true", "yes", "j", "ja", "1", "a")
+        if "integer" in iri or "#int" in iri:
+            try:
+                return int(value)
+            except ValueError:
+                pass
+        if "float" in iri or "double" in iri or "decimal" in iri:
+            try:
+                return float(value.replace(",", "."))
+            except ValueError:
+                pass
+
+    return value
 
 
 class M150XmlParser:
@@ -207,6 +303,21 @@ class M150XmlParser:
             ref_cls = self._get_class("Reference")
             return self._create_individual(ref_cls, ref_name, label=value)
 
+        if prop_name in _NAMED_ENTITY_PROPERTIES:
+            class_name = _NAMED_ENTITY_PROPERTIES[prop_name]
+            cls = self._get_class(class_name)
+            ind_name = INDIVIDUAL_PREFIX + safe_entity_name(class_name, value)
+            return self._create_individual(cls, ind_name, label=value)
+
+        if prop_name in _CODED_VALUE_INDIVIDUALS:
+            ind_name = _CODED_VALUE_INDIVIDUALS[prop_name].get(value.upper())
+            if ind_name:
+                existing = self.onto.search_one(iri=self._slash_iri(ind_name))
+                if existing is not None:
+                    return existing
+                print(f"  Warning: Named individual {ind_name} not found in ontology")
+            return None
+
         ind_name = safe_entity_name(prop_name.replace("has", "", 1), value)
         return self._create_individual(owl.Thing, ind_name, label=value)
 
@@ -222,8 +333,10 @@ class M150XmlParser:
 
         prop = self._get_property(prop_name)
 
-        if entry_type == "data":
-            typed_value = parse_date(value)
+        # Use the ontology property type as ground truth. The CSV type hint is
+        # the fallback for properties dynamically created at parse time.
+        if isinstance(prop, owl.DatatypeProperty) or entry_type == "data":
+            typed_value = _coerce_data_value(value, prop)
             if typed_value is not None:
                 setattr(individual, prop.name, [typed_value])
             return
