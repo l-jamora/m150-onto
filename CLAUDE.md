@@ -53,9 +53,12 @@ owl:Thing
 │   ├── AreaCode
 │   └── CatchmentAreaCode
 ├── Directionality
-│   └── FlowingDirection
-│       ├── InFlowingDirection    (named individual)
-│       └── AgainstFlowingDirection (named individual)
+│   ├── FlowingDirection
+│   │   ├── InFlowingDirection    (named individual)
+│   │   └── AgainstFlowingDirection (named individual)
+│   └── Orientation               (GP102 circular arc orientation)
+│       ├── Clockwise             (named individual; GP102=I)
+│       └── CounterClockwise      (named individual; GP102=G)
 └── Geometry
     └── Object
         └── Point
@@ -149,7 +152,7 @@ condition_individual.isChildOf.append(inspection_individual)
 4. **Reference table lookup**: if the CSV provides an RT table number, searches for `M150_RT{table}_{code}`; creates a placeholder if missing.
 5. **Free-text fallback**: creates a generic `owl:Thing` individual named after the property and value.
 
-**Maintenance rule:** when adding a new object property whose values map to a specific class, add an entry to `_NAMED_ENTITY_PROPERTIES`. When adding a property with a fixed set of coded values that correspond to named individuals, add an entry to `_CODED_VALUE_INDIVIDUALS`.
+**Maintenance rule:** when adding a new object property whose values map to a specific class, add an entry to `_NAMED_ENTITY_PROPERTIES`. When adding a property with a fixed set of coded values that correspond to named individuals, add an entry to `_CODED_VALUE_INDIVIDUALS` (e.g. `hasOrientation`: `I` → `Clockwise`, `G` → `CounterClockwise`; `hasPipeSectionConnectingPipeStationingDirection`: `I` → `InFlowingDirection`, `G` → `AgainstFlowingDirection`).
 
 ### Property-type resilience
 

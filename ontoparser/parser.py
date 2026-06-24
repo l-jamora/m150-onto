@@ -51,6 +51,9 @@ _DATATYPE_PROPERTIES = frozenset({
     "hasConditionClassTightness", "hasConditionClassStructuralStability", "hasConditionClassOperationalSafety",
     "hasPipeSectionConditionStation", "hasPipeSectionConditionLining",
     "hasNodeConditionDepth", "hasNodeConditionManholeArea",
+    # Geometry data (GO/GP) — converted from ObjectProperty in metamodel rework
+    "hasGeometryObjectDesignation", "hasGeometryPointDesignation",
+    "hasEasting", "hasNorthing", "hasEastCoordinate", "hasNorthCoordinate", "hasHeight",
     # Format and reference table metadata (FD/RT elements)
     "hasFormatVersionNumber", "hasFormatType",
     "hasReferenceTable", "hasReferenceTableCode", "hasReferenceTableShortText", "hasReferenceTableLongText",
@@ -76,6 +79,10 @@ _CODED_VALUE_INDIVIDUALS: dict = {
     "hasPipeSectionConnectingPipeStationingDirection": {
         "I": "InFlowingDirection",
         "G": "AgainstFlowingDirection",
+    },
+    "hasOrientation": {
+        "I": "Clockwise",
+        "G": "CounterClockwise",
     },
 }
 

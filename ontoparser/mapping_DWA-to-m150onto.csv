@@ -105,19 +105,19 @@ KA006,,hasNodeStructureLength,,
 KA007,hasNodeStructureShape,,,118
 KA998,,,Annotation: rdfs:comment,
 KA999,,,Annotation: rdfs:comment,
-GO001,hasGeometryObjectDesignation,,,
+GO001,,hasGeometryObjectDesignation,,
 GO002,hasGeometryObjectIdentifier,,,300
 GO003,hasGeometryObjectType,,,301
 GO997,,,Annotation: rdfs:comment,
 GO998,,,Annotation: rdfs:comment,
 GO999,,,Annotation: rdfs:comment,
-GP001,hasGeometryPointDesignation,,,
+GP001,,hasGeometryPointDesignation,,
 GP002,hasCoordinateSystem,,,
-GP003,hasEasting,,,
-GP004,hasNorthing,,,
-GP005,hasEastCoordinate,,,
-GP006,hasNorthCoordinate,,,
-GP007,hasHeight,,,
+GP003,,hasEasting,,
+GP004,,hasNorthing,,
+GP005,,hasEastCoordinate,,
+GP006,,hasNorthCoordinate,,
+GP007,,hasHeight,,
 GP008,hasPositionalAccuracy,,,101
 GP009,hasElevationAccuracy,,,102
 GP010,hasElevationSystem,,,303

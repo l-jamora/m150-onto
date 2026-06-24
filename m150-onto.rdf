@@ -1287,28 +1287,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto/hasEastCoordinate -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasEastCoordinate">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasEasting -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasEasting">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto/hasElevationAccuracy -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasElevationAccuracy">
@@ -1381,17 +1359,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto/hasGeometryObjectDesignation -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryObjectDesignation">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryObjectData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto/hasGeometryObjectIdentifier -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryObjectIdentifier">
@@ -1426,32 +1393,10 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto/hasGeometryPointDesignation -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryPointDesignation">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto/hasGroundwaterLevel -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGroundwaterLevel">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasBasicData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasHeight -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasHeight">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointData"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
@@ -1723,28 +1668,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
         <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
         <rdfs:range rdf:resource="https://l-jamora.github.io/m150-onto/NodeType"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNorthCoordinate -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNorthCoordinate">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto/hasNorthing -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNorthing">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
     </owl:ObjectProperty>
     
 
@@ -2519,6 +2442,62 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto/hasEastCoordinate -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasEastCoordinate">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasEasting -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasEasting">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasGeometryObjectDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryObjectDataProperty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasGeometryObjectDesignation -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryObjectDesignation">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryObjectDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasGeometryPointDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryPointDataProperty">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasGeometryPointDesignation -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryPointDesignation">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasHeight -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasHeight">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/hasNodeBasicDataProperty -->
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeBasicDataProperty">
@@ -2619,6 +2598,22 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNodeStructureWidth">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasNodeStructureDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasNorthCoordinate -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNorthCoordinate">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasNorthing -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasNorthing">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointDataProperty"/>
     </owl:DatatypeProperty>
     
 
@@ -3109,6 +3104,14 @@ It is recommended to create individuals for geometric points with the template:
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto/Orientation -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Orientation">
+        <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Directionality"/>
+    </owl:Class>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/Ownership -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Ownership">
@@ -3378,6 +3381,22 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/AgainstFlowingDirection">
         <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/FlowingDirection"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/Clockwise -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Clockwise">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Orientation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/CounterClockwise -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/CounterClockwise">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Orientation"/>
     </owl:NamedIndividual>
     
 
