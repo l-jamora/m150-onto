@@ -59,6 +59,11 @@ owl:Thing
 │   └── Orientation               (GP102 circular arc orientation)
 │       ├── Clockwise             (named individual; GP102=I)
 │       └── CounterClockwise      (named individual; GP102=G)
+├── CameraSystem              (individuals created per HI/KI006 value)
+├── VideoFile                 (individuals created per HI/KI116 value)
+├── Photo                     (individuals created per HZ/KZ009 value)
+│   ├── AmbientPhoto          (individuals created per KI122 value)
+│   └── DigitalPhoto          (individuals created per KI118 value)
 └── Geometry
     └── Object
         └── Point
@@ -104,8 +109,14 @@ Reads a **DWA M 150 Type B XML** file and creates OWL individuals in the ontolog
 | `HG105/KG105` value | `MunicipalityCode` | `Beispiel_MunicipalityCode_05334` |
 | `HG106/KG106` value | `AreaCode` | `Beispiel_AreaCode_A` |
 | `HG107/KG107` value | `CatchmentAreaCode` | `Beispiel_CatchmentAreaCode_EG1` |
+| `HI006/KI006` value | `CameraSystem` | `Beispiel_CameraSystem_VidiSys` |
+| `HI115/KI115` value | `VideoStorageMedium` | `Beispiel_VideoStorageMedium_DVD` |
+| `HI116/KI116` value | `VideoFile` | `Beispiel_VideoFile_1204015_avi` |
+| `KI118` value | `DigitalPhoto` | `Beispiel_DigitalPhoto_1204015_jpg` |
+| `KI122` value | `AmbientPhoto` | `Beispiel_AmbientPhoto_1204015_jpg` |
+| `HZ009/KZ009` value | `Photo` | `Beispiel_Photo_1204015_0_0_BCD_jpg` |
 
-SpatialEntity/InformationEntity individuals are deduplicated: if two pipe sections share the same street name, they reference the same `Street` individual.
+SpatialEntity/InformationEntity individuals are deduplicated: if two pipe sections share the same street name, they reference the same `Street` individual. Media individuals (CameraSystem, VideoFile, Photo, etc.) are similarly deduplicated by value.
 
 ### Naming conventions
 
@@ -152,7 +163,7 @@ condition_individual.isChildOf.append(inspection_individual)
 4. **Reference table lookup**: if the CSV provides an RT table number, searches for `M150_RT{table}_{code}`; creates a placeholder if missing.
 5. **Free-text fallback**: creates a generic `owl:Thing` individual named after the property and value.
 
-**Maintenance rule:** when adding a new object property whose values map to a specific class, add an entry to `_NAMED_ENTITY_PROPERTIES`. When adding a property with a fixed set of coded values that correspond to named individuals, add an entry to `_CODED_VALUE_INDIVIDUALS` (e.g. `hasOrientation`: `I` → `Clockwise`, `G` → `CounterClockwise`; `hasPipeSectionConnectingPipeStationingDirection`: `I` → `InFlowingDirection`, `G` → `AgainstFlowingDirection`).
+**Maintenance rule:** when adding a new object property whose values map to a specific class, add an entry to `_NAMED_ENTITY_PROPERTIES` (e.g. `hasCameraSystemUsed` → `CameraSystem`, `hasVideoFilename` → `VideoFile`, `hasImageName` → `Photo`, `hasNodeInspectionDigitalPhotoName` → `DigitalPhoto`, `hasNodeInspectionAmbientPhoto` → `AmbientPhoto`, `hasVideoStorageMediumName` → `VideoStorageMedium`). When adding a property with a fixed set of coded values that correspond to named individuals, add an entry to `_CODED_VALUE_INDIVIDUALS` (e.g. `hasOrientation`: `I` → `Clockwise`, `G` → `CounterClockwise`; `hasPipeSectionConnectingPipeStationingDirection` and `hasPipeSectionInspectionDirection`: `I` → `InFlowingDirection`, `G` → `AgainstFlowingDirection`).
 
 ### Property-type resilience
 

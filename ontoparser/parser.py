@@ -66,19 +66,33 @@ _NODE_REFERENCE_PROPERTIES = frozenset({"hasPipeSectionTopNodeDesignation", "has
 
 # Object properties whose XML values become typed individuals of a specific ontology class
 _NAMED_ENTITY_PROPERTIES: dict = {
-    "hasStreetName":           "Street",
-    "hasDistrictName":         "District",
-    "hasTreatmentPlantNumber": "TreatmentPlant",
-    "hasStreetCode":           "StreetCode",
-    "hasDistrictCode":         "DistrictCode",
-    "hasMunicipalityCode":     "MunicipalityCode",
-    "hasAreaCode":             "AreaCode",
-    "hasCatchmentAreaCode":    "CatchmentAreaCode",
+    "hasStreetName":                        "Street",
+    "hasDistrictName":                      "District",
+    "hasTreatmentPlantNumber":              "TreatmentPlant",
+    "hasStreetCode":                        "StreetCode",
+    "hasDistrictCode":                      "DistrictCode",
+    "hasMunicipalityCode":                  "MunicipalityCode",
+    "hasAreaCode":                          "AreaCode",
+    "hasCatchmentAreaCode":                 "CatchmentAreaCode",
+    # Inspection media (HI/KI)
+    "hasCameraSystemUsed":                  "CameraSystem",
+    "hasVideoStorageMediumName":            "VideoStorageMedium",
+    "hasVideoFilename":                     "VideoFile",
+    "hasNodeInspectionDigitalPhotoName":    "DigitalPhoto",
+    "hasNodeInspectionAmbientPhoto":        "AmbientPhoto",
+    # Condition media (HZ/KZ)
+    "hasImageName":                         "Photo",
+    # Inspection reference point (HI102)
+    "hasPipeSectionInspectionReferencePointStart": "PipeSectionInspectionReferencePointStart",
 }
 
 # Object properties whose coded XML values map to specific pre-existing named individuals
 _CODED_VALUE_INDIVIDUALS: dict = {
     "hasPipeSectionConnectingPipeStationingDirection": {
+        "I": "InFlowingDirection",
+        "G": "AgainstFlowingDirection",
+    },
+    "hasPipeSectionInspectionDirection": {
         "I": "InFlowingDirection",
         "G": "AgainstFlowingDirection",
     },

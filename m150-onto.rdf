@@ -2737,6 +2737,14 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto/AmbientPhoto -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/AmbientPhoto">
+        <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Photo"/>
+    </owl:Class>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/AreaCode -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/AreaCode">
@@ -2758,6 +2766,12 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/BeddingType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/CameraSystem -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/CameraSystem"/>
     
 
 
@@ -2843,6 +2857,14 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/DataStatus">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
+    </owl:Class>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/DigitalPhoto -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/DigitalPhoto">
+        <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Photo"/>
     </owl:Class>
     
 
@@ -3045,7 +3067,6 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/Node -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Node">
-        <owl:equivalentClass rdf:resource="https://l-jamora.github.io/m150-onto/NodeStructureComponent"/>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Component"/>
         <owl:disjointWith rdf:resource="https://l-jamora.github.io/m150-onto/PipeSection"/>
     </owl:Class>
@@ -3116,6 +3137,12 @@ It is recommended to create individuals for geometric points with the template:
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto/Photo -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Photo"/>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/PhotoStorageMedium -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PhotoStorageMedium">
@@ -3127,10 +3154,25 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto/PipeSection -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PipeSection">
-        <owl:equivalentClass rdf:resource="https://l-jamora.github.io/m150-onto/PipeSectionType"/>
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Component"/>
     </owl:Class>
     
+
+
+    <!-- https://l-jamora.github.io/m150-onto/PipeSectionInspectionReferencePoint -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PipeSectionInspectionReferencePoint">
+        <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/SpatialEntity"/>
+    </owl:Class>
+
+
+
+    <!-- https://l-jamora.github.io/m150-onto/PipeSectionInspectionReferencePointStart -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PipeSectionInspectionReferencePointStart">
+        <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/PipeSectionInspectionReferencePoint"/>
+    </owl:Class>
+
 
 
     <!-- https://l-jamora.github.io/m150-onto/PipeSectionType -->
@@ -3315,6 +3357,12 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/VerticalReferencePoint">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/VideoFile -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/VideoFile"/>
     
 
 
@@ -5576,7 +5624,6 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     <!-- https://l-jamora.github.io/m150-onto/M150_RT124_A -->
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/M150_RT124_A">
-        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Node"/>
         <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/NodeStructureComponent"/>
         <rdfs:isDefinedBy>DWA-M 150 Reference Table 124</rdfs:isDefinedBy>
         <rdfs:label xml:lang="de">Abdeckung und Rahmen</rdfs:label>
