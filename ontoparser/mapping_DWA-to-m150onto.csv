@@ -98,10 +98,10 @@ KG998,,,Annotation: rdfs:comment,
 KG999,,,Annotation: rdfs:comment,
 KA001,hasNodeStructureComponent,,,124
 KA002,hasNodeStructureMaterial,,,105
-KA003,hasNodeStructureQuantity,,,
-KA004,hasNodeStructureHeight,,,
-KA005,hasNodeStructureWidth,,,
-KA006,hasNodeStructureLength,,,
+KA003,,hasNodeStructureQuantity,,
+KA004,,hasNodeStructureHeight,,
+KA005,,hasNodeStructureWidth,,
+KA006,,hasNodeStructureLength,,
 KA007,hasNodeStructureShape,,,118
 KA998,,,Annotation: rdfs:comment,
 KA999,,,Annotation: rdfs:comment,

@@ -34,6 +34,7 @@ _DATATYPE_PROPERTIES = frozenset({
     "hasNodeCoverWidth", "hasNodeCoverLength", "isNodeCoverBolted",
     "hasNodeChannelWidth", "hasNodeChannelLength",
     "hasNodeNumberOfClimbingIrons",
+    "hasNodeStructureHeight", "hasNodeStructureLength", "hasNodeStructureQuantity", "hasNodeStructureWidth",
     # Inspection data (HI/KI) — converted from ObjectProperty in refactoring
     "hasProjectNumber", "hasInspectionNumber", "hasProcessingNote",
     "hasTemperature", "hasWaterLevel",
