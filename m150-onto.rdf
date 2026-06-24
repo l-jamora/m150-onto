@@ -837,39 +837,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto#hasMeasurementStation -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMeasurementStation">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasMeasurementData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasMeasurementUnit -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMeasurementUnit">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasMeasurementData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- https://l-jamora.github.io/m150-onto#hasMeasurementValue -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMeasurementValue">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasMeasurementData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto#hasMeasurementValueType -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasMeasurementValueType">
@@ -2494,6 +2461,38 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasHeight">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasGeometryPointDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasMeasurementDataProperty -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMeasurementDataProperty">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasInspectionDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasMeasurementStation -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMeasurementStation">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasMeasurementDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasMeasurementUnit -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMeasurementUnit">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasMeasurementDataProperty"/>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/hasMeasurementValue -->
+
+    <owl:DatatypeProperty rdf:about="https://l-jamora.github.io/m150-onto/hasMeasurementValue">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasMeasurementDataProperty"/>
     </owl:DatatypeProperty>
     
 

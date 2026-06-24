@@ -54,6 +54,8 @@ _DATATYPE_PROPERTIES = frozenset({
     # Geometry data (GO/GP) — converted from ObjectProperty in metamodel rework
     "hasGeometryObjectDesignation", "hasGeometryPointDesignation",
     "hasEasting", "hasNorthing", "hasEastCoordinate", "hasNorthCoordinate", "hasHeight",
+    # Measurement data (HM) — converted from ObjectProperty in metamodel rework
+    "hasMeasurementStation", "hasMeasurementValue", "hasMeasurementUnit",
     # Format and reference table metadata (FD/RT elements)
     "hasFormatVersionNumber", "hasFormatType",
     "hasReferenceTable", "hasReferenceTableCode", "hasReferenceTableShortText", "hasReferenceTableLongText",

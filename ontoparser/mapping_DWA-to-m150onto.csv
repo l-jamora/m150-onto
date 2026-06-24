@@ -214,10 +214,10 @@ HI101,hasPipeSectionInspectionDirection,,,
 HI102,hasPipeSectionInspectionReferencePointStart,,,
 HI998,,,Annotation: rdfs:comment,
 HI999,,,Annotation: rdfs:comment,
-HM001,hasMeasurementStation,,,
+HM001,,hasMeasurementStation,,
 HM002,hasMeasurementValueType,,,401
-HM101,hasMeasurementValue,,,
-HM102,hasMeasurementUnit,,,
+HM101,,hasMeasurementValue,,
+HM102,,hasMeasurementUnit,,
 HM999,,,Annotation: rdfs:comment,
 KI101,hasNodeInspectionVerticalReferencePoint,,,210
 KI102,hasNodeInspectionCircumferentialReferencePoint,,,211
