@@ -59,6 +59,15 @@ owl:Thing
 │   └── Orientation               (GP102 circular arc orientation)
 │       ├── Clockwise             (named individual; GP102=I)
 │       └── CounterClockwise      (named individual; GP102=G)
+├── Person                    (individuals created per HI/KI001, HI/KI112, HI/KI113, HI/KI203, HZ/KZ203, HI/KI205 value)
+├── Organization              (individuals created per HI/KI111 value)
+├── Role                      (named individuals only — not dynamically created)
+│   ├── Client                (named individual)
+│   ├── Company               (named individual)
+│   ├── Inspector             (named individual)
+│   ├── SiteManager           (named individual)
+│   ├── Reporter              (named individual)
+│   └── Assessor              (named individual)
 ├── CameraSystem              (individuals created per HI/KI006 value)
 ├── VideoFile                 (individuals created per HI/KI116 value)
 ├── Photo                     (individuals created per HZ/KZ009 value)
@@ -115,8 +124,14 @@ Reads a **DWA M 150 Type B XML** file and creates OWL individuals in the ontolog
 | `KI118` value | `DigitalPhoto` | `Beispiel_DigitalPhoto_1204015_jpg` |
 | `KI122` value | `AmbientPhoto` | `Beispiel_AmbientPhoto_1204015_jpg` |
 | `HZ009/KZ009` value | `Photo` | `Beispiel_Photo_1204015_0_0_BCD_jpg` |
+| `HI001/KI001` value | `Person` | `Beispiel_Person_DWA` (+ `hasRole Client`) |
+| `HI111/KI111` value | `Organization` | `Beispiel_Organization_Kanalinspektions_GmbH` (+ `hasRole Company`) |
+| `HI112/KI112` value | `Person` | `Beispiel_Person_H_Potter` (+ `hasRole Inspector`) |
+| `HI113/KI113` value | `Person` | `Beispiel_Person_<value>` (+ `hasRole SiteManager`) |
+| `HI203/KI203/HZ203/KZ203` value | `Person` | `Beispiel_Person_<value>` (+ `hasRole Reporter`) |
+| `HI205/KI205` value | `Person` | `Beispiel_Person_<value>` (+ `hasRole Assessor`) |
 
-SpatialEntity/InformationEntity individuals are deduplicated: if two pipe sections share the same street name, they reference the same `Street` individual. Media individuals (CameraSystem, VideoFile, Photo, etc.) are similarly deduplicated by value.
+SpatialEntity/InformationEntity individuals are deduplicated: if two pipe sections share the same street name, they reference the same `Street` individual. Media individuals (CameraSystem, VideoFile, Photo, etc.) are similarly deduplicated by value. Person/Organization individuals are also deduplicated by value — multiple inspections with the same inspector name share one `Person` individual.
 
 ### Naming conventions
 
@@ -155,15 +170,16 @@ condition_individual.isChildOf.append(inspection_individual)
 
 ### Typed individual resolution
 
-`_resolve_object_individual()` follows a four-tier strategy (in order):
+`_resolve_object_individual()` follows a five-tier strategy (in order):
 
 1. **Node cross-reference** (`_NODE_REFERENCE_PROPERTIES`): `hasPipeSectionTopNodeDesignation` / `hasPipeSectionBottomNodeDesignation` — creates/looks up a `Node` individual eagerly.
-2. **Named entity** (`_NAMED_ENTITY_PROPERTIES`): maps property names to target classes (e.g. `hasStreetName` → `Street`). Creates a `Beispiel_<ClassName>_<value>` individual of the correct type. Multiple assets with the same value share one individual.
-3. **Coded value** (`_CODED_VALUE_INDIVIDUALS`): maps specific coded XML values to pre-existing named individuals (e.g. HG008 `I` → `InFlowingDirection`). Looks up the individual by slash IRI; prints a warning if not found.
-4. **Reference table lookup**: if the CSV provides an RT table number, searches for `M150_RT{table}_{code}`; creates a placeholder if missing.
-5. **Free-text fallback**: creates a generic `owl:Thing` individual named after the property and value.
+2. **Reference table lookup**: if the CSV provides an RT table number, searches for `M150_RT{table}_{code}`; creates a placeholder if missing.
+3. **Named entity** (`_NAMED_ENTITY_PROPERTIES`): maps property names to target classes (e.g. `hasStreetName` → `Street`). Creates a `Beispiel_<ClassName>_<value>` individual of the correct type. Multiple assets with the same value share one individual.
+4. **Role entity** (`_ROLE_ENTITY_PROPERTIES`): maps property names to `(entity class, Role individual)` pairs (e.g. `hasInspector` → `("Person", "Inspector")`). Creates a typed `Person` or `Organization` individual and asserts `hasRole <RoleIndividual>` on it. Deduplicated by IRI.
+5. **Coded value** (`_CODED_VALUE_INDIVIDUALS`): maps specific coded XML values to pre-existing named individuals (e.g. HG008 `I` → `InFlowingDirection`). Looks up the individual by slash IRI; prints a warning if not found.
+6. **Free-text fallback**: creates a generic `owl:Thing` individual named after the property and value.
 
-**Maintenance rule:** when adding a new object property whose values map to a specific class, add an entry to `_NAMED_ENTITY_PROPERTIES` (e.g. `hasCameraSystemUsed` → `CameraSystem`, `hasVideoFilename` → `VideoFile`, `hasImageName` → `Photo`, `hasNodeInspectionDigitalPhotoName` → `DigitalPhoto`, `hasNodeInspectionAmbientPhoto` → `AmbientPhoto`, `hasVideoStorageMediumName` → `VideoStorageMedium`). When adding a property with a fixed set of coded values that correspond to named individuals, add an entry to `_CODED_VALUE_INDIVIDUALS` (e.g. `hasOrientation`: `I` → `Clockwise`, `G` → `CounterClockwise`; `hasPipeSectionConnectingPipeStationingDirection` and `hasPipeSectionInspectionDirection`: `I` → `InFlowingDirection`, `G` → `AgainstFlowingDirection`).
+**Maintenance rule:** when adding a new object property whose values map to a specific class, add an entry to `_NAMED_ENTITY_PROPERTIES` (e.g. `hasCameraSystemUsed` → `CameraSystem`, `hasVideoFilename` → `VideoFile`, `hasImageName` → `Photo`, `hasNodeInspectionDigitalPhotoName` → `DigitalPhoto`, `hasNodeInspectionAmbientPhoto` → `AmbientPhoto`, `hasVideoStorageMediumName` → `VideoStorageMedium`). When adding a property whose values represent a person or organization with a named role, add an entry to `_ROLE_ENTITY_PROPERTIES` (e.g. `hasInspector` → `("Person", "Inspector")`). When adding a property with a fixed set of coded values that correspond to named individuals, add an entry to `_CODED_VALUE_INDIVIDUALS` (e.g. `hasOrientation`: `I` → `Clockwise`, `G` → `CounterClockwise`; `hasPipeSectionConnectingPipeStationingDirection` and `hasPipeSectionInspectionDirection`: `I` → `InFlowingDirection`, `G` → `AgainstFlowingDirection`).
 
 ### Property-type resilience
 

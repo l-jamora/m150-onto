@@ -4,17 +4,49 @@ All notable changes to M150-Onto are documented here. This project follows [Sema
 
 ---
 
-## [0.3.3] — 2026-06-18
+## [0.3.4] — 2026-06-24
+
+### Ontology (`m150-onto.rdf`)
+
+#### Added
+- `Person` and `Organization` superclasses for individuals representing people and companies
+- `Role` superclass with named individuals `Client`, `Company`, `Inspector`, `SiteManager`, `Reporter`, `Assessor`
+- Object properties `hasClient`, `hasCompany`, `hasInspector`, `hasSiteManagement`, `hasReporter`, `hasAssessor` (sub-properties of `hasInspectionData`)
+- Object property `hasRole` linking `Person`/`Organization` individuals to their `Role`
 
 ### OntoParser (`ontoparser/`)
 
 #### Added
-- `_NAMED_ENTITY_PROPERTIES` dict: maps object property names to their target ontology class, enabling typed individual creation for SpatialEntity/InformationEntity properties (e.g. `hasStreetName` → `Street` individual, `hasStreetCode` → `StreetCode` individual)
-- `_CODED_VALUE_INDIVIDUALS` dict: resolves coded XML values to pre-existing named individuals; HG008 codes `I` → `InFlowingDirection`, `G` → `AgainstFlowingDirection`
+- `_ROLE_ENTITY_PROPERTIES` dict: maps `hasClient`, `hasCompany`, `hasInspector`, `hasSiteManagement`, `hasReporter`, `hasAssessor` to `(entity class, Role individual)` pairs; creates a typed `Person` or `Organization` individual and asserts `hasRole` on it
+- HI001/KI001, HI111/KI111, HI112/KI112, HI113/KI113, HI203/KI203, HZ203/KZ203, HI205/KI205 are now fully resolved to typed individuals instead of falling through to the `owl:Thing` free-text fallback
+
+---
+
+## [0.3.3] — 2026-06-24
+
+### Ontology (`m150-onto.rdf`)
+
+#### Added
+- `Orientation` subclass under `Directionality`; named individuals `Clockwise` (GP102=`I`) and `CounterClockwise` (GP102=`G`) (issue #19)
+- `CameraSystem`, `VideoFile`, `Photo`, `AmbientPhoto`, `DigitalPhoto` classes; individuals created per HI/KI006, HI/KI116, HZ/KZ009, KI118, KI122 values (issue #22)
+
+#### Changed
+- Node structure properties converted from `owl:ObjectProperty` to `owl:DatatypeProperty`: `hasNodeStructureHeight`, `hasNodeStructureLength`, `hasNodeStructureQuantity`, `hasNodeStructureWidth`
+- Geometry properties converted to `owl:DatatypeProperty`: `hasEasting`, `hasNorthing`, `hasEastCoordinate`, `hasNorthCoordinate`, `hasHeight`, `hasGeometryObjectDesignation`, `hasGeometryPointDesignation` (issue #29)
+- Measurement properties converted to `owl:DatatypeProperty`: `hasMeasurementStation`, `hasMeasurementValue`, `hasMeasurementUnit` (issue #29)
 
 #### Fixed
-- `_DATATYPE_PROPERTIES` frozenset synced with all `owl:DatatypeProperty` declarations introduced in v0.3.1 and v0.3.2 (HG/KG basic data, designation, depth, dimensional properties)
-- CSV mapping: `hasPipeSectionConnectingPipePositioning` (HG009) moved from object property column to data property column
+- Ranges removed from several data properties temporarily due to float value conversion issue in the parser (issues #27, #30)
+
+### OntoParser (`ontoparser/`)
+
+#### Added
+- `_NAMED_ENTITY_PROPERTIES` dict: maps object property names to their target ontology class, enabling typed individual creation for SpatialEntity/InformationEntity and media properties (e.g. `hasStreetName` → `Street`, `hasCameraSystemUsed` → `CameraSystem`, `hasImageName` → `Photo`)
+- `_CODED_VALUE_INDIVIDUALS` dict: resolves coded XML values to pre-existing named individuals — HG008 (`hasPipeSectionConnectingPipeStationingDirection`): `I` → `InFlowingDirection`, `G` → `AgainstFlowingDirection`; HI101 (`hasPipeSectionInspectionDirection`): same; GP102 (`hasOrientation`): `I` → `Clockwise`, `G` → `CounterClockwise`
+
+#### Fixed
+- `_DATATYPE_PROPERTIES` frozenset extended to cover all newly converted `owl:DatatypeProperty` declarations: node structure, geometry, and measurement properties, plus sync with v0.3.1/v0.3.2 declarations
+- CSV mapping: `hasPipeSectionConnectingPipePositioning` (HG009), all geometry (GO001, GP001, GP003–GP007), and all measurement (HM001–HM003) entries moved from object property column to data property column; GP102 (`hasOrientation`) remains in object property column
 
 ---
 

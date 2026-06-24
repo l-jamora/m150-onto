@@ -86,6 +86,16 @@ _NAMED_ENTITY_PROPERTIES: dict = {
     "hasPipeSectionInspectionReferencePointStart": "PipeSectionInspectionReferencePointStart",
 }
 
+# Object properties whose XML values become typed Person/Organization individuals with a hasRole assertion
+_ROLE_ENTITY_PROPERTIES: dict = {
+    "hasClient":         ("Person",       "Client"),
+    "hasCompany":        ("Organization", "Company"),
+    "hasInspector":      ("Person",       "Inspector"),
+    "hasSiteManagement": ("Person",       "SiteManager"),
+    "hasReporter":       ("Person",       "Reporter"),
+    "hasAssessor":       ("Person",       "Assessor"),
+}
+
 # Object properties whose coded XML values map to specific pre-existing named individuals
 _CODED_VALUE_INDIVIDUALS: dict = {
     "hasPipeSectionConnectingPipeStationingDirection": {
@@ -309,7 +319,13 @@ class M150XmlParser:
            create a Node individual so HG003/HG004 links are resolved even before KG is parsed.
         2. Reference lookup: if rt_table is provided, search for M150_RT{rt_table}_{value} by IRI.
            If missing (should already exist from migration scripts), a placeholder is created.
-        3. Free-text fallback: create a generic owl:Thing individual named after the property
+        3. Named entity: if prop_name is in _NAMED_ENTITY_PROPERTIES, create a typed individual
+           of the mapped class and return it (deduplicated by IRI).
+        4. Role entity: if prop_name is in _ROLE_ENTITY_PROPERTIES, create a typed Person or
+           Organization individual and assert hasRole on it with the mapped Role named individual.
+        5. Coded value: if prop_name is in _CODED_VALUE_INDIVIDUALS, map the value to a
+           pre-existing named individual (e.g. "I" → InFlowingDirection).
+        6. Free-text fallback: create a generic owl:Thing individual named after the property
            and value, with the raw value as rdfs:label.
         """
         if prop_name in _NODE_REFERENCE_PROPERTIES:
@@ -332,6 +348,20 @@ class M150XmlParser:
             cls = self._get_class(class_name)
             ind_name = INDIVIDUAL_PREFIX + safe_entity_name(class_name, value)
             return self._create_individual(cls, ind_name, label=value)
+
+        if prop_name in _ROLE_ENTITY_PROPERTIES:
+            class_name, role_name = _ROLE_ENTITY_PROPERTIES[prop_name]
+            cls = self._get_class(class_name)
+            ind_name = INDIVIDUAL_PREFIX + safe_entity_name(class_name, value)
+            individual = self._create_individual(cls, ind_name, label=value)
+            role_ind = self.onto.search_one(iri=self._slash_iri(role_name))
+            if role_ind is not None:
+                has_role_prop = self._get_property("hasRole")
+                if role_ind not in has_role_prop[individual]:
+                    has_role_prop[individual].append(role_ind)
+            else:
+                print(f"  Warning: Role individual '{role_name}' not found in ontology")
+            return individual
 
         if prop_name in _CODED_VALUE_INDIVIDUALS:
             ind_name = _CODED_VALUE_INDIVIDUALS[prop_name].get(value.upper())

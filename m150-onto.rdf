@@ -1794,6 +1794,14 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto/hasRole -->
+
+    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasRole">
+        <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/hasSewerType -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasSewerType">
@@ -3121,6 +3129,12 @@ It is recommended to create individuals for geometric points with the template:
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto/Organization -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Organization"/>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/Orientation -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Orientation">
@@ -3134,6 +3148,12 @@ It is recommended to create individuals for geometric points with the template:
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Ownership">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/Reference"/>
     </owl:Class>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/Person -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Person"/>
     
 
 
@@ -3164,7 +3184,7 @@ It is recommended to create individuals for geometric points with the template:
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PipeSectionInspectionReferencePoint">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/SpatialEntity"/>
     </owl:Class>
-
+    
 
 
     <!-- https://l-jamora.github.io/m150-onto/PipeSectionInspectionReferencePointStart -->
@@ -3172,7 +3192,7 @@ It is recommended to create individuals for geometric points with the template:
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/PipeSectionInspectionReferencePointStart">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto/PipeSectionInspectionReferencePoint"/>
     </owl:Class>
-
+    
 
 
     <!-- https://l-jamora.github.io/m150-onto/PipeSectionType -->
@@ -3279,6 +3299,12 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 - ISYBAU2001
 - ISYBAU1996</rdfs:comment>
     </owl:Class>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/Role -->
+
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto/Role"/>
     
 
 
@@ -3429,10 +3455,34 @@ According to the DWA-M 150, the coding systems that can be applied here are:
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto/Assessor -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Assessor">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/Client -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Client">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Role"/>
+    </owl:NamedIndividual>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/Clockwise -->
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Clockwise">
         <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Orientation"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/Company -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Company">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Role"/>
     </owl:NamedIndividual>
     
 
@@ -3449,6 +3499,14 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/InFlowingDirection">
         <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/FlowingDirection"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/Inspector -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Inspector">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Role"/>
     </owl:NamedIndividual>
     
 
@@ -7011,6 +7069,22 @@ It is recommended to create individuals for Nodes with the template:
     <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/PipeSection002">
         <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/PipeSection"/>
         <flowsTo rdf:resource="https://l-jamora.github.io/m150-onto/Manhole003"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/Reporter -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/Reporter">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- https://l-jamora.github.io/m150-onto/SiteManager -->
+
+    <owl:NamedIndividual rdf:about="https://l-jamora.github.io/m150-onto/SiteManager">
+        <rdf:type rdf:resource="https://l-jamora.github.io/m150-onto/Role"/>
     </owl:NamedIndividual>
     
 
