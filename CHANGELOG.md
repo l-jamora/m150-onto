@@ -4,6 +4,33 @@ All notable changes to M150-Onto are documented here. This project follows [Sema
 
 ---
 
+## [0.3.6] — 2026-06-25
+
+### Ontology (`m150-onto.rdf`)
+
+#### Added
+- `rdfs:range` axioms added to all remaining object properties, completing domain/range coverage across the ontology:
+  - Person-ranged: `hasAssessor`, `hasClient`, `hasInspector`, `hasReporter`, `hasSiteManagement`
+  - Organization-ranged: `hasCompany`
+  - Media-ranged: `hasCameraSystemUsed` (CameraSystem), `hasVideoFilename` (VideoFile), `hasVideoStorageMedium`/`hasVideoStorageMediumName` (VideoStorageMedium), `hasImageName` (Photo), `hasNodeInspectionAmbientPhoto` (AmbientPhoto), `hasNodeInspectionDigitalPhotoName` (DigitalPhoto), `hasPhotoStorageMedium` (PhotoStorageMedium)
+  - Reference-ranged: `hasBackflowPrevention`, `hasCleaning`, `hasCodingSystem`, `hasWeather`, `hasProcessingStatus`, `hasMeasurementValueType`, `hasNodeInspectionAmbientAir`, `hasNodeManholeShape`, `hasNodeConditionLocalizedRepair`, `hasPipeSectionConditionLocalizedRepair`, `hasInspectionReason`, `hasInspectionType`, `hasPipeSectionInspectionReferencePointStart`
+  - Directionality-ranged: `hasPipeSectionInspectionDirection`, `hasPipeSectionConnectingPipeStationingDirection` (FlowingDirection), `hasOrientation` (Orientation)
+  - SpatialEntity/InformationEntity-ranged: `hasStreetName` (Street), `hasDistrictName` (District), `hasTreatmentPlantNumber` (TreatmentPlant), `hasStreetCode`, `hasDistrictCode`, `hasMunicipalityCode`, `hasAreaCode`, `hasCatchmentAreaCode`
+  - Role-ranged: `hasRole`
+- `rdfs:range Component` added to `inspects` (was domain-only)
+- `owl:SymmetricProperty` added to `connectedWith` (already `TransitiveProperty`; models undirected network reachability)
+- Five new inverse object properties for navigational queries:
+  - `isMaterialOf` (inverse of `hasMaterial`; domain Material, range Component)
+  - `isSewerTypeOf` (inverse of `hasSewerType`; domain SewerType, range Component)
+  - `isInspectorIn` (inverse of `hasInspector`; domain Person, range Inspection)
+  - `isStreetOf` (inverse of `hasStreetName`; domain Street, range Component)
+  - `isRoleOf` (inverse of `hasRole`; domain Role)
+
+#### Fixed
+- Removed `rdfs:domain owl:Thing` from 15 properties (`hasCoordinateSystem`, `hasDataStatus`, `hasElevationAccuracy`, `hasElevationSystem`, `hasFloodArea`, `hasFloodingFrequency`, `hasGeometryObjectType`, `hasMaterial`, `hasNodeStructureType`, `hasNodeType`, `hasPipeSectionType`, `hasSewerType`, `hasSewerUsage`, `hasSoilGroup`, `hasWaterProtectionZone`) — `owl:Thing` as domain is semantically vacuous under OWA and produces no useful inferences
+
+---
+
 ## [0.3.5] — 2026-06-25
 
 ### Ontology (`m150-onto.rdf`)

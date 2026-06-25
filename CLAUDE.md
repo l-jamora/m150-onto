@@ -88,11 +88,18 @@ owl:Thing
 
 | Property | Domain | Range | Notes |
 |---|---|---|---|
-| `inspects` | Inspection | Component | Links an inspection report to the asset it covers |
+| `inspects` | Report | Component | Links an inspection report to the asset it covers |
 | `isChildOf` / `isParentOf` | Condition | Inspection | Links a condition finding to its parent inspection |
 | `hasMaterial` | Component | Material | Functional; range is a Material individual |
+| `isMaterialOf` | Material | Component | Inverse of `hasMaterial`; enables "what uses this material?" queries |
+| `isSewerTypeOf` | SewerType | Component | Inverse of `hasSewerType` |
+| `isInspectorIn` | Person | Inspection | Inverse of `hasInspector` |
+| `isStreetOf` | Street | Component | Inverse of `hasStreetName` |
+| `isRoleOf` | Role | — | Inverse of `hasRole` |
 | `renders` / `renderedBy` | Geometry | Component | Links geometry objects to assets |
-| `flowsTo` / `flowsFrom` | Node | Node | Network topology |
+| `flowsTo` / `flowsFrom` | Node | Node | Network topology; `AsymmetricProperty` |
+| `connectedWith` | Component | Component | Undirected network reachability; `SymmetricProperty` + `TransitiveProperty` |
+| `hasRole` | — | Role | Asserts a named `Role` individual on a `Person` or `Organization` |
 
 ---
 
@@ -191,6 +198,9 @@ condition_individual.isChildOf.append(inspection_individual)
 
 - `hasInspectionDateTime` is a placeholder datatype property (`xsd:dateTime`). A future revision should replace it with a structured temporal individual using the OWL Time Ontology for richer temporal modelling.
 - Properties `hasPipeSectionTopNodeDesignation`, `hasPipeSectionBottomNodeDesignation`, `hasPipeSectionEndPointDesignation`, and `hasMeasurementData` exist in the ontology under the hash-based IRI namespace (`#`) rather than the slash-based namespace (`/`). This causes them to serialize without the `m150:` prefix in output RDF. Fix by moving their declarations to use the slash namespace in `m150-onto.rdf`.
+- `hasPipeSectionBottomNodeDesignation` carries `owl:inverseOf hasPipeSectionTopNodeDesignation`, which is logically incorrect — both go `PipeSection → Node` so they cannot be inverses of each other. The correct design is `isTopNodeOf` / `isBottomNodeOf` inverses going `Node → PipeSection`. Deferred; current `equivalentProperty` links to `flowsFrom`/`flowsTo` partially encode the intent.
+- `hasFunctionalStatus` lacks a corresponding `FunctionalStatus` Reference class. Range intentionally left unset until the class is created.
+- `hasClassifier`, `hasNodeInspectionCircumferentialReferencePoint`, `hasNodeInspectionVerticalReferencePoint`, and `hasReport` have no `rdfs:range` — either the target class does not exist yet or the semantic target is ambiguous.
 - Some DWA M 150 Reference Table codes are not yet present as individuals (e.g. RT300_L for line geometry, RT303_MNN for elevation datum, certain RT124 node structure component codes). The parser creates placeholder Reference individuals for these.
 
 ---
