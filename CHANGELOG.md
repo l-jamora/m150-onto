@@ -4,6 +4,21 @@ All notable changes to M150-Onto are documented here. This project follows [Sema
 
 ---
 
+## [0.3.5] — 2026-06-25
+
+### Ontology (`m150-onto.rdf`)
+
+#### Fixed
+- `rdfs:range` axioms restored on 65 data properties using XSD types from `Scripts/dataproperties.csv` (resolves issues #27, #30). 14 properties that already carried a range (including `hasAssessmentDate`, `hasClassificationDate`, `hasReportDate` with `xsd:date`) were left untouched. Decimal-valued properties use `xsd:decimal` rather than `xsd:float` to match owlready2's default serialization.
+
+### Scripts (`Scripts/`)
+
+#### Added
+- `dataproperties.csv`: authoritative mapping of 79 data properties to their XSD types, used as input for range assignment
+- `5_add_datatype_property_ranges.py`: reads `dataproperties.csv` and inserts missing `rdfs:range` elements into the ontology RDF; skips properties that already have a range (with a warning); supports `--ontology`, `--csv`, `--output`, and `--dry-run` flags
+
+---
+
 ## [0.3.4] — 2026-06-24
 
 ### Ontology (`m150-onto.rdf`)
