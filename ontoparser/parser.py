@@ -359,6 +359,20 @@ class M150XmlParser:
                     prop = types.new_class(prop_name, (owl.ObjectProperty,))
         return prop
 
+    def _search_case_insensitive(self, name: str):
+        """Looks up an individual by name, falling back to a case-insensitive match on the
+        local name if an exact-case lookup fails (ontology naming conventions are not always
+        consistently cased, e.g. RT303 codes like 'mNN' vs 'MNN')."""
+        existing = self.onto.search_one(iri=self._slash_iri(name))
+        if existing is not None:
+            return existing
+        target = name.lower()
+        for ind in self.onto.individuals():
+            local_name = ind.iri.rsplit("/", 1)[-1].rsplit("#", 1)[-1]
+            if local_name.lower() == target:
+                return ind
+        return None
+
     def _create_individual(self, cls, entity_name: str, label: Optional[str] = None):
         """Returns an existing individual or creates a new one for the given class and name.
 
@@ -392,8 +406,10 @@ class M150XmlParser:
         Strategy (in order):
         1. Node cross-reference: if prop_name is a node-reference property, look up / eagerly
            create a Node individual so HG003/HG004 links are resolved even before KG is parsed.
-        2. Reference lookup: if rt_table is provided, search for M150_RT{rt_table}_{value} by IRI.
-           If missing (should already exist from migration scripts), a placeholder is created.
+        2. Reference lookup: if rt_table is provided, search for M150_RT{rt_table}_{value} by IRI
+           (case-insensitively, since RT code casing is not always consistent). If missing
+           (should already exist from migration scripts), a placeholder individual is created
+           with an "_PLACEHOLDER" suffix.
         3. Named entity: if prop_name is in _NAMED_ENTITY_PROPERTIES, create a typed individual
            of the mapped class and return it (deduplicated by IRI).
         4. Role entity: if prop_name is in _ROLE_ENTITY_PROPERTIES, create a typed Person or
@@ -411,12 +427,13 @@ class M150XmlParser:
             # Normalize the code: uppercase and strip hyphens to match ontology naming convention
             norm_value = value.upper().replace("-", "")
             ref_name = f"M150_RT{rt_table}_{norm_value}"
-            existing = self.onto.search_one(iri=self._slash_iri(ref_name))
+            existing = self._search_case_insensitive(ref_name)
             if existing is not None:
                 return existing
-            self._warn(f"  Warning: Reference {ref_name} not found; creating placeholder")
+            placeholder_name = f"{ref_name}_PLACEHOLDER"
+            self._warn(f"  Warning: Reference {ref_name} not found; creating placeholder {placeholder_name}")
             ref_cls = self._get_class("Reference")
-            return self._create_individual(ref_cls, ref_name, label=value)
+            return self._create_individual(ref_cls, placeholder_name, label=value)
 
         if prop_name in _NAMED_ENTITY_PROPERTIES:
             class_name = _NAMED_ENTITY_PROPERTIES[prop_name]
