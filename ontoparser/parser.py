@@ -1,13 +1,24 @@
 import argparse
 import csv
 import re
-from datetime import date, datetime
+import sys
+from datetime import date, datetime, timedelta
 from pathlib import Path
 from typing import Optional
 from xml.etree import ElementTree as ET
 
 import owlready2 as owl
 import types
+from tqdm import tqdm
+
+try:
+    from ontoparser import banner
+    from ontoparser.run_log import RunLogger
+except ImportError:
+    # Fall back to a plain sibling-module import when run directly as a script
+    # (e.g. `python ontoparser/parser.py`), where the package parent isn't on sys.path.
+    import banner
+    from run_log import RunLogger
 
 INDIVIDUAL_PREFIX = "Beispiel_"
 
@@ -240,8 +251,55 @@ def _coerce_data_value(value: str, prop) -> object:
     return value
 
 
+def _count_total_items(root: ET.Element) -> int:
+    """Estimates the number of leaf-level individuals parse() will create, for progress tracking.
+
+    This is an upper bound: it mirrors parse()'s nesting shape but does not replicate its
+    skip-guards (e.g. missing HG001/KG001/HZ001+HZ002/KZ001+KZ002/RT001+RT002), so the actual
+    tick count may fall slightly short of this total.
+    """
+    total = 0
+    for hg in root.findall("HG"):
+        total += 1  # PipeSection
+        for go in hg.findall("GO"):
+            total += 1  # GeometryObject
+            total += len(go.findall("GP"))  # GeometryPoint
+        for hi in hg.findall("HI"):
+            total += 1  # Inspection
+            total += len(hi.findall("HM"))  # MeasurementData
+            total += len(hi.findall("HZ"))  # Condition
+
+    for kg in root.findall("KG"):
+        total += 1  # Node
+        total += len(kg.findall("KA"))  # NodeStructureData
+        for ki in kg.findall("KI"):
+            total += 1  # Inspection
+            total += len(ki.findall("KZ"))  # Condition
+
+    if root.find("FD") is not None:
+        total += 1  # FormatData
+
+    total += len(root.findall("RT"))  # Reference rows
+
+    return total
+
+
+def _tick(pbar: tqdm) -> None:
+    """Advances the progress bar by one item and refreshes its wall-clock finish-time estimate."""
+    d = pbar.format_dict
+    rate = d.get("rate")
+    total = d.get("total")
+    if rate and total:
+        remaining = (total - d["n"]) / rate
+        eta_str = (datetime.now() + timedelta(seconds=remaining)).strftime("%H:%M:%S")
+    else:
+        eta_str = "--:--:--"
+    pbar.set_postfix_str(f"ETA {eta_str}", refresh=False)
+    pbar.update(1)
+
+
 class M150XmlParser:
-    def __init__(self, xml_path: Path, ontology_path: Path, output_path: Path):
+    def __init__(self, xml_path: Path, ontology_path: Path, output_path: Path, run_logger: "RunLogger | None" = None):
         """Initializes the parser with paths for input XML, base ontology, and output file."""
         self.xml_path = xml_path
         self.ontology_path = ontology_path
@@ -249,13 +307,21 @@ class M150XmlParser:
         self.onto = None
         self.mapping: dict = {}
         self._node_cls = None  # set during parse() for use in _resolve_object_individual
+        self._pbar = None  # set during parse() for use in _warn
+        self._run_logger = run_logger
+
+    def _log(self, message: str) -> None:
+        """Prints message to stdout and appends it to the run log, if active."""
+        print(message)
+        if self._run_logger is not None:
+            self._run_logger.write(message)
 
     def load_ontology(self) -> None:
         """Configures ontology search paths and loads the base ontology and its imports."""
         owl.onto_path.append(str(self.ontology_path.parent.resolve()))
         owl.onto_path.append(str(self.ontology_path.parent.resolve() / "Individual Ontologies"))
 
-        print(f"Loading ontology from {self.ontology_path}")
+        self._log(f"Loading ontology from {self.ontology_path}")
         self.onto = owl.get_ontology(str(self.ontology_path.resolve())).load()
 
         imported_path = self.ontology_path.parent / "Individual Ontologies" / "M150-Onto.rdf"
@@ -311,6 +377,15 @@ class M150XmlParser:
             individual.label = [label]
         return individual
 
+    def _warn(self, message: str) -> None:
+        """Prints a warning, routing through the active progress bar's write() to avoid corrupting it."""
+        if self._pbar is not None:
+            self._pbar.write(message, file=sys.stdout)
+        else:
+            print(message)
+        if self._run_logger is not None:
+            self._run_logger.write(message)
+
     def _resolve_object_individual(self, prop_name: str, value: str, rt_table: str):
         """Resolves an object property value string to an OWL individual.
 
@@ -339,7 +414,7 @@ class M150XmlParser:
             existing = self.onto.search_one(iri=self._slash_iri(ref_name))
             if existing is not None:
                 return existing
-            print(f"  Warning: Reference {ref_name} not found; creating placeholder")
+            self._warn(f"  Warning: Reference {ref_name} not found; creating placeholder")
             ref_cls = self._get_class("Reference")
             return self._create_individual(ref_cls, ref_name, label=value)
 
@@ -360,7 +435,7 @@ class M150XmlParser:
                 if role_ind not in has_role_prop[individual]:
                     has_role_prop[individual].append(role_ind)
             else:
-                print(f"  Warning: Role individual '{role_name}' not found in ontology")
+                self._warn(f"  Warning: Role individual '{role_name}' not found in ontology")
             return individual
 
         if prop_name in _CODED_VALUE_INDIVIDUALS:
@@ -369,7 +444,7 @@ class M150XmlParser:
                 existing = self.onto.search_one(iri=self._slash_iri(ind_name))
                 if existing is not None:
                     return existing
-                print(f"  Warning: Named individual {ind_name} not found in ontology")
+                self._warn(f"  Warning: Named individual {ind_name} not found in ontology")
             return None
 
         ind_name = safe_entity_name(prop_name.replace("has", "", 1), value)
@@ -440,162 +515,190 @@ class M150XmlParser:
         has_node_struct_data_prop = self._get_property("hasNodeStructureData")
         has_measurement_data_prop = self._get_property("hasMeasurementData")
 
-        # ── HG: Pipe Sections ────────────────────────────────────────────────
-        for hg in root.findall("HG"):
-            hg_code = normalize_text(hg.find("HG001"))
-            if not hg_code:
-                continue
+        total = _count_total_items(root)
+        self._pbar = tqdm(
+            total=total,
+            desc="Parsing M150 XML",
+            unit="item",
+            file=sys.stdout,
+            bar_format="{l_bar}{bar}| {n_fmt}/{total_fmt} [{postfix}]",
+        )
+        try:
+            # ── HG: Pipe Sections ────────────────────────────────────────────
+            for hg in root.findall("HG"):
+                hg_code = normalize_text(hg.find("HG001"))
+                if not hg_code:
+                    continue
 
-            pipe_name = INDIVIDUAL_PREFIX + safe_entity_name("PipeSection", hg_code)
-            pipe_individual = self._create_individual(pipe_cls, pipe_name, label=f"PipeSection[{hg_code}]")
+                pipe_name = INDIVIDUAL_PREFIX + safe_entity_name("PipeSection", hg_code)
+                pipe_individual = self._create_individual(pipe_cls, pipe_name, label=f"PipeSection[{hg_code}]")
+                _tick(self._pbar)
 
-            self._assign_properties(pipe_individual, hg)
+                self._assign_properties(pipe_individual, hg)
 
-            # GO: Geometry Objects
-            for go in hg.findall("GO"):
-                go_designation = normalize_text(go.find("GO001")) or hg_code
-                go_name = INDIVIDUAL_PREFIX + safe_entity_name("GeometryObject", hg_code, go_designation)
-                go_individual = self._create_individual(
-                    object_cls, go_name, label=f"GeometryObject[{go_designation}]"
-                )
-                if go_individual not in has_geom_obj_data_prop[pipe_individual]:
-                    has_geom_obj_data_prop[pipe_individual].append(go_individual)
-                self._assign_properties(go_individual, go)
-
-                # GP: Geometry Points
-                for gp in go.findall("GP"):
-                    gp_designation = normalize_text(gp.find("GP001")) or f"GP_{go_designation}"
-                    gp_name = INDIVIDUAL_PREFIX + safe_entity_name("GeometryPoint", hg_code, gp_designation)
-                    gp_individual = self._create_individual(
-                        point_cls, gp_name, label=f"GeometryPoint[{gp_designation}]"
+                # GO: Geometry Objects
+                for go in hg.findall("GO"):
+                    go_designation = normalize_text(go.find("GO001")) or hg_code
+                    go_name = INDIVIDUAL_PREFIX + safe_entity_name("GeometryObject", hg_code, go_designation)
+                    go_individual = self._create_individual(
+                        object_cls, go_name, label=f"GeometryObject[{go_designation}]"
                     )
-                    if gp_individual not in has_geom_pt_data_prop[go_individual]:
-                        has_geom_pt_data_prop[go_individual].append(gp_individual)
-                    self._assign_properties(gp_individual, gp)
+                    _tick(self._pbar)
+                    if go_individual not in has_geom_obj_data_prop[pipe_individual]:
+                        has_geom_obj_data_prop[pipe_individual].append(go_individual)
+                    self._assign_properties(go_individual, go)
 
-            # HI: Pipe Inspections
-            for hi in hg.findall("HI"):
-                inspection_name = self._inspection_name(hg_code, hi)
-                inspection_label = self._inspection_label(hg_code, hi)
-                inspection_individual = self._create_individual(inspection_cls, inspection_name, label=inspection_label)
+                    # GP: Geometry Points
+                    for gp in go.findall("GP"):
+                        gp_designation = normalize_text(gp.find("GP001")) or f"GP_{go_designation}"
+                        gp_name = INDIVIDUAL_PREFIX + safe_entity_name("GeometryPoint", hg_code, gp_designation)
+                        gp_individual = self._create_individual(
+                            point_cls, gp_name, label=f"GeometryPoint[{gp_designation}]"
+                        )
+                        _tick(self._pbar)
+                        if gp_individual not in has_geom_pt_data_prop[go_individual]:
+                            has_geom_pt_data_prop[go_individual].append(gp_individual)
+                        self._assign_properties(gp_individual, gp)
 
-                if pipe_individual not in inspects_prop[inspection_individual]:
-                    inspects_prop[inspection_individual].append(pipe_individual)
+                # HI: Pipe Inspections
+                for hi in hg.findall("HI"):
+                    inspection_name = self._inspection_name(hg_code, hi)
+                    inspection_label = self._inspection_label(hg_code, hi)
+                    inspection_individual = self._create_individual(inspection_cls, inspection_name, label=inspection_label)
+                    _tick(self._pbar)
 
-                datetime_value = parse_datetime(normalize_text(hi.find("HI104")), normalize_text(hi.find("HI105")))
-                if datetime_value is not None:
-                    has_datetime = self._get_property("hasInspectionDateTime")
-                    setattr(inspection_individual, has_datetime.name, [datetime_value])
+                    if pipe_individual not in inspects_prop[inspection_individual]:
+                        inspects_prop[inspection_individual].append(pipe_individual)
 
-                # HI104/HI105 are excluded from self.mapping; no explicit skip needed
-                self._assign_properties(inspection_individual, hi)
+                    datetime_value = parse_datetime(normalize_text(hi.find("HI104")), normalize_text(hi.find("HI105")))
+                    if datetime_value is not None:
+                        has_datetime = self._get_property("hasInspectionDateTime")
+                        setattr(inspection_individual, has_datetime.name, [datetime_value])
 
-                # HM: Measurement Data
-                for hm_idx, hm in enumerate(hi.findall("HM")):
-                    hm_name = INDIVIDUAL_PREFIX + safe_entity_name("MeasurementData", inspection_name, str(hm_idx))
-                    hm_individual = self._create_individual(owl.Thing, hm_name)
-                    if hm_individual not in has_measurement_data_prop[inspection_individual]:
-                        has_measurement_data_prop[inspection_individual].append(hm_individual)
-                    self._assign_properties(hm_individual, hm)
+                    # HI104/HI105 are excluded from self.mapping; no explicit skip needed
+                    self._assign_properties(inspection_individual, hi)
 
-                # HZ: Pipe Condition Findings
-                for hz in hi.findall("HZ"):
-                    hz_station = normalize_text(hz.find("HZ001"))
-                    hz_code = normalize_text(hz.find("HZ002"))
-                    if not hz_station or not hz_code:
-                        continue
+                    # HM: Measurement Data
+                    for hm_idx, hm in enumerate(hi.findall("HM")):
+                        hm_name = INDIVIDUAL_PREFIX + safe_entity_name("MeasurementData", inspection_name, str(hm_idx))
+                        hm_individual = self._create_individual(owl.Thing, hm_name)
+                        _tick(self._pbar)
+                        if hm_individual not in has_measurement_data_prop[inspection_individual]:
+                            has_measurement_data_prop[inspection_individual].append(hm_individual)
+                        self._assign_properties(hm_individual, hm)
 
-                    condition_name = INDIVIDUAL_PREFIX + safe_entity_name("Condition", hg_code, hz_station, hz_code)
-                    condition_individual = self._create_individual(
-                        condition_cls, condition_name,
-                        label=f"Condition[{hg_code}]_[{hz_station}]_[{hz_code}]"
-                    )
-                    if inspection_individual not in is_child_of_prop[condition_individual]:
-                        is_child_of_prop[condition_individual].append(inspection_individual)
+                    # HZ: Pipe Condition Findings
+                    for hz in hi.findall("HZ"):
+                        hz_station = normalize_text(hz.find("HZ001"))
+                        hz_code = normalize_text(hz.find("HZ002"))
+                        if not hz_station or not hz_code:
+                            continue
 
-                    self._assign_properties(condition_individual, hz)
+                        condition_name = INDIVIDUAL_PREFIX + safe_entity_name("Condition", hg_code, hz_station, hz_code)
+                        condition_individual = self._create_individual(
+                            condition_cls, condition_name,
+                            label=f"Condition[{hg_code}]_[{hz_station}]_[{hz_code}]"
+                        )
+                        _tick(self._pbar)
+                        if inspection_individual not in is_child_of_prop[condition_individual]:
+                            is_child_of_prop[condition_individual].append(inspection_individual)
 
-        # ── KG: Nodes ────────────────────────────────────────────────────────
-        for kg in root.findall("KG"):
-            kg_code = normalize_text(kg.find("KG001"))
-            if not kg_code:
-                continue
+                        self._assign_properties(condition_individual, hz)
 
-            node_name = INDIVIDUAL_PREFIX + safe_entity_name("Node", kg_code)
-            node_individual = self._create_individual(node_cls, node_name, label=f"Node[{kg_code}]")
+            # ── KG: Nodes ────────────────────────────────────────────────────
+            for kg in root.findall("KG"):
+                kg_code = normalize_text(kg.find("KG001"))
+                if not kg_code:
+                    continue
 
-            self._assign_properties(node_individual, kg)
+                node_name = INDIVIDUAL_PREFIX + safe_entity_name("Node", kg_code)
+                node_individual = self._create_individual(node_cls, node_name, label=f"Node[{kg_code}]")
+                _tick(self._pbar)
 
-            # KA: Node Structure Component Records
-            for ka_idx, ka in enumerate(kg.findall("KA")):
-                ka_name = INDIVIDUAL_PREFIX + safe_entity_name("NodeStructureData", kg_code, str(ka_idx))
-                ka_individual = self._create_individual(owl.Thing, ka_name)
-                if ka_individual not in has_node_struct_data_prop[node_individual]:
-                    has_node_struct_data_prop[node_individual].append(ka_individual)
-                self._assign_properties(ka_individual, ka)
+                self._assign_properties(node_individual, kg)
 
-            # KI: Node Inspections
-            for ki in kg.findall("KI"):
-                inspection_name = self._inspection_name(kg_code, ki)
-                inspection_label = self._inspection_label(kg_code, ki)
-                inspection_individual = self._create_individual(inspection_cls, inspection_name, label=inspection_label)
+                # KA: Node Structure Component Records
+                for ka_idx, ka in enumerate(kg.findall("KA")):
+                    ka_name = INDIVIDUAL_PREFIX + safe_entity_name("NodeStructureData", kg_code, str(ka_idx))
+                    ka_individual = self._create_individual(owl.Thing, ka_name)
+                    _tick(self._pbar)
+                    if ka_individual not in has_node_struct_data_prop[node_individual]:
+                        has_node_struct_data_prop[node_individual].append(ka_individual)
+                    self._assign_properties(ka_individual, ka)
 
-                if node_individual not in inspects_prop[inspection_individual]:
-                    inspects_prop[inspection_individual].append(node_individual)
+                # KI: Node Inspections
+                for ki in kg.findall("KI"):
+                    inspection_name = self._inspection_name(kg_code, ki)
+                    inspection_label = self._inspection_label(kg_code, ki)
+                    inspection_individual = self._create_individual(inspection_cls, inspection_name, label=inspection_label)
+                    _tick(self._pbar)
 
-                datetime_value = parse_datetime(normalize_text(ki.find("KI104")), normalize_text(ki.find("KI105")))
-                if datetime_value is not None:
-                    has_datetime = self._get_property("hasInspectionDateTime")
-                    setattr(inspection_individual, has_datetime.name, [datetime_value])
+                    if node_individual not in inspects_prop[inspection_individual]:
+                        inspects_prop[inspection_individual].append(node_individual)
 
-                # KI104/KI105 are excluded from self.mapping; no explicit skip needed
-                self._assign_properties(inspection_individual, ki)
+                    datetime_value = parse_datetime(normalize_text(ki.find("KI104")), normalize_text(ki.find("KI105")))
+                    if datetime_value is not None:
+                        has_datetime = self._get_property("hasInspectionDateTime")
+                        setattr(inspection_individual, has_datetime.name, [datetime_value])
 
-                # KZ: Node Condition Findings
-                for kz in ki.findall("KZ"):
-                    kz_station = normalize_text(kz.find("KZ001"))
-                    kz_code = normalize_text(kz.find("KZ002"))
-                    if not kz_station or not kz_code:
-                        continue
+                    # KI104/KI105 are excluded from self.mapping; no explicit skip needed
+                    self._assign_properties(inspection_individual, ki)
 
-                    condition_name = INDIVIDUAL_PREFIX + safe_entity_name("Condition", kg_code, kz_station, kz_code)
-                    condition_individual = self._create_individual(
-                        condition_cls, condition_name,
-                        label=f"Condition[{kg_code}]_[{kz_station}]_[{kz_code}]"
-                    )
-                    if inspection_individual not in is_child_of_prop[condition_individual]:
-                        is_child_of_prop[condition_individual].append(inspection_individual)
+                    # KZ: Node Condition Findings
+                    for kz in ki.findall("KZ"):
+                        kz_station = normalize_text(kz.find("KZ001"))
+                        kz_code = normalize_text(kz.find("KZ002"))
+                        if not kz_station or not kz_code:
+                            continue
 
-                    self._assign_properties(condition_individual, kz)
+                        condition_name = INDIVIDUAL_PREFIX + safe_entity_name("Condition", kg_code, kz_station, kz_code)
+                        condition_individual = self._create_individual(
+                            condition_cls, condition_name,
+                            label=f"Condition[{kg_code}]_[{kz_station}]_[{kz_code}]"
+                        )
+                        _tick(self._pbar)
+                        if inspection_individual not in is_child_of_prop[condition_individual]:
+                            is_child_of_prop[condition_individual].append(inspection_individual)
 
-        # ── FD: Format Metadata ──────────────────────────────────────────────
-        fd_elem = root.find("FD")
-        if fd_elem is not None:
-            fd001 = normalize_text(fd_elem.find("FD001"))
-            fd002 = normalize_text(fd_elem.find("FD002"))
-            fd_name = INDIVIDUAL_PREFIX + safe_entity_name("FormatData", fd001, fd002)
-            fd_individual = self._create_individual(owl.Thing, fd_name)
-            self._assign_properties(fd_individual, fd_elem)
+                        self._assign_properties(condition_individual, kz)
 
-        # ── RT: Reference Table Rows ─────────────────────────────────────────
-        # RT003 (short text) and RT004 (long text) are assigned directly as rdfs:label /
-        # rdfs:comment rather than via the object-property resolution path, since their
-        # values are free-form German strings (not reference codes).
-        for rt in root.findall("RT"):
-            rt001 = normalize_text(rt.find("RT001"))
-            rt002 = normalize_text(rt.find("RT002"))
-            if not rt001 or not rt002:
-                continue
+            # ── FD: Format Metadata ───────────────────────────────────────────
+            fd_elem = root.find("FD")
+            if fd_elem is not None:
+                fd001 = normalize_text(fd_elem.find("FD001"))
+                fd002 = normalize_text(fd_elem.find("FD002"))
+                fd_name = INDIVIDUAL_PREFIX + safe_entity_name("FormatData", fd001, fd002)
+                fd_individual = self._create_individual(owl.Thing, fd_name)
+                _tick(self._pbar)
+                self._assign_properties(fd_individual, fd_elem)
 
-            rt_name = safe_entity_name("M150_RT" + rt001, rt002)
-            rt_individual = self._create_individual(reference_cls, rt_name)
+            # ── RT: Reference Table Rows ──────────────────────────────────────
+            # RT003 (short text) and RT004 (long text) are assigned directly as rdfs:label /
+            # rdfs:comment rather than via the object-property resolution path, since their
+            # values are free-form German strings (not reference codes).
+            for rt in root.findall("RT"):
+                rt001 = normalize_text(rt.find("RT001"))
+                rt002 = normalize_text(rt.find("RT002"))
+                if not rt001 or not rt002:
+                    continue
 
-            rt003 = normalize_text(rt.find("RT003"))
-            rt004 = normalize_text(rt.find("RT004"))
-            if rt003:
-                rt_individual.label.append(rt003)
-            if rt004:
-                rt_individual.comment.append(rt004)
+                rt_name = safe_entity_name("M150_RT" + rt001, rt002)
+                rt_individual = self._create_individual(reference_cls, rt_name)
+                _tick(self._pbar)
+
+                rt003 = normalize_text(rt.find("RT003"))
+                rt004 = normalize_text(rt.find("RT004"))
+                if rt003:
+                    rt_individual.label.append(rt003)
+                if rt004:
+                    rt_individual.comment.append(rt004)
+        finally:
+            self._pbar.n = self._pbar.total
+            self._pbar.refresh()
+            if self._run_logger is not None:
+                self._run_logger.write(str(self._pbar))
+            self._pbar.close()
+            self._pbar = None
 
     def _inspection_name(self, component_code: str, inspection_elem: ET.Element) -> str:
         """Generates a unique IRI-safe name for an inspection individual based on component ID and date."""
@@ -619,7 +722,7 @@ class M150XmlParser:
 
     def save(self) -> None:
         """Saves the current state of the loaded ontology to the specified output path."""
-        print(f"Saving parsed ontology to {self.output_path}")
+        self._log(f"Saving parsed ontology to {self.output_path}")
         self.onto.save(file=str(self.output_path), format="rdfxml")
 
 
@@ -648,11 +751,20 @@ def main() -> None:
     )
 
     args = parser.parse_args()
-    parser_obj = M150XmlParser(args.input, args.ontology, args.output)
-    parser_obj.load_ontology()
-    parser_obj.parse()
-    if not args.dry_run:
-        parser_obj.save()
+
+    run_logger = RunLogger()
+    banner.print_banner(log=run_logger)
+
+    try:
+        parser_obj = M150XmlParser(args.input, args.ontology, args.output, run_logger=run_logger)
+        parser_obj.load_ontology()
+        parser_obj.parse()
+        if not args.dry_run:
+            parser_obj.save()
+    finally:
+        run_logger.write(f"Run log saved to {run_logger.path}")
+        print(f"Run log saved to {run_logger.path}")
+        run_logger.close()
 
 
 if __name__ == "__main__":
