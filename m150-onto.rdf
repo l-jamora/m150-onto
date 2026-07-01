@@ -1037,7 +1037,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto#hasPipeSectionInspectionDirection">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto#hasPipeSectionInspectionData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
         <rdfs:range rdf:resource="https://l-jamora.github.io/m150-onto/FlowingDirection"/>
@@ -1340,17 +1339,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
-    <!-- https://l-jamora.github.io/m150-onto/hasFunctionalStatus -->
-
-    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasFunctionalStatus">
-        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasBasicData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
-    </owl:ObjectProperty>
-    
-
-
     <!-- https://l-jamora.github.io/m150-onto/hasGeometryObjectData -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasGeometryObjectData">
@@ -1643,6 +1631,18 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     
 
 
+    <!-- https://l-jamora.github.io/m150-onto/hasOperationalStatus -->
+
+    <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasOperationalStatus">
+        <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasBasicData"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+        <rdfs:range rdf:resource="https://l-jamora.github.io/m150-onto/OperationalStatus"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- https://l-jamora.github.io/m150-onto/hasOrientation -->
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasOrientation">
@@ -1692,7 +1692,6 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:ObjectProperty rdf:about="https://l-jamora.github.io/m150-onto/hasPipeSectionConnectingPipeStationingDirection">
         <rdfs:subPropertyOf rdf:resource="https://l-jamora.github.io/m150-onto/hasPipeSectionBasicData"/>
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
         <rdfs:range rdf:resource="https://l-jamora.github.io/m150-onto/FlowingDirection"/>

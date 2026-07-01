@@ -29,8 +29,8 @@ HG304,hasMaterial,,,105
 KG304,hasMaterial,,,105
 HG312,,hasDepth,,
 KG211,,hasDepth,,
-HG401,hasFunctionalStatus,,,109
-KG401,hasFunctionalStatus,,,109
+HG401,hasOperationalStatus,,,109
+KG401,hasOperationalStatus,,,109
 HG402,hasOwner,,,110
 KG402,hasOwner,,,110
 HG403,hasWaterProtectionZone,,,111
