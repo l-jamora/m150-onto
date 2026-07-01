@@ -74,8 +74,8 @@ owl:Thing
 │   ├── AmbientPhoto          (individuals created per KI122 value)
 │   └── DigitalPhoto          (individuals created per KI118 value)
 └── Geometry
-    └── Object
-        └── Point
+    └── GeometryObject
+        └── GeometryPoint
 ```
 
 **Key design decision:** `Reference` subclasses (Material, SewerType, etc.) are **individuals**, not classes. A `PipeSection` relates to material via object property `hasMaterial`, not via datatype or class membership. This prevents the reasoner from inferring that a pipe section *is* a material.

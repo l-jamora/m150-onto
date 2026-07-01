@@ -428,8 +428,8 @@ class M150XmlParser:
         node_cls = self._get_class("Node")
         inspection_cls = self._get_class("Inspection")
         condition_cls = self._get_class("Condition")
-        object_cls = self._get_class("Object")
-        point_cls = self._get_class("Point")
+        object_cls = self._get_class("GeometryObject")
+        point_cls = self._get_class("GeometryPoint")
         reference_cls = self._get_class("Reference")
         self._node_cls = node_cls
 
