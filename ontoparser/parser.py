@@ -306,6 +306,7 @@ class M150XmlParser:
         self.output_path = output_path
         self.onto = None
         self.mapping: dict = {}
+        self._valid_rt_tables: set = set()  # RT table numbers actually referenced by self.mapping
         self._node_cls = None  # set during parse() for use in _resolve_object_individual
         self._pbar = None  # set during parse() for use in _warn
         self._run_logger = run_logger
@@ -515,6 +516,9 @@ class M150XmlParser:
         root = tree.getroot()
 
         self.mapping = load_mapping(CSV_MAPPING_PATH)
+        self._valid_rt_tables = {
+            int(entry["rt_table"]) for entry in self.mapping.values() if entry.get("rt_table")
+        }
 
         pipe_cls = self._get_class("PipeSection")
         node_cls = self._get_class("Node")
@@ -693,10 +697,19 @@ class M150XmlParser:
             # RT003 (short text) and RT004 (long text) are assigned directly as rdfs:label /
             # rdfs:comment rather than via the object-property resolution path, since their
             # values are free-form German strings (not reference codes).
+            #
+            # Only tables actually referenced by a mapping's rt_table column (the fixed DWA
+            # vocabulary tables, e.g. RT105 materials, RT124 node components) are materialized
+            # as Reference individuals here. Other tables (e.g. RT001 street codes) are
+            # site-specific lookup data, not fixed vocabulary, and are already captured via
+            # hasStreetName/hasStreetCode when HG/KG elements are parsed — creating a Reference
+            # individual for them here would just produce an unlinked duplicate.
             for rt in root.findall("RT"):
                 rt001 = normalize_text(rt.find("RT001"))
                 rt002 = normalize_text(rt.find("RT002"))
                 if not rt001 or not rt002:
+                    continue
+                if int(rt001) not in self._valid_rt_tables:
                     continue
 
                 rt_name = safe_entity_name("M150_RT" + rt001, rt002)
