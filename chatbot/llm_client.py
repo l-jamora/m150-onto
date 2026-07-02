@@ -23,13 +23,18 @@ from chatbot.schema_context import (
 
 AZURE_ENDPOINT = "https://kasytwinressource.services.ai.azure.com"
 AZURE_API_VERSION = "2024-10-21"
-DEPLOYMENT_NAME = "gpt-5.4-mini"
+DEPLOYMENT_NAME = os.environ.get("AZURE_OPENAI_DEPLOYMENT", "gpt-5.4-mini")
 
 _client = AzureOpenAI(
     azure_endpoint=AZURE_ENDPOINT,
     api_key=os.environ["AZURE_OPENAI_API_KEY"],
     api_version=AZURE_API_VERSION,
 )
+
+
+def get_model_name() -> str:
+    """Single source of truth for the deployment name shown in the UI."""
+    return DEPLOYMENT_NAME
 
 _FENCE_RE = re.compile(r"^```(?:sparql)?\s*|\s*```$", re.IGNORECASE | re.MULTILINE)
 

@@ -27,12 +27,18 @@ From the repository root, using the project's existing `.venv`:
 .venv/Scripts/python.exe -m pip install -r chatbot/requirements.txt
 ```
 
-Set your Azure OpenAI API key (the endpoint and deployment name are already hardcoded in
-`llm_client.py`, matching the working pattern in the repo's local `azure.test.py` scratch file):
+Set your Azure OpenAI API key (the endpoint is hardcoded in `llm_client.py`, matching the working
+pattern in the repo's local `azure.test.py` scratch file). The deployment name defaults to
+`gpt-5.4-mini` there too, but can be overridden with `AZURE_OPENAI_DEPLOYMENT` without touching
+code:
 
 ```bash
 export AZURE_OPENAI_API_KEY="..."          # bash
 $env:AZURE_OPENAI_API_KEY = "..."          # PowerShell
+
+# optional, only if you want a different deployment than the gpt-5.4-mini default
+export AZURE_OPENAI_DEPLOYMENT="..."       # bash
+$env:AZURE_OPENAI_DEPLOYMENT = "..."       # PowerShell
 ```
 
 ## Usage
@@ -70,9 +76,12 @@ whose source data changed or was removed).
 python -m chatbot.repl
 ```
 
-```
-M150-Onto chatbot. Type a question, ':verbose' to toggle SPARQL/bindings output, 'exit' to quit.
+Startup shows a banner with a mascot, the auto-detected model name (read from `llm_client.py`,
+overridable via `AZURE_OPENAI_DEPLOYMENT`), and the available commands (`:verbose`, `:history`,
+`:help`, `exit`/`quit`). The transcript below is the same conversation content, rendered with
+color in an actual terminal:
 
+```
 > What material is pipe section 1204015?
 
 Pipe section 1204015 is made of stoneware (Steinzeug).
@@ -118,6 +127,7 @@ Type `exit`, `quit`, or Ctrl-C to leave.
 | `llm_client.py` | Thin `AzureOpenAI` wrapper — `generate_sparql()` and `compose_answer()`. |
 | `sparql_pipeline.py` | Orchestrates one question end-to-end: generate SPARQL → validate predicates (retry with a specific hint if any are unknown) → run it → retry once on error or empty results → compose the final answer. |
 | `repl.py` | The CLI loop (`python -m chatbot.repl`). |
+| `ui.py` | `rich`-based terminal styling — startup/`:help` banner, mascot, colored prompt/labels. |
 | `eval.py` | Regression eval built from real demonstration questions (`python -m chatbot.eval`). Makes real Azure calls — run it after touching `schema_context.py`, `sparql_pipeline.py`, or `schema_validate.py` instead of hand-testing one question at a time in the REPL. |
 
 Each question can cost up to **4 Azure OpenAI calls** in the worst case (generate SPARQL,
@@ -159,5 +169,5 @@ dashboard.
 - No automated test suite covers the LLM-in-the-loop parts (nondeterministic, costs real Azure
   calls). Verify manually against the example questions above after any change to
   `schema_context.py` or `build_store.py`.
-- The Azure endpoint and deployment name are hardcoded in `llm_client.py`; only the API key is
-  read from the environment.
+- The Azure endpoint is hardcoded in `llm_client.py`; the API key and (optionally) the deployment
+  name (`AZURE_OPENAI_DEPLOYMENT`) are read from the environment.

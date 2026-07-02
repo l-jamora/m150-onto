@@ -6,7 +6,9 @@ Run: python -m chatbot.repl
 import sys
 
 import pyoxigraph
+from rich.console import Console
 
+from chatbot import ui
 from chatbot.build_store import DEFAULT_STORE_PATH
 from chatbot.sparql_pipeline import answer_question
 
@@ -16,10 +18,13 @@ HISTORY_MAX_TURNS = 5
 
 
 def main() -> None:
+    console = Console()
+
     if not DEFAULT_STORE_PATH.exists() or not any(DEFAULT_STORE_PATH.iterdir()):
-        print(
+        console.print(
             f"No triplestore found at {DEFAULT_STORE_PATH}.\n"
-            "Run `python -m chatbot.build_store` first."
+            "Run `python -m chatbot.build_store` first.",
+            style="red",
         )
         sys.exit(1)
 
@@ -28,14 +33,13 @@ def main() -> None:
     history_enabled = False
     conversation_history: list[tuple[str, str]] = []
 
-    print("M150-Onto chatbot. Type a question, ':verbose' to toggle SPARQL/bindings output, "
-          "':history' to toggle conversation memory, 'exit' to quit.")
+    ui.render_banner(console)
 
     while True:
         try:
-            question = input("\n> ").strip()
+            question = ui.prompt(console)
         except (EOFError, KeyboardInterrupt):
-            print()
+            console.print()
             break
 
         if not question:
@@ -44,11 +48,14 @@ def main() -> None:
             break
         if question == ":verbose":
             verbose = not verbose
-            print(f"verbose = {verbose}")
+            console.print(f"[blue]verbose[/blue] = {verbose}")
             continue
         if question == ":history":
             history_enabled = not history_enabled
-            print(f"history = {history_enabled}")
+            console.print(f"[blue]history[/blue] = {history_enabled}")
+            continue
+        if question == ":help":
+            ui.render_banner(console)
             continue
 
         history = conversation_history[-HISTORY_MAX_TURNS:] if history_enabled else None
@@ -56,10 +63,9 @@ def main() -> None:
         conversation_history.append((question, result.answer))
 
         if verbose:
-            print(f"\n[SPARQL]{' (retried)' if result.retried else ''}\n{result.sparql}")
-            print(f"\n[bindings]\n{result.bindings}")
+            ui.print_verbose(console, result.sparql, result.bindings, result.retried)
 
-        print(f"\n{result.answer}")
+        console.print(f"\n{result.answer}")
 
 
 if __name__ == "__main__":

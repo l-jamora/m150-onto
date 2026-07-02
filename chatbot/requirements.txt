@@ -2,3 +2,4 @@ pyoxigraph>=0.5.9
 openai>=2.44.0
 rdflib>=7.0.0
 owlrl>=6.0.2
+rich>=13.7.0
