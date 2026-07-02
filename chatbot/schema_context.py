@@ -91,6 +91,18 @@ Individuals in this demo dataset are prefixed "{INDIVIDUAL_PREFIX}" (German for 
 this is a placeholder-data marker from the XML parser, not meaningful domain data. Do not
 present it to the user as significant; strip it when showing entity names or labels.
 
+Individual IRI naming is only predictable for PipeSection and Node: always exactly
+{PREFIX}:{INDIVIDUAL_PREFIX}PipeSection_<id> / {PREFIX}:{INDIVIDUAL_PREFIX}Node_<id>. Inspection
+and Condition individual names are NOT uniformly patterned -- some Inspections are named
+{INDIVIDUAL_PREFIX}Inspection_<id> and others {INDIVIDUAL_PREFIX}Inspection_<id>_<date>_<time>,
+depending on the source data. When a question names an inspection or condition by a bare ID
+number (e.g. "inspection 1204012"), never construct that IRI directly (e.g. never guess
+{PREFIX}:{INDIVIDUAL_PREFIX}1204012 or {PREFIX}:{INDIVIDUAL_PREFIX}Inspection_1204012). Instead
+always start from {PREFIX}:{INDIVIDUAL_PREFIX}PipeSection_<id> or
+{PREFIX}:{INDIVIDUAL_PREFIX}Node_<id> and traverse to the Inspection via {PREFIX}:inspects /
+{PREFIX}:inspectedIn (e.g. "?inspection {PREFIX}:inspects {PREFIX}:{INDIVIDUAL_PREFIX}PipeSection_1204012"),
+then reach Conditions from there via {PREFIX}:isChildOf / {PREFIX}:isParentOf.
+
 Condition findings carry a 3-letter DWA condition code (hasConditionCode, e.g. "BCA") and
 German free text (hasLongText, e.g. "Längsriss" = longitudinal crack). There is no built-in
 severity or priority score in this ontology. If asked to prioritize repairs, reason from the

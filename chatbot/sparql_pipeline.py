@@ -67,15 +67,23 @@ def answer_question(
     result.sparql = sparql
 
     # Check for guessed-but-nonexistent property names (e.g. hasCameraSystem for the
-    # real hasCameraSystemUsed) before running the query at all: these are valid SPARQL
-    # that would otherwise just silently return unbound OPTIONAL variables, so the only
-    # way to catch them is to check predicates against the real schema. This retry
-    # replaces (not adds to) the error/empty-result retry below -- one retry budget.
+    # real hasCameraSystemUsed) and guessed-but-nonexistent individual IRIs (e.g.
+    # Beispiel_1204012 instead of Beispiel_Inspection_1204012) before running the query
+    # at all: these are valid SPARQL that would otherwise just silently return zero rows
+    # or unbound OPTIONAL variables, so the only way to catch them is to check against
+    # the real schema/data. This retry replaces (not adds to) the error/empty-result
+    # retry below -- one retry budget.
     unknown_predicates = schema_validate.find_unknown_predicates(sparql, store)
-    predicate_retry = bool(unknown_predicates)
+    unknown_individuals = schema_validate.find_unknown_individuals(sparql, store)
+    predicate_retry = bool(unknown_predicates) or bool(unknown_individuals)
     if predicate_retry:
         result.retried = True
-        retry_note = schema_validate.build_retry_note(unknown_predicates)
+        notes = []
+        if unknown_predicates:
+            notes.append(schema_validate.build_retry_note(unknown_predicates))
+        if unknown_individuals:
+            notes.append(schema_validate.build_individual_retry_note(unknown_individuals))
+        retry_note = "\n\n".join(notes)
         sparql = llm_client.generate_sparql(question, retry_note=retry_note, history=history)
         result.sparql = sparql
 
