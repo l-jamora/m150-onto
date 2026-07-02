@@ -6,9 +6,51 @@ rewritten for a two-call pipeline (generate SPARQL, then compose an answer)
 instead of a single tool-calling agent.
 """
 
+from pathlib import Path
+
+import rdflib
+from rdflib.namespace import OWL, RDF, RDFS
+
 PREFIX = "m150"
 NAMESPACE = "https://l-jamora.github.io/m150-onto#"
 INDIVIDUAL_PREFIX = "Beispiel_"  # mirrors ontoparser.parser.INDIVIDUAL_PREFIX
+
+_REPO_ROOT = Path(__file__).resolve().parent.parent
+_ONTOLOGY_PATH = _REPO_ROOT / "m150-onto.rdf"
+
+
+def _local_name(iri: str) -> str:
+    return iri.rsplit("#", 1)[-1].rsplit("/", 1)[-1]
+
+
+def _build_property_reference() -> str:
+    """Mechanically enumerates every m150: object/datatype property straight from
+    m150-onto.rdf, so the prompt can never omit a real property. This replaces
+    relying on hand-curated prose lists to cover every property -- the class of
+    bug that produced hasSiteManager/hasCameraSystem/hasVideoFile (plausible
+    guesses for properties that were never mentioned in the prompt, silently
+    returning empty OPTIONAL results instead of erroring).
+    """
+    graph = rdflib.Graph()
+    graph.parse(str(_ONTOLOGY_PATH), format="xml", publicID=NAMESPACE.rstrip("#"))
+
+    lines = []
+    for prop_type in (OWL.ObjectProperty, OWL.DatatypeProperty):
+        props = sorted(
+            s for s in graph.subjects(RDF.type, prop_type) if str(s).startswith(NAMESPACE)
+        )
+        for prop in props:
+            sig = f"{PREFIX}:{_local_name(str(prop))}"
+            ranges = sorted({_local_name(str(r)) for r in graph.objects(prop, RDFS.range)})
+            if ranges:
+                sig += f" -> {'/'.join(ranges)}"
+            if (prop, RDF.type, OWL.FunctionalProperty) in graph:
+                sig += " [single-valued]"
+            lines.append(sig)
+    return "\n".join(lines)
+
+
+_PROPERTY_REFERENCE = _build_property_reference()
 
 _ONTOLOGY_FACTS = f"""
 This ontology (prefix {PREFIX}:, namespace {NAMESPACE}) models the German DWA-M 150 standard
@@ -39,6 +81,12 @@ the linking property is hasSiteManagement), hasAssessor. A single Inspection can
 these at once (e.g. an inspector and a site manager and a company), so a question naming
 multiple roles should use one OPTIONAL block per role property on the same ?inspection.
 
+Inspection media are linked via these exact property spellings -- do not guess a different form:
+hasCameraSystemUsed (NOT "hasCameraSystem"), hasVideoFilename (NOT "hasVideoFile"),
+hasVideoStorageMedium / hasVideoStorageMediumName, hasImageName, hasNodeInspectionDigitalPhotoName,
+hasNodeInspectionAmbientPhoto. Use OPTIONAL for each since not every inspection has every media
+field recorded.
+
 Individuals in this demo dataset are prefixed "{INDIVIDUAL_PREFIX}" (German for "example") --
 this is a placeholder-data marker from the XML parser, not meaningful domain data. Do not
 present it to the user as significant; strip it when showing entity names or labels.
@@ -53,6 +101,14 @@ Network topology properties (flowsTo, connectedWith) are essentially unpopulated
 dataset. Pipe sections must instead be chained by joining on shared node IDs via
 hasPipeSectionTopNodeDesignation and hasPipeSectionBottomNodeDesignation -- e.g. pipe section A's
 bottom node equals pipe section B's top node means A flows into B.
+
+Full property reference, auto-generated directly from m150-onto.rdf -- these are the ONLY real
+property names in this ontology. If a property you want isn't in this list, it does not exist;
+do not invent a plausible-sounding variant (this is exactly how past mistakes like
+"hasSiteManager"/"hasCameraSystem"/"hasVideoFile" happened -- none of those exist, the real
+properties are hasSiteManagement/hasCameraSystemUsed/hasVideoFilename, all listed below).
+"[single-valued]" means functional (at most one value per subject); everything else may repeat.
+{_PROPERTY_REFERENCE}
 """.strip()
 
 SPARQL_GENERATION_SYSTEM_PROMPT = f"""
@@ -64,8 +120,9 @@ queries against a local RDF store containing the M150-Onto ontology and example 
 Output rules:
 - Respond with ONLY the SPARQL query text. No explanation, no markdown code fences, no prose.
 - Always start the query with "PREFIX {PREFIX}: <{NAMESPACE}>".
-- Prefer SELECT queries. Use OPTIONAL for fields that might not exist rather than failing the
-  whole query.
+- Always use SELECT -- never ASK, CONSTRUCT, or DESCRIBE, even for yes/no-sounding questions
+  ("does X have..." should be a SELECT that returns rows or no rows, not an ASK boolean). Use
+  OPTIONAL for fields that might not exist rather than failing the whole query.
 - If given a previous failed attempt and an error or "no results" note, fix the query instead of
   repeating the same mistake.
 """.strip()
@@ -111,6 +168,15 @@ SELECT ?inspector ?siteManager ?company WHERE {{
   OPTIONAL {{ ?inspection {PREFIX}:hasInspector ?inspector }}
   OPTIONAL {{ ?inspection {PREFIX}:hasSiteManagement ?siteManager }}
   OPTIONAL {{ ?inspection {PREFIX}:hasCompany ?company }}
+}}""",
+    ),
+    (
+        "What camera system and video file were used for the inspection of 1204015?",
+        f"""PREFIX {PREFIX}: <{NAMESPACE}>
+SELECT ?cameraSystem ?videoFile WHERE {{
+  ?inspection {PREFIX}:inspects {PREFIX}:{INDIVIDUAL_PREFIX}PipeSection_1204015 .
+  OPTIONAL {{ ?inspection {PREFIX}:hasCameraSystemUsed ?cameraSystem }}
+  OPTIONAL {{ ?inspection {PREFIX}:hasVideoFilename ?videoFile }}
 }}""",
     ),
     (

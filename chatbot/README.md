@@ -14,7 +14,9 @@ built-in reasoning + chat agent.
 
 GraphDB's `owl-horst` reasoner would normally infer things like reverse-direction properties
 (`hasMaterial` → `isMaterialOf`) live, at query time. Since pyoxigraph doesn't reason, this
-package **materializes** those entailments once, up front, into the store itself — see
+package **materializes** those entailments once, up front: `build_store.py` loads the RDF into
+[rdflib](https://rdflib.readthedocs.io/), runs a full OWL-RL deductive closure over it with
+[owlrl](https://owl-rl.readthedocs.io/), and loads the closed graph into the pyoxigraph store — see
 [`build_store.py`](#build_storepy) below.
 
 ## Setup
@@ -41,12 +43,26 @@ $env:AZURE_OPENAI_API_KEY = "..."          # PowerShell
 python -m chatbot.build_store [--store-path chatbot/store] [--rebuild]
 ```
 
-Loads `m150-onto.rdf` and `m150-onto-parsed-DWA.rdf` from the repo root into a persistent store
-at `chatbot/store/` (gitignored — it's a derived build artifact, regenerable in seconds), then
-materializes `owl:inverseOf` and `owl:SymmetricProperty` entailments so reverse-direction
-queries work. Prints before/after triple counts and a per-pair delta so you can sanity-check the
-materialization. Pass `--rebuild` to delete and recreate the store from scratch (safe to omit —
-the materialization step is idempotent and safe to re-run on an existing store).
+Loads `m150-onto.rdf` and `m150-onto-parsed-DWA.rdf` from the repo root into an rdflib graph, runs
+a full OWL-RL deductive closure over it (`owlrl.DeductiveClosure(owlrl.OWLRL_Semantics)`), and
+loads the closed graph into a persistent pyoxigraph store at `chatbot/store/` (gitignored — it's a
+derived build artifact, regenerable in seconds). This gets general entailment (subclass reasoning,
+`owl:inverseOf`, `owl:SymmetricProperty`, `owl:TransitiveProperty`, `owl:equivalentProperty`, etc.)
+for free instead of hand-coding each axiom type. Prints before/after triple counts, plus two
+sanity-check counts worth reading before trusting a rebuilt store:
+
+- **Fabricated triples stripped**: `hasPipeSectionTopNodeDesignation`/
+  `hasPipeSectionBottomNodeDesignation` are declared in a way that, under full OWL-RL closure,
+  would fabricate backwards `Node → PipeSection` triples (see "Known limitations" below) — these
+  are detected and removed after closure.
+- **Non-reflexive `owl:sameAs` triples**: OWL-RL axiomatically asserts `x owl:sameAs x` for every
+  term (expected noise, not printed), but a triple where the two sides differ means two *distinct*
+  individuals got merged — e.g. an `owl:FunctionalProperty` with two different values for one
+  subject. The build prints these instead of silently trusting the closure.
+
+Pass `--rebuild` to delete and recreate the store from scratch (safe to omit — loading is additive
+and safe to re-run on an existing store, though a full `--rebuild` is the only way to drop triples
+whose source data changed or was removed).
 
 ### 2. Ask questions
 
@@ -96,11 +112,13 @@ Type `exit`, `quit`, or Ctrl-C to leave.
 
 | File | Purpose |
 |------|---------|
-| `build_store.py` | Loads the RDF, materializes inverse/symmetric closure into `chatbot/store/`. Run this first. |
-| `schema_context.py` | System prompts and a few-shot NL→SPARQL example set, adapted from the ontology-specific rules originally drafted for GraphDB's TTYG (`TTYG-agent-instructions-draft.md` at the repo root). |
+| `build_store.py` | Loads the RDF, runs the OWL-RL closure into `chatbot/store/`. Run this first. |
+| `schema_context.py` | System prompts and a few-shot NL→SPARQL example set. The full `m150:` property list is auto-generated straight from `m150-onto.rdf` at import time (`_build_property_reference()`), so a real property can never be missing from the prompt — only the handful of "don't confuse this with X" gotchas and the few-shot examples need hand maintenance now. |
+| `schema_validate.py` | Checks a generated query's predicates against the real property set (via rdflib's SPARQL algebra, not regex) and builds a "did you mean X?" retry note for any that don't exist — catches the class of bug where the model guesses a plausible but nonexistent property name and it silently returns empty `OPTIONAL` results instead of erroring. |
 | `llm_client.py` | Thin `AzureOpenAI` wrapper — `generate_sparql()` and `compose_answer()`. |
-| `sparql_pipeline.py` | Orchestrates one question end-to-end: generate SPARQL → run it → retry once on error or empty results → compose the final answer. |
+| `sparql_pipeline.py` | Orchestrates one question end-to-end: generate SPARQL → validate predicates (retry with a specific hint if any are unknown) → run it → retry once on error or empty results → compose the final answer. |
 | `repl.py` | The CLI loop (`python -m chatbot.repl`). |
+| `eval.py` | Regression eval built from real demonstration questions (`python -m chatbot.eval`). Makes real Azure calls — run it after touching `schema_context.py`, `sparql_pipeline.py`, or `schema_validate.py` instead of hand-testing one question at a time in the REPL. |
 
 Each question can cost up to **4 Azure OpenAI calls** in the worst case (generate SPARQL,
 compose answer, one retry of each) — worth knowing if you're watching an Azure billing
@@ -113,9 +131,14 @@ dashboard.
   `?pipe a m150:Concrete` — this silently returns nothing.
 - Most `hasX` properties are single-valued; `flowsTo`, `flowsFrom`, `connectedWith`,
   `inspects`/`inspectedIn`, `isChildOf`/`isParentOf`, `renders`/`renderedBy` are multi-valued.
-- `flowsTo`/`connectedWith` are essentially unpopulated in this demo dataset. Pipe-section
-  connectivity is instead derived by joining on shared node IDs via
-  `hasPipeSectionTopNodeDesignation` / `hasPipeSectionBottomNodeDesignation`.
+- `flowsTo`/`connectedWith` prompt guidance still tells the model to derive pipe-section
+  connectivity by joining on shared node IDs via `hasPipeSectionTopNodeDesignation` /
+  `hasPipeSectionBottomNodeDesignation`, rather than querying `connectedWith` directly. This was
+  written when `connectedWith` was empty; since the OWL-RL closure in `build_store.py` started
+  populating it (106 triples in the current demo data, via the `equivalentProperty`/
+  `subPropertyOf`/`TransitiveProperty` chain from real `hasPipeSectionTopNodeDesignation`/
+  `BottomNodeDesignation` data), querying `connectedWith` directly may now work too — this hasn't
+  been re-verified against the prompt/few-shot examples in `schema_context.py`.
 - Individuals are prefixed `Beispiel_` (German "example") — a placeholder-data marker from the
   XML parser (`ontoparser.parser.INDIVIDUAL_PREFIX`), stripped from user-facing answers.
 
@@ -123,11 +146,16 @@ dashboard.
 
 - `hasPipeSectionTopNodeDesignation`/`hasPipeSectionBottomNodeDesignation` are declared
   `owl:inverseOf` in the ontology, but this is a known modeling bug (both properties actually go
-  `PipeSection → Node`, see `CLAUDE.md`). `build_store.py` deliberately excludes this pair from
-  materialization — don't "fix" this by adding it back.
-- `owl:TransitiveProperty` closure on `connectedWith` is not materialized. It's currently
-  empty/near-empty in the demo data, so there's nothing to close over; revisit if `ontoparser`
-  starts populating `flowsTo`/`connectedWith` for real.
+  `PipeSection → Node`, see `CLAUDE.md`). Removing just that one bad `owl:inverseOf` triple isn't
+  enough under full OWL-RL closure: both properties are also separately `owl:equivalentProperty`
+  to `flowsTo`/`flowsFrom`, and `flowsFrom` is correctly `owl:inverseOf` `flowsTo` — chaining those
+  three individually-correct axioms still fabricates the same backwards `Node → PipeSection`
+  triples. `build_store.py` instead snapshots these two predicates before closure and strips any
+  triple the reasoner added to them afterward — don't "fix" this by asserting a correct inverse
+  pair instead; that reintroduces the fabrication via the equivalence chain.
+- `owl:TransitiveProperty` closure on `connectedWith` is now handled generically by the OWL-RL
+  closure (no more hand-coded no-op) — it picks up the `equivalentProperty`/`subPropertyOf` chain
+  from real `hasPipeSectionTopNodeDesignation`/`BottomNodeDesignation` data.
 - No automated test suite covers the LLM-in-the-loop parts (nondeterministic, costs real Azure
   calls). Verify manually against the example questions above after any change to
   `schema_context.py` or `build_store.py`.

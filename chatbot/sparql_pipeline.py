@@ -4,7 +4,7 @@ from dataclasses import dataclass, field
 
 import pyoxigraph
 
-from chatbot import llm_client
+from chatbot import llm_client, schema_validate
 from chatbot.schema_context import INDIVIDUAL_PREFIX
 
 
@@ -20,6 +20,16 @@ class AnswerResult:
 
 def _run_query(store: pyoxigraph.Store, sparql: str) -> list[dict[str, str]]:
     results = store.query(sparql)
+    # store.query() returns a different pyoxigraph type per query form (QueryBoolean for
+    # ASK, QueryTriples for CONSTRUCT/DESCRIBE, QuerySolutions for SELECT). The prompt asks
+    # for SELECT only, but the model doesn't always comply -- treat anything else as a
+    # generation error so the existing retry-on-error path in answer_question handles it
+    # instead of crashing on a missing .variables attribute.
+    if not isinstance(results, pyoxigraph.QuerySolutions):
+        raise SyntaxError(
+            f"Expected a SELECT query but got a {type(results).__name__} result "
+            "(likely an ASK/CONSTRUCT/DESCRIBE query) -- use SELECT instead."
+        )
     # Variable.__str__ returns "?name", but QuerySolution indexing needs the bare name.
     var_names = [str(v).lstrip("?") for v in results.variables]
     rows = []
@@ -55,6 +65,20 @@ def answer_question(
 
     sparql = llm_client.generate_sparql(question, history=history)
     result.sparql = sparql
+
+    # Check for guessed-but-nonexistent property names (e.g. hasCameraSystem for the
+    # real hasCameraSystemUsed) before running the query at all: these are valid SPARQL
+    # that would otherwise just silently return unbound OPTIONAL variables, so the only
+    # way to catch them is to check predicates against the real schema. This retry
+    # replaces (not adds to) the error/empty-result retry below -- one retry budget.
+    unknown_predicates = schema_validate.find_unknown_predicates(sparql, store)
+    predicate_retry = bool(unknown_predicates)
+    if predicate_retry:
+        result.retried = True
+        retry_note = schema_validate.build_retry_note(unknown_predicates)
+        sparql = llm_client.generate_sparql(question, retry_note=retry_note, history=history)
+        result.sparql = sparql
+
     bindings: list[dict[str, str]] = []
     query_error: str | None = None
 
@@ -63,7 +87,9 @@ def answer_question(
     except (SyntaxError, OSError) as exc:
         query_error = str(exc)
 
-    if query_error is not None:
+    # If the predicate check already spent the retry budget, run with whatever it
+    # produced instead of retrying a second time.
+    if not predicate_retry and query_error is not None:
         result.retried = True
         retry_note = f"That query failed with error: {query_error}\nFix it and try again."
         sparql = llm_client.generate_sparql(question, retry_note=retry_note, history=history)
@@ -74,7 +100,7 @@ def answer_question(
         except (SyntaxError, OSError) as exc:
             query_error = str(exc)
 
-    elif not bindings:
+    elif not predicate_retry and not bindings:
         result.retried = True
         retry_note = (
             "That query ran but returned zero rows -- it is likely using the wrong property, "
