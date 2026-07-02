@@ -329,18 +329,18 @@ class M150XmlParser:
         if imported_path.exists():
             owl.get_ontology(str(imported_path.resolve())).load()
 
-        # Pre-existing classes, properties, and reference individuals use the slash-based
-        # IRI namespace (xml:base), while onto.base_iri uses '#'. Compute the correct
-        # entity IRI base once so all lookups are consistent.
-        self._entity_base = self.onto.base_iri.rstrip("#/") + "/"
+        # The ontology is entirely hash-based (xmlns="...#", xml:base without a
+        # trailing fragment), so onto.base_iri already gives the correct namespace
+        # for all pre-existing and newly created entities.
+        self._entity_base = self.onto.base_iri
 
-    def _slash_iri(self, name: str) -> str:
-        """Returns the slash-based IRI for a named entity (used for pre-existing ontology content)."""
+    def _entity_iri(self, name: str) -> str:
+        """Returns the IRI for a named entity within the ontology's namespace."""
         return self._entity_base + name
 
     def _get_class(self, class_name: str):
         """Retrieves a class from the loaded ontology by name, raising an error if not found."""
-        cls = self.onto.search_one(iri=self._slash_iri(class_name))
+        cls = self.onto.search_one(iri=self._entity_iri(class_name))
         if cls is None:
             cls = getattr(self.onto, class_name, None)
         if cls is None:
@@ -349,7 +349,7 @@ class M150XmlParser:
 
     def _get_property(self, prop_name: str):
         """Retrieves a property by name or dynamically creates it as an Object or Datatype property."""
-        prop = self.onto.search_one(iri=self._slash_iri(prop_name))
+        prop = self.onto.search_one(iri=self._entity_iri(prop_name))
         if prop is None:
             prop = getattr(self.onto, prop_name, None)
         if prop is None:
@@ -364,7 +364,7 @@ class M150XmlParser:
         """Looks up an individual by name, falling back to a case-insensitive match on the
         local name if an exact-case lookup fails (ontology naming conventions are not always
         consistently cased, e.g. RT303 codes like 'mNN' vs 'MNN')."""
-        existing = self.onto.search_one(iri=self._slash_iri(name))
+        existing = self.onto.search_one(iri=self._entity_iri(name))
         if existing is not None:
             return existing
         target = name.lower()
@@ -377,12 +377,9 @@ class M150XmlParser:
     def _create_individual(self, cls, entity_name: str, label: Optional[str] = None):
         """Returns an existing individual or creates a new one for the given class and name.
 
-        Searches both the slash-based IRI (pre-existing ontology content) and the hash-based
-        IRI (newly created individuals via onto.base_iri) to avoid duplicates across parse runs.
+        Searches by IRI to avoid duplicates across parse runs.
         """
-        existing = self.onto.search_one(iri=self._slash_iri(entity_name))
-        if existing is None:
-            existing = self.onto.search_one(iri=f"{self.onto.base_iri}{entity_name}")
+        existing = self.onto.search_one(iri=self._entity_iri(entity_name))
         if existing is not None:
             return existing
 
@@ -447,7 +444,7 @@ class M150XmlParser:
             cls = self._get_class(class_name)
             ind_name = INDIVIDUAL_PREFIX + safe_entity_name(class_name, value)
             individual = self._create_individual(cls, ind_name, label=value)
-            role_ind = self.onto.search_one(iri=self._slash_iri(role_name))
+            role_ind = self.onto.search_one(iri=self._entity_iri(role_name))
             if role_ind is not None:
                 has_role_prop = self._get_property("hasRole")
                 if role_ind not in has_role_prop[individual]:
@@ -459,7 +456,7 @@ class M150XmlParser:
         if prop_name in _CODED_VALUE_INDIVIDUALS:
             ind_name = _CODED_VALUE_INDIVIDUALS[prop_name].get(value.upper())
             if ind_name:
-                existing = self.onto.search_one(iri=self._slash_iri(ind_name))
+                existing = self.onto.search_one(iri=self._entity_iri(ind_name))
                 if existing is not None:
                     return existing
                 self._warn(f"  Warning: Named individual {ind_name} not found in ontology")
