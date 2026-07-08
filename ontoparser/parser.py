@@ -519,8 +519,8 @@ class M150XmlParser:
 
         pipe_cls = self._get_class("PipeSection")
         node_cls = self._get_class("Node")
-        inspection_cls = self._get_class("Inspection")
-        condition_cls = self._get_class("Condition")
+        inspection_cls = self._get_class("InspectionReport")
+        condition_cls = self._get_class("ConditionReport")
         object_cls = self._get_class("GeometryObject")
         point_cls = self._get_class("GeometryPoint")
         reference_cls = self._get_class("Reference")

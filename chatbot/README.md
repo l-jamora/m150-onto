@@ -171,3 +171,11 @@ dashboard.
   `schema_context.py` or `build_store.py`.
 - The Azure endpoint is hardcoded in `llm_client.py`; the API key and (optionally) the deployment
   name (`AZURE_OPENAI_DEPLOYMENT`) are read from the environment.
+- `schema_context.py` teaches the model everything — ontology facts and query-shape rules alike —
+  through system-prompt prose the model has to remember and re-derive on every call. That's fine
+  for one-off facts, but fragile for a fixed query shape like "dump every property of this
+  entity" (see the "give me all the details" rule): a prose instruction is a strong suggestion,
+  not a guarantee. The more robust fix for that class of request is `tools`/function-calling
+  (`openai.pydantic_function_tool`, `tool_choice`) — route "details" questions to a Python
+  function that runs the bidirectional `?s ?p ?o` / `?s2 ?p2 ?o` query directly, no LLM-generated
+  SPARQL involved. Not done yet; current fix is prompt-only.
