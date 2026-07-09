@@ -1,3 +1,4 @@
 owlready2>=0.8.2
 rdflib>=7.0.0
+rich>=13.7.0
 tqdm>=4.65.0

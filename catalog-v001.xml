@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<catalog prefer="public" xmlns="urn:oasis:names:tc:entity:xmlns:xml:catalog">
+    <group id="Folder Repository, directory=, recursive=true, Auto-Update=true, version=2" prefer="public" xml:base="">
+        <uri id="Automatically generated entry, Timestamp=1783588800341" name="http://triplr.org/rdf/bloody-byte.net/rdf/dc_owl2dl/dc.ttl" uri=".venv/Lib/site-packages/owlready2/ontos/dc.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1783588800341" name="http://triplr.org/rdf/bloody-byte.net/rdf/dc_owl2dl/dcam.ttl" uri=".venv/Lib/site-packages/owlready2/ontos/dcam.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1783588800341" name="http://triplr.org/rdf/bloody-byte.net/rdf/dc_owl2dl/dcmitype.ttl" uri=".venv/Lib/site-packages/owlready2/ontos/dcmitype.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1783588800341" name="http://triplr.org/rdf/bloody-byte.net/rdf/dc_owl2dl/dcterms.ttl" uri=".venv/Lib/site-packages/owlready2/ontos/dcterms.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1783588800341" name="duplicate:http://www.w3.org/2002/07/owl" uri=".venv/Lib/site-packages/owlready2/ontos/owlready_editor.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1783588800341" name="duplicate:http://www.w3.org/2002/07/owl" uri=".venv/Lib/site-packages/owlready2/ontos/owlready_ontology.owl"/>
+        <uri id="Automatically generated entry, Timestamp=1783588800341" name="https://l-jamora.github.io/m150-onto" uri="m150-onto.rdf"/>
+    </group>
+</catalog>
