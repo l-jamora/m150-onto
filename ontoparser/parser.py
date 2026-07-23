@@ -222,15 +222,23 @@ def load_mapping(csv_path: Path) -> dict:
 def _coerce_data_value(value: str, prop) -> object:
     """Coerces a raw XML string to the Python type that matches the property's declared rdfs:range.
 
-    Order of attempts: date → range-guided type → raw string fallback.
+    Order of attempts: dateTime (if range says so) → date → range-guided type → raw string fallback.
     """
+    ranges = list(prop.range) if hasattr(prop, "range") else []
+    r = ranges[0] if ranges else None
+
+    # hasReportDate/hasAssessmentDate/hasClassificationDate are xsd:dateTime (owlready2/HermiT
+    # don't support xsd:date); parse to datetime so the emitted literal matches the declared range.
+    if r is datetime:
+        dt_val = parse_datetime(value, "")
+        if dt_val is not None:
+            return dt_val
+
     date_val = parse_date(value)
     if date_val is not None:
         return date_val
 
-    ranges = list(prop.range) if hasattr(prop, "range") else []
     if ranges:
-        r = ranges[0]
         # owlready2 maps XSD types to Python natives (bool, int, float); check those first
         if r is bool:
             return value.strip().lower() in ("true", "yes", "j", "ja", "1", "a")
