@@ -574,7 +574,13 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- http://purl.org/vocab/vann/preferredNamespaceUri -->
 
     <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/preferredNamespaceUri"/>
-    
+
+
+
+    <!-- http://purl.org/vocab/vann/usageNote -->
+
+    <owl:AnnotationProperty rdf:about="http://purl.org/vocab/vann/usageNote"/>
+
 
 
     <!-- 
@@ -2880,6 +2886,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#AmbientAir">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 212</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Umgebungsluft</rdfs:label>
+        <rdfs:label xml:lang="en">Ambient air</rdfs:label>
     </owl:Class>
     
 
@@ -2888,6 +2897,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#AmbientPhoto">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Photo"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Umgebungsfoto</rdfs:label>
+        <rdfs:label xml:lang="en">Ambient photo</rdfs:label>
     </owl:Class>
     
 
@@ -2896,6 +2908,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#AreaCode">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#InformationEntity"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Gebietsschlüssel</rdfs:label>
+        <rdfs:label xml:lang="en">Area code</rdfs:label>
     </owl:Class>
     
 
@@ -2904,6 +2919,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#BackflowPrevention">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 206</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Vorflutsicherung</rdfs:label>
+        <rdfs:label xml:lang="en">Backflow prevention</rdfs:label>
     </owl:Class>
     
 
@@ -2912,13 +2930,21 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#BeddingType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 127</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Lagerungsart</rdfs:label>
+        <rdfs:label xml:lang="en">Bedding type</rdfs:label>
     </owl:Class>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto#CameraSystem -->
 
-    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#CameraSystem"/>
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#CameraSystem">
+        <rdfs:comment xml:lang="en">The camera system used for an inspection (HI006/KI006).</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Kamerasystem</rdfs:label>
+        <rdfs:label xml:lang="en">Camera system</rdfs:label>
+    </owl:Class>
     
 
 
@@ -2926,6 +2952,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#CatchmentAreaCode">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#InformationEntity"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Einzugsgebietschlüssel</rdfs:label>
+        <rdfs:label xml:lang="en">Catchment area code</rdfs:label>
     </owl:Class>
     
 
@@ -2934,6 +2963,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#CircumferentialReferencePoint">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 211</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Bezugspunkt am Umfang</rdfs:label>
+        <rdfs:label xml:lang="en">Circumferential reference point</rdfs:label>
     </owl:Class>
     
 
@@ -2942,6 +2974,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Cleaning">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 205</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Reinigung</rdfs:label>
+        <rdfs:label xml:lang="en">Cleaning</rdfs:label>
     </owl:Class>
     
 
@@ -2950,6 +2985,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#ClimbingAid">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 121</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Steighilfe</rdfs:label>
+        <rdfs:label xml:lang="en">Climbing aid</rdfs:label>
     </owl:Class>
     
 
@@ -2958,6 +2996,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#ClimbingAidMaterial">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 122</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Steighilfenmaterial</rdfs:label>
+        <rdfs:label xml:lang="en">Climbing aid material</rdfs:label>
     </owl:Class>
     
 
@@ -2966,13 +3007,21 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#CodingSystem">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:comment xml:lang="en">The coding system used to record condition observations (e.g. DIN EN 13508-2, ISYBAU), according to DWA-M 150 reference table 202.</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 202</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Kodiersystem</rdfs:label>
+        <rdfs:label xml:lang="en">Coding system</rdfs:label>
     </owl:Class>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto#Component -->
 
-    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Component"/>
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Component">
+        <rdfs:comment xml:lang="en">A physical asset of a sewer network as described in DWA-M 150: either a pipe section or a node. Components are the subjects of inspection reports and of geometry objects.</rdfs:comment>
+        <rdfs:label xml:lang="de">Komponente</rdfs:label>
+        <rdfs:label xml:lang="en">Component</rdfs:label>
+    </owl:Class>
     
 
 
@@ -2980,6 +3029,10 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#ConditionReport">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#InspectionReport"/>
+        <rdfs:comment xml:lang="en">A single condition observation made during an inspection of a pipe section (HZ) or a node (KZ), recorded at a stationing with a code of the coding system in use (e.g. DIN EN 13508-2).</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Zustandsbericht</rdfs:label>
+        <rdfs:label xml:lang="en">Condition report</rdfs:label>
     </owl:Class>
     
 
@@ -2988,6 +3041,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#CoordinateSystem">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 302</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Koordinatensystem</rdfs:label>
+        <rdfs:label xml:lang="en">Coordinate system</rdfs:label>
     </owl:Class>
     
 
@@ -2996,6 +3052,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#CoverClass">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 119</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Deckelklasse</rdfs:label>
+        <rdfs:label xml:lang="en">Cover class</rdfs:label>
     </owl:Class>
     
 
@@ -3004,6 +3063,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#DataStatus">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 115</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Status Daten</rdfs:label>
+        <rdfs:label xml:lang="en">Data status</rdfs:label>
     </owl:Class>
     
 
@@ -3012,13 +3074,20 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#DigitalPhoto">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Photo"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Digitales Foto</rdfs:label>
+        <rdfs:label xml:lang="en">Digital photo</rdfs:label>
     </owl:Class>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto#Directionality -->
 
-    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Directionality"/>
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Directionality">
+        <rdfs:comment xml:lang="en">A direction relevant to sewer data: the flow-related direction of an inspection or the orientation of a circular arc.</rdfs:comment>
+        <rdfs:label xml:lang="de">Richtung</rdfs:label>
+        <rdfs:label xml:lang="en">Directionality</rdfs:label>
+    </owl:Class>
     
 
 
@@ -3026,6 +3095,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#District">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#SpatialEntity"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Ortsteil</rdfs:label>
+        <rdfs:label xml:lang="en">District</rdfs:label>
     </owl:Class>
     
 
@@ -3034,6 +3106,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#DistrictCode">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#InformationEntity"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Ortsteilschlüssel</rdfs:label>
+        <rdfs:label xml:lang="en">District code</rdfs:label>
     </owl:Class>
     
 
@@ -3042,6 +3117,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#ElevationAccuracy">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 102</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Höhengenauigkeit</rdfs:label>
+        <rdfs:label xml:lang="en">Elevation accuracy</rdfs:label>
     </owl:Class>
     
 
@@ -3050,6 +3128,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#ElevationSystem">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 303</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Höhensystem</rdfs:label>
+        <rdfs:label xml:lang="en">Elevation system</rdfs:label>
     </owl:Class>
     
 
@@ -3058,6 +3139,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#FloodArea">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 114</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Überschwemmungsgebiet</rdfs:label>
+        <rdfs:label xml:lang="en">Flood area</rdfs:label>
     </owl:Class>
     
 
@@ -3066,6 +3150,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#FloodingFrequency">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 125</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Einstauhäufigkeit</rdfs:label>
+        <rdfs:label xml:lang="en">Flooding frequency</rdfs:label>
     </owl:Class>
     
 
@@ -3074,6 +3161,10 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#FlowingDirection">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Directionality"/>
+        <rdfs:comment xml:lang="en">A direction relative to the flow of the sewer: in flowing direction or against flowing direction.</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Fließrichtung</rdfs:label>
+        <rdfs:label xml:lang="en">Flowing direction</rdfs:label>
     </owl:Class>
     
 
@@ -3081,22 +3172,24 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
     <!-- https://l-jamora.github.io/m150-onto#Geometry -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Geometry">
-        <rdfs:comment xml:lang="en">The taxonomy of geometry includes the GIS geometry data of M150-Components. These include Geometry Object and Geometry Points.
-
-It is recommended to create individuals for geometric objects with the template:
+        <rdfs:comment xml:lang="en">The GIS geometry data of a component in DWA-M 150, made up of geometry objects (GO) and their geometry points (GP).</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Geometrie</rdfs:label>
+        <rdfs:label xml:lang="en">Geometry</rdfs:label>
+        <vann:usageNote xml:lang="en">Individuals for geometric objects are labelled with the template:
 
 ` GeoObject[PipeSection/Node Designation] `
 ` GeoObject[HG001]  ` for Pipe Section: Geometry Objects;
 ` GeoObject[KG001] ` for Node: Geometry Objects.
 
-It is recommended to create individuals for geometric points with the template:
+Individuals for geometric points are labelled with the template:
 
 ` GeoPoint[Geometry Point Description] `
 ` GeoPoint[GP001]  `.
 
-`GeoObject`&apos;s should be declared as the parent of &apos;GeoPoint&apos;&apos;s with the object property `isParentOf`. (Inverse: isChildOf)
+`GeoObject`'s should be declared as the parent of `GeoPoint`'s with the object property `isParentOf`. (Inverse: isChildOf)
 
-`GeoObject`&apos;s should be declared as the renderer of a Component with the object property &apos;renders&apos;. (Inverse: renderedBy)</rdfs:comment>
+`GeoObject`'s should be declared as the renderer of a Component with the object property `renders`. (Inverse: renderedBy)</vann:usageNote>
     </owl:Class>
     
 
@@ -3105,6 +3198,10 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#GeometryObject">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Geometry"/>
+        <rdfs:comment xml:lang="en">A geometry object (GO) that renders a pipe section or a node and groups the geometry points that describe its shape.</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Geometrieobjekt</rdfs:label>
+        <rdfs:label xml:lang="en">Geometry object</rdfs:label>
     </owl:Class>
     
 
@@ -3113,6 +3210,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#GeometryObjectIdentification">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 300</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Geometrieobjektkennung</rdfs:label>
+        <rdfs:label xml:lang="en">Geometry object identification</rdfs:label>
     </owl:Class>
     
 
@@ -3121,6 +3221,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#GeometryObjectType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 301</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Geometrieobjekttyp</rdfs:label>
+        <rdfs:label xml:lang="en">Geometry object type</rdfs:label>
     </owl:Class>
     
 
@@ -3129,6 +3232,10 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#GeometryPoint">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#GeometryObject"/>
+        <rdfs:comment xml:lang="en">A single coordinate point (GP) of a geometry object.</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Geometriepunkt</rdfs:label>
+        <rdfs:label xml:lang="en">Geometry point</rdfs:label>
     </owl:Class>
     
 
@@ -3137,13 +3244,20 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Groundwater">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 113</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Grundwasser</rdfs:label>
+        <rdfs:label xml:lang="en">Groundwater</rdfs:label>
     </owl:Class>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto#InformationEntity -->
 
-    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#InformationEntity"/>
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#InformationEntity">
+        <rdfs:comment xml:lang="en">An administrative identifier referred to by a component, such as a street, district, municipality, area or catchment area code.</rdfs:comment>
+        <rdfs:label xml:lang="de">Informationsentität</rdfs:label>
+        <rdfs:label xml:lang="en">Information entity</rdfs:label>
+    </owl:Class>
     
 
 
@@ -3151,6 +3265,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#InspectionReason">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 201</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Inspektionsgrund</rdfs:label>
+        <rdfs:label xml:lang="en">Inspection reason</rdfs:label>
     </owl:Class>
     
 
@@ -3159,6 +3276,10 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#InspectionReport">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Report"/>
+        <rdfs:comment xml:lang="en">The record of one inspection of a pipe section (HI) or a node (KI), identified by the component and the inspection date and time.</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Inspektionsbericht</rdfs:label>
+        <rdfs:label xml:lang="en">Inspection report</rdfs:label>
     </owl:Class>
     
 
@@ -3167,6 +3288,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#InspectionType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 203</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Inspektionsart</rdfs:label>
+        <rdfs:label xml:lang="en">Inspection type</rdfs:label>
     </owl:Class>
     
 
@@ -3175,6 +3299,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#InternalProtection">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 120</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Innenschutz</rdfs:label>
+        <rdfs:label xml:lang="en">Internal protection</rdfs:label>
     </owl:Class>
     
 
@@ -3183,6 +3310,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#LocalizedRepairNode">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 214</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Punktuelle Reparatur Knoten</rdfs:label>
+        <rdfs:label xml:lang="en">Localized repair node</rdfs:label>
     </owl:Class>
     
 
@@ -3191,6 +3321,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#LocalizedRepairSewer">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 213</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Punktuelle Reparatur Haltung</rdfs:label>
+        <rdfs:label xml:lang="en">Localized repair sewer</rdfs:label>
     </owl:Class>
     
 
@@ -3199,6 +3332,10 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Material">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:comment xml:lang="en">The material of a pipe section or node, according to DWA-M 150 reference table 105.</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 105</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Material</rdfs:label>
+        <rdfs:label xml:lang="en">Material</rdfs:label>
     </owl:Class>
     
 
@@ -3207,6 +3344,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#MeasurementTechnology">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 123</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Messtechnik</rdfs:label>
+        <rdfs:label xml:lang="en">Measurement technology</rdfs:label>
     </owl:Class>
     
 
@@ -3215,6 +3355,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#MeasurementValueType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 401</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Messwerttyp</rdfs:label>
+        <rdfs:label xml:lang="en">Measurement value type</rdfs:label>
     </owl:Class>
     
 
@@ -3223,6 +3366,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#MunicipalityCode">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#InformationEntity"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Gemeindeschlüssel</rdfs:label>
+        <rdfs:label xml:lang="en">Municipality code</rdfs:label>
     </owl:Class>
     
 
@@ -3232,6 +3378,10 @@ It is recommended to create individuals for geometric points with the template:
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Node">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Component"/>
         <owl:disjointWith rdf:resource="https://l-jamora.github.io/m150-onto#PipeSection"/>
+        <rdfs:comment xml:lang="en">A node (German: Knoten) is a point structure of the sewer network, such as a manhole, a street drain or an outlet, described by the DWA-M 150 node basic data (KG). Its designation is KG001.</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Knoten</rdfs:label>
+        <rdfs:label xml:lang="en">Node</rdfs:label>
     </owl:Class>
     
 
@@ -3240,6 +3390,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#NodeStructureComponent">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 124</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Bauteil</rdfs:label>
+        <rdfs:label xml:lang="en">Node structure component</rdfs:label>
     </owl:Class>
     
 
@@ -3248,6 +3401,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#NodeStructureType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 117</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Bauwerksart</rdfs:label>
+        <rdfs:label xml:lang="en">Structure type</rdfs:label>
     </owl:Class>
     
 
@@ -3256,6 +3412,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#NodeType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 116</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Knotenart</rdfs:label>
+        <rdfs:label xml:lang="en">Node type</rdfs:label>
     </owl:Class>
     
 
@@ -3264,6 +3423,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#ObjectType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 128</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Objekttyp</rdfs:label>
+        <rdfs:label xml:lang="en">Object type</rdfs:label>
     </owl:Class>
     
 
@@ -3272,13 +3434,20 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#OperationalStatus">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 109</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Funktionszustand</rdfs:label>
+        <rdfs:label xml:lang="en">Operational status</rdfs:label>
     </owl:Class>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto#Organization -->
 
-    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Organization"/>
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Organization">
+        <rdfs:comment xml:lang="en">An organization named in the inspection data, such as the inspecting company. Its function is given with hasRole.</rdfs:comment>
+        <rdfs:label xml:lang="de">Organisation</rdfs:label>
+        <rdfs:label xml:lang="en">Organization</rdfs:label>
+    </owl:Class>
     
 
 
@@ -3286,6 +3455,10 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Orientation">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Directionality"/>
+        <rdfs:comment xml:lang="en">The turning direction of a circular arc in the geometry data (GP102): clockwise or counter-clockwise.</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Orientierung</rdfs:label>
+        <rdfs:label xml:lang="en">Orientation</rdfs:label>
     </owl:Class>
     
 
@@ -3294,19 +3467,31 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Ownership">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 110</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Eigentum</rdfs:label>
+        <rdfs:label xml:lang="en">Ownership</rdfs:label>
     </owl:Class>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto#Person -->
 
-    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Person"/>
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Person">
+        <rdfs:comment xml:lang="en">A natural person named in the inspection data, such as an inspector, a site manager, a reporter or an assessor. Their function is given with hasRole.</rdfs:comment>
+        <rdfs:label xml:lang="de">Person</rdfs:label>
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+    </owl:Class>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto#Photo -->
 
-    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Photo"/>
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Photo">
+        <rdfs:comment xml:lang="en">A photo taken during an inspection, e.g. of a condition observation (HZ009/KZ009).</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Foto</rdfs:label>
+        <rdfs:label xml:lang="en">Photo</rdfs:label>
+    </owl:Class>
     
 
 
@@ -3314,6 +3499,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#PhotoStorageMedium">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 208</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Fotospeichermedium</rdfs:label>
+        <rdfs:label xml:lang="en">Photo storage medium</rdfs:label>
     </owl:Class>
     
 
@@ -3322,6 +3510,10 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#PipeSection">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Component"/>
+        <rdfs:comment xml:lang="en">A pipe section (German: Haltung) is the stretch of sewer between two nodes, described by the DWA-M 150 pipe section basic data (HG). Its designation is HG001.</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Haltung</rdfs:label>
+        <rdfs:label xml:lang="en">Pipe section</rdfs:label>
     </owl:Class>
     
 
@@ -3330,6 +3522,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#SpatialEntity"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Bezugspunkt der Haltungsinspektion</rdfs:label>
+        <rdfs:label xml:lang="en">Pipe section inspection reference point</rdfs:label>
     </owl:Class>
     
 
@@ -3338,6 +3533,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePointStart">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Bezugspunkt Start</rdfs:label>
+        <rdfs:label xml:lang="en">Pipe section inspection start reference point</rdfs:label>
     </owl:Class>
     
 
@@ -3346,6 +3544,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#PipeSectionType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 108</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Haltungsart</rdfs:label>
+        <rdfs:label xml:lang="en">Pipe section type</rdfs:label>
     </owl:Class>
     
 
@@ -3354,6 +3555,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#PointTypeInCircularArc">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 304</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Punkttyp bei Kreisbogen</rdfs:label>
+        <rdfs:label xml:lang="en">Point type in circular arc</rdfs:label>
     </owl:Class>
     
 
@@ -3362,6 +3566,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#PositionAccuracy">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 101</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Lagegenauigkeit</rdfs:label>
+        <rdfs:label xml:lang="en">Position accuracy</rdfs:label>
     </owl:Class>
     
 
@@ -3370,6 +3577,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#ProcessingStatus">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 215</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Bearbeitungsstatus</rdfs:label>
+        <rdfs:label xml:lang="en">Processing status</rdfs:label>
     </owl:Class>
     
 
@@ -3378,6 +3588,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#ProfileLining">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 107</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Profilauskleidung</rdfs:label>
+        <rdfs:label xml:lang="en">Profile lining</rdfs:label>
     </owl:Class>
     
 
@@ -3386,6 +3599,9 @@ It is recommended to create individuals for geometric points with the template:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#ProfileType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 106</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Profilart</rdfs:label>
+        <rdfs:label xml:lang="en">Profile type</rdfs:label>
     </owl:Class>
     
 
@@ -3393,15 +3609,15 @@ It is recommended to create individuals for geometric points with the template:
     <!-- https://l-jamora.github.io/m150-onto#Reference -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Reference">
-        <rdfs:comment xml:lang="en">The taxonomy of references includes the reference tables found in the advisory leaflet DWA-M 150.
-
-DWA-M 150 categorizes reference tables by type of data. Examples are:
-- Reference Table 105: Material Types (Class/Subclass: Reference/Material)
+        <rdfs:comment xml:lang="en">A code list (reference table) of DWA-M 150. Each subclass corresponds to one reference table; the codes of that table are individuals of the subclass, named M150_RT[table]_[code] (e.g. M150_RT105_B, concrete).</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Referenz</rdfs:label>
+        <rdfs:label xml:lang="en">Reference</rdfs:label>
+        <vann:usageNote xml:lang="en">DWA-M 150 categorizes reference tables by type of data. Examples are:
+- Reference Table 105: Material Types (Reference/Material)
 - Reference Table 202: Condition Assessment Coding Systems (Reference/CodingSystem)
 
-Each subclass refers to a specific reference table in DWA-M 150, implied with the equivalentTo axiom &quot;hasReferenceTable value &quot;[RefTableNumber]&quot;&quot;.
-
-The different types found within a reference table are then listed as subclasses of the aforementioned subclass.</rdfs:comment>
+Each subclass refers to one reference table. The entries of a table are individuals of that subclass (not subclasses), so that a component relates to them with an object property such as hasMaterial.</vann:usageNote>
     </owl:Class>
     
 
@@ -3410,6 +3626,9 @@ The different types found within a reference table are then listed as subclasses
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#ReferenceReport">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 209</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Meldung</rdfs:label>
+        <rdfs:label xml:lang="en">Reference report</rdfs:label>
     </owl:Class>
     
 
@@ -3417,33 +3636,38 @@ The different types found within a reference table are then listed as subclasses
     <!-- https://l-jamora.github.io/m150-onto#Report -->
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Report">
-        <rdfs:comment xml:lang="en">The taxonomy of reports includes inspection and condition reports for a sewage system, according to the structure of the advisory leaflet DWA-M 150.
-
-It is recommended to create individuals for inspection reports with the template:
+        <rdfs:comment xml:lang="en">A document that records information about a component of a sewer network. Its subclasses follow the inspection and condition data structure of DWA-M 150.</rdfs:comment>
+        <rdfs:label xml:lang="de">Bericht</rdfs:label>
+        <rdfs:label xml:lang="en">Report</rdfs:label>
+        <vann:usageNote xml:lang="en">Individuals for inspection reports are labelled with the template:
 
 ` Inspection[PipeSectionDesignation]_[Date] `;
 ` Inspection[HG001]_[HI003] ` for Pipe Section: Inspection reports;
 ` Inspection[KG001]_[KI003] ` for Node: Inspection reports.
 
-It is recommended to create individuals for condition reports within an inspection with the template:
+Individuals for condition reports within an inspection are labelled with the template:
 
 ` Condition[PipeSectionDesignation]_[Stationing(ConditionReport)]_[Code] `;
 ` Condition[HG001]_[HZ001]_[HZ002] ` for Pipe Section: Condition reports;
-` Condition[HG001]_[KZ001]_[KZ002] ` for Node: Condition reports.
+` Condition[KG001]_[KZ001]_[KZ002] ` for Node: Condition reports.
 
 According to the DWA-M 150, the coding systems that can be applied here are:
 - DIN EN 13508-2
 - DWA 149-2
 - DWA ATV-M 143
 - ISYBAU2001
-- ISYBAU1996</rdfs:comment>
+- ISYBAU1996</vann:usageNote>
     </owl:Class>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto#Role -->
 
-    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Role"/>
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Role">
+        <rdfs:comment xml:lang="en">The function a person or organization has in an inspection (client, company, inspector, site manager, reporter, assessor). Roles are fixed named individuals.</rdfs:comment>
+        <rdfs:label xml:lang="de">Rolle</rdfs:label>
+        <rdfs:label xml:lang="en">Role</rdfs:label>
+    </owl:Class>
     
 
 
@@ -3451,6 +3675,10 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#SewerType">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:comment xml:lang="en">The type of sewer by construction and flow (e.g. closed gravity flow pipeline, pressure pipeline, open channel), according to DWA-M 150 reference table 103.</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 103</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Kanalart</rdfs:label>
+        <rdfs:label xml:lang="en">Sewer type</rdfs:label>
     </owl:Class>
     
 
@@ -3459,6 +3687,9 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#SewerUsage">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 104</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Kanalnutzung</rdfs:label>
+        <rdfs:label xml:lang="en">Sewer usage</rdfs:label>
     </owl:Class>
     
 
@@ -3467,6 +3698,9 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Shape">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 118</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Form</rdfs:label>
+        <rdfs:label xml:lang="en">Shape</rdfs:label>
     </owl:Class>
     
 
@@ -3475,13 +3709,20 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#SoilGroup">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 126</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Bodengruppe</rdfs:label>
+        <rdfs:label xml:lang="en">Soil group</rdfs:label>
     </owl:Class>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto#SpatialEntity -->
 
-    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#SpatialEntity"/>
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#SpatialEntity">
+        <rdfs:comment xml:lang="en">A physical or geographic location referred to by a component, such as a street, a district or a treatment plant.</rdfs:comment>
+        <rdfs:label xml:lang="de">Räumliche Entität</rdfs:label>
+        <rdfs:label xml:lang="en">Spatial entity</rdfs:label>
+    </owl:Class>
     
 
 
@@ -3489,6 +3730,9 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Street">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#SpatialEntity"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Straße</rdfs:label>
+        <rdfs:label xml:lang="en">Street</rdfs:label>
     </owl:Class>
     
 
@@ -3497,6 +3741,9 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#StreetCode">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#InformationEntity"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Straßenschlüssel</rdfs:label>
+        <rdfs:label xml:lang="en">Street code</rdfs:label>
     </owl:Class>
     
 
@@ -3505,6 +3752,9 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#TrafficAreaLocation">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 112</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Lage im Verkehrsraum</rdfs:label>
+        <rdfs:label xml:lang="en">Location in traffic area</rdfs:label>
     </owl:Class>
     
 
@@ -3513,6 +3763,9 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#TreatmentPlant">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#SpatialEntity"/>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Kläranlage</rdfs:label>
+        <rdfs:label xml:lang="en">Treatment plant</rdfs:label>
     </owl:Class>
     
 
@@ -3521,13 +3774,21 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#VerticalReferencePoint">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 210</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Bezugspunkt vertikal</rdfs:label>
+        <rdfs:label xml:lang="en">Vertical reference point</rdfs:label>
     </owl:Class>
     
 
 
     <!-- https://l-jamora.github.io/m150-onto#VideoFile -->
 
-    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#VideoFile"/>
+    <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#VideoFile">
+        <rdfs:comment xml:lang="en">A video file recorded during an inspection (HI116/KI116).</rdfs:comment>
+        <rdfs:isDefinedBy>DWA-M 150</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Videodatei</rdfs:label>
+        <rdfs:label xml:lang="en">Video file</rdfs:label>
+    </owl:Class>
     
 
 
@@ -3535,6 +3796,9 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#VideoStorageMedium">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 207</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Videospeichermedium</rdfs:label>
+        <rdfs:label xml:lang="en">Video storage medium</rdfs:label>
     </owl:Class>
     
 
@@ -3543,6 +3807,9 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#WaterProtectionZone">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 111</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Wasserschutzzone</rdfs:label>
+        <rdfs:label xml:lang="en">Water protection zone</rdfs:label>
     </owl:Class>
     
 
@@ -3551,6 +3818,9 @@ According to the DWA-M 150, the coding systems that can be applied here are:
 
     <owl:Class rdf:about="https://l-jamora.github.io/m150-onto#Weather">
         <rdfs:subClassOf rdf:resource="https://l-jamora.github.io/m150-onto#Reference"/>
+        <rdfs:isDefinedBy>DWA-M 150 Reference Table 204</rdfs:isDefinedBy>
+        <rdfs:label xml:lang="de">Wetter</rdfs:label>
+        <rdfs:label xml:lang="en">Weather</rdfs:label>
     </owl:Class>
     
 
