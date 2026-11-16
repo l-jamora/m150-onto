@@ -4,6 +4,59 @@ All notable changes to M150-Onto are documented here. This project follows [Sema
 
 ---
 
+## [0.4.0] — 2026-11-16
+
+### Breaking changes
+
+- Namespace switched from slash-based to hash-based IRIs: the ontology now lives at `https://l-jamora.github.io/m150-onto#` (11f8f57, closes #34). All IRIs of classes, properties and named individuals change.
+- Classes `Inspection` renamed to `InspectionReport` and `Condition` renamed to `ConditionReport` (e219a06).
+- `hasAssessmentDate`, `hasClassificationDate` and `hasReportDate` now have range `xsd:dateTime` instead of `xsd:date`, because owlready2 does not support `xsd:date` (5cf2c60, closes #39).
+- OntoParser output now `owl:imports` the base ontology instead of duplicating its TBox (316b88f, closes #36).
+- Individual IRIs of pipe (HI) inspections change because of the date fix below. Downstream data such as SDCO's parsed files must be regenerated.
+
+### Ontology (`m150-onto.rdf`)
+
+#### Added
+- `owl:versionIRI` (`https://l-jamora.github.io/m150-onto/0.4.0`) and `owl:priorVersion` (`https://l-jamora.github.io/m150-onto/0.3.6`); `owl:versionInfo` bumped to 0.4.0.
+
+#### Fixed
+- German label of `Node` corrected from "Knote" to "Knoten" (closes #40).
+- Object property `hasFunctionalStatus` renamed to `hasOperationalStatus`, since the underlying concept is called `OperationalStatus` (febf540, closes #31).
+- `hasPipeSectionConnectingPipeStationingDirection` and `hasPipeSectionInspectionDirection` are no longer functional, because that would infer that `InFlowingDirection` and `AgainstFlowingDirection` are the same individual (febf540).
+
+### OntoParser (`ontoparser/`)
+
+#### Added
+- Dynamic progress bar, startup banner and a log file written to `logs/` after each run (fd001cc); banner restyled to match the chatbot's rich-based look (e59b0c6, closes #37).
+
+#### Fixed
+- Inspection dates were lost for pipe (HI) inspections: `find("HI104") or find("KI104")` is always falsy for leaf elements, so the date and time never reached the individual name or label. Replaced with an explicit `None` check, and added a test.
+- Case-insensitive search via the new `_search_case_insensitive` (804549d, closes #33).
+- Site-specific RT tables (e.g. RT001 street codes) are skipped when materializing Reference individuals; only tables referenced by the mapping CSV are created (9c2a9e0, closes #35).
+- Parser updated for the renamed geometry subclasses `Object` to `GeometryObject` and `Point` to `GeometryPoint` (b9779d4).
+
+### Chatbot (`chatbot/`)
+
+#### Added
+- Local natural-language-to-SPARQL chatbot over an embedded pyoxigraph store, replacing the GraphDB Talk-to-Your-Graph attempt (c674922).
+- OWL-RL reasoning via owlrl instead of hand-rolled materialization, auto-generated property reference in the prompt, predicate validation with "did you mean" retries, and an eval suite (9bb5e34).
+- Terminal UI with mascot and auto-detected model name (58b4698).
+
+#### Fixed
+- Individual IRIs in generated queries are validated against the store, not just predicates (5f4a50c).
+
+### Repository
+
+#### Added
+- `LICENSE` (CC BY 4.0, for ontology, documentation and data) and `LICENSE-CODE` (MIT, for code).
+- README updated: layout, Chatbot, Related, Changelog and License sections.
+
+#### Changed
+- `catalog-v001.xml` reduced to the single mapping for `m150-onto.rdf`.
+- `.gitignore` now excludes `xml/`, `xsd/`, `dwa/`, `logs/`, parsed output files, `.venv/` and `__pycache__/`.
+
+---
+
 ## [0.3.6] — 2026-06-25
 
 ### Ontology (`m150-onto.rdf`)

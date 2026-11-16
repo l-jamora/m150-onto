@@ -134,6 +134,15 @@ _CODED_VALUE_INDIVIDUALS: dict = {
 }
 
 
+def _find_first(elem: ET.Element, *tags: str) -> Optional[ET.Element]:
+    """Returns the first child matching any tag; `or` is wrong here because leaf elements are falsy."""
+    for tag in tags:
+        found = elem.find(tag)
+        if found is not None:
+            return found
+    return None
+
+
 def normalize_text(element: Optional[ET.Element]) -> str:
     """Extracts and strips text from an XML element, returning an empty string if None."""
     if element is None or element.text is None:
@@ -759,8 +768,8 @@ class M150XmlParser:
 
     def _inspection_name(self, component_code: str, inspection_elem: ET.Element) -> str:
         """Generates a unique IRI-safe name for an inspection individual based on component ID and date."""
-        date_text = normalize_text(inspection_elem.find("HI104") or inspection_elem.find("KI104"))
-        time_text = normalize_text(inspection_elem.find("HI105") or inspection_elem.find("KI105"))
+        date_text = normalize_text(_find_first(inspection_elem, "HI104", "KI104"))
+        time_text = normalize_text(_find_first(inspection_elem, "HI105", "KI105"))
         if date_text:
             safe_date = safe_entity_name(date_text, time_text)
             return INDIVIDUAL_PREFIX + safe_entity_name("Inspection", component_code, safe_date)
@@ -768,8 +777,8 @@ class M150XmlParser:
 
     def _inspection_label(self, component_code: str, inspection_elem: ET.Element) -> str:
         """Generates a human-readable label for an inspection individual."""
-        date_text = normalize_text(inspection_elem.find("HI104") or inspection_elem.find("KI104"))
-        time_text = normalize_text(inspection_elem.find("HI105") or inspection_elem.find("KI105"))
+        date_text = normalize_text(_find_first(inspection_elem, "HI104", "KI104"))
+        time_text = normalize_text(_find_first(inspection_elem, "HI105", "KI105"))
         label = f"Inspection[{component_code}]"
         if date_text:
             label += f"_[{date_text}]"

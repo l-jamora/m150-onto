@@ -37,8 +37,8 @@ owl:Thing
 │   ├── PipeSection   (disjoint with Node)
 │   └── Node
 ├── Report
-│   └── Inspection
-│       └── Condition
+│   └── InspectionReport
+│       └── ConditionReport
 ├── Reference         (all material/type code individuals are instances of subclasses)
 │   ├── Material      (e.g. Beispiel_M150_RT105_B = Beton/Concrete)
 │   ├── SewerType, NodeType, Shape, …
@@ -89,11 +89,11 @@ owl:Thing
 | Property | Domain | Range | Notes |
 |---|---|---|---|
 | `inspects` | Report | Component | Links an inspection report to the asset it covers |
-| `isChildOf` / `isParentOf` | Condition | Inspection | Links a condition finding to its parent inspection |
+| `isChildOf` / `isParentOf` | ConditionReport | InspectionReport | Links a condition finding to its parent inspection |
 | `hasMaterial` | Component | Material | Functional; range is a Material individual |
 | `isMaterialOf` | Material | Component | Inverse of `hasMaterial`; enables "what uses this material?" queries |
 | `isSewerTypeOf` | SewerType | Component | Inverse of `hasSewerType` |
-| `isInspectorIn` | Person | Inspection | Inverse of `hasInspector` |
+| `isInspectorIn` | Person | InspectionReport | Inverse of `hasInspector` |
 | `isStreetOf` | Street | Component | Inverse of `hasStreetName` |
 | `isRoleOf` | Role | — | Inverse of `hasRole` |
 | `renders` / `renderedBy` | Geometry | Component | Links geometry objects to assets |
@@ -113,10 +113,10 @@ Reads a **DWA M 150 Type B XML** file and creates OWL individuals in the ontolog
 |---|---|---|
 | `HG` (Haltungsgrunddaten) | `PipeSection` | `Beispiel_PipeSection_1204015` |
 | `KG` (Knotengrunddaten) | `Node` | `Beispiel_Node_1204015` |
-| `HI` (nested in HG) | `Inspection` | `Beispiel_Inspection_1204015_07_04_2006_08_30_00` |
-| `KI` (nested in KG) | `Inspection` | same pattern |
-| `HZ` (nested in HI) | `Condition` | `Beispiel_Condition_1204015_0_0_BCD` |
-| `KZ` (nested in KI) | `Condition` | same pattern |
+| `HI` (nested in HG) | `InspectionReport` | `Beispiel_Inspection_1204015_07_04_2006_08_30_00` |
+| `KI` (nested in KG) | `InspectionReport` | same pattern |
+| `HZ` (nested in HI) | `ConditionReport` | `Beispiel_Condition_1204015_0_0_BCD` |
+| `KZ` (nested in KI) | `ConditionReport` | same pattern |
 | `HG102/KG102` value | `Street` | `Beispiel_Street_Hauptstrasse` |
 | `HG104/KG104` value | `District` | `Beispiel_District_Mitte` |
 | `HG108/KG108` value | `TreatmentPlant` | `Beispiel_TreatmentPlant_KA1` |
@@ -197,7 +197,6 @@ condition_individual.isChildOf.append(inspection_individual)
 ### Known limitations and future work
 
 - `hasInspectionDateTime` is a placeholder datatype property (`xsd:dateTime`). A future revision should replace it with a structured temporal individual using the OWL Time Ontology for richer temporal modelling.
-- Properties `hasPipeSectionTopNodeDesignation`, `hasPipeSectionBottomNodeDesignation`, `hasPipeSectionEndPointDesignation`, and `hasMeasurementData` exist in the ontology under the hash-based IRI namespace (`#`) rather than the slash-based namespace (`/`). This causes them to serialize without the `m150:` prefix in output RDF. Fix by moving their declarations to use the slash namespace in `m150-onto.rdf`.
 - `hasPipeSectionBottomNodeDesignation` carries `owl:inverseOf hasPipeSectionTopNodeDesignation`, which is logically incorrect — both go `PipeSection → Node` so they cannot be inverses of each other. The correct design is `isTopNodeOf` / `isBottomNodeOf` inverses going `Node → PipeSection`. Deferred; current `equivalentProperty` links to `flowsFrom`/`flowsTo` partially encode the intent.
 - `hasFunctionalStatus` lacks a corresponding `FunctionalStatus` Reference class. Range intentionally left unset until the class is created.
 - `hasClassifier`, `hasNodeInspectionCircumferentialReferencePoint`, `hasNodeInspectionVerticalReferencePoint`, and `hasReport` have no `rdfs:range` — either the target class does not exist yet or the semantic target is ambiguous.
