@@ -4,6 +4,35 @@ All notable changes to M150-Onto are documented here. This project follows [Sema
 
 ---
 
+## [0.5.0] — 2026-11-16
+
+### Breaking changes
+
+- OntoParser individuals are prefixed `PARSED_` instead of `Beispiel_` (e2b05be). All IRIs of parsed individuals change; downstream data and queries (e.g. SDCO's parsed file) must be regenerated or updated.
+
+### Ontology (`m150-onto.rdf`)
+
+#### Added
+- `rdfs:label` in German and English on all 82 classes. German labels follow the DWA-M 150 reference table titles and the field names of the metamodel spreadsheet; where the two differ (RT124, RT213), the DWA-M 150 text is used (7ddd47d).
+- `rdfs:comment` definitions on 24 major classes and `rdfs:isDefinedBy` (DWA-M 150, or the reference table) on classes that represent DWA-M 150 concepts (7ddd47d).
+- `vann:usageNote` annotation property; `owl:versionInfo` bumped to 0.5.0, `owl:priorVersion` 0.4.0.
+
+#### Changed
+- The naming guidance of `Geometry`, `Reference` and `Report` moved from `rdfs:comment` to `vann:usageNote`. The `Reference` guidance now describes table entries as individuals, and the node template of `Report` reads `Condition[KG001]_…` instead of `Condition[HG001]_…` (7ddd47d).
+
+### OntoParser (`ontoparser/`)
+
+#### Fixed
+- Three kinds of parser-created individuals had no prefix (5 individuals in the DWA example file): Reference placeholders (`M150_RT…_PLACEHOLDER`), free-text fallback individuals (e.g. `CoordinateSystem_GK`) and RT rows for codes missing from the ontology. They are now prefixed (e2b05be).
+- GP002 values (`hasCoordinateSystem`) become `CoordinateSystem` individuals instead of untyped `owl:Thing` (e2b05be).
+
+### Chatbot (`chatbot/`)
+
+#### Changed
+- Prompts and README updated to the `PARSED_` prefix (e2b05be).
+
+---
+
 ## [0.4.0] — 2026-11-16
 
 ### Breaking changes

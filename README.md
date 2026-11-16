@@ -1,6 +1,6 @@
 # M150-Onto
 
-**Version 0.4.0**
+**Version 0.5.0**
 
 An OWL ontology modelling the DWA M 150 standard for sewer infrastructure. It represents sewer network assets (pipe sections, nodes), their inspection reports, and condition findings as OWL individuals, enabling structured querying and OWL reasoning over sewer data.
 

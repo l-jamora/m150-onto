@@ -25,9 +25,9 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
         <vann:preferredNamespacePrefix>m150-onto</vann:preferredNamespacePrefix>
         <vann:preferredNamespaceUri rdf:datatype="http://www.w3.org/2000/01/rdf-schema#Literal">https://l-jamora.github.io/m150-onto#</vann:preferredNamespaceUri>
         <rdfs:label xml:lang="en">M150-Onto</rdfs:label>
-        <owl:versionInfo>0.4.0</owl:versionInfo>
-        <owl:versionIRI rdf:resource="https://l-jamora.github.io/m150-onto/0.4.0"/>
-        <owl:priorVersion rdf:resource="https://l-jamora.github.io/m150-onto/0.3.6"/>
+        <owl:versionInfo>0.5.0</owl:versionInfo>
+        <owl:versionIRI rdf:resource="https://l-jamora.github.io/m150-onto/0.5.0"/>
+        <owl:priorVersion rdf:resource="https://l-jamora.github.io/m150-onto/0.4.0"/>
     </owl:Ontology>
     
 
