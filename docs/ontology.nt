@@ -1,5 +1,5 @@
 <https://l-jamora.github.io/m150-onto> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Ontology> .
-<https://l-jamora.github.io/m150-onto> <http://www.w3.org/2002/07/owl#versionIRI> <https://l-jamora.github.io/m150-onto/0.4.0> .
+<https://l-jamora.github.io/m150-onto> <http://www.w3.org/2002/07/owl#versionIRI> <https://l-jamora.github.io/m150-onto/0.5.0> .
 <https://l-jamora.github.io/m150-onto> <http://purl.org/dc/terms/abstract> "Underground sewage infrastructure maintenance faces challenges due to fragmented, analog asset data, hindering effective real-time monitoring and predictive maintenance. While digital twins offer promising technological potential, their practical implementation is constrained by complex data integration challenges. Ontologies emerge as a critical approach to establish data relationships, providing a structured framework for bridging these systemic information gaps.\n\nTo address these gaps, this thesis introduces M150-Onto, a novel ontology designed to enhance the data management of sewage infrastructure by aligning with German regulatory frameworks and supporting interoperability among diverse data sources. This work explores an ontological approach with a particular focus on enabling more efficient querying and reasoning capabilities, allowing for advanced data retrieval and automated inference to support sewer infrastructure data management. M150-Onto is developed and tested within Protégé, demonstrating its potential to improve data accessibility, integration, and predictive maintenance strategies. By identifying the strengths and limitations of current ontological frameworks and proposing M150-Onto as a targeted solution, this research contributes to the digital transformation of sewage infrastructure management. The emphasis on efficient querying and reasoning enhances data-driven decision-making and sustainable maintenance strategies, addressing the critical need for improved infrastructure management amidst growing urbanization and environmental pressures." .
 <https://l-jamora.github.io/m150-onto> <http://purl.org/dc/terms/contributor> "https://orcid.org/0009-0009-1744-1658" .
 <https://l-jamora.github.io/m150-onto> <http://purl.org/dc/terms/creator> "https://orcid.org/0009-0007-7722-7798" .
@@ -9,8 +9,8 @@
 <https://l-jamora.github.io/m150-onto> <http://purl.org/vocab/vann/preferredNamespacePrefix> "m150-onto" .
 <https://l-jamora.github.io/m150-onto> <http://purl.org/vocab/vann/preferredNamespaceUri> "https://l-jamora.github.io/m150-onto#"^^<http://www.w3.org/2000/01/rdf-schema#Literal> .
 <https://l-jamora.github.io/m150-onto> <http://www.w3.org/2000/01/rdf-schema#label> "M150-Onto"@en .
-<https://l-jamora.github.io/m150-onto> <http://www.w3.org/2002/07/owl#priorVersion> <https://l-jamora.github.io/m150-onto/0.3.6> .
-<https://l-jamora.github.io/m150-onto> <http://www.w3.org/2002/07/owl#versionInfo> "0.4.0" .
+<https://l-jamora.github.io/m150-onto> <http://www.w3.org/2002/07/owl#priorVersion> <https://l-jamora.github.io/m150-onto/0.4.0> .
+<https://l-jamora.github.io/m150-onto> <http://www.w3.org/2002/07/owl#versionInfo> "0.5.0" .
 # 
 # 
 # #################################################################
@@ -295,6 +295,9 @@
 # 
 # http://purl.org/vocab/vann/preferredNamespaceUri
 <http://purl.org/vocab/vann/preferredNamespaceUri> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
+# 
+# http://purl.org/vocab/vann/usageNote
+<http://purl.org/vocab/vann/usageNote> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#AnnotationProperty> .
 # 
 # 
 # 
@@ -1719,321 +1722,583 @@
 # https://l-jamora.github.io/m150-onto#AmbientAir
 <https://l-jamora.github.io/m150-onto#AmbientAir> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#AmbientAir> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#AmbientAir> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 212" .
+<https://l-jamora.github.io/m150-onto#AmbientAir> <http://www.w3.org/2000/01/rdf-schema#label> "Ambient air"@en .
+<https://l-jamora.github.io/m150-onto#AmbientAir> <http://www.w3.org/2000/01/rdf-schema#label> "Umgebungsluft"@de .
 # 
 # https://l-jamora.github.io/m150-onto#AmbientPhoto
 <https://l-jamora.github.io/m150-onto#AmbientPhoto> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#AmbientPhoto> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Photo> .
+<https://l-jamora.github.io/m150-onto#AmbientPhoto> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#AmbientPhoto> <http://www.w3.org/2000/01/rdf-schema#label> "Ambient photo"@en .
+<https://l-jamora.github.io/m150-onto#AmbientPhoto> <http://www.w3.org/2000/01/rdf-schema#label> "Umgebungsfoto"@de .
 # 
 # https://l-jamora.github.io/m150-onto#AreaCode
 <https://l-jamora.github.io/m150-onto#AreaCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#AreaCode> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#InformationEntity> .
+<https://l-jamora.github.io/m150-onto#AreaCode> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#AreaCode> <http://www.w3.org/2000/01/rdf-schema#label> "Area code"@en .
+<https://l-jamora.github.io/m150-onto#AreaCode> <http://www.w3.org/2000/01/rdf-schema#label> "Gebietsschlüssel"@de .
 # 
 # https://l-jamora.github.io/m150-onto#BackflowPrevention
 <https://l-jamora.github.io/m150-onto#BackflowPrevention> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#BackflowPrevention> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#BackflowPrevention> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 206" .
+<https://l-jamora.github.io/m150-onto#BackflowPrevention> <http://www.w3.org/2000/01/rdf-schema#label> "Backflow prevention"@en .
+<https://l-jamora.github.io/m150-onto#BackflowPrevention> <http://www.w3.org/2000/01/rdf-schema#label> "Vorflutsicherung"@de .
 # 
 # https://l-jamora.github.io/m150-onto#BeddingType
 <https://l-jamora.github.io/m150-onto#BeddingType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#BeddingType> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#BeddingType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 127" .
+<https://l-jamora.github.io/m150-onto#BeddingType> <http://www.w3.org/2000/01/rdf-schema#label> "Bedding type"@en .
+<https://l-jamora.github.io/m150-onto#BeddingType> <http://www.w3.org/2000/01/rdf-schema#label> "Lagerungsart"@de .
 # 
 # https://l-jamora.github.io/m150-onto#CameraSystem
 <https://l-jamora.github.io/m150-onto#CameraSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://l-jamora.github.io/m150-onto#CameraSystem> <http://www.w3.org/2000/01/rdf-schema#comment> "The camera system used for an inspection (HI006/KI006)."@en .
+<https://l-jamora.github.io/m150-onto#CameraSystem> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#CameraSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Camera system"@en .
+<https://l-jamora.github.io/m150-onto#CameraSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Kamerasystem"@de .
 # 
 # https://l-jamora.github.io/m150-onto#CatchmentAreaCode
 <https://l-jamora.github.io/m150-onto#CatchmentAreaCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#CatchmentAreaCode> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#InformationEntity> .
+<https://l-jamora.github.io/m150-onto#CatchmentAreaCode> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#CatchmentAreaCode> <http://www.w3.org/2000/01/rdf-schema#label> "Catchment area code"@en .
+<https://l-jamora.github.io/m150-onto#CatchmentAreaCode> <http://www.w3.org/2000/01/rdf-schema#label> "Einzugsgebietschlüssel"@de .
 # 
 # https://l-jamora.github.io/m150-onto#CircumferentialReferencePoint
 <https://l-jamora.github.io/m150-onto#CircumferentialReferencePoint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#CircumferentialReferencePoint> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#CircumferentialReferencePoint> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 211" .
+<https://l-jamora.github.io/m150-onto#CircumferentialReferencePoint> <http://www.w3.org/2000/01/rdf-schema#label> "Bezugspunkt am Umfang"@de .
+<https://l-jamora.github.io/m150-onto#CircumferentialReferencePoint> <http://www.w3.org/2000/01/rdf-schema#label> "Circumferential reference point"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Cleaning
 <https://l-jamora.github.io/m150-onto#Cleaning> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#Cleaning> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#Cleaning> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 205" .
+<https://l-jamora.github.io/m150-onto#Cleaning> <http://www.w3.org/2000/01/rdf-schema#label> "Cleaning"@en .
+<https://l-jamora.github.io/m150-onto#Cleaning> <http://www.w3.org/2000/01/rdf-schema#label> "Reinigung"@de .
 # 
 # https://l-jamora.github.io/m150-onto#ClimbingAid
 <https://l-jamora.github.io/m150-onto#ClimbingAid> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#ClimbingAid> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#ClimbingAid> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 121" .
+<https://l-jamora.github.io/m150-onto#ClimbingAid> <http://www.w3.org/2000/01/rdf-schema#label> "Climbing aid"@en .
+<https://l-jamora.github.io/m150-onto#ClimbingAid> <http://www.w3.org/2000/01/rdf-schema#label> "Steighilfe"@de .
 # 
 # https://l-jamora.github.io/m150-onto#ClimbingAidMaterial
 <https://l-jamora.github.io/m150-onto#ClimbingAidMaterial> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#ClimbingAidMaterial> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#ClimbingAidMaterial> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 122" .
+<https://l-jamora.github.io/m150-onto#ClimbingAidMaterial> <http://www.w3.org/2000/01/rdf-schema#label> "Climbing aid material"@en .
+<https://l-jamora.github.io/m150-onto#ClimbingAidMaterial> <http://www.w3.org/2000/01/rdf-schema#label> "Steighilfenmaterial"@de .
 # 
 # https://l-jamora.github.io/m150-onto#CodingSystem
 <https://l-jamora.github.io/m150-onto#CodingSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#CodingSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#CodingSystem> <http://www.w3.org/2000/01/rdf-schema#comment> "The coding system used to record condition observations (e.g. DIN EN 13508-2, ISYBAU), according to DWA-M 150 reference table 202."@en .
+<https://l-jamora.github.io/m150-onto#CodingSystem> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 202" .
+<https://l-jamora.github.io/m150-onto#CodingSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Coding system"@en .
+<https://l-jamora.github.io/m150-onto#CodingSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Kodiersystem"@de .
 # 
 # https://l-jamora.github.io/m150-onto#Component
 <https://l-jamora.github.io/m150-onto#Component> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://l-jamora.github.io/m150-onto#Component> <http://www.w3.org/2000/01/rdf-schema#comment> "A physical asset of a sewer network as described in DWA-M 150: either a pipe section or a node. Components are the subjects of inspection reports and of geometry objects."@en .
+<https://l-jamora.github.io/m150-onto#Component> <http://www.w3.org/2000/01/rdf-schema#label> "Component"@en .
+<https://l-jamora.github.io/m150-onto#Component> <http://www.w3.org/2000/01/rdf-schema#label> "Komponente"@de .
 # 
 # https://l-jamora.github.io/m150-onto#ConditionReport
 <https://l-jamora.github.io/m150-onto#ConditionReport> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#ConditionReport> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#InspectionReport> .
+<https://l-jamora.github.io/m150-onto#ConditionReport> <http://www.w3.org/2000/01/rdf-schema#comment> "A single condition observation made during an inspection of a pipe section (HZ) or a node (KZ), recorded at a stationing with a code of the coding system in use (e.g. DIN EN 13508-2)."@en .
+<https://l-jamora.github.io/m150-onto#ConditionReport> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#ConditionReport> <http://www.w3.org/2000/01/rdf-schema#label> "Condition report"@en .
+<https://l-jamora.github.io/m150-onto#ConditionReport> <http://www.w3.org/2000/01/rdf-schema#label> "Zustandsbericht"@de .
 # 
 # https://l-jamora.github.io/m150-onto#CoordinateSystem
 <https://l-jamora.github.io/m150-onto#CoordinateSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#CoordinateSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#CoordinateSystem> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 302" .
+<https://l-jamora.github.io/m150-onto#CoordinateSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Coordinate system"@en .
+<https://l-jamora.github.io/m150-onto#CoordinateSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Koordinatensystem"@de .
 # 
 # https://l-jamora.github.io/m150-onto#CoverClass
 <https://l-jamora.github.io/m150-onto#CoverClass> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#CoverClass> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#CoverClass> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 119" .
+<https://l-jamora.github.io/m150-onto#CoverClass> <http://www.w3.org/2000/01/rdf-schema#label> "Cover class"@en .
+<https://l-jamora.github.io/m150-onto#CoverClass> <http://www.w3.org/2000/01/rdf-schema#label> "Deckelklasse"@de .
 # 
 # https://l-jamora.github.io/m150-onto#DataStatus
 <https://l-jamora.github.io/m150-onto#DataStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#DataStatus> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#DataStatus> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 115" .
+<https://l-jamora.github.io/m150-onto#DataStatus> <http://www.w3.org/2000/01/rdf-schema#label> "Data status"@en .
+<https://l-jamora.github.io/m150-onto#DataStatus> <http://www.w3.org/2000/01/rdf-schema#label> "Status Daten"@de .
 # 
 # https://l-jamora.github.io/m150-onto#DigitalPhoto
 <https://l-jamora.github.io/m150-onto#DigitalPhoto> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#DigitalPhoto> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Photo> .
+<https://l-jamora.github.io/m150-onto#DigitalPhoto> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#DigitalPhoto> <http://www.w3.org/2000/01/rdf-schema#label> "Digital photo"@en .
+<https://l-jamora.github.io/m150-onto#DigitalPhoto> <http://www.w3.org/2000/01/rdf-schema#label> "Digitales Foto"@de .
 # 
 # https://l-jamora.github.io/m150-onto#Directionality
 <https://l-jamora.github.io/m150-onto#Directionality> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://l-jamora.github.io/m150-onto#Directionality> <http://www.w3.org/2000/01/rdf-schema#comment> "A direction relevant to sewer data: the flow-related direction of an inspection or the orientation of a circular arc."@en .
+<https://l-jamora.github.io/m150-onto#Directionality> <http://www.w3.org/2000/01/rdf-schema#label> "Directionality"@en .
+<https://l-jamora.github.io/m150-onto#Directionality> <http://www.w3.org/2000/01/rdf-schema#label> "Richtung"@de .
 # 
 # https://l-jamora.github.io/m150-onto#District
 <https://l-jamora.github.io/m150-onto#District> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#District> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#SpatialEntity> .
+<https://l-jamora.github.io/m150-onto#District> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#District> <http://www.w3.org/2000/01/rdf-schema#label> "District"@en .
+<https://l-jamora.github.io/m150-onto#District> <http://www.w3.org/2000/01/rdf-schema#label> "Ortsteil"@de .
 # 
 # https://l-jamora.github.io/m150-onto#DistrictCode
 <https://l-jamora.github.io/m150-onto#DistrictCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#DistrictCode> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#InformationEntity> .
+<https://l-jamora.github.io/m150-onto#DistrictCode> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#DistrictCode> <http://www.w3.org/2000/01/rdf-schema#label> "District code"@en .
+<https://l-jamora.github.io/m150-onto#DistrictCode> <http://www.w3.org/2000/01/rdf-schema#label> "Ortsteilschlüssel"@de .
 # 
 # https://l-jamora.github.io/m150-onto#ElevationAccuracy
 <https://l-jamora.github.io/m150-onto#ElevationAccuracy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#ElevationAccuracy> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#ElevationAccuracy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 102" .
+<https://l-jamora.github.io/m150-onto#ElevationAccuracy> <http://www.w3.org/2000/01/rdf-schema#label> "Elevation accuracy"@en .
+<https://l-jamora.github.io/m150-onto#ElevationAccuracy> <http://www.w3.org/2000/01/rdf-schema#label> "Höhengenauigkeit"@de .
 # 
 # https://l-jamora.github.io/m150-onto#ElevationSystem
 <https://l-jamora.github.io/m150-onto#ElevationSystem> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#ElevationSystem> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#ElevationSystem> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 303" .
+<https://l-jamora.github.io/m150-onto#ElevationSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Elevation system"@en .
+<https://l-jamora.github.io/m150-onto#ElevationSystem> <http://www.w3.org/2000/01/rdf-schema#label> "Höhensystem"@de .
 # 
 # https://l-jamora.github.io/m150-onto#FloodArea
 <https://l-jamora.github.io/m150-onto#FloodArea> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#FloodArea> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#FloodArea> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 114" .
+<https://l-jamora.github.io/m150-onto#FloodArea> <http://www.w3.org/2000/01/rdf-schema#label> "Flood area"@en .
+<https://l-jamora.github.io/m150-onto#FloodArea> <http://www.w3.org/2000/01/rdf-schema#label> "Überschwemmungsgebiet"@de .
 # 
 # https://l-jamora.github.io/m150-onto#FloodingFrequency
 <https://l-jamora.github.io/m150-onto#FloodingFrequency> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#FloodingFrequency> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#FloodingFrequency> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 125" .
+<https://l-jamora.github.io/m150-onto#FloodingFrequency> <http://www.w3.org/2000/01/rdf-schema#label> "Einstauhäufigkeit"@de .
+<https://l-jamora.github.io/m150-onto#FloodingFrequency> <http://www.w3.org/2000/01/rdf-schema#label> "Flooding frequency"@en .
 # 
 # https://l-jamora.github.io/m150-onto#FlowingDirection
 <https://l-jamora.github.io/m150-onto#FlowingDirection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#FlowingDirection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Directionality> .
+<https://l-jamora.github.io/m150-onto#FlowingDirection> <http://www.w3.org/2000/01/rdf-schema#comment> "A direction relative to the flow of the sewer: in flowing direction or against flowing direction."@en .
+<https://l-jamora.github.io/m150-onto#FlowingDirection> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#FlowingDirection> <http://www.w3.org/2000/01/rdf-schema#label> "Fließrichtung"@de .
+<https://l-jamora.github.io/m150-onto#FlowingDirection> <http://www.w3.org/2000/01/rdf-schema#label> "Flowing direction"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Geometry
 <https://l-jamora.github.io/m150-onto#Geometry> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://l-jamora.github.io/m150-onto#Geometry> <http://www.w3.org/2000/01/rdf-schema#comment> "The taxonomy of geometry includes the GIS geometry data of M150-Components. These include Geometry Object and Geometry Points.\n\nIt is recommended to create individuals for geometric objects with the template:\n\n` GeoObject[PipeSection/Node Designation] `\n` GeoObject[HG001]  ` for Pipe Section: Geometry Objects;\n` GeoObject[KG001] ` for Node: Geometry Objects.\n\nIt is recommended to create individuals for geometric points with the template:\n\n` GeoPoint[Geometry Point Description] `\n` GeoPoint[GP001]  `.\n\n`GeoObject`'s should be declared as the parent of 'GeoPoint''s with the object property `isParentOf`. (Inverse: isChildOf)\n\n`GeoObject`'s should be declared as the renderer of a Component with the object property 'renders'. (Inverse: renderedBy)"@en .
+<https://l-jamora.github.io/m150-onto#Geometry> <http://purl.org/vocab/vann/usageNote> "Individuals for geometric objects are labelled with the template:\n\n` GeoObject[PipeSection/Node Designation] `\n` GeoObject[HG001]  ` for Pipe Section: Geometry Objects;\n` GeoObject[KG001] ` for Node: Geometry Objects.\n\nIndividuals for geometric points are labelled with the template:\n\n` GeoPoint[Geometry Point Description] `\n` GeoPoint[GP001]  `.\n\n`GeoObject`'s should be declared as the parent of `GeoPoint`'s with the object property `isParentOf`. (Inverse: isChildOf)\n\n`GeoObject`'s should be declared as the renderer of a Component with the object property `renders`. (Inverse: renderedBy)"@en .
+<https://l-jamora.github.io/m150-onto#Geometry> <http://www.w3.org/2000/01/rdf-schema#comment> "The GIS geometry data of a component in DWA-M 150, made up of geometry objects (GO) and their geometry points (GP)."@en .
+<https://l-jamora.github.io/m150-onto#Geometry> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#Geometry> <http://www.w3.org/2000/01/rdf-schema#label> "Geometrie"@de .
+<https://l-jamora.github.io/m150-onto#Geometry> <http://www.w3.org/2000/01/rdf-schema#label> "Geometry"@en .
 # 
 # https://l-jamora.github.io/m150-onto#GeometryObject
 <https://l-jamora.github.io/m150-onto#GeometryObject> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#GeometryObject> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Geometry> .
+<https://l-jamora.github.io/m150-onto#GeometryObject> <http://www.w3.org/2000/01/rdf-schema#comment> "A geometry object (GO) that renders a pipe section or a node and groups the geometry points that describe its shape."@en .
+<https://l-jamora.github.io/m150-onto#GeometryObject> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#GeometryObject> <http://www.w3.org/2000/01/rdf-schema#label> "Geometrieobjekt"@de .
+<https://l-jamora.github.io/m150-onto#GeometryObject> <http://www.w3.org/2000/01/rdf-schema#label> "Geometry object"@en .
 # 
 # https://l-jamora.github.io/m150-onto#GeometryObjectIdentification
 <https://l-jamora.github.io/m150-onto#GeometryObjectIdentification> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#GeometryObjectIdentification> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#GeometryObjectIdentification> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 300" .
+<https://l-jamora.github.io/m150-onto#GeometryObjectIdentification> <http://www.w3.org/2000/01/rdf-schema#label> "Geometrieobjektkennung"@de .
+<https://l-jamora.github.io/m150-onto#GeometryObjectIdentification> <http://www.w3.org/2000/01/rdf-schema#label> "Geometry object identification"@en .
 # 
 # https://l-jamora.github.io/m150-onto#GeometryObjectType
 <https://l-jamora.github.io/m150-onto#GeometryObjectType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#GeometryObjectType> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#GeometryObjectType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 301" .
+<https://l-jamora.github.io/m150-onto#GeometryObjectType> <http://www.w3.org/2000/01/rdf-schema#label> "Geometrieobjekttyp"@de .
+<https://l-jamora.github.io/m150-onto#GeometryObjectType> <http://www.w3.org/2000/01/rdf-schema#label> "Geometry object type"@en .
 # 
 # https://l-jamora.github.io/m150-onto#GeometryPoint
 <https://l-jamora.github.io/m150-onto#GeometryPoint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#GeometryPoint> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#GeometryObject> .
+<https://l-jamora.github.io/m150-onto#GeometryPoint> <http://www.w3.org/2000/01/rdf-schema#comment> "A single coordinate point (GP) of a geometry object."@en .
+<https://l-jamora.github.io/m150-onto#GeometryPoint> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#GeometryPoint> <http://www.w3.org/2000/01/rdf-schema#label> "Geometriepunkt"@de .
+<https://l-jamora.github.io/m150-onto#GeometryPoint> <http://www.w3.org/2000/01/rdf-schema#label> "Geometry point"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Groundwater
 <https://l-jamora.github.io/m150-onto#Groundwater> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#Groundwater> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#Groundwater> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 113" .
+<https://l-jamora.github.io/m150-onto#Groundwater> <http://www.w3.org/2000/01/rdf-schema#label> "Groundwater"@en .
+<https://l-jamora.github.io/m150-onto#Groundwater> <http://www.w3.org/2000/01/rdf-schema#label> "Grundwasser"@de .
 # 
 # https://l-jamora.github.io/m150-onto#InformationEntity
 <https://l-jamora.github.io/m150-onto#InformationEntity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://l-jamora.github.io/m150-onto#InformationEntity> <http://www.w3.org/2000/01/rdf-schema#comment> "An administrative identifier referred to by a component, such as a street, district, municipality, area or catchment area code."@en .
+<https://l-jamora.github.io/m150-onto#InformationEntity> <http://www.w3.org/2000/01/rdf-schema#label> "Information entity"@en .
+<https://l-jamora.github.io/m150-onto#InformationEntity> <http://www.w3.org/2000/01/rdf-schema#label> "Informationsentität"@de .
 # 
 # https://l-jamora.github.io/m150-onto#InspectionReason
 <https://l-jamora.github.io/m150-onto#InspectionReason> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#InspectionReason> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#InspectionReason> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 201" .
+<https://l-jamora.github.io/m150-onto#InspectionReason> <http://www.w3.org/2000/01/rdf-schema#label> "Inspection reason"@en .
+<https://l-jamora.github.io/m150-onto#InspectionReason> <http://www.w3.org/2000/01/rdf-schema#label> "Inspektionsgrund"@de .
 # 
 # https://l-jamora.github.io/m150-onto#InspectionReport
 <https://l-jamora.github.io/m150-onto#InspectionReport> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#InspectionReport> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Report> .
+<https://l-jamora.github.io/m150-onto#InspectionReport> <http://www.w3.org/2000/01/rdf-schema#comment> "The record of one inspection of a pipe section (HI) or a node (KI), identified by the component and the inspection date and time."@en .
+<https://l-jamora.github.io/m150-onto#InspectionReport> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#InspectionReport> <http://www.w3.org/2000/01/rdf-schema#label> "Inspection report"@en .
+<https://l-jamora.github.io/m150-onto#InspectionReport> <http://www.w3.org/2000/01/rdf-schema#label> "Inspektionsbericht"@de .
 # 
 # https://l-jamora.github.io/m150-onto#InspectionType
 <https://l-jamora.github.io/m150-onto#InspectionType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#InspectionType> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#InspectionType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 203" .
+<https://l-jamora.github.io/m150-onto#InspectionType> <http://www.w3.org/2000/01/rdf-schema#label> "Inspection type"@en .
+<https://l-jamora.github.io/m150-onto#InspectionType> <http://www.w3.org/2000/01/rdf-schema#label> "Inspektionsart"@de .
 # 
 # https://l-jamora.github.io/m150-onto#InternalProtection
 <https://l-jamora.github.io/m150-onto#InternalProtection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#InternalProtection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#InternalProtection> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 120" .
+<https://l-jamora.github.io/m150-onto#InternalProtection> <http://www.w3.org/2000/01/rdf-schema#label> "Innenschutz"@de .
+<https://l-jamora.github.io/m150-onto#InternalProtection> <http://www.w3.org/2000/01/rdf-schema#label> "Internal protection"@en .
 # 
 # https://l-jamora.github.io/m150-onto#LocalizedRepairNode
 <https://l-jamora.github.io/m150-onto#LocalizedRepairNode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#LocalizedRepairNode> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#LocalizedRepairNode> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 214" .
+<https://l-jamora.github.io/m150-onto#LocalizedRepairNode> <http://www.w3.org/2000/01/rdf-schema#label> "Localized repair node"@en .
+<https://l-jamora.github.io/m150-onto#LocalizedRepairNode> <http://www.w3.org/2000/01/rdf-schema#label> "Punktuelle Reparatur Knoten"@de .
 # 
 # https://l-jamora.github.io/m150-onto#LocalizedRepairSewer
 <https://l-jamora.github.io/m150-onto#LocalizedRepairSewer> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#LocalizedRepairSewer> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#LocalizedRepairSewer> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 213" .
+<https://l-jamora.github.io/m150-onto#LocalizedRepairSewer> <http://www.w3.org/2000/01/rdf-schema#label> "Localized repair sewer"@en .
+<https://l-jamora.github.io/m150-onto#LocalizedRepairSewer> <http://www.w3.org/2000/01/rdf-schema#label> "Punktuelle Reparatur Haltung"@de .
 # 
 # https://l-jamora.github.io/m150-onto#Material
 <https://l-jamora.github.io/m150-onto#Material> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#Material> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#Material> <http://www.w3.org/2000/01/rdf-schema#comment> "The material of a pipe section or node, according to DWA-M 150 reference table 105."@en .
+<https://l-jamora.github.io/m150-onto#Material> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 105" .
+<https://l-jamora.github.io/m150-onto#Material> <http://www.w3.org/2000/01/rdf-schema#label> "Material"@de .
+<https://l-jamora.github.io/m150-onto#Material> <http://www.w3.org/2000/01/rdf-schema#label> "Material"@en .
 # 
 # https://l-jamora.github.io/m150-onto#MeasurementTechnology
 <https://l-jamora.github.io/m150-onto#MeasurementTechnology> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#MeasurementTechnology> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#MeasurementTechnology> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 123" .
+<https://l-jamora.github.io/m150-onto#MeasurementTechnology> <http://www.w3.org/2000/01/rdf-schema#label> "Measurement technology"@en .
+<https://l-jamora.github.io/m150-onto#MeasurementTechnology> <http://www.w3.org/2000/01/rdf-schema#label> "Messtechnik"@de .
 # 
 # https://l-jamora.github.io/m150-onto#MeasurementValueType
 <https://l-jamora.github.io/m150-onto#MeasurementValueType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#MeasurementValueType> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#MeasurementValueType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 401" .
+<https://l-jamora.github.io/m150-onto#MeasurementValueType> <http://www.w3.org/2000/01/rdf-schema#label> "Measurement value type"@en .
+<https://l-jamora.github.io/m150-onto#MeasurementValueType> <http://www.w3.org/2000/01/rdf-schema#label> "Messwerttyp"@de .
 # 
 # https://l-jamora.github.io/m150-onto#MunicipalityCode
 <https://l-jamora.github.io/m150-onto#MunicipalityCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#MunicipalityCode> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#InformationEntity> .
+<https://l-jamora.github.io/m150-onto#MunicipalityCode> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#MunicipalityCode> <http://www.w3.org/2000/01/rdf-schema#label> "Gemeindeschlüssel"@de .
+<https://l-jamora.github.io/m150-onto#MunicipalityCode> <http://www.w3.org/2000/01/rdf-schema#label> "Municipality code"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Node
 <https://l-jamora.github.io/m150-onto#Node> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#Node> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Component> .
 <https://l-jamora.github.io/m150-onto#Node> <http://www.w3.org/2002/07/owl#disjointWith> <https://l-jamora.github.io/m150-onto#PipeSection> .
+<https://l-jamora.github.io/m150-onto#Node> <http://www.w3.org/2000/01/rdf-schema#comment> "A node (German: Knoten) is a point structure of the sewer network, such as a manhole, a street drain or an outlet, described by the DWA-M 150 node basic data (KG). Its designation is KG001."@en .
+<https://l-jamora.github.io/m150-onto#Node> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#Node> <http://www.w3.org/2000/01/rdf-schema#label> "Knoten"@de .
+<https://l-jamora.github.io/m150-onto#Node> <http://www.w3.org/2000/01/rdf-schema#label> "Node"@en .
 # 
 # https://l-jamora.github.io/m150-onto#NodeStructureComponent
 <https://l-jamora.github.io/m150-onto#NodeStructureComponent> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#NodeStructureComponent> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#NodeStructureComponent> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 124" .
+<https://l-jamora.github.io/m150-onto#NodeStructureComponent> <http://www.w3.org/2000/01/rdf-schema#label> "Bauteil"@de .
+<https://l-jamora.github.io/m150-onto#NodeStructureComponent> <http://www.w3.org/2000/01/rdf-schema#label> "Node structure component"@en .
 # 
 # https://l-jamora.github.io/m150-onto#NodeStructureType
 <https://l-jamora.github.io/m150-onto#NodeStructureType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#NodeStructureType> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#NodeStructureType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 117" .
+<https://l-jamora.github.io/m150-onto#NodeStructureType> <http://www.w3.org/2000/01/rdf-schema#label> "Bauwerksart"@de .
+<https://l-jamora.github.io/m150-onto#NodeStructureType> <http://www.w3.org/2000/01/rdf-schema#label> "Structure type"@en .
 # 
 # https://l-jamora.github.io/m150-onto#NodeType
 <https://l-jamora.github.io/m150-onto#NodeType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#NodeType> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#NodeType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 116" .
+<https://l-jamora.github.io/m150-onto#NodeType> <http://www.w3.org/2000/01/rdf-schema#label> "Knotenart"@de .
+<https://l-jamora.github.io/m150-onto#NodeType> <http://www.w3.org/2000/01/rdf-schema#label> "Node type"@en .
 # 
 # https://l-jamora.github.io/m150-onto#ObjectType
 <https://l-jamora.github.io/m150-onto#ObjectType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#ObjectType> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#ObjectType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 128" .
+<https://l-jamora.github.io/m150-onto#ObjectType> <http://www.w3.org/2000/01/rdf-schema#label> "Object type"@en .
+<https://l-jamora.github.io/m150-onto#ObjectType> <http://www.w3.org/2000/01/rdf-schema#label> "Objekttyp"@de .
 # 
 # https://l-jamora.github.io/m150-onto#OperationalStatus
 <https://l-jamora.github.io/m150-onto#OperationalStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#OperationalStatus> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#OperationalStatus> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 109" .
+<https://l-jamora.github.io/m150-onto#OperationalStatus> <http://www.w3.org/2000/01/rdf-schema#label> "Funktionszustand"@de .
+<https://l-jamora.github.io/m150-onto#OperationalStatus> <http://www.w3.org/2000/01/rdf-schema#label> "Operational status"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Organization
 <https://l-jamora.github.io/m150-onto#Organization> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://l-jamora.github.io/m150-onto#Organization> <http://www.w3.org/2000/01/rdf-schema#comment> "An organization named in the inspection data, such as the inspecting company. Its function is given with hasRole."@en .
+<https://l-jamora.github.io/m150-onto#Organization> <http://www.w3.org/2000/01/rdf-schema#label> "Organisation"@de .
+<https://l-jamora.github.io/m150-onto#Organization> <http://www.w3.org/2000/01/rdf-schema#label> "Organization"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Orientation
 <https://l-jamora.github.io/m150-onto#Orientation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#Orientation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Directionality> .
+<https://l-jamora.github.io/m150-onto#Orientation> <http://www.w3.org/2000/01/rdf-schema#comment> "The turning direction of a circular arc in the geometry data (GP102): clockwise or counter-clockwise."@en .
+<https://l-jamora.github.io/m150-onto#Orientation> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#Orientation> <http://www.w3.org/2000/01/rdf-schema#label> "Orientation"@en .
+<https://l-jamora.github.io/m150-onto#Orientation> <http://www.w3.org/2000/01/rdf-schema#label> "Orientierung"@de .
 # 
 # https://l-jamora.github.io/m150-onto#Ownership
 <https://l-jamora.github.io/m150-onto#Ownership> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#Ownership> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#Ownership> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 110" .
+<https://l-jamora.github.io/m150-onto#Ownership> <http://www.w3.org/2000/01/rdf-schema#label> "Eigentum"@de .
+<https://l-jamora.github.io/m150-onto#Ownership> <http://www.w3.org/2000/01/rdf-schema#label> "Ownership"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Person
 <https://l-jamora.github.io/m150-onto#Person> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://l-jamora.github.io/m150-onto#Person> <http://www.w3.org/2000/01/rdf-schema#comment> "A natural person named in the inspection data, such as an inspector, a site manager, a reporter or an assessor. Their function is given with hasRole."@en .
+<https://l-jamora.github.io/m150-onto#Person> <http://www.w3.org/2000/01/rdf-schema#label> "Person"@de .
+<https://l-jamora.github.io/m150-onto#Person> <http://www.w3.org/2000/01/rdf-schema#label> "Person"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Photo
 <https://l-jamora.github.io/m150-onto#Photo> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://l-jamora.github.io/m150-onto#Photo> <http://www.w3.org/2000/01/rdf-schema#comment> "A photo taken during an inspection, e.g. of a condition observation (HZ009/KZ009)."@en .
+<https://l-jamora.github.io/m150-onto#Photo> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#Photo> <http://www.w3.org/2000/01/rdf-schema#label> "Foto"@de .
+<https://l-jamora.github.io/m150-onto#Photo> <http://www.w3.org/2000/01/rdf-schema#label> "Photo"@en .
 # 
 # https://l-jamora.github.io/m150-onto#PhotoStorageMedium
 <https://l-jamora.github.io/m150-onto#PhotoStorageMedium> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#PhotoStorageMedium> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#PhotoStorageMedium> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 208" .
+<https://l-jamora.github.io/m150-onto#PhotoStorageMedium> <http://www.w3.org/2000/01/rdf-schema#label> "Fotospeichermedium"@de .
+<https://l-jamora.github.io/m150-onto#PhotoStorageMedium> <http://www.w3.org/2000/01/rdf-schema#label> "Photo storage medium"@en .
 # 
 # https://l-jamora.github.io/m150-onto#PipeSection
 <https://l-jamora.github.io/m150-onto#PipeSection> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#PipeSection> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Component> .
+<https://l-jamora.github.io/m150-onto#PipeSection> <http://www.w3.org/2000/01/rdf-schema#comment> "A pipe section (German: Haltung) is the stretch of sewer between two nodes, described by the DWA-M 150 pipe section basic data (HG). Its designation is HG001."@en .
+<https://l-jamora.github.io/m150-onto#PipeSection> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#PipeSection> <http://www.w3.org/2000/01/rdf-schema#label> "Haltung"@de .
+<https://l-jamora.github.io/m150-onto#PipeSection> <http://www.w3.org/2000/01/rdf-schema#label> "Pipe section"@en .
 # 
 # https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint
 <https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#SpatialEntity> .
+<https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint> <http://www.w3.org/2000/01/rdf-schema#label> "Bezugspunkt der Haltungsinspektion"@de .
+<https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint> <http://www.w3.org/2000/01/rdf-schema#label> "Pipe section inspection reference point"@en .
 # 
 # https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePointStart
 <https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePointStart> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePointStart> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint> .
+<https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePointStart> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePointStart> <http://www.w3.org/2000/01/rdf-schema#label> "Bezugspunkt Start"@de .
+<https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePointStart> <http://www.w3.org/2000/01/rdf-schema#label> "Pipe section inspection start reference point"@en .
 # 
 # https://l-jamora.github.io/m150-onto#PipeSectionType
 <https://l-jamora.github.io/m150-onto#PipeSectionType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#PipeSectionType> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#PipeSectionType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 108" .
+<https://l-jamora.github.io/m150-onto#PipeSectionType> <http://www.w3.org/2000/01/rdf-schema#label> "Haltungsart"@de .
+<https://l-jamora.github.io/m150-onto#PipeSectionType> <http://www.w3.org/2000/01/rdf-schema#label> "Pipe section type"@en .
 # 
 # https://l-jamora.github.io/m150-onto#PointTypeInCircularArc
 <https://l-jamora.github.io/m150-onto#PointTypeInCircularArc> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#PointTypeInCircularArc> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#PointTypeInCircularArc> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 304" .
+<https://l-jamora.github.io/m150-onto#PointTypeInCircularArc> <http://www.w3.org/2000/01/rdf-schema#label> "Point type in circular arc"@en .
+<https://l-jamora.github.io/m150-onto#PointTypeInCircularArc> <http://www.w3.org/2000/01/rdf-schema#label> "Punkttyp bei Kreisbogen"@de .
 # 
 # https://l-jamora.github.io/m150-onto#PositionAccuracy
 <https://l-jamora.github.io/m150-onto#PositionAccuracy> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#PositionAccuracy> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#PositionAccuracy> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 101" .
+<https://l-jamora.github.io/m150-onto#PositionAccuracy> <http://www.w3.org/2000/01/rdf-schema#label> "Lagegenauigkeit"@de .
+<https://l-jamora.github.io/m150-onto#PositionAccuracy> <http://www.w3.org/2000/01/rdf-schema#label> "Position accuracy"@en .
 # 
 # https://l-jamora.github.io/m150-onto#ProcessingStatus
 <https://l-jamora.github.io/m150-onto#ProcessingStatus> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#ProcessingStatus> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#ProcessingStatus> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 215" .
+<https://l-jamora.github.io/m150-onto#ProcessingStatus> <http://www.w3.org/2000/01/rdf-schema#label> "Bearbeitungsstatus"@de .
+<https://l-jamora.github.io/m150-onto#ProcessingStatus> <http://www.w3.org/2000/01/rdf-schema#label> "Processing status"@en .
 # 
 # https://l-jamora.github.io/m150-onto#ProfileLining
 <https://l-jamora.github.io/m150-onto#ProfileLining> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#ProfileLining> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#ProfileLining> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 107" .
+<https://l-jamora.github.io/m150-onto#ProfileLining> <http://www.w3.org/2000/01/rdf-schema#label> "Profilauskleidung"@de .
+<https://l-jamora.github.io/m150-onto#ProfileLining> <http://www.w3.org/2000/01/rdf-schema#label> "Profile lining"@en .
 # 
 # https://l-jamora.github.io/m150-onto#ProfileType
 <https://l-jamora.github.io/m150-onto#ProfileType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#ProfileType> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#ProfileType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 106" .
+<https://l-jamora.github.io/m150-onto#ProfileType> <http://www.w3.org/2000/01/rdf-schema#label> "Profilart"@de .
+<https://l-jamora.github.io/m150-onto#ProfileType> <http://www.w3.org/2000/01/rdf-schema#label> "Profile type"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Reference
 <https://l-jamora.github.io/m150-onto#Reference> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://l-jamora.github.io/m150-onto#Reference> <http://www.w3.org/2000/01/rdf-schema#comment> "The taxonomy of references includes the reference tables found in the advisory leaflet DWA-M 150.\n\nDWA-M 150 categorizes reference tables by type of data. Examples are:\n- Reference Table 105: Material Types (Class/Subclass: Reference/Material)\n- Reference Table 202: Condition Assessment Coding Systems (Reference/CodingSystem)\n\nEach subclass refers to a specific reference table in DWA-M 150, implied with the equivalentTo axiom \"hasReferenceTable value \"[RefTableNumber]\"\".\n\nThe different types found within a reference table are then listed as subclasses of the aforementioned subclass."@en .
+<https://l-jamora.github.io/m150-onto#Reference> <http://purl.org/vocab/vann/usageNote> "DWA-M 150 categorizes reference tables by type of data. Examples are:\n- Reference Table 105: Material Types (Reference/Material)\n- Reference Table 202: Condition Assessment Coding Systems (Reference/CodingSystem)\n\nEach subclass refers to one reference table. The entries of a table are individuals of that subclass (not subclasses), so that a component relates to them with an object property such as hasMaterial."@en .
+<https://l-jamora.github.io/m150-onto#Reference> <http://www.w3.org/2000/01/rdf-schema#comment> "A code list (reference table) of DWA-M 150. Each subclass corresponds to one reference table; the codes of that table are individuals of the subclass, named M150_RT[table]_[code] (e.g. M150_RT105_B, concrete)."@en .
+<https://l-jamora.github.io/m150-onto#Reference> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#Reference> <http://www.w3.org/2000/01/rdf-schema#label> "Reference"@en .
+<https://l-jamora.github.io/m150-onto#Reference> <http://www.w3.org/2000/01/rdf-schema#label> "Referenz"@de .
 # 
 # https://l-jamora.github.io/m150-onto#ReferenceReport
 <https://l-jamora.github.io/m150-onto#ReferenceReport> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#ReferenceReport> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#ReferenceReport> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 209" .
+<https://l-jamora.github.io/m150-onto#ReferenceReport> <http://www.w3.org/2000/01/rdf-schema#label> "Meldung"@de .
+<https://l-jamora.github.io/m150-onto#ReferenceReport> <http://www.w3.org/2000/01/rdf-schema#label> "Reference report"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Report
 <https://l-jamora.github.io/m150-onto#Report> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
-<https://l-jamora.github.io/m150-onto#Report> <http://www.w3.org/2000/01/rdf-schema#comment> "The taxonomy of reports includes inspection and condition reports for a sewage system, according to the structure of the advisory leaflet DWA-M 150.\n\nIt is recommended to create individuals for inspection reports with the template:\n\n` Inspection[PipeSectionDesignation]_[Date] `;\n` Inspection[HG001]_[HI003] ` for Pipe Section: Inspection reports;\n` Inspection[KG001]_[KI003] ` for Node: Inspection reports.\n\nIt is recommended to create individuals for condition reports within an inspection with the template:\n\n` Condition[PipeSectionDesignation]_[Stationing(ConditionReport)]_[Code] `;\n` Condition[HG001]_[HZ001]_[HZ002] ` for Pipe Section: Condition reports;\n` Condition[HG001]_[KZ001]_[KZ002] ` for Node: Condition reports.\n\nAccording to the DWA-M 150, the coding systems that can be applied here are:\n- DIN EN 13508-2\n- DWA 149-2\n- DWA ATV-M 143\n- ISYBAU2001\n- ISYBAU1996"@en .
+<https://l-jamora.github.io/m150-onto#Report> <http://purl.org/vocab/vann/usageNote> "Individuals for inspection reports are labelled with the template:\n\n` Inspection[PipeSectionDesignation]_[Date] `;\n` Inspection[HG001]_[HI003] ` for Pipe Section: Inspection reports;\n` Inspection[KG001]_[KI003] ` for Node: Inspection reports.\n\nIndividuals for condition reports within an inspection are labelled with the template:\n\n` Condition[PipeSectionDesignation]_[Stationing(ConditionReport)]_[Code] `;\n` Condition[HG001]_[HZ001]_[HZ002] ` for Pipe Section: Condition reports;\n` Condition[KG001]_[KZ001]_[KZ002] ` for Node: Condition reports.\n\nAccording to the DWA-M 150, the coding systems that can be applied here are:\n- DIN EN 13508-2\n- DWA 149-2\n- DWA ATV-M 143\n- ISYBAU2001\n- ISYBAU1996"@en .
+<https://l-jamora.github.io/m150-onto#Report> <http://www.w3.org/2000/01/rdf-schema#comment> "A document that records information about a component of a sewer network. Its subclasses follow the inspection and condition data structure of DWA-M 150."@en .
+<https://l-jamora.github.io/m150-onto#Report> <http://www.w3.org/2000/01/rdf-schema#label> "Bericht"@de .
+<https://l-jamora.github.io/m150-onto#Report> <http://www.w3.org/2000/01/rdf-schema#label> "Report"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Role
 <https://l-jamora.github.io/m150-onto#Role> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://l-jamora.github.io/m150-onto#Role> <http://www.w3.org/2000/01/rdf-schema#comment> "The function a person or organization has in an inspection (client, company, inspector, site manager, reporter, assessor). Roles are fixed named individuals."@en .
+<https://l-jamora.github.io/m150-onto#Role> <http://www.w3.org/2000/01/rdf-schema#label> "Role"@en .
+<https://l-jamora.github.io/m150-onto#Role> <http://www.w3.org/2000/01/rdf-schema#label> "Rolle"@de .
 # 
 # https://l-jamora.github.io/m150-onto#SewerType
 <https://l-jamora.github.io/m150-onto#SewerType> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#SewerType> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#SewerType> <http://www.w3.org/2000/01/rdf-schema#comment> "The type of sewer by construction and flow (e.g. closed gravity flow pipeline, pressure pipeline, open channel), according to DWA-M 150 reference table 103."@en .
+<https://l-jamora.github.io/m150-onto#SewerType> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 103" .
+<https://l-jamora.github.io/m150-onto#SewerType> <http://www.w3.org/2000/01/rdf-schema#label> "Kanalart"@de .
+<https://l-jamora.github.io/m150-onto#SewerType> <http://www.w3.org/2000/01/rdf-schema#label> "Sewer type"@en .
 # 
 # https://l-jamora.github.io/m150-onto#SewerUsage
 <https://l-jamora.github.io/m150-onto#SewerUsage> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#SewerUsage> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#SewerUsage> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 104" .
+<https://l-jamora.github.io/m150-onto#SewerUsage> <http://www.w3.org/2000/01/rdf-schema#label> "Kanalnutzung"@de .
+<https://l-jamora.github.io/m150-onto#SewerUsage> <http://www.w3.org/2000/01/rdf-schema#label> "Sewer usage"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Shape
 <https://l-jamora.github.io/m150-onto#Shape> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#Shape> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#Shape> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 118" .
+<https://l-jamora.github.io/m150-onto#Shape> <http://www.w3.org/2000/01/rdf-schema#label> "Form"@de .
+<https://l-jamora.github.io/m150-onto#Shape> <http://www.w3.org/2000/01/rdf-schema#label> "Shape"@en .
 # 
 # https://l-jamora.github.io/m150-onto#SoilGroup
 <https://l-jamora.github.io/m150-onto#SoilGroup> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#SoilGroup> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#SoilGroup> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 126" .
+<https://l-jamora.github.io/m150-onto#SoilGroup> <http://www.w3.org/2000/01/rdf-schema#label> "Bodengruppe"@de .
+<https://l-jamora.github.io/m150-onto#SoilGroup> <http://www.w3.org/2000/01/rdf-schema#label> "Soil group"@en .
 # 
 # https://l-jamora.github.io/m150-onto#SpatialEntity
 <https://l-jamora.github.io/m150-onto#SpatialEntity> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://l-jamora.github.io/m150-onto#SpatialEntity> <http://www.w3.org/2000/01/rdf-schema#comment> "A physical or geographic location referred to by a component, such as a street, a district or a treatment plant."@en .
+<https://l-jamora.github.io/m150-onto#SpatialEntity> <http://www.w3.org/2000/01/rdf-schema#label> "Räumliche Entität"@de .
+<https://l-jamora.github.io/m150-onto#SpatialEntity> <http://www.w3.org/2000/01/rdf-schema#label> "Spatial entity"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Street
 <https://l-jamora.github.io/m150-onto#Street> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#Street> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#SpatialEntity> .
+<https://l-jamora.github.io/m150-onto#Street> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#Street> <http://www.w3.org/2000/01/rdf-schema#label> "Straße"@de .
+<https://l-jamora.github.io/m150-onto#Street> <http://www.w3.org/2000/01/rdf-schema#label> "Street"@en .
 # 
 # https://l-jamora.github.io/m150-onto#StreetCode
 <https://l-jamora.github.io/m150-onto#StreetCode> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#StreetCode> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#InformationEntity> .
+<https://l-jamora.github.io/m150-onto#StreetCode> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#StreetCode> <http://www.w3.org/2000/01/rdf-schema#label> "Straßenschlüssel"@de .
+<https://l-jamora.github.io/m150-onto#StreetCode> <http://www.w3.org/2000/01/rdf-schema#label> "Street code"@en .
 # 
 # https://l-jamora.github.io/m150-onto#TrafficAreaLocation
 <https://l-jamora.github.io/m150-onto#TrafficAreaLocation> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#TrafficAreaLocation> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#TrafficAreaLocation> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 112" .
+<https://l-jamora.github.io/m150-onto#TrafficAreaLocation> <http://www.w3.org/2000/01/rdf-schema#label> "Lage im Verkehrsraum"@de .
+<https://l-jamora.github.io/m150-onto#TrafficAreaLocation> <http://www.w3.org/2000/01/rdf-schema#label> "Location in traffic area"@en .
 # 
 # https://l-jamora.github.io/m150-onto#TreatmentPlant
 <https://l-jamora.github.io/m150-onto#TreatmentPlant> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#TreatmentPlant> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#SpatialEntity> .
+<https://l-jamora.github.io/m150-onto#TreatmentPlant> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#TreatmentPlant> <http://www.w3.org/2000/01/rdf-schema#label> "Kläranlage"@de .
+<https://l-jamora.github.io/m150-onto#TreatmentPlant> <http://www.w3.org/2000/01/rdf-schema#label> "Treatment plant"@en .
 # 
 # https://l-jamora.github.io/m150-onto#VerticalReferencePoint
 <https://l-jamora.github.io/m150-onto#VerticalReferencePoint> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#VerticalReferencePoint> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#VerticalReferencePoint> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 210" .
+<https://l-jamora.github.io/m150-onto#VerticalReferencePoint> <http://www.w3.org/2000/01/rdf-schema#label> "Bezugspunkt vertikal"@de .
+<https://l-jamora.github.io/m150-onto#VerticalReferencePoint> <http://www.w3.org/2000/01/rdf-schema#label> "Vertical reference point"@en .
 # 
 # https://l-jamora.github.io/m150-onto#VideoFile
 <https://l-jamora.github.io/m150-onto#VideoFile> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
+<https://l-jamora.github.io/m150-onto#VideoFile> <http://www.w3.org/2000/01/rdf-schema#comment> "A video file recorded during an inspection (HI116/KI116)."@en .
+<https://l-jamora.github.io/m150-onto#VideoFile> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150" .
+<https://l-jamora.github.io/m150-onto#VideoFile> <http://www.w3.org/2000/01/rdf-schema#label> "Video file"@en .
+<https://l-jamora.github.io/m150-onto#VideoFile> <http://www.w3.org/2000/01/rdf-schema#label> "Videodatei"@de .
 # 
 # https://l-jamora.github.io/m150-onto#VideoStorageMedium
 <https://l-jamora.github.io/m150-onto#VideoStorageMedium> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#VideoStorageMedium> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#VideoStorageMedium> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 207" .
+<https://l-jamora.github.io/m150-onto#VideoStorageMedium> <http://www.w3.org/2000/01/rdf-schema#label> "Video storage medium"@en .
+<https://l-jamora.github.io/m150-onto#VideoStorageMedium> <http://www.w3.org/2000/01/rdf-schema#label> "Videospeichermedium"@de .
 # 
 # https://l-jamora.github.io/m150-onto#WaterProtectionZone
 <https://l-jamora.github.io/m150-onto#WaterProtectionZone> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#WaterProtectionZone> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#WaterProtectionZone> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 111" .
+<https://l-jamora.github.io/m150-onto#WaterProtectionZone> <http://www.w3.org/2000/01/rdf-schema#label> "Wasserschutzzone"@de .
+<https://l-jamora.github.io/m150-onto#WaterProtectionZone> <http://www.w3.org/2000/01/rdf-schema#label> "Water protection zone"@en .
 # 
 # https://l-jamora.github.io/m150-onto#Weather
 <https://l-jamora.github.io/m150-onto#Weather> <http://www.w3.org/1999/02/22-rdf-syntax-ns#type> <http://www.w3.org/2002/07/owl#Class> .
 <https://l-jamora.github.io/m150-onto#Weather> <http://www.w3.org/2000/01/rdf-schema#subClassOf> <https://l-jamora.github.io/m150-onto#Reference> .
+<https://l-jamora.github.io/m150-onto#Weather> <http://www.w3.org/2000/01/rdf-schema#isDefinedBy> "DWA-M 150 Reference Table 204" .
+<https://l-jamora.github.io/m150-onto#Weather> <http://www.w3.org/2000/01/rdf-schema#label> "Weather"@en .
+<https://l-jamora.github.io/m150-onto#Weather> <http://www.w3.org/2000/01/rdf-schema#label> "Wetter"@de .
 # 
 # 
 # 

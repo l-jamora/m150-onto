@@ -7,7 +7,7 @@
 @base <https://l-jamora.github.io/m150-onto#> .
 
 <https://l-jamora.github.io/m150-onto> rdf:type owl:Ontology ;
-                                        owl:versionIRI <https://l-jamora.github.io/m150-onto/0.4.0> ;
+                                        owl:versionIRI <https://l-jamora.github.io/m150-onto/0.5.0> ;
                                         <http://purl.org/dc/terms/abstract> """Underground sewage infrastructure maintenance faces challenges due to fragmented, analog asset data, hindering effective real-time monitoring and predictive maintenance. While digital twins offer promising technological potential, their practical implementation is constrained by complex data integration challenges. Ontologies emerge as a critical approach to establish data relationships, providing a structured framework for bridging these systemic information gaps.
 
 To address these gaps, this thesis introduces M150-Onto, a novel ontology designed to enhance the data management of sewage infrastructure by aligning with German regulatory frameworks and supporting interoperability among diverse data sources. This work explores an ontological approach with a particular focus on enabling more efficient querying and reasoning capabilities, allowing for advanced data retrieval and automated inference to support sewer infrastructure data management. M150-Onto is developed and tested within Protégé, demonstrating its potential to improve data accessibility, integration, and predictive maintenance strategies. By identifying the strengths and limitations of current ontological frameworks and proposing M150-Onto as a targeted solution, this research contributes to the digital transformation of sewage infrastructure management. The emphasis on efficient querying and reasoning enhances data-driven decision-making and sustainable maintenance strategies, addressing the critical need for improved infrastructure management amidst growing urbanization and environmental pressures.""" ;
@@ -23,8 +23,8 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
                                         <http://purl.org/vocab/vann/preferredNamespacePrefix> "m150-onto" ;
                                         <http://purl.org/vocab/vann/preferredNamespaceUri> "https://l-jamora.github.io/m150-onto#"^^rdfs:Literal ;
                                         rdfs:label "M150-Onto"@en ;
-                                        owl:priorVersion <https://l-jamora.github.io/m150-onto/0.3.6> ;
-                                        owl:versionInfo "0.4.0" .
+                                        owl:priorVersion <https://l-jamora.github.io/m150-onto/0.4.0> ;
+                                        owl:versionInfo "0.5.0" .
 
 #################################################################
 #    Annotation properties
@@ -373,6 +373,10 @@ This ontology was created as part of a Bachelors Thesis into an investigation of
 
 ###  http://purl.org/vocab/vann/preferredNamespaceUri
 <http://purl.org/vocab/vann/preferredNamespaceUri> rdf:type owl:AnnotationProperty .
+
+
+###  http://purl.org/vocab/vann/usageNote
+<http://purl.org/vocab/vann/usageNote> rdf:type owl:AnnotationProperty .
 
 
 #################################################################
@@ -1998,445 +2002,699 @@ xsd:date rdf:type rdfs:Datatype .
 
 ###  https://l-jamora.github.io/m150-onto#AmbientAir
 :AmbientAir rdf:type owl:Class ;
-            rdfs:subClassOf :Reference .
+            rdfs:subClassOf :Reference ;
+            rdfs:isDefinedBy "DWA-M 150 Reference Table 212" ;
+            rdfs:label "Ambient air"@en ,
+                       "Umgebungsluft"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#AmbientPhoto
 :AmbientPhoto rdf:type owl:Class ;
-              rdfs:subClassOf :Photo .
+              rdfs:subClassOf :Photo ;
+              rdfs:isDefinedBy "DWA-M 150" ;
+              rdfs:label "Ambient photo"@en ,
+                         "Umgebungsfoto"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#AreaCode
 :AreaCode rdf:type owl:Class ;
-          rdfs:subClassOf :InformationEntity .
+          rdfs:subClassOf :InformationEntity ;
+          rdfs:isDefinedBy "DWA-M 150" ;
+          rdfs:label "Area code"@en ,
+                     "Gebietsschlüssel"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#BackflowPrevention
 :BackflowPrevention rdf:type owl:Class ;
-                    rdfs:subClassOf :Reference .
+                    rdfs:subClassOf :Reference ;
+                    rdfs:isDefinedBy "DWA-M 150 Reference Table 206" ;
+                    rdfs:label "Backflow prevention"@en ,
+                               "Vorflutsicherung"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#BeddingType
 :BeddingType rdf:type owl:Class ;
-             rdfs:subClassOf :Reference .
+             rdfs:subClassOf :Reference ;
+             rdfs:isDefinedBy "DWA-M 150 Reference Table 127" ;
+             rdfs:label "Bedding type"@en ,
+                        "Lagerungsart"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#CameraSystem
-:CameraSystem rdf:type owl:Class .
+:CameraSystem rdf:type owl:Class ;
+              rdfs:comment "The camera system used for an inspection (HI006/KI006)."@en ;
+              rdfs:isDefinedBy "DWA-M 150" ;
+              rdfs:label "Camera system"@en ,
+                         "Kamerasystem"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#CatchmentAreaCode
 :CatchmentAreaCode rdf:type owl:Class ;
-                   rdfs:subClassOf :InformationEntity .
+                   rdfs:subClassOf :InformationEntity ;
+                   rdfs:isDefinedBy "DWA-M 150" ;
+                   rdfs:label "Catchment area code"@en ,
+                              "Einzugsgebietschlüssel"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#CircumferentialReferencePoint
 :CircumferentialReferencePoint rdf:type owl:Class ;
-                               rdfs:subClassOf :Reference .
+                               rdfs:subClassOf :Reference ;
+                               rdfs:isDefinedBy "DWA-M 150 Reference Table 211" ;
+                               rdfs:label "Bezugspunkt am Umfang"@de ,
+                                          "Circumferential reference point"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Cleaning
 :Cleaning rdf:type owl:Class ;
-          rdfs:subClassOf :Reference .
+          rdfs:subClassOf :Reference ;
+          rdfs:isDefinedBy "DWA-M 150 Reference Table 205" ;
+          rdfs:label "Cleaning"@en ,
+                     "Reinigung"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#ClimbingAid
 :ClimbingAid rdf:type owl:Class ;
-             rdfs:subClassOf :Reference .
+             rdfs:subClassOf :Reference ;
+             rdfs:isDefinedBy "DWA-M 150 Reference Table 121" ;
+             rdfs:label "Climbing aid"@en ,
+                        "Steighilfe"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#ClimbingAidMaterial
 :ClimbingAidMaterial rdf:type owl:Class ;
-                     rdfs:subClassOf :Reference .
+                     rdfs:subClassOf :Reference ;
+                     rdfs:isDefinedBy "DWA-M 150 Reference Table 122" ;
+                     rdfs:label "Climbing aid material"@en ,
+                                "Steighilfenmaterial"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#CodingSystem
 :CodingSystem rdf:type owl:Class ;
-              rdfs:subClassOf :Reference .
+              rdfs:subClassOf :Reference ;
+              rdfs:comment "The coding system used to record condition observations (e.g. DIN EN 13508-2, ISYBAU), according to DWA-M 150 reference table 202."@en ;
+              rdfs:isDefinedBy "DWA-M 150 Reference Table 202" ;
+              rdfs:label "Coding system"@en ,
+                         "Kodiersystem"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#Component
-:Component rdf:type owl:Class .
+:Component rdf:type owl:Class ;
+           rdfs:comment "A physical asset of a sewer network as described in DWA-M 150: either a pipe section or a node. Components are the subjects of inspection reports and of geometry objects."@en ;
+           rdfs:label "Component"@en ,
+                      "Komponente"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#ConditionReport
 :ConditionReport rdf:type owl:Class ;
-                 rdfs:subClassOf :InspectionReport .
+                 rdfs:subClassOf :InspectionReport ;
+                 rdfs:comment "A single condition observation made during an inspection of a pipe section (HZ) or a node (KZ), recorded at a stationing with a code of the coding system in use (e.g. DIN EN 13508-2)."@en ;
+                 rdfs:isDefinedBy "DWA-M 150" ;
+                 rdfs:label "Condition report"@en ,
+                            "Zustandsbericht"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#CoordinateSystem
 :CoordinateSystem rdf:type owl:Class ;
-                  rdfs:subClassOf :Reference .
+                  rdfs:subClassOf :Reference ;
+                  rdfs:isDefinedBy "DWA-M 150 Reference Table 302" ;
+                  rdfs:label "Coordinate system"@en ,
+                             "Koordinatensystem"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#CoverClass
 :CoverClass rdf:type owl:Class ;
-            rdfs:subClassOf :Reference .
+            rdfs:subClassOf :Reference ;
+            rdfs:isDefinedBy "DWA-M 150 Reference Table 119" ;
+            rdfs:label "Cover class"@en ,
+                       "Deckelklasse"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#DataStatus
 :DataStatus rdf:type owl:Class ;
-            rdfs:subClassOf :Reference .
+            rdfs:subClassOf :Reference ;
+            rdfs:isDefinedBy "DWA-M 150 Reference Table 115" ;
+            rdfs:label "Data status"@en ,
+                       "Status Daten"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#DigitalPhoto
 :DigitalPhoto rdf:type owl:Class ;
-              rdfs:subClassOf :Photo .
+              rdfs:subClassOf :Photo ;
+              rdfs:isDefinedBy "DWA-M 150" ;
+              rdfs:label "Digital photo"@en ,
+                         "Digitales Foto"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#Directionality
-:Directionality rdf:type owl:Class .
+:Directionality rdf:type owl:Class ;
+                rdfs:comment "A direction relevant to sewer data: the flow-related direction of an inspection or the orientation of a circular arc."@en ;
+                rdfs:label "Directionality"@en ,
+                           "Richtung"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#District
 :District rdf:type owl:Class ;
-          rdfs:subClassOf :SpatialEntity .
+          rdfs:subClassOf :SpatialEntity ;
+          rdfs:isDefinedBy "DWA-M 150" ;
+          rdfs:label "District"@en ,
+                     "Ortsteil"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#DistrictCode
 :DistrictCode rdf:type owl:Class ;
-              rdfs:subClassOf :InformationEntity .
+              rdfs:subClassOf :InformationEntity ;
+              rdfs:isDefinedBy "DWA-M 150" ;
+              rdfs:label "District code"@en ,
+                         "Ortsteilschlüssel"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#ElevationAccuracy
 :ElevationAccuracy rdf:type owl:Class ;
-                   rdfs:subClassOf :Reference .
+                   rdfs:subClassOf :Reference ;
+                   rdfs:isDefinedBy "DWA-M 150 Reference Table 102" ;
+                   rdfs:label "Elevation accuracy"@en ,
+                              "Höhengenauigkeit"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#ElevationSystem
 :ElevationSystem rdf:type owl:Class ;
-                 rdfs:subClassOf :Reference .
+                 rdfs:subClassOf :Reference ;
+                 rdfs:isDefinedBy "DWA-M 150 Reference Table 303" ;
+                 rdfs:label "Elevation system"@en ,
+                            "Höhensystem"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#FloodArea
 :FloodArea rdf:type owl:Class ;
-           rdfs:subClassOf :Reference .
+           rdfs:subClassOf :Reference ;
+           rdfs:isDefinedBy "DWA-M 150 Reference Table 114" ;
+           rdfs:label "Flood area"@en ,
+                      "Überschwemmungsgebiet"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#FloodingFrequency
 :FloodingFrequency rdf:type owl:Class ;
-                   rdfs:subClassOf :Reference .
+                   rdfs:subClassOf :Reference ;
+                   rdfs:isDefinedBy "DWA-M 150 Reference Table 125" ;
+                   rdfs:label "Einstauhäufigkeit"@de ,
+                              "Flooding frequency"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#FlowingDirection
 :FlowingDirection rdf:type owl:Class ;
-                  rdfs:subClassOf :Directionality .
+                  rdfs:subClassOf :Directionality ;
+                  rdfs:comment "A direction relative to the flow of the sewer: in flowing direction or against flowing direction."@en ;
+                  rdfs:isDefinedBy "DWA-M 150" ;
+                  rdfs:label "Fließrichtung"@de ,
+                             "Flowing direction"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Geometry
 :Geometry rdf:type owl:Class ;
-          rdfs:comment """The taxonomy of geometry includes the GIS geometry data of M150-Components. These include Geometry Object and Geometry Points.
-
-It is recommended to create individuals for geometric objects with the template:
+          <http://purl.org/vocab/vann/usageNote> """Individuals for geometric objects are labelled with the template:
 
 ` GeoObject[PipeSection/Node Designation] `
 ` GeoObject[HG001]  ` for Pipe Section: Geometry Objects;
 ` GeoObject[KG001] ` for Node: Geometry Objects.
 
-It is recommended to create individuals for geometric points with the template:
+Individuals for geometric points are labelled with the template:
 
 ` GeoPoint[Geometry Point Description] `
 ` GeoPoint[GP001]  `.
 
-`GeoObject`'s should be declared as the parent of 'GeoPoint''s with the object property `isParentOf`. (Inverse: isChildOf)
+`GeoObject`'s should be declared as the parent of `GeoPoint`'s with the object property `isParentOf`. (Inverse: isChildOf)
 
-`GeoObject`'s should be declared as the renderer of a Component with the object property 'renders'. (Inverse: renderedBy)"""@en .
+`GeoObject`'s should be declared as the renderer of a Component with the object property `renders`. (Inverse: renderedBy)"""@en ;
+          rdfs:comment "The GIS geometry data of a component in DWA-M 150, made up of geometry objects (GO) and their geometry points (GP)."@en ;
+          rdfs:isDefinedBy "DWA-M 150" ;
+          rdfs:label "Geometrie"@de ,
+                     "Geometry"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#GeometryObject
 :GeometryObject rdf:type owl:Class ;
-                rdfs:subClassOf :Geometry .
+                rdfs:subClassOf :Geometry ;
+                rdfs:comment "A geometry object (GO) that renders a pipe section or a node and groups the geometry points that describe its shape."@en ;
+                rdfs:isDefinedBy "DWA-M 150" ;
+                rdfs:label "Geometrieobjekt"@de ,
+                           "Geometry object"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#GeometryObjectIdentification
 :GeometryObjectIdentification rdf:type owl:Class ;
-                              rdfs:subClassOf :Reference .
+                              rdfs:subClassOf :Reference ;
+                              rdfs:isDefinedBy "DWA-M 150 Reference Table 300" ;
+                              rdfs:label "Geometrieobjektkennung"@de ,
+                                         "Geometry object identification"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#GeometryObjectType
 :GeometryObjectType rdf:type owl:Class ;
-                    rdfs:subClassOf :Reference .
+                    rdfs:subClassOf :Reference ;
+                    rdfs:isDefinedBy "DWA-M 150 Reference Table 301" ;
+                    rdfs:label "Geometrieobjekttyp"@de ,
+                               "Geometry object type"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#GeometryPoint
 :GeometryPoint rdf:type owl:Class ;
-               rdfs:subClassOf :GeometryObject .
+               rdfs:subClassOf :GeometryObject ;
+               rdfs:comment "A single coordinate point (GP) of a geometry object."@en ;
+               rdfs:isDefinedBy "DWA-M 150" ;
+               rdfs:label "Geometriepunkt"@de ,
+                          "Geometry point"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Groundwater
 :Groundwater rdf:type owl:Class ;
-             rdfs:subClassOf :Reference .
+             rdfs:subClassOf :Reference ;
+             rdfs:isDefinedBy "DWA-M 150 Reference Table 113" ;
+             rdfs:label "Groundwater"@en ,
+                        "Grundwasser"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#InformationEntity
-:InformationEntity rdf:type owl:Class .
+:InformationEntity rdf:type owl:Class ;
+                   rdfs:comment "An administrative identifier referred to by a component, such as a street, district, municipality, area or catchment area code."@en ;
+                   rdfs:label "Information entity"@en ,
+                              "Informationsentität"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#InspectionReason
 :InspectionReason rdf:type owl:Class ;
-                  rdfs:subClassOf :Reference .
+                  rdfs:subClassOf :Reference ;
+                  rdfs:isDefinedBy "DWA-M 150 Reference Table 201" ;
+                  rdfs:label "Inspection reason"@en ,
+                             "Inspektionsgrund"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#InspectionReport
 :InspectionReport rdf:type owl:Class ;
-                  rdfs:subClassOf :Report .
+                  rdfs:subClassOf :Report ;
+                  rdfs:comment "The record of one inspection of a pipe section (HI) or a node (KI), identified by the component and the inspection date and time."@en ;
+                  rdfs:isDefinedBy "DWA-M 150" ;
+                  rdfs:label "Inspection report"@en ,
+                             "Inspektionsbericht"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#InspectionType
 :InspectionType rdf:type owl:Class ;
-                rdfs:subClassOf :Reference .
+                rdfs:subClassOf :Reference ;
+                rdfs:isDefinedBy "DWA-M 150 Reference Table 203" ;
+                rdfs:label "Inspection type"@en ,
+                           "Inspektionsart"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#InternalProtection
 :InternalProtection rdf:type owl:Class ;
-                    rdfs:subClassOf :Reference .
+                    rdfs:subClassOf :Reference ;
+                    rdfs:isDefinedBy "DWA-M 150 Reference Table 120" ;
+                    rdfs:label "Innenschutz"@de ,
+                               "Internal protection"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#LocalizedRepairNode
 :LocalizedRepairNode rdf:type owl:Class ;
-                     rdfs:subClassOf :Reference .
+                     rdfs:subClassOf :Reference ;
+                     rdfs:isDefinedBy "DWA-M 150 Reference Table 214" ;
+                     rdfs:label "Localized repair node"@en ,
+                                "Punktuelle Reparatur Knoten"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#LocalizedRepairSewer
 :LocalizedRepairSewer rdf:type owl:Class ;
-                      rdfs:subClassOf :Reference .
+                      rdfs:subClassOf :Reference ;
+                      rdfs:isDefinedBy "DWA-M 150 Reference Table 213" ;
+                      rdfs:label "Localized repair sewer"@en ,
+                                 "Punktuelle Reparatur Haltung"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#Material
 :Material rdf:type owl:Class ;
-          rdfs:subClassOf :Reference .
+          rdfs:subClassOf :Reference ;
+          rdfs:comment "The material of a pipe section or node, according to DWA-M 150 reference table 105."@en ;
+          rdfs:isDefinedBy "DWA-M 150 Reference Table 105" ;
+          rdfs:label "Material"@de ,
+                     "Material"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#MeasurementTechnology
 :MeasurementTechnology rdf:type owl:Class ;
-                       rdfs:subClassOf :Reference .
+                       rdfs:subClassOf :Reference ;
+                       rdfs:isDefinedBy "DWA-M 150 Reference Table 123" ;
+                       rdfs:label "Measurement technology"@en ,
+                                  "Messtechnik"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#MeasurementValueType
 :MeasurementValueType rdf:type owl:Class ;
-                      rdfs:subClassOf :Reference .
+                      rdfs:subClassOf :Reference ;
+                      rdfs:isDefinedBy "DWA-M 150 Reference Table 401" ;
+                      rdfs:label "Measurement value type"@en ,
+                                 "Messwerttyp"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#MunicipalityCode
 :MunicipalityCode rdf:type owl:Class ;
-                  rdfs:subClassOf :InformationEntity .
+                  rdfs:subClassOf :InformationEntity ;
+                  rdfs:isDefinedBy "DWA-M 150" ;
+                  rdfs:label "Gemeindeschlüssel"@de ,
+                             "Municipality code"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Node
 :Node rdf:type owl:Class ;
       rdfs:subClassOf :Component ;
-      owl:disjointWith :PipeSection .
+      owl:disjointWith :PipeSection ;
+      rdfs:comment "A node (German: Knoten) is a point structure of the sewer network, such as a manhole, a street drain or an outlet, described by the DWA-M 150 node basic data (KG). Its designation is KG001."@en ;
+      rdfs:isDefinedBy "DWA-M 150" ;
+      rdfs:label "Knoten"@de ,
+                 "Node"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#NodeStructureComponent
 :NodeStructureComponent rdf:type owl:Class ;
-                        rdfs:subClassOf :Reference .
+                        rdfs:subClassOf :Reference ;
+                        rdfs:isDefinedBy "DWA-M 150 Reference Table 124" ;
+                        rdfs:label "Bauteil"@de ,
+                                   "Node structure component"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#NodeStructureType
 :NodeStructureType rdf:type owl:Class ;
-                   rdfs:subClassOf :Reference .
+                   rdfs:subClassOf :Reference ;
+                   rdfs:isDefinedBy "DWA-M 150 Reference Table 117" ;
+                   rdfs:label "Bauwerksart"@de ,
+                              "Structure type"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#NodeType
 :NodeType rdf:type owl:Class ;
-          rdfs:subClassOf :Reference .
+          rdfs:subClassOf :Reference ;
+          rdfs:isDefinedBy "DWA-M 150 Reference Table 116" ;
+          rdfs:label "Knotenart"@de ,
+                     "Node type"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#ObjectType
 :ObjectType rdf:type owl:Class ;
-            rdfs:subClassOf :Reference .
+            rdfs:subClassOf :Reference ;
+            rdfs:isDefinedBy "DWA-M 150 Reference Table 128" ;
+            rdfs:label "Object type"@en ,
+                       "Objekttyp"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#OperationalStatus
 :OperationalStatus rdf:type owl:Class ;
-                   rdfs:subClassOf :Reference .
+                   rdfs:subClassOf :Reference ;
+                   rdfs:isDefinedBy "DWA-M 150 Reference Table 109" ;
+                   rdfs:label "Funktionszustand"@de ,
+                              "Operational status"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Organization
-:Organization rdf:type owl:Class .
+:Organization rdf:type owl:Class ;
+              rdfs:comment "An organization named in the inspection data, such as the inspecting company. Its function is given with hasRole."@en ;
+              rdfs:label "Organisation"@de ,
+                         "Organization"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Orientation
 :Orientation rdf:type owl:Class ;
-             rdfs:subClassOf :Directionality .
+             rdfs:subClassOf :Directionality ;
+             rdfs:comment "The turning direction of a circular arc in the geometry data (GP102): clockwise or counter-clockwise."@en ;
+             rdfs:isDefinedBy "DWA-M 150" ;
+             rdfs:label "Orientation"@en ,
+                        "Orientierung"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#Ownership
 :Ownership rdf:type owl:Class ;
-           rdfs:subClassOf :Reference .
+           rdfs:subClassOf :Reference ;
+           rdfs:isDefinedBy "DWA-M 150 Reference Table 110" ;
+           rdfs:label "Eigentum"@de ,
+                      "Ownership"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Person
-:Person rdf:type owl:Class .
+:Person rdf:type owl:Class ;
+        rdfs:comment "A natural person named in the inspection data, such as an inspector, a site manager, a reporter or an assessor. Their function is given with hasRole."@en ;
+        rdfs:label "Person"@de ,
+                   "Person"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Photo
-:Photo rdf:type owl:Class .
+:Photo rdf:type owl:Class ;
+       rdfs:comment "A photo taken during an inspection, e.g. of a condition observation (HZ009/KZ009)."@en ;
+       rdfs:isDefinedBy "DWA-M 150" ;
+       rdfs:label "Foto"@de ,
+                  "Photo"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#PhotoStorageMedium
 :PhotoStorageMedium rdf:type owl:Class ;
-                    rdfs:subClassOf :Reference .
+                    rdfs:subClassOf :Reference ;
+                    rdfs:isDefinedBy "DWA-M 150 Reference Table 208" ;
+                    rdfs:label "Fotospeichermedium"@de ,
+                               "Photo storage medium"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#PipeSection
 :PipeSection rdf:type owl:Class ;
-             rdfs:subClassOf :Component .
+             rdfs:subClassOf :Component ;
+             rdfs:comment "A pipe section (German: Haltung) is the stretch of sewer between two nodes, described by the DWA-M 150 pipe section basic data (HG). Its designation is HG001."@en ;
+             rdfs:isDefinedBy "DWA-M 150" ;
+             rdfs:label "Haltung"@de ,
+                        "Pipe section"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint
 :PipeSectionInspectionReferencePoint rdf:type owl:Class ;
-                                     rdfs:subClassOf :SpatialEntity .
+                                     rdfs:subClassOf :SpatialEntity ;
+                                     rdfs:isDefinedBy "DWA-M 150" ;
+                                     rdfs:label "Bezugspunkt der Haltungsinspektion"@de ,
+                                                "Pipe section inspection reference point"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePointStart
 :PipeSectionInspectionReferencePointStart rdf:type owl:Class ;
-                                          rdfs:subClassOf :PipeSectionInspectionReferencePoint .
+                                          rdfs:subClassOf :PipeSectionInspectionReferencePoint ;
+                                          rdfs:isDefinedBy "DWA-M 150" ;
+                                          rdfs:label "Bezugspunkt Start"@de ,
+                                                     "Pipe section inspection start reference point"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#PipeSectionType
 :PipeSectionType rdf:type owl:Class ;
-                 rdfs:subClassOf :Reference .
+                 rdfs:subClassOf :Reference ;
+                 rdfs:isDefinedBy "DWA-M 150 Reference Table 108" ;
+                 rdfs:label "Haltungsart"@de ,
+                            "Pipe section type"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#PointTypeInCircularArc
 :PointTypeInCircularArc rdf:type owl:Class ;
-                        rdfs:subClassOf :Reference .
+                        rdfs:subClassOf :Reference ;
+                        rdfs:isDefinedBy "DWA-M 150 Reference Table 304" ;
+                        rdfs:label "Point type in circular arc"@en ,
+                                   "Punkttyp bei Kreisbogen"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#PositionAccuracy
 :PositionAccuracy rdf:type owl:Class ;
-                  rdfs:subClassOf :Reference .
+                  rdfs:subClassOf :Reference ;
+                  rdfs:isDefinedBy "DWA-M 150 Reference Table 101" ;
+                  rdfs:label "Lagegenauigkeit"@de ,
+                             "Position accuracy"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#ProcessingStatus
 :ProcessingStatus rdf:type owl:Class ;
-                  rdfs:subClassOf :Reference .
+                  rdfs:subClassOf :Reference ;
+                  rdfs:isDefinedBy "DWA-M 150 Reference Table 215" ;
+                  rdfs:label "Bearbeitungsstatus"@de ,
+                             "Processing status"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#ProfileLining
 :ProfileLining rdf:type owl:Class ;
-               rdfs:subClassOf :Reference .
+               rdfs:subClassOf :Reference ;
+               rdfs:isDefinedBy "DWA-M 150 Reference Table 107" ;
+               rdfs:label "Profilauskleidung"@de ,
+                          "Profile lining"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#ProfileType
 :ProfileType rdf:type owl:Class ;
-             rdfs:subClassOf :Reference .
+             rdfs:subClassOf :Reference ;
+             rdfs:isDefinedBy "DWA-M 150 Reference Table 106" ;
+             rdfs:label "Profilart"@de ,
+                        "Profile type"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Reference
 :Reference rdf:type owl:Class ;
-           rdfs:comment """The taxonomy of references includes the reference tables found in the advisory leaflet DWA-M 150.
-
-DWA-M 150 categorizes reference tables by type of data. Examples are:
-- Reference Table 105: Material Types (Class/Subclass: Reference/Material)
+           <http://purl.org/vocab/vann/usageNote> """DWA-M 150 categorizes reference tables by type of data. Examples are:
+- Reference Table 105: Material Types (Reference/Material)
 - Reference Table 202: Condition Assessment Coding Systems (Reference/CodingSystem)
 
-Each subclass refers to a specific reference table in DWA-M 150, implied with the equivalentTo axiom \"hasReferenceTable value \"[RefTableNumber]\"\".
-
-The different types found within a reference table are then listed as subclasses of the aforementioned subclass."""@en .
+Each subclass refers to one reference table. The entries of a table are individuals of that subclass (not subclasses), so that a component relates to them with an object property such as hasMaterial."""@en ;
+           rdfs:comment "A code list (reference table) of DWA-M 150. Each subclass corresponds to one reference table; the codes of that table are individuals of the subclass, named M150_RT[table]_[code] (e.g. M150_RT105_B, concrete)."@en ;
+           rdfs:isDefinedBy "DWA-M 150" ;
+           rdfs:label "Reference"@en ,
+                      "Referenz"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#ReferenceReport
 :ReferenceReport rdf:type owl:Class ;
-                 rdfs:subClassOf :Reference .
+                 rdfs:subClassOf :Reference ;
+                 rdfs:isDefinedBy "DWA-M 150 Reference Table 209" ;
+                 rdfs:label "Meldung"@de ,
+                            "Reference report"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Report
 :Report rdf:type owl:Class ;
-        rdfs:comment """The taxonomy of reports includes inspection and condition reports for a sewage system, according to the structure of the advisory leaflet DWA-M 150.
-
-It is recommended to create individuals for inspection reports with the template:
+        <http://purl.org/vocab/vann/usageNote> """Individuals for inspection reports are labelled with the template:
 
 ` Inspection[PipeSectionDesignation]_[Date] `;
 ` Inspection[HG001]_[HI003] ` for Pipe Section: Inspection reports;
 ` Inspection[KG001]_[KI003] ` for Node: Inspection reports.
 
-It is recommended to create individuals for condition reports within an inspection with the template:
+Individuals for condition reports within an inspection are labelled with the template:
 
 ` Condition[PipeSectionDesignation]_[Stationing(ConditionReport)]_[Code] `;
 ` Condition[HG001]_[HZ001]_[HZ002] ` for Pipe Section: Condition reports;
-` Condition[HG001]_[KZ001]_[KZ002] ` for Node: Condition reports.
+` Condition[KG001]_[KZ001]_[KZ002] ` for Node: Condition reports.
 
 According to the DWA-M 150, the coding systems that can be applied here are:
 - DIN EN 13508-2
 - DWA 149-2
 - DWA ATV-M 143
 - ISYBAU2001
-- ISYBAU1996"""@en .
+- ISYBAU1996"""@en ;
+        rdfs:comment "A document that records information about a component of a sewer network. Its subclasses follow the inspection and condition data structure of DWA-M 150."@en ;
+        rdfs:label "Bericht"@de ,
+                   "Report"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Role
-:Role rdf:type owl:Class .
+:Role rdf:type owl:Class ;
+      rdfs:comment "The function a person or organization has in an inspection (client, company, inspector, site manager, reporter, assessor). Roles are fixed named individuals."@en ;
+      rdfs:label "Role"@en ,
+                 "Rolle"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#SewerType
 :SewerType rdf:type owl:Class ;
-           rdfs:subClassOf :Reference .
+           rdfs:subClassOf :Reference ;
+           rdfs:comment "The type of sewer by construction and flow (e.g. closed gravity flow pipeline, pressure pipeline, open channel), according to DWA-M 150 reference table 103."@en ;
+           rdfs:isDefinedBy "DWA-M 150 Reference Table 103" ;
+           rdfs:label "Kanalart"@de ,
+                      "Sewer type"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#SewerUsage
 :SewerUsage rdf:type owl:Class ;
-            rdfs:subClassOf :Reference .
+            rdfs:subClassOf :Reference ;
+            rdfs:isDefinedBy "DWA-M 150 Reference Table 104" ;
+            rdfs:label "Kanalnutzung"@de ,
+                       "Sewer usage"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Shape
 :Shape rdf:type owl:Class ;
-       rdfs:subClassOf :Reference .
+       rdfs:subClassOf :Reference ;
+       rdfs:isDefinedBy "DWA-M 150 Reference Table 118" ;
+       rdfs:label "Form"@de ,
+                  "Shape"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#SoilGroup
 :SoilGroup rdf:type owl:Class ;
-           rdfs:subClassOf :Reference .
+           rdfs:subClassOf :Reference ;
+           rdfs:isDefinedBy "DWA-M 150 Reference Table 126" ;
+           rdfs:label "Bodengruppe"@de ,
+                      "Soil group"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#SpatialEntity
-:SpatialEntity rdf:type owl:Class .
+:SpatialEntity rdf:type owl:Class ;
+               rdfs:comment "A physical or geographic location referred to by a component, such as a street, a district or a treatment plant."@en ;
+               rdfs:label "Räumliche Entität"@de ,
+                          "Spatial entity"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Street
 :Street rdf:type owl:Class ;
-        rdfs:subClassOf :SpatialEntity .
+        rdfs:subClassOf :SpatialEntity ;
+        rdfs:isDefinedBy "DWA-M 150" ;
+        rdfs:label "Straße"@de ,
+                   "Street"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#StreetCode
 :StreetCode rdf:type owl:Class ;
-            rdfs:subClassOf :InformationEntity .
+            rdfs:subClassOf :InformationEntity ;
+            rdfs:isDefinedBy "DWA-M 150" ;
+            rdfs:label "Straßenschlüssel"@de ,
+                       "Street code"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#TrafficAreaLocation
 :TrafficAreaLocation rdf:type owl:Class ;
-                     rdfs:subClassOf :Reference .
+                     rdfs:subClassOf :Reference ;
+                     rdfs:isDefinedBy "DWA-M 150 Reference Table 112" ;
+                     rdfs:label "Lage im Verkehrsraum"@de ,
+                                "Location in traffic area"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#TreatmentPlant
 :TreatmentPlant rdf:type owl:Class ;
-                rdfs:subClassOf :SpatialEntity .
+                rdfs:subClassOf :SpatialEntity ;
+                rdfs:isDefinedBy "DWA-M 150" ;
+                rdfs:label "Kläranlage"@de ,
+                           "Treatment plant"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#VerticalReferencePoint
 :VerticalReferencePoint rdf:type owl:Class ;
-                        rdfs:subClassOf :Reference .
+                        rdfs:subClassOf :Reference ;
+                        rdfs:isDefinedBy "DWA-M 150 Reference Table 210" ;
+                        rdfs:label "Bezugspunkt vertikal"@de ,
+                                   "Vertical reference point"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#VideoFile
-:VideoFile rdf:type owl:Class .
+:VideoFile rdf:type owl:Class ;
+           rdfs:comment "A video file recorded during an inspection (HI116/KI116)."@en ;
+           rdfs:isDefinedBy "DWA-M 150" ;
+           rdfs:label "Video file"@en ,
+                      "Videodatei"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#VideoStorageMedium
 :VideoStorageMedium rdf:type owl:Class ;
-                    rdfs:subClassOf :Reference .
+                    rdfs:subClassOf :Reference ;
+                    rdfs:isDefinedBy "DWA-M 150 Reference Table 207" ;
+                    rdfs:label "Video storage medium"@en ,
+                               "Videospeichermedium"@de .
 
 
 ###  https://l-jamora.github.io/m150-onto#WaterProtectionZone
 :WaterProtectionZone rdf:type owl:Class ;
-                     rdfs:subClassOf :Reference .
+                     rdfs:subClassOf :Reference ;
+                     rdfs:isDefinedBy "DWA-M 150 Reference Table 111" ;
+                     rdfs:label "Wasserschutzzone"@de ,
+                                "Water protection zone"@en .
 
 
 ###  https://l-jamora.github.io/m150-onto#Weather
 :Weather rdf:type owl:Class ;
-         rdfs:subClassOf :Reference .
+         rdfs:subClassOf :Reference ;
+         rdfs:isDefinedBy "DWA-M 150 Reference Table 204" ;
+         rdfs:label "Weather"@en ,
+                    "Wetter"@de .
 
 
 #################################################################

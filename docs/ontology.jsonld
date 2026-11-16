@@ -447,6 +447,9 @@
   "@id" : "http://purl.org/vocab/vann/preferredNamespaceUri",
   "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
 }, {
+  "@id" : "http://purl.org/vocab/vann/usageNote",
+  "@type" : [ "http://www.w3.org/2002/07/owl#AnnotationProperty" ]
+}, {
   "@id" : "http://www.w3.org/2001/XMLSchema#date",
   "@type" : [ "http://www.w3.org/2000/01/rdf-schema#Datatype" ]
 }, {
@@ -483,13 +486,13 @@
     "@value" : "M150-Onto"
   } ],
   "http://www.w3.org/2002/07/owl#priorVersion" : [ {
-    "@id" : "https://l-jamora.github.io/m150-onto/0.3.6"
-  } ],
-  "http://www.w3.org/2002/07/owl#versionIRI" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto/0.4.0"
   } ],
+  "http://www.w3.org/2002/07/owl#versionIRI" : [ {
+    "@id" : "https://l-jamora.github.io/m150-onto/0.5.0"
+  } ],
   "http://www.w3.org/2002/07/owl#versionInfo" : [ {
-    "@value" : "0.4.0"
+    "@value" : "0.5.0"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#AgainstFlowingDirection",
@@ -500,18 +503,48 @@
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#AmbientAir",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 212"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Ambient air"
+  }, {
+    "@language" : "de",
+    "@value" : "Umgebungsluft"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#AmbientPhoto",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Ambient photo"
+  }, {
+    "@language" : "de",
+    "@value" : "Umgebungsfoto"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Photo"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#AreaCode",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Area code"
+  }, {
+    "@language" : "de",
+    "@value" : "Gebietsschlüssel"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#InformationEntity"
   } ]
@@ -524,33 +557,97 @@
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#BackflowPrevention",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 206"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Backflow prevention"
+  }, {
+    "@language" : "de",
+    "@value" : "Vorflutsicherung"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#BeddingType",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 127"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Bedding type"
+  }, {
+    "@language" : "de",
+    "@value" : "Lagerungsart"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#CameraSystem",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The camera system used for an inspection (HI006/KI006)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Camera system"
+  }, {
+    "@language" : "de",
+    "@value" : "Kamerasystem"
+  } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#CatchmentAreaCode",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Catchment area code"
+  }, {
+    "@language" : "de",
+    "@value" : "Einzugsgebietschlüssel"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#InformationEntity"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#CircumferentialReferencePoint",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 211"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Bezugspunkt am Umfang"
+  }, {
+    "@language" : "en",
+    "@value" : "Circumferential reference point"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Cleaning",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 205"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Cleaning"
+  }, {
+    "@language" : "de",
+    "@value" : "Reinigung"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
@@ -563,12 +660,32 @@
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#ClimbingAid",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 121"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Climbing aid"
+  }, {
+    "@language" : "de",
+    "@value" : "Steighilfe"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#ClimbingAidMaterial",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 122"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Climbing aid material"
+  }, {
+    "@language" : "de",
+    "@value" : "Steighilfenmaterial"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
@@ -581,6 +698,20 @@
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#CodingSystem",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The coding system used to record condition observations (e.g. DIN EN 13508-2, ISYBAU), according to DWA-M 150 reference table 202."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 202"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Coding system"
+  }, {
+    "@language" : "de",
+    "@value" : "Kodiersystem"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
@@ -592,16 +723,51 @@
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Component",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A physical asset of a sewer network as described in DWA-M 150: either a pipe section or a node. Components are the subjects of inspection reports and of geometry objects."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Component"
+  }, {
+    "@language" : "de",
+    "@value" : "Komponente"
+  } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#ConditionReport",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A single condition observation made during an inspection of a pipe section (HZ) or a node (KZ), recorded at a stationing with a code of the coding system in use (e.g. DIN EN 13508-2)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Condition report"
+  }, {
+    "@language" : "de",
+    "@value" : "Zustandsbericht"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#InspectionReport"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#CoordinateSystem",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 302"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Coordinate system"
+  }, {
+    "@language" : "de",
+    "@value" : "Koordinatensystem"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
@@ -614,100 +780,287 @@
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#CoverClass",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 119"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Cover class"
+  }, {
+    "@language" : "de",
+    "@value" : "Deckelklasse"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#DataStatus",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 115"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Data status"
+  }, {
+    "@language" : "de",
+    "@value" : "Status Daten"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#DigitalPhoto",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Digital photo"
+  }, {
+    "@language" : "de",
+    "@value" : "Digitales Foto"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Photo"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Directionality",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A direction relevant to sewer data: the flow-related direction of an inspection or the orientation of a circular arc."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Directionality"
+  }, {
+    "@language" : "de",
+    "@value" : "Richtung"
+  } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#District",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "District"
+  }, {
+    "@language" : "de",
+    "@value" : "Ortsteil"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#SpatialEntity"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#DistrictCode",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "District code"
+  }, {
+    "@language" : "de",
+    "@value" : "Ortsteilschlüssel"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#InformationEntity"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#ElevationAccuracy",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 102"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Elevation accuracy"
+  }, {
+    "@language" : "de",
+    "@value" : "Höhengenauigkeit"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#ElevationSystem",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 303"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Elevation system"
+  }, {
+    "@language" : "de",
+    "@value" : "Höhensystem"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#FloodArea",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 114"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Flood area"
+  }, {
+    "@language" : "de",
+    "@value" : "Überschwemmungsgebiet"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#FloodingFrequency",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 125"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Einstauhäufigkeit"
+  }, {
+    "@language" : "en",
+    "@value" : "Flooding frequency"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#FlowingDirection",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A direction relative to the flow of the sewer: in flowing direction or against flowing direction."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Fließrichtung"
+  }, {
+    "@language" : "en",
+    "@value" : "Flowing direction"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Directionality"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Geometry",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/vocab/vann/usageNote" : [ {
+    "@language" : "en",
+    "@value" : "Individuals for geometric objects are labelled with the template:\n\n` GeoObject[PipeSection/Node Designation] `\n` GeoObject[HG001]  ` for Pipe Section: Geometry Objects;\n` GeoObject[KG001] ` for Node: Geometry Objects.\n\nIndividuals for geometric points are labelled with the template:\n\n` GeoPoint[Geometry Point Description] `\n` GeoPoint[GP001]  `.\n\n`GeoObject`'s should be declared as the parent of `GeoPoint`'s with the object property `isParentOf`. (Inverse: isChildOf)\n\n`GeoObject`'s should be declared as the renderer of a Component with the object property `renders`. (Inverse: renderedBy)"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "The taxonomy of geometry includes the GIS geometry data of M150-Components. These include Geometry Object and Geometry Points.\n\nIt is recommended to create individuals for geometric objects with the template:\n\n` GeoObject[PipeSection/Node Designation] `\n` GeoObject[HG001]  ` for Pipe Section: Geometry Objects;\n` GeoObject[KG001] ` for Node: Geometry Objects.\n\nIt is recommended to create individuals for geometric points with the template:\n\n` GeoPoint[Geometry Point Description] `\n` GeoPoint[GP001]  `.\n\n`GeoObject`'s should be declared as the parent of 'GeoPoint''s with the object property `isParentOf`. (Inverse: isChildOf)\n\n`GeoObject`'s should be declared as the renderer of a Component with the object property 'renders'. (Inverse: renderedBy)"
+    "@value" : "The GIS geometry data of a component in DWA-M 150, made up of geometry objects (GO) and their geometry points (GP)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Geometrie"
+  }, {
+    "@language" : "en",
+    "@value" : "Geometry"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#GeometryObject",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A geometry object (GO) that renders a pipe section or a node and groups the geometry points that describe its shape."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Geometrieobjekt"
+  }, {
+    "@language" : "en",
+    "@value" : "Geometry object"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Geometry"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#GeometryObjectIdentification",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 300"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Geometrieobjektkennung"
+  }, {
+    "@language" : "en",
+    "@value" : "Geometry object identification"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#GeometryObjectType",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 301"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Geometrieobjekttyp"
+  }, {
+    "@language" : "en",
+    "@value" : "Geometry object type"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#GeometryPoint",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A single coordinate point (GP) of a geometry object."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Geometriepunkt"
+  }, {
+    "@language" : "en",
+    "@value" : "Geometry point"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#GeometryObject"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Groundwater",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 113"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Groundwater"
+  }, {
+    "@language" : "de",
+    "@value" : "Grundwasser"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
@@ -719,22 +1072,67 @@
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#InformationEntity",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An administrative identifier referred to by a component, such as a street, district, municipality, area or catchment area code."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Information entity"
+  }, {
+    "@language" : "de",
+    "@value" : "Informationsentität"
+  } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#InspectionReason",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 201"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Inspection reason"
+  }, {
+    "@language" : "de",
+    "@value" : "Inspektionsgrund"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#InspectionReport",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The record of one inspection of a pipe section (HI) or a node (KI), identified by the component and the inspection date and time."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Inspection report"
+  }, {
+    "@language" : "de",
+    "@value" : "Inspektionsbericht"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Report"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#InspectionType",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 203"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Inspection type"
+  }, {
+    "@language" : "de",
+    "@value" : "Inspektionsart"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
@@ -747,18 +1145,48 @@
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#InternalProtection",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 120"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Innenschutz"
+  }, {
+    "@language" : "en",
+    "@value" : "Internal protection"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#LocalizedRepairNode",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 214"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Localized repair node"
+  }, {
+    "@language" : "de",
+    "@value" : "Punktuelle Reparatur Knoten"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#LocalizedRepairSewer",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 213"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Localized repair sewer"
+  }, {
+    "@language" : "de",
+    "@value" : "Punktuelle Reparatur Haltung"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
@@ -5913,30 +6341,88 @@
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Material",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The material of a pipe section or node, according to DWA-M 150 reference table 105."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 105"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Material"
+  }, {
+    "@language" : "en",
+    "@value" : "Material"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#MeasurementTechnology",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 123"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Measurement technology"
+  }, {
+    "@language" : "de",
+    "@value" : "Messtechnik"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#MeasurementValueType",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 401"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Measurement value type"
+  }, {
+    "@language" : "de",
+    "@value" : "Messwerttyp"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#MunicipalityCode",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Gemeindeschlüssel"
+  }, {
+    "@language" : "en",
+    "@value" : "Municipality code"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#InformationEntity"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Node",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A node (German: Knoten) is a point structure of the sewer network, such as a manhole, a street drain or an outlet, described by the DWA-M 150 node basic data (KG). Its designation is KG001."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Knoten"
+  }, {
+    "@language" : "en",
+    "@value" : "Node"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Component"
   } ],
@@ -5946,63 +6432,197 @@
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#NodeStructureComponent",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 124"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Bauteil"
+  }, {
+    "@language" : "en",
+    "@value" : "Node structure component"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#NodeStructureType",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 117"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Bauwerksart"
+  }, {
+    "@language" : "en",
+    "@value" : "Structure type"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#NodeType",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 116"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Knotenart"
+  }, {
+    "@language" : "en",
+    "@value" : "Node type"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#ObjectType",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 128"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Object type"
+  }, {
+    "@language" : "de",
+    "@value" : "Objekttyp"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#OperationalStatus",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 109"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Funktionszustand"
+  }, {
+    "@language" : "en",
+    "@value" : "Operational status"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Organization",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "An organization named in the inspection data, such as the inspecting company. Its function is given with hasRole."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Organisation"
+  }, {
+    "@language" : "en",
+    "@value" : "Organization"
+  } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Orientation",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The turning direction of a circular arc in the geometry data (GP102): clockwise or counter-clockwise."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Orientation"
+  }, {
+    "@language" : "de",
+    "@value" : "Orientierung"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Directionality"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Ownership",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 110"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Eigentum"
+  }, {
+    "@language" : "en",
+    "@value" : "Ownership"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Person",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A natural person named in the inspection data, such as an inspector, a site manager, a reporter or an assessor. Their function is given with hasRole."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Person"
+  }, {
+    "@language" : "en",
+    "@value" : "Person"
+  } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Photo",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A photo taken during an inspection, e.g. of a condition observation (HZ009/KZ009)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Foto"
+  }, {
+    "@language" : "en",
+    "@value" : "Photo"
+  } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#PhotoStorageMedium",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 208"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Fotospeichermedium"
+  }, {
+    "@language" : "en",
+    "@value" : "Photo storage medium"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#PipeSection",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A pipe section (German: Haltung) is the stretch of sewer between two nodes, described by the DWA-M 150 pipe section basic data (HG). Its designation is HG001."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Haltung"
+  }, {
+    "@language" : "en",
+    "@value" : "Pipe section"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Component"
   } ]
@@ -6036,70 +6656,185 @@
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Bezugspunkt der Haltungsinspektion"
+  }, {
+    "@language" : "en",
+    "@value" : "Pipe section inspection reference point"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#SpatialEntity"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePointStart",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Bezugspunkt Start"
+  }, {
+    "@language" : "en",
+    "@value" : "Pipe section inspection start reference point"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#PipeSectionInspectionReferencePoint"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#PipeSectionType",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 108"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Haltungsart"
+  }, {
+    "@language" : "en",
+    "@value" : "Pipe section type"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#PointTypeInCircularArc",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 304"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Point type in circular arc"
+  }, {
+    "@language" : "de",
+    "@value" : "Punkttyp bei Kreisbogen"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#PositionAccuracy",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 101"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Lagegenauigkeit"
+  }, {
+    "@language" : "en",
+    "@value" : "Position accuracy"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#ProcessingStatus",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 215"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Bearbeitungsstatus"
+  }, {
+    "@language" : "en",
+    "@value" : "Processing status"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#ProfileLining",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 107"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Profilauskleidung"
+  }, {
+    "@language" : "en",
+    "@value" : "Profile lining"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#ProfileType",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 106"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Profilart"
+  }, {
+    "@language" : "en",
+    "@value" : "Profile type"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Reference",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/vocab/vann/usageNote" : [ {
+    "@language" : "en",
+    "@value" : "DWA-M 150 categorizes reference tables by type of data. Examples are:\n- Reference Table 105: Material Types (Reference/Material)\n- Reference Table 202: Condition Assessment Coding Systems (Reference/CodingSystem)\n\nEach subclass refers to one reference table. The entries of a table are individuals of that subclass (not subclasses), so that a component relates to them with an object property such as hasMaterial."
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "The taxonomy of references includes the reference tables found in the advisory leaflet DWA-M 150.\n\nDWA-M 150 categorizes reference tables by type of data. Examples are:\n- Reference Table 105: Material Types (Class/Subclass: Reference/Material)\n- Reference Table 202: Condition Assessment Coding Systems (Reference/CodingSystem)\n\nEach subclass refers to a specific reference table in DWA-M 150, implied with the equivalentTo axiom \"hasReferenceTable value \"[RefTableNumber]\"\".\n\nThe different types found within a reference table are then listed as subclasses of the aforementioned subclass."
+    "@value" : "A code list (reference table) of DWA-M 150. Each subclass corresponds to one reference table; the codes of that table are individuals of the subclass, named M150_RT[table]_[code] (e.g. M150_RT105_B, concrete)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Reference"
+  }, {
+    "@language" : "de",
+    "@value" : "Referenz"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#ReferenceReport",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 209"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Meldung"
+  }, {
+    "@language" : "en",
+    "@value" : "Reference report"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Report",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://purl.org/vocab/vann/usageNote" : [ {
+    "@language" : "en",
+    "@value" : "Individuals for inspection reports are labelled with the template:\n\n` Inspection[PipeSectionDesignation]_[Date] `;\n` Inspection[HG001]_[HI003] ` for Pipe Section: Inspection reports;\n` Inspection[KG001]_[KI003] ` for Node: Inspection reports.\n\nIndividuals for condition reports within an inspection are labelled with the template:\n\n` Condition[PipeSectionDesignation]_[Stationing(ConditionReport)]_[Code] `;\n` Condition[HG001]_[HZ001]_[HZ002] ` for Pipe Section: Condition reports;\n` Condition[KG001]_[KZ001]_[KZ002] ` for Node: Condition reports.\n\nAccording to the DWA-M 150, the coding systems that can be applied here are:\n- DIN EN 13508-2\n- DWA 149-2\n- DWA ATV-M 143\n- ISYBAU2001\n- ISYBAU1996"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
     "@language" : "en",
-    "@value" : "The taxonomy of reports includes inspection and condition reports for a sewage system, according to the structure of the advisory leaflet DWA-M 150.\n\nIt is recommended to create individuals for inspection reports with the template:\n\n` Inspection[PipeSectionDesignation]_[Date] `;\n` Inspection[HG001]_[HI003] ` for Pipe Section: Inspection reports;\n` Inspection[KG001]_[KI003] ` for Node: Inspection reports.\n\nIt is recommended to create individuals for condition reports within an inspection with the template:\n\n` Condition[PipeSectionDesignation]_[Stationing(ConditionReport)]_[Code] `;\n` Condition[HG001]_[HZ001]_[HZ002] ` for Pipe Section: Condition reports;\n` Condition[HG001]_[KZ001]_[KZ002] ` for Node: Condition reports.\n\nAccording to the DWA-M 150, the coding systems that can be applied here are:\n- DIN EN 13508-2\n- DWA 149-2\n- DWA ATV-M 143\n- ISYBAU2001\n- ISYBAU1996"
+    "@value" : "A document that records information about a component of a sewer network. Its subclasses follow the inspection and condition data structure of DWA-M 150."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Bericht"
+  }, {
+    "@language" : "en",
+    "@value" : "Report"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Reporter",
@@ -6109,22 +6844,67 @@
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Role",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The function a person or organization has in an inspection (client, company, inspector, site manager, reporter, assessor). Roles are fixed named individuals."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Role"
+  }, {
+    "@language" : "de",
+    "@value" : "Rolle"
+  } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#SewerType",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "The type of sewer by construction and flow (e.g. closed gravity flow pipeline, pressure pipeline, open channel), according to DWA-M 150 reference table 103."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 103"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Kanalart"
+  }, {
+    "@language" : "en",
+    "@value" : "Sewer type"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#SewerUsage",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 104"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Kanalnutzung"
+  }, {
+    "@language" : "en",
+    "@value" : "Sewer usage"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Shape",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 118"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Form"
+  }, {
+    "@language" : "en",
+    "@value" : "Shape"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
@@ -6137,60 +6917,175 @@
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#SoilGroup",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 126"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Bodengruppe"
+  }, {
+    "@language" : "en",
+    "@value" : "Soil group"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#SpatialEntity",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A physical or geographic location referred to by a component, such as a street, a district or a treatment plant."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Räumliche Entität"
+  }, {
+    "@language" : "en",
+    "@value" : "Spatial entity"
+  } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Street",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Straße"
+  }, {
+    "@language" : "en",
+    "@value" : "Street"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#SpatialEntity"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#StreetCode",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Straßenschlüssel"
+  }, {
+    "@language" : "en",
+    "@value" : "Street code"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#InformationEntity"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#TrafficAreaLocation",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 112"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Lage im Verkehrsraum"
+  }, {
+    "@language" : "en",
+    "@value" : "Location in traffic area"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#TreatmentPlant",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Kläranlage"
+  }, {
+    "@language" : "en",
+    "@value" : "Treatment plant"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#SpatialEntity"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#VerticalReferencePoint",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 210"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Bezugspunkt vertikal"
+  }, {
+    "@language" : "en",
+    "@value" : "Vertical reference point"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#VideoFile",
-  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ]
+  "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#comment" : [ {
+    "@language" : "en",
+    "@value" : "A video file recorded during an inspection (HI116/KI116)."
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Video file"
+  }, {
+    "@language" : "de",
+    "@value" : "Videodatei"
+  } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#VideoStorageMedium",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 207"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Video storage medium"
+  }, {
+    "@language" : "de",
+    "@value" : "Videospeichermedium"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#WaterProtectionZone",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 111"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "de",
+    "@value" : "Wasserschutzzone"
+  }, {
+    "@language" : "en",
+    "@value" : "Water protection zone"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
 }, {
   "@id" : "https://l-jamora.github.io/m150-onto#Weather",
   "@type" : [ "http://www.w3.org/2002/07/owl#Class" ],
+  "http://www.w3.org/2000/01/rdf-schema#isDefinedBy" : [ {
+    "@value" : "DWA-M 150 Reference Table 204"
+  } ],
+  "http://www.w3.org/2000/01/rdf-schema#label" : [ {
+    "@language" : "en",
+    "@value" : "Weather"
+  }, {
+    "@language" : "de",
+    "@value" : "Wetter"
+  } ],
   "http://www.w3.org/2000/01/rdf-schema#subClassOf" : [ {
     "@id" : "https://l-jamora.github.io/m150-onto#Reference"
   } ]
