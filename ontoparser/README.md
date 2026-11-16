@@ -36,12 +36,12 @@ from the input XML this run -- it does not duplicate the base ontology's
 classes, properties, or pre-existing Reference individuals. It declares
 `owl:imports` back to the base ontology instead. New individuals keep the
 base ontology's own namespace (they are not moved to a separate namespace),
-so existing tooling that references `m150:Beispiel_*` IRIs is unaffected;
+so existing tooling that references `m150:PARSED_*` IRIs is unaffected;
 only what gets written to disk has changed.
 
 ## Naming conventions
 
-All generated individuals are prefixed with `Beispiel_`. Labels (human-readable, no prefix) follow DWA-M 150 field templates:
+All generated individuals are prefixed with `PARSED_`. Labels (human-readable, no prefix) follow DWA-M 150 field templates:
 
 | Individual | Label pattern |
 |-----------|---------------|

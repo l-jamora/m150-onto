@@ -25,7 +25,7 @@ except ImportError:
     import banner
     from run_log import RunLogger
 
-INDIVIDUAL_PREFIX = "Beispiel_"
+INDIVIDUAL_PREFIX = "PARSED_"
 
 DEFAULT_ONTOLOGY = Path(__file__).resolve().parents[1] / "m150-onto.rdf"
 DEFAULT_OUTPUT = Path(__file__).resolve().parents[1] / "m150-onto-parsed.rdf"
@@ -98,6 +98,7 @@ _NAMED_ENTITY_PROPERTIES: dict = {
     # Inspection media (HI/KI)
     "hasCameraSystemUsed":                  "CameraSystem",
     "hasVideoStorageMediumName":            "VideoStorageMedium",
+    "hasCoordinateSystem":                  "CoordinateSystem",
     "hasVideoFilename":                     "VideoFile",
     "hasNodeInspectionDigitalPhotoName":    "DigitalPhoto",
     "hasNodeInspectionAmbientPhoto":        "AmbientPhoto",
@@ -467,7 +468,7 @@ class M150XmlParser:
             existing = self._search_case_insensitive(ref_name)
             if existing is not None:
                 return existing
-            placeholder_name = f"{ref_name}_PLACEHOLDER"
+            placeholder_name = f"{INDIVIDUAL_PREFIX}{ref_name}_PLACEHOLDER"
             self._warn(f"  Warning: Reference {ref_name} not found; creating placeholder {placeholder_name}")
             ref_cls = self._get_class("Reference")
             return self._create_individual(ref_cls, placeholder_name, label=value)
@@ -501,7 +502,7 @@ class M150XmlParser:
                 self._warn(f"  Warning: Named individual {ind_name} not found in ontology")
             return None
 
-        ind_name = safe_entity_name(prop_name.replace("has", "", 1), value)
+        ind_name = INDIVIDUAL_PREFIX + safe_entity_name(prop_name.replace("has", "", 1), value)
         return self._create_individual(owl.Thing, ind_name, label=value)
 
     def _apply_mapping(self, individual, entry: dict, value: str) -> None:
@@ -749,7 +750,9 @@ class M150XmlParser:
                     continue
 
                 rt_name = safe_entity_name("M150_RT" + rt001, rt002)
-                rt_individual = self._create_individual(reference_cls, rt_name)
+                rt_individual = self.onto.search_one(iri=self._entity_iri(rt_name))
+                if rt_individual is None:  # code missing from the ontology: mark as parser-created
+                    rt_individual = self._create_individual(reference_cls, INDIVIDUAL_PREFIX + rt_name)
                 _tick(self._pbar)
 
                 rt003 = normalize_text(rt.find("RT003"))

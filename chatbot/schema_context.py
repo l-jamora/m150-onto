@@ -13,7 +13,7 @@ from rdflib.namespace import OWL, RDF, RDFS
 
 PREFIX = "m150"
 NAMESPACE = "https://l-jamora.github.io/m150-onto#"
-INDIVIDUAL_PREFIX = "Beispiel_"  # mirrors ontoparser.parser.INDIVIDUAL_PREFIX
+INDIVIDUAL_PREFIX = "PARSED_"  # mirrors ontoparser.parser.INDIVIDUAL_PREFIX
 
 _REPO_ROOT = Path(__file__).resolve().parent.parent
 _ONTOLOGY_PATH = _REPO_ROOT / "m150-onto.rdf"

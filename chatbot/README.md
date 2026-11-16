@@ -94,12 +94,12 @@ verbose = True
 [SPARQL]
 PREFIX m150: <https://l-jamora.github.io/m150-onto#>
 SELECT ?inspection ?person WHERE {
-  ?inspection m150:inspects m150:Beispiel_PipeSection_1204015 .
+  ?inspection m150:inspects m150:PARSED_PipeSection_1204015 .
   ?inspection m150:hasInspector ?person .
 }
 
 [bindings]
-[{'inspection': '...Beispiel_Inspection_1204015', 'person': '...Beispiel_Person_H_Potter'}]
+[{'inspection': '...PARSED_Inspection_1204015', 'person': '...PARSED_Person_H_Potter'}]
 
 Pipe section 1204015 was inspected by H. Potter.
 ```
@@ -149,7 +149,7 @@ dashboard.
   `subPropertyOf`/`TransitiveProperty` chain from real `hasPipeSectionTopNodeDesignation`/
   `BottomNodeDesignation` data), querying `connectedWith` directly may now work too — this hasn't
   been re-verified against the prompt/few-shot examples in `schema_context.py`.
-- Individuals are prefixed `Beispiel_` (German "example") — a placeholder-data marker from the
+- Individuals are prefixed `PARSED_` — marks data created by the
   XML parser (`ontoparser.parser.INDIVIDUAL_PREFIX`), stripped from user-facing answers.
 
 ## Known limitations

@@ -155,8 +155,8 @@ def find_unknown_individuals(sparql: str, store: pyoxigraph.Store) -> list[tuple
     """Returns [(bad_local_name, [close_real_local_names]), ...] for this query.
 
     Individual names in this ontology are not uniformly patterned (e.g. some Inspection
-    individuals are named Beispiel_Inspection_<id> and others Beispiel_Inspection_<id>_<date>_
-    <time>), so the model sometimes guesses a bare-ID IRI like Beispiel_1204012 that was never
+    individuals are named PARSED_Inspection_<id> and others PARSED_Inspection_<id>_<date>_
+    <time>), so the model sometimes guesses a bare-ID IRI like PARSED_1204012 that was never
     parsed from the source data. Since that guess is syntactically valid SPARQL, it just returns
     zero rows with no error -- so, like find_unknown_predicates, this has to be caught by checking
     against the real individual set before running the query.
@@ -194,10 +194,10 @@ def build_individual_retry_note(unknown: list[tuple[str, list[str]]]) -> str:
             lines.append(f"  {PREFIX}:{bad_name} -- does not exist, and no similar individual was found")
     lines.append(
         "Individual IRIs must never be guessed from a bare ID number -- naming is inconsistent "
-        "across entity types (e.g. some Inspections are Beispiel_Inspection_<id>, others "
-        "Beispiel_Inspection_<id>_<date>_<time>). Instead, resolve them by traversing a "
-        f"relationship from a Component whose name IS predictable ({PREFIX}:Beispiel_PipeSection_<id> "
-        f"or {PREFIX}:Beispiel_Node_<id>), e.g. via {PREFIX}:inspects / {PREFIX}:inspectedIn to reach "
+        "across entity types (e.g. some Inspections are PARSED_Inspection_<id>, others "
+        "PARSED_Inspection_<id>_<date>_<time>). Instead, resolve them by traversing a "
+        f"relationship from a Component whose name IS predictable ({PREFIX}:PARSED_PipeSection_<id> "
+        f"or {PREFIX}:PARSED_Node_<id>), e.g. via {PREFIX}:inspects / {PREFIX}:inspectedIn to reach "
         "the correct Inspection individual."
     )
     return "\n".join(lines)

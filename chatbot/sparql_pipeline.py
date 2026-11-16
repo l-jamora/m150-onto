@@ -68,7 +68,7 @@ def answer_question(
 
     # Check for guessed-but-nonexistent property names (e.g. hasCameraSystem for the
     # real hasCameraSystemUsed) and guessed-but-nonexistent individual IRIs (e.g.
-    # Beispiel_1204012 instead of Beispiel_Inspection_1204012) before running the query
+    # PARSED_1204012 instead of PARSED_Inspection_1204012) before running the query
     # at all: these are valid SPARQL that would otherwise just silently return zero rows
     # or unbound OPTIONAL variables, so the only way to catch them is to check against
     # the real schema/data. This retry replaces (not adds to) the error/empty-result

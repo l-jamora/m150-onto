@@ -15,7 +15,7 @@ m150-onto.rdf                        # Root ontology (all class/property definit
 ontoparser/
   parser.py                          # Main XML → OWL parser (owlready2)
   __init__.py
-  requirements.txt                   # owlready2>=0.8.2
+  requirements.txt                   # owlready2, rdflib, rich, tqdm
   README.md
 Scripts/
   1_reference_subclasses_to_individuals.py   # One-time migration scripts
@@ -40,7 +40,7 @@ owl:Thing
 │   └── InspectionReport
 │       └── ConditionReport
 ├── Reference         (all material/type code individuals are instances of subclasses)
-│   ├── Material      (e.g. Beispiel_M150_RT105_B = Beton/Concrete)
+│   ├── Material      (e.g. M150_RT105_B = Beton/Concrete)
 │   ├── SewerType, NodeType, Shape, …
 ├── SpatialEntity     (physical/geographic locations; individuals created per XML value)
 │   ├── Street
@@ -111,38 +111,38 @@ Reads a **DWA M 150 Type B XML** file and creates OWL individuals in the ontolog
 
 | XML element | OWL class | Example individual name |
 |---|---|---|
-| `HG` (Haltungsgrunddaten) | `PipeSection` | `Beispiel_PipeSection_1204015` |
-| `KG` (Knotengrunddaten) | `Node` | `Beispiel_Node_1204015` |
-| `HI` (nested in HG) | `InspectionReport` | `Beispiel_Inspection_1204015_07_04_2006_08_30_00` |
+| `HG` (Haltungsgrunddaten) | `PipeSection` | `PARSED_PipeSection_1204015` |
+| `KG` (Knotengrunddaten) | `Node` | `PARSED_Node_1204015` |
+| `HI` (nested in HG) | `InspectionReport` | `PARSED_Inspection_1204015_07_04_2006_08_30_00` |
 | `KI` (nested in KG) | `InspectionReport` | same pattern |
-| `HZ` (nested in HI) | `ConditionReport` | `Beispiel_Condition_1204015_0_0_BCD` |
+| `HZ` (nested in HI) | `ConditionReport` | `PARSED_Condition_1204015_0_0_BCD` |
 | `KZ` (nested in KI) | `ConditionReport` | same pattern |
-| `HG102/KG102` value | `Street` | `Beispiel_Street_Hauptstrasse` |
-| `HG104/KG104` value | `District` | `Beispiel_District_Mitte` |
-| `HG108/KG108` value | `TreatmentPlant` | `Beispiel_TreatmentPlant_KA1` |
-| `HG101/KG101` value | `StreetCode` | `Beispiel_StreetCode_001` |
-| `HG103/KG103` value | `DistrictCode` | `Beispiel_DistrictCode_05` |
-| `HG105/KG105` value | `MunicipalityCode` | `Beispiel_MunicipalityCode_05334` |
-| `HG106/KG106` value | `AreaCode` | `Beispiel_AreaCode_A` |
-| `HG107/KG107` value | `CatchmentAreaCode` | `Beispiel_CatchmentAreaCode_EG1` |
-| `HI006/KI006` value | `CameraSystem` | `Beispiel_CameraSystem_VidiSys` |
-| `HI115/KI115` value | `VideoStorageMedium` | `Beispiel_VideoStorageMedium_DVD` |
-| `HI116/KI116` value | `VideoFile` | `Beispiel_VideoFile_1204015_avi` |
-| `KI118` value | `DigitalPhoto` | `Beispiel_DigitalPhoto_1204015_jpg` |
-| `KI122` value | `AmbientPhoto` | `Beispiel_AmbientPhoto_1204015_jpg` |
-| `HZ009/KZ009` value | `Photo` | `Beispiel_Photo_1204015_0_0_BCD_jpg` |
-| `HI001/KI001` value | `Person` | `Beispiel_Person_DWA` (+ `hasRole Client`) |
-| `HI111/KI111` value | `Organization` | `Beispiel_Organization_Kanalinspektions_GmbH` (+ `hasRole Company`) |
-| `HI112/KI112` value | `Person` | `Beispiel_Person_H_Potter` (+ `hasRole Inspector`) |
-| `HI113/KI113` value | `Person` | `Beispiel_Person_<value>` (+ `hasRole SiteManager`) |
-| `HI203/KI203/HZ203/KZ203` value | `Person` | `Beispiel_Person_<value>` (+ `hasRole Reporter`) |
-| `HI205/KI205` value | `Person` | `Beispiel_Person_<value>` (+ `hasRole Assessor`) |
+| `HG102/KG102` value | `Street` | `PARSED_Street_Hauptstrasse` |
+| `HG104/KG104` value | `District` | `PARSED_District_Mitte` |
+| `HG108/KG108` value | `TreatmentPlant` | `PARSED_TreatmentPlant_KA1` |
+| `HG101/KG101` value | `StreetCode` | `PARSED_StreetCode_001` |
+| `HG103/KG103` value | `DistrictCode` | `PARSED_DistrictCode_05` |
+| `HG105/KG105` value | `MunicipalityCode` | `PARSED_MunicipalityCode_05334` |
+| `HG106/KG106` value | `AreaCode` | `PARSED_AreaCode_A` |
+| `HG107/KG107` value | `CatchmentAreaCode` | `PARSED_CatchmentAreaCode_EG1` |
+| `HI006/KI006` value | `CameraSystem` | `PARSED_CameraSystem_VidiSys` |
+| `HI115/KI115` value | `VideoStorageMedium` | `PARSED_VideoStorageMedium_DVD` |
+| `HI116/KI116` value | `VideoFile` | `PARSED_VideoFile_1204015_avi` |
+| `KI118` value | `DigitalPhoto` | `PARSED_DigitalPhoto_1204015_jpg` |
+| `KI122` value | `AmbientPhoto` | `PARSED_AmbientPhoto_1204015_jpg` |
+| `HZ009/KZ009` value | `Photo` | `PARSED_Photo_1204015_0_0_BCD_jpg` |
+| `HI001/KI001` value | `Person` | `PARSED_Person_DWA` (+ `hasRole Client`) |
+| `HI111/KI111` value | `Organization` | `PARSED_Organization_Kanalinspektions_GmbH` (+ `hasRole Company`) |
+| `HI112/KI112` value | `Person` | `PARSED_Person_H_Potter` (+ `hasRole Inspector`) |
+| `HI113/KI113` value | `Person` | `PARSED_Person_<value>` (+ `hasRole SiteManager`) |
+| `HI203/KI203/HZ203/KZ203` value | `Person` | `PARSED_Person_<value>` (+ `hasRole Reporter`) |
+| `HI205/KI205` value | `Person` | `PARSED_Person_<value>` (+ `hasRole Assessor`) |
 
 SpatialEntity/InformationEntity individuals are deduplicated: if two pipe sections share the same street name, they reference the same `Street` individual. Media individuals (CameraSystem, VideoFile, Photo, etc.) are similarly deduplicated by value. Person/Organization individuals are also deduplicated by value — multiple inspections with the same inspector name share one `Person` individual.
 
 ### Naming conventions
 
-- All new individuals are prefixed with `Beispiel_` (module constant `INDIVIDUAL_PREFIX`).
+- All new individuals are prefixed with `PARSED_` (module constant `INDIVIDUAL_PREFIX`).
 - Names are sanitised through `safe_entity_name()` which collapses non-alphanumeric chars to `_`.
 - Labels (human-readable) omit the prefix: `PipeSection[1204015]`, `Inspection[1204015]_[07.04.2006]`.
 
@@ -181,7 +181,7 @@ condition_individual.isChildOf.append(inspection_individual)
 
 1. **Node cross-reference** (`_NODE_REFERENCE_PROPERTIES`): `hasPipeSectionTopNodeDesignation` / `hasPipeSectionBottomNodeDesignation` — creates/looks up a `Node` individual eagerly.
 2. **Reference table lookup**: if the CSV provides an RT table number, searches for `M150_RT{table}_{code}`; creates a placeholder if missing.
-3. **Named entity** (`_NAMED_ENTITY_PROPERTIES`): maps property names to target classes (e.g. `hasStreetName` → `Street`). Creates a `Beispiel_<ClassName>_<value>` individual of the correct type. Multiple assets with the same value share one individual.
+3. **Named entity** (`_NAMED_ENTITY_PROPERTIES`): maps property names to target classes (e.g. `hasStreetName` → `Street`). Creates a `PARSED_<ClassName>_<value>` individual of the correct type. Multiple assets with the same value share one individual.
 4. **Role entity** (`_ROLE_ENTITY_PROPERTIES`): maps property names to `(entity class, Role individual)` pairs (e.g. `hasInspector` → `("Person", "Inspector")`). Creates a typed `Person` or `Organization` individual and asserts `hasRole <RoleIndividual>` on it. Deduplicated by IRI.
 5. **Coded value** (`_CODED_VALUE_INDIVIDUALS`): maps specific coded XML values to pre-existing named individuals (e.g. HG008 `I` → `InFlowingDirection`). Looks up the individual by slash IRI; prints a warning if not found.
 6. **Free-text fallback**: creates a generic `owl:Thing` individual named after the property and value.
