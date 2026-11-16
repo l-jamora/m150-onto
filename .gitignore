@@ -10,3 +10,4 @@ logs/
 m150-onto-parsed*.rdf
 .venv/
 __pycache__/
+.claude/
