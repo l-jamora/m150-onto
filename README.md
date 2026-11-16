@@ -1,191 +1,67 @@
 # M150-Onto
 
-**M150-Onto** is an OWL ontology for sewage infrastructure data based on the German advisory leaflet **DWA-M 150**. It provides a semantic framework for modeling sewer system assets (pipe sections, manholes, nodes), their geometric properties, inspection data, condition assessments, and standardized reference vocabularies. The ontology enables semantic data integration, automated reasoning over network topology and asset relationships, and expressive SPARQL queries for infrastructure analysis and management.
+**Version 0.4.0**
 
-> Built in Protégé as part of academic research to bridge gaps in existing ontologies for sewer systems.
+An OWL ontology modelling the DWA M 150 standard for sewer infrastructure. It represents sewer network assets (pipe sections, nodes), their inspection reports, and condition findings as OWL individuals, enabling structured querying and OWL reasoning over sewer data.
 
-## Table of Contents
-
-* [Key features](#key-features)
-* [Getting started](#getting-started)
-
-  * [Prerequisites](#prerequisites)
-  * [Install / open](#install--open)
-  * [Naming Conventions for Individuals](#naming-conventions-for-individuals)
-* [Ontology overview](#ontology-overview)
-
-  * [Taxonomies of M150-Onto](#taxonomies-of-m150-onto)
-
-    * [1. Component Taxonomy](#1-component-taxonomy)
-    * [2. Geometry Taxonomy](#2-geometry-taxonomy)
-    * [3. Report Taxonomy](#3-report-taxonomy)
-    * [4. Reference Taxonomy](#4-reference-taxonomy)
-  * [Key object properties](#key-object-properties)
-  * [Example data properties](#example-data-properties)
-  * [Documentation & annotations](#documentation--annotations)
-* [Example DL queries (Manchester syntax)](#example-dl-queries-manchester-syntax)
-* [Applications](#applications)
-* [Data & examples](#data--examples)
-* [Metrics (current model)](#metrics-current-model)
-* [Contributing](#contributing)
-* [License](#license)
-* [Citation](#citation)
-
-## Key features
-
-- **Complete DWA-M 150 coverage** of core elements as OWL classes, properties, and reference tables.
-- **Reasoning-friendly network model**: infer connectivity via `flowsTo`/`flowsFrom` and transitive `connectedWith`.
-- **Geometry linkage**: geometry objects/points render components; hierarchy via parent/child relations.
-- **Inspections & conditions**: represent reports and standardized defect codes.
-- **Reference taxonomy**: material, sewer use/type, coding systems, etc.
-- **Ready for extensions**: subontology for **DIN EN 13508-2** codes; hooks for **GeoSPARQL** and related domain ontologies.
-
-## Getting started
-
-### Prerequisites
-- **Protégé** (for editing, reasoning, and DL queries)
-
-### Install / open
-
-Download and open `m150-onto.rdf` in **Protégé**. Then:
-
-1. **Import** individual M150-XML data as individuals in the ontology. Naming conventions listed below can be followed.
-2. Set relevant object and data properties for each individual.
-3. Start a reasoner (e.g., HermiT/Pellet) to see inferred relationships (e.g., `connectedWith`).
-4. DL Query / SPARQL according to use case.
-
-### Naming Conventions for Individuals
-
-| Class          | Example Individual Name     | Explanation |
-|----------------|-----------------------------|-------------|
-| `PipeSection`  | `PipeSection_5084`          | Sewer pipe with designation `5084` |
-| `Node`         | `Node_100`                  | Node with designation `100` |
-| `GeoObject`    | `GeoObject_100-101`                  | Geometry object from `Node_100` to `Node_101` |
-| `GeoPoint`    | `GeoPoint_100-101-1`                  | First Geometry Point for `Geoobject_100-101` |
-| `Inspection`   | `Inspection_5084_2006-04-07`    | Inspection for `PipeSection_5084` made on April 7, 2006|
-| `Condition`    | `Condition_0.0_BAB`      | Crack defect (code BAB) on `PipeSection_5084` at Station 0.0 |
-
-## Ontology overview
-
-### Taxonomies of M150-Onto
-
-M150-Onto is structured around four main **taxonomies** that mirror the domains of the DWA-M 150 guideline. Together, they provide a semantic framework to describe sewer infrastructure, its physical properties, inspections, and standardized references. (See Taxonomies.png)
-
-#### 1. Component Taxonomy
-Represents the physical elements of a sewer system.
-
-- **PipeSection** – edges connecting nodes; carry material, diameter, slope, installation date, etc.  
-- **Node** – manholes, inspection chambers, junctions, treatment plants.  
-- Subclasses and properties follow the DWA-M 150 element classification.  
-
-➡️ Connected through `flowsTo` / `flowsFrom`.  
-A transitive property `connectedWith` allows reasoning over entire networks.
-
-#### 2. Geometry Taxonomy
-Captures spatial representation and relationships.
-
-- **Object** – a geometry entity (e.g., a pipe axis).  
-- **Point** – coordinate points belonging to an object.  
-
-➡️ Hierarchy expressed via `isParentOf` / `isChildOf`.  
-➡️ Linked to components with `renders` / `renderedBy`.  
-This enables geometry-based queries and potential GeoSPARQL integration.
-
-#### 3. Report Taxonomy
-Models inspections and condition assessments.
-
-- **Inspection** – data from visual or technical checks.  
-- **Condition** – findings reported in inspections (e.g., cracks, corrosion).  
-
-➡️ Linked to components with `inspects` / `inspectedBy`.  
-➡️ Hierarchies (e.g., conditions attached to inspections) represented via `isParentOf` / `isChildOf`.  
-
-This allows filtering infrastructure by defects, inspection results, or condition codes.
-
-#### 4. Reference Taxonomy
-Provides controlled vocabularies and coding systems.
-
-- **Material** (e.g., concrete, PVC, steel)  
-- **SewerType** (e.g., combined, stormwater, wastewater)  
-- **CodingSystem** (DWA-M 150 tables; expandable to DIN EN 13508-2, ISYBAU, ATU, etc.)
-- ...
-
-➡️ Ensures semantic consistency and supports **cross-standard mapping** via equivalence axioms.
-
-### Key object properties
-
-* `flowsTo` / `flowsFrom` → inferred transitive `connectedWith`
-* `renders` / `renderedBy` (Geometry ↔ Component)
-* `isChildOf` / `isParentOf` (hierarchies for geometry & reports)
-* `inspects` / `inspectedBy` (Inspection ↔ Component)
-
-### Example data properties
-
-* `hasMaterial`, `hasDesignation`, `hasDistrictCode`, `hasProfileHeight`, …
-* Datatypes and ranges follow DWA-M 150 element formats.
-
-### Documentation & annotations
-
-* Labels and comments on classes/properties; multilingual tags possible (e.g., `@de`).
-
-## Example DL queries (Manchester syntax)
-
-> Use Protégé’s **DL Query** tab.
-
-**1) Combined sewers in district "18"**
+## Repository layout
 
 ```
-Component and (hasDistrictCode value "18") and CombinedSewer
+m150-onto.rdf          # Root ontology — all class and property definitions
+ontoparser/            # XML → OWL parser (owlready2)
+chatbot/               # Natural-language-to-SPARQL chatbot over the parsed data
+tests/                 # pytest suite
+Scripts/               # One-time migration and maintenance scripts
+catalog-v001.xml       # Protégé import catalog
+CHANGELOG.md           # Release history
+xml/                   # Example DWA M 150 Type B XML input files (local only)
+xsd/                   # XML schema definitions (local only)
+dwa/                   # DWA M 150 standard PDF documentation (local only)
+docs/                  # Additional documentation
 ```
 
-**2) Concrete pipe sections with crack defects (code BAB)**
+The `xml/`, `xsd/` and `dwa/` folders are not distributed in the repository (DWA M 150 material is copyrighted and some XML files are partner data); place your own copies there locally.
 
-```
-PipeSection and (hasMaterial value "B") and
-  (inspectedIn some (Inspection and
-    (isParentOf some (Condition and (hasConditionCode value "BAB")))))
-```
+## Ontology design
 
-**3) Reports for pipe sections with specific condition code (e.g., BCD)**
+Key design decisions are documented in [docs/ontology-structure-changes.md](docs/ontology-structure-changes.md). In brief:
 
-```
-Report and
-  isChildOf some (Inspection and inspects some PipeSection) and
-  hasConditionCode value "BCD"
-```
+- `Reference` subclasses (Material, SewerType, etc.) are **individuals**, not classes, to prevent reasoners from inferring that a pipe section *is* a material.
+- `SpatialEntity` subclasses (`Street`, `District`, `TreatmentPlant`) and `InformationEntity` subclasses (`StreetCode`, `DistrictCode`, `MunicipalityCode`, `AreaCode`, `CatchmentAreaCode`) are also individuals, created dynamically when parsing location/code data from XML.
+- `Directionality` individuals (`InFlowingDirection`, `AgainstFlowingDirection`) are pre-defined named individuals used to encode direction codes in sewer connectivity data.
+- Inspection data is modelled with `InspectionReport` and `ConditionReport` (a `ConditionReport` is a child of an `InspectionReport`). All IRIs are hash-based (`https://l-jamora.github.io/m150-onto#`).
+- Most `hasX` object properties are declared `owl:FunctionalProperty`, `owl:AsymmetricProperty`, and `owl:IrreflexiveProperty`, reflecting their one-to-one, directed, non-self-referential nature. Some exceptions are made for object properties such as super-object properties `hasBasicData`.
+- Network topology properties (`flowsTo`, `flowsFrom`, `connectedWith`) and inspection linkage properties (`inspects`, `inspectedIn`, `isChildOf`, `isParentOf`, `renders`, `renderedBy`) are intentionally exempt from the functional constraint.
 
-## Applications
+## Parsing XML data
 
-* **Inventory management** (materials, profiles, dimensions; network connectivity)
-* **Condition monitoring** (standardized codes; trend analysis across inspections)
-* **Maintenance planning** (filter by material/defect, cluster spatially)
-* **Regulatory compliance** (inspection frequencies, standardized reporting)
-* **Data integration** (combine GIS/BIM, link documents, unify coding systems)
+The `ontoparser` package reads a DWA M 150 Type B XML file and populates the ontology with individuals. See [ontoparser/README.md](ontoparser/README.md) for usage.
 
-## Example Data
+## Scripts
 
-* **Public sample data (DWA)** used to test M150-Onto:
-  [http://www.dwa.de/rwzusatzfiles/M150.zip](http://www.dwa.de/rwzusatzfiles/M150.zip)
+| Script | Purpose |
+|--------|---------|
+| `Scripts/1_reference_subclasses_to_individuals.py` | Converted Reference subclasses to individuals |
+| `Scripts/2_create_reference_object_properties.py` | Created `hasX` / `isXOf` object property pairs |
+| `Scripts/3_update_reference_table_individuals.py` | Populated Reference individuals from RT naming conventions |
+| `Scripts/4_add_property_characteristics.py` | Adds Functional/Asymmetric/Irreflexive to all applicable object properties |
 
-Consider using OntoParser to convert M150-XML data to M150-Onto individuals.
+Scripts 1–3 are one-time migrations already applied to `m150-onto.rdf`. Script 4 is idempotent and can be re-run after adding new object properties.
 
-## Metrics (current model)
+## Chatbot
 
-* \~**376 classes**, **10 object properties**, **186 data properties**
-  (will evolve as extensions mature)
+The [`chatbot/`](chatbot/) package is a local natural-language chatbot over the parsed data: it translates a plain-language question into SPARQL and answers from the query results. See [chatbot/README.md](chatbot/README.md) for setup and usage.
 
-## Contributing
+## Related
 
-1. Fork the repo
-2. Create a feature branch
-3. Document new classes/properties with labels/comments
-4. Add example data or DL/SPARQL queries
-5. Open a PR with a short rationale
+- [SDCO](https://github.com/l-jamora/sdco) — Sewer Damage Classification Ontology for DIN EN 13508-2, which imports M150-Onto.
+- [Explainer page](https://l-jamora.github.io/sdco/) walking through both M150-Onto and SDCO.
+- [Ontology documentation](https://l-jamora.github.io/m150-onto/).
+
+## Changelog
+
+See [CHANGELOG.md](CHANGELOG.md).
 
 ## License
 
-This project is licensed under the MIT License – you are free to use, modify, and distribute it with proper attribution.
-
-## Citation
-
-TBD
+The ontology, documentation and data are licensed under CC BY 4.0 ([`LICENSE`](LICENSE)). The Python code (`ontoparser`, `chatbot`, `Scripts`, `tests`) is licensed under the MIT License ([`LICENSE-CODE`](LICENSE-CODE)).
