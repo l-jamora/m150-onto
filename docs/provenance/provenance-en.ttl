@@ -1,0 +1,14 @@
+@prefix prov: <http://www.w3.org/ns/prov#> .
+@prefix dc: <http://purl.org/dc/terms/> .
+@prefix foaf: <http://xmlns.com/foaf/0.1/> .
+@prefix : <> .
+<https://l-jamora.github.io/m150-onto/0.4.0> a prov:Entity;
+	 dc:title "M150-Onto";
+	 prov:wasAttributedTo :agent0;
+	 prov:wasAttributedTo :agent1;
+	 prov:wasAttributedTo <https://github.com/dgarijo/Widoco/>,<http://www.essepuntato.it/lode/>;
+	 prov:specializationOf <https://l-jamora.github.io/m150-onto#>;
+	 prov:wasRevisionOf <https://l-jamora.github.io/m150-onto/0.3.6>;
+.
+:agent0 a prov:Agent; foaf:name "https://orcid.org/0009-0007-7722-7798".
+:agent1 a prov:Agent; foaf:name "https://orcid.org/0009-0009-1744-1658".
